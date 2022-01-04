@@ -78,10 +78,14 @@
     background-color: transparent;
     border-color:transparent
   }
+
+  ul {
+    margin-left: 30px;
+  }
 </style>
 
 <body>
-  <nav class="nav-main">
+  <!-- <nav class="nav-main">
     <div class="container">
       <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3">
         <a href="/" class="brand d-flex align-items-center mb-2 mb-md-0 text-decoration-none">
@@ -114,7 +118,7 @@
         </div>
       </header>
     </div>
-  </nav>
+  </nav> -->
   <header class="p-3">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -122,12 +126,12 @@
           CENTROCARD
         </a>
 
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2">Home</a></li>
-          <li><a href="#" class="nav-link px-2">Features</a></li>
-          <li><a href="#" class="nav-link px-2">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2">About</a></li>
+          <li><a href="#" class="nav-link px-2">Produtos</a></li>
+          <li><a href="#" class="nav-link px-2">Serviços</a></li>
+          <li><a href="#" class="nav-link px-2">Blog</a></li>
+          <li><a href="#" class="nav-link px-2">Quem somos</a></li>
         </ul>
 
         <!-- <div class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 d-flex">
@@ -138,7 +142,7 @@
         </div> -->
 
         <div class="text-end">
-          <button type="button" class="btn btn-nav">Afiliado</button>
+          <button type="button" class="btn btn-nav">Seja um afiliado</button>
           <button class="btn-login" type="button" class="btn">
           <div class="d-flex align-items-center">
           Login <i class="bi bi-box-arrow-in-right"></i>
@@ -155,7 +159,7 @@
           <img src="mockup-semfundo.png" class="d-block mx-lg-auto img-fluid" loading="lazy">
         </div>
         <div class="col-lg-6">
-          <h1 class="display-5 fw-bold lh-1 mb-3">Responsive left-aligned hero with image</h1>
+          <h1 class="display-5 fw-bold lh-1 mb-3 text-white">Até 60% de desconto com nosso cartão</h1>
           <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
             popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
             prebuilt components, and powerful JavaScript plugins.</p>
