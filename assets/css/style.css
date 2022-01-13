@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Conneqt';
+  src: url('../fonts/ConneqtRegular.eot');
+  src: local('Conneqt'), local('ConneqtRegular'),
+      url('../fonts/ConneqtRegular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/ConneqtRegular.woff2') format('woff2'),
+      url('../fonts/ConneqtRegular.woff') format('woff'),
+      url('../fonts/ConneqtRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -111,9 +123,11 @@ h1, h2, h3, h4, h5, h6 {
   top: -40px;
 }
 #topbar .contact-info a {
+  padding-left: 20px;
   line-height: 1;
   color:white;
   transition: 0.3s;
+  font-family: 'Conneqt';
 }
 #topbar .contact-info a:hover {
   color: white;
@@ -128,6 +142,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 0;
 }
 #topbar .social-links a {
+  font-family: 'Conneqt';
   color: white;
   padding-left: 15px;
   display: inline-block;
@@ -175,11 +190,12 @@ h1, h2, h3, h4, h5, h6 {
 * Appointment Button *
 */
 .appointment-btn {
+  font-family: 'Conneqt';
   margin-left: 25px;
   background: #003C85;
   color: #fff;
   border-radius: 50px;
-  padding: 8px 25px;
+  padding: 10px 25px;
   white-space: nowrap;
   transition: 0.3s;
   font-size: 14px;
@@ -221,6 +237,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 0 8px 20px;
 }
 .navbar a, .navbar a:focus {
+  font-family: 'Conneqt';
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -395,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 90vh;
+  height: 80vh;
   background: url("../img/hero-bg2.png") top center;
   background-size: cover;
   margin-bottom: -200px;
