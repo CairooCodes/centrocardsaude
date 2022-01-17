@@ -25,6 +25,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -44,7 +45,7 @@
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-        <a href="#" class="linkedin"> Login <i class="bi bi-box-arrow-in-right"></i></a>
+        <a href="./admin/login.php" class="linkedin"> Login <i class="bi bi-box-arrow-in-right"></i></a>
 
       </div>
     </div>
@@ -97,7 +98,6 @@
   </section><!-- End Hero -->
 
   <main id="main">
-
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container">
@@ -145,7 +145,69 @@
 
       </div>
     </section><!-- End Why Us Section -->
-
+    <section id="products">
+      <div class="container">
+        <h1 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Produtos</h1>
+        <div class="carousel-wrap">
+          <div class="owl-carousel">
+            <div class="item box">
+              <!-- Badge -->
+              <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+                -15%
+              </div>
+              <div class="card mb-7">
+                <!-- Image -->
+                <div class="card-img">
+                  <!-- Image -->
+                  <a class="card-img-hover" href="">
+                    <img src="http://placehold.it/150x150">
+                  </a>
+                </div>
+                <!-- Body -->
+                <div class="card-body px-0">
+                  <!-- Category -->
+                  <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                  <!-- Title -->
+                  <div class="font-weight-bold">
+                    <a class="text-body" href="">
+                    Luva de Látex P C/Pó - Pacote com 10Un
+                    </a>
+                  </div>
+                  <!-- Price -->
+                  <div class="font-weight-bold">
+                    <span class="font-size-xs text-gray-350 text-decoration-line-through">R$13,98</span>
+                    <span class="text-card-product">R$11,88</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+            <div class="item box">
+              <img src="http://placehold.it/150x150">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container-fluid">
@@ -928,9 +990,34 @@
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 50,
+      nav: true,
+      navText: [
+        "<i class='fa fa-caret-left'></i>",
+        "<i class='fa fa-caret-right'></i>"
+      ],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 3
+        },
+        1000: {
+          items: 4
+        }
+      }
+    })
+  </script>
 
 </body>
 

@@ -1537,3 +1537,90 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+
+/* fix blank or flashing items on carousel */
+.owl-carousel .item {
+  position: relative;
+  z-index: 100;
+}
+
+/* end fix */
+.owl-nav>div {
+  margin-top: -26px;
+  position: absolute;
+  top: 50%;
+  color: #cdcbcd;
+}
+
+.owl-nav i {
+  font-size: 52px;
+}
+
+.owl-nav .owl-prev {
+  left: -30px;
+}
+
+.owl-nav .owl-next {
+  right: -30px;
+}
+.owl-carousel .owl-stage-outer {
+  padding:20px;
+}
+
+#products h1 {
+  color:#003C85;
+}
+#products .box {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  width: 100%;
+}
+
+#products .text-card-product {
+  color:#003C85;
+  font-weight: 700;
+  font-size:22px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(17, 17, 17, 0.125);
+  overflow: hidden;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+.badge-danger {
+  color: #fff;
+  background-color: #003C85;
+}
+
+.card-badge {
+  position: absolute;
+  top: 1.25rem;
+  z-index: 1;
+}
+
+.card-badge-left {
+  left: 0;
+}
