@@ -1,5 +1,29 @@
+<?php
+session_start();
+require_once "classes/conexao.php";
+require_once "classes/logar.php";
+
+if (isset($_POST['ok'])) :
+  $login = filter_input(INPUT_POST, "login");
+  $pass = filter_input(INPUT_POST, "pass");
+  $_1 = new Login;
+  $_1->setLogin($login);
+  $_1->setPass($pass);
+
+  if ($_1->logar()) :
+    header("Location:log-login.php");
+  else :
+?>
+    <script>
+      alert('Usuário ou senha inválidos ...');
+      window.location.href = 'login.php';
+    </script>
+<?php
+  endif;
+endif;
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -51,23 +75,22 @@
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Faça login na sua conta</h5>
-                    <p class="text-center small">Digite seu usuário e senha para entrar</p>
+                    <p class="text-center small">Digite seu login e senha para entrar</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form action="" method="POST" class="row g-3 needs-validation" novalidate>
 
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Login</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Por favor insiria seu login</div>
+                        <input type="text" name="login" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">Por favor insira seu login</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Senha</label>
-                      <input type="password" name="passwword" class="form-control" id="yourPassword" required>
+                      <input type="password" name="pass" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Por favor insira sua senha</div>
                     </div>
                     <div class="col-12">
@@ -77,24 +100,15 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button class="btn btn-login w-100" type="submit" name="ok" >Entrar</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
+                      <p class="small mb-0">Não tem conta? <a href="pages-register.html">Crie a sua conta aqui </a></p>
                     </div>
                   </form>
 
                 </div>
               </div>
-
-              <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              </div>
-
             </div>
           </div>
         </div>
