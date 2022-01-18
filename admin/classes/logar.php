@@ -43,8 +43,8 @@ class Login extends Conexao
             $_SESSION['login'] = $dados->login;
             $_SESSION['type'] = $dados->type;
             $_SESSION['pass'] = $dados->pass;
-            $_SESSION['store'] = $dados->store;
             $_SESSION['id'] = $dados->id;
+            $_SESSION['img'] = $dados->img;
 
 
             /*Aqui informo se o mesmo se encontra logado*/
