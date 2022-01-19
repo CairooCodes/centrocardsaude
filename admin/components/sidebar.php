@@ -11,13 +11,13 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-briefcase-fill"></i>
+          <i class="bi bi-bag-fill"></i>
           <span>Produtos</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-journal-text"></i>
+          <i class="fas fa-align-justify"></i>
           <span>Leads</span>
         </a>
       </li>
@@ -30,49 +30,47 @@
       <!-- <li class="nav-heading">Pages</li> -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
+          <i class="fas fa-handshake"></i>
           <span>Afiliados</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
+          <i class="fas fa-user"></i>
           <span>Usuários</span>
         </a>
       </li>
-
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
+          <i class="fas fa-question"></i>
           <span>F.A.Q</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
+          <i class="fas fa-images"></i>
           <span>Banners</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
+          <i class="fas fa-hands-helping"></i>
           <span>Parceiros</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
+          <i class="fas fa-newspaper"></i>
           <span>Blog</span>
         </a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
+          <i class="fas fa-sign-out-alt"></i>
           <span>Sair</span>
         </a>
       </li>
