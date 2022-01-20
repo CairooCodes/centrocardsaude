@@ -147,7 +147,10 @@
     </section><!-- End Why Us Section -->
     <section id="products">
       <div class="container">
-        <h1 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Produtos</h1>
+        <div class="section-title">
+          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Produtos</h2>
+          <p>Vantagens e descontos exclusivos</p>
+        </div>
         <div class="carousel-wrap">
           <div class="owl-carousel">
             <div class="item box">
@@ -172,7 +175,7 @@
                   <!-- Title -->
                   <div class="font-weight-bold">
                     <a class="text-body" href="">
-                    Luva de Látex P C/Pó - Pacote com 10Un
+                      Produto 1
                     </a>
                   </div>
                   <!-- Price -->
@@ -184,109 +187,174 @@
               </div>
             </div>
             <div class="item box">
-              <img src="http://placehold.it/150x150">
+              <!-- Badge -->
+              <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+                -5%
+              </div>
+              <div class="card mb-7">
+                <!-- Image -->
+                <div class="card-img">
+                  <!-- Image -->
+                  <a class="card-img-hover" href="">
+                    <img src="http://placehold.it/150x150">
+                  </a>
+                </div>
+                <!-- Body -->
+                <div class="card-body px-0">
+                  <!-- Category -->
+                  <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                  <!-- Title -->
+                  <div class="font-weight-bold">
+                    <a class="text-body" href="">
+                      Produto 2
+                    </a>
+                  </div>
+                  <!-- Price -->
+                  <div class="font-weight-bold">
+                    <span class="font-size-xs text-gray-350 text-decoration-line-through">R$20,00</span>
+                    <span class="text-card-product">R$15,00</span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="item box">
-              <img src="http://placehold.it/150x150">
+              <!-- Badge -->
+              <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+                -5%
+              </div>
+              <div class="card mb-7">
+                <!-- Image -->
+                <div class="card-img">
+                  <!-- Image -->
+                  <a class="card-img-hover" href="">
+                    <img src="http://placehold.it/150x150">
+                  </a>
+                </div>
+                <!-- Body -->
+                <div class="card-body px-0">
+                  <!-- Category -->
+                  <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                  <!-- Title -->
+                  <div class="font-weight-bold">
+                    <a class="text-body" href="">
+                      Produto 3
+                    </a>
+                  </div>
+                  <!-- Price -->
+                  <div class="font-weight-bold">
+                    <span class="font-size-xs text-gray-350 text-decoration-line-through">R$150,00</span>
+                    <span class="text-card-product">R$139,90</span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="item box">
-              <img src="http://placehold.it/150x150">
-            </div>
-            <div class="item box">
-              <img src="http://placehold.it/150x150">
-            </div>
-            <div class="item box">
-              <img src="http://placehold.it/150x150">
-            </div>
-            <div class="item box">
-              <img src="http://placehold.it/150x150">
-            </div>
-            <div class="item box">
-              <img src="http://placehold.it/150x150">
+              <!-- Badge -->
+              <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+                -5%
+              </div>
+              <div class="card mb-7">
+                <!-- Image -->
+                <div class="card-img">
+                  <!-- Image -->
+                  <a class="card-img-hover" href="">
+                    <img src="http://placehold.it/150x150">
+                  </a>
+                </div>
+                <!-- Body -->
+                <div class="card-body px-0">
+                  <!-- Category -->
+                  <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                  <!-- Title -->
+                  <div class="font-weight-bold">
+                    <a class="text-body" href="">
+                      Produto 4
+                    </a>
+                  </div>
+                  <!-- Price -->
+                  <div class="font-weight-bold">
+                    <span class="font-size-xs text-gray-350 text-decoration-line-through">R$13,98</span>
+                    <span class="text-card-product">R$11,88</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container-fluid">
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
 
-        <div class="row">
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-          </div>
-
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
-            <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi. Libero laboriosam sint et id nulla tenetur. Suscipit aut voluptate.</p>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-fingerprint"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-gift"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-atom"></i></div>
-              <h4 class="title"><a href="">Dine Pad</a></h4>
-              <p class="description">Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
-            </div>
-
-          </div>
+        <div class="section-title">
+          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Nossos Planos</h2>
+          <p>Conheça as vantagens de nossos planos</p>
         </div>
 
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="fas fa-user-md"></i>
-              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Doctors</p>
+        <div class="row justify-content-center">
+          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+              <h3>Plano 1</h3>
+              <h4><sup>R$</sup>0<span> / mês</span></h4>
+              <ul>
+                <li>Sem Anuidade</li>
+                <li>Cash Back</li>
+                <li>Benefícios Internacional</li>
+                <li>Cartão virtual</li>
+                <li class="na">Telemedicina</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Contrate agora</a>
+              </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="far fa-hospital"></i>
-              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Departments</p>
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="fade-up" data-aos-delay="300">
+              <h3>Plano 2</h3>
+              <h4><sup>R$</sup>0<span> / mês</span></h4>
+              <ul>
+                <li>Sem Anuidade</li>
+                <li>Cash Back</li>
+                <li>Benefícios Internacional</li>
+                <li>Cartão virtual</li>
+                <li>Telemedicina</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Contrate agora</a>
+              </div>
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="fas fa-flask"></i>
-              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Research Labs</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="fas fa-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Awards</p>
+          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+            <div class="box" data-aos="fade-up" data-aos-delay="400">
+              <span class="advanced">O melhor</span>
+              <h3>Plano 3</h3>
+              <h4><sup>R$</sup>0<span> / mês</span></h4>
+              <ul>
+              <li>Sem Anuidade</li>
+                <li>Cash Back</li>
+                <li>Benefícios Internacional</li>
+                <li>Cartão virtual</li>
+                <li>Telemedicina</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Contrate agora</a>
+              </div>
             </div>
           </div>
 
         </div>
 
       </div>
-    </section><!-- End Counts Section -->
+    </section><!-- End Pricing Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -982,7 +1050,7 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
