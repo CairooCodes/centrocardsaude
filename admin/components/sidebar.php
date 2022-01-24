@@ -10,9 +10,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
+        <a class="nav-link collapsed" href="painel-planos.php">
           <i class="bi bi-bag-fill"></i>
-          <span>Produtos</span>
+          <span>Planos</span>
         </a>
       </li>
       <li class="nav-item">

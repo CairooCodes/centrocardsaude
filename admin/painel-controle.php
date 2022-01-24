@@ -65,9 +65,10 @@ endif;
 
             <!-- Sales Card -->
             <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
+              <a href="painel-planos.php">
+                <div class="card info-card sales-card">
 
-                <!-- <div class="filter">
+                  <!-- <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                     <li class="dropdown-header text-start">
@@ -80,21 +81,22 @@ endif;
                   </ul>
                 </div> -->
 
-                <div class="card-body">
-                  <h5 class="card-title">Produtos</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Planos</h5>
 
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-bag-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">+5</span> <span class="text-muted small pt-2 ps-1">novos produtos</span>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-bag-fill"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>145</h6>
+                        <span class="text-success small pt-1 fw-bold">+5</span> <span class="text-muted small pt-2 ps-1">novos produtos</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-              </div>
+                </div>
+              </a>
             </div><!-- End Sales Card -->
 
             <!-- Revenue Card -->
@@ -226,7 +228,7 @@ endif;
 
               </div>
             </div><!-- End Recent Sales -->
-            
+
             <!-- Leads do site -->
             <div class="col-12">
               <div class="card recent-sales">
@@ -430,7 +432,7 @@ endif;
                   <div class="activite-label">4 weeks</div>
                   <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
                   <div class="activity-content">
-                   Novo Afiliado
+                    Novo Afiliado
                   </div>
                 </div><!-- End activity item-->
 
