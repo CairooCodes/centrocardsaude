@@ -39,12 +39,8 @@ if (isset($_POST['btnsave'])) {
   $tmp_dir5 = $_FILES['user_image5']['tmp_name'];
   $imgSize5 = $_FILES['user_image5']['size'];
 
-  if (empty($nome)) {
+  if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
-  }
-
-  if (empty($type)) {
-    $errMSG = "Por favor, insira o tipo do banner";
   }
 
   // if (empty($link)) {
@@ -111,19 +107,18 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,description,b1,icon1,b2,icon2,b3,icon3,b4,icon4,b5,icon5) VALUES(:uname,:uprice,:udescription,:ub1,:upic,:ub2,:upic2,:ub3,:upic3,:ub4,:upic4,:ub5,:upic5)');
+    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,description,b1,icon1,b2,icon2,b3,icon3,b4,icon4) VALUES(:uname,:uprice,:udescription,:ub1,:upic,:ub2,:upic2,:ub3,:upic3,:ub4,:upic4)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':uprice', $price);
+    $stmt->bindParam(':udescription', $description);
     $stmt->bindParam(':ub1', $b1);
-    $stmt->bindParam(':ub2', $b2);
-    $stmt->bindParam(':ub3', $b3);
-    $stmt->bindParam(':ub4', $b4);
-    $stmt->bindParam(':ub5', $b5);
     $stmt->bindParam(':upic', $userpic);
+    $stmt->bindParam(':ub2', $b2);
     $stmt->bindParam(':upic2', $userpic2);
+    $stmt->bindParam(':ub3', $b3);
     $stmt->bindParam(':upic3', $userpic3);
+    $stmt->bindParam(':ub4', $b4);
     $stmt->bindParam(':upic4', $userpic4);
-    $stmt->bindParam(':upic5', $userpic5);
 
     if ($stmt->execute()) {
       echo ("<script>window.location = 'painel-planos.php';</script>");
@@ -205,19 +200,19 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="email" class="form-control" id="floatingEmail" placeholder="Your Email">
+                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name"  placeholder="Nome do Plano">
                         <label for="floatingEmail">Nome do Plano</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="text" class="form-control" value="<?php echo $price; ?>" name="price"  placeholder="Preço do Plano">
                         <label for="floatingPassword">Preço do Plano</label>
                       </div>
                     </div>
                     <div class="col-12 pt-3">
                       <div class="form-floating">
-                        <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                        <textarea class="form-control" placeholder="Descrição do plano" value="<?php echo $description; ?>" name="description" style="height: 100px;"><?php echo $description; ?></textarea>
                         <label for="floatingTextarea">Descrição</label>
                       </div>
                     </div>
@@ -233,8 +228,41 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                        <textarea class="form-control" value="<?php echo $b1; ?>" name="b1" style="height: 100px;"></textarea>
                         <label for="floatingTextarea">Benefício 1</label>
+                      </div>
+                    </div>
+                    <div class="col-6 pb-2">
+                      <div class="file-loading">
+                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image2" accept="image/*">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <textarea class="form-control" value="<?php echo $b2; ?>" name="b2" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Benefício 1</label>
+                      </div>
+                    </div>
+                    <div class="col-6 pb-2">
+                      <div class="file-loading">
+                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <textarea class="form-control" value="<?php echo $b3; ?>" name="b3" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Benefício 3</label>
+                      </div>
+                    </div>
+                    <div class="col-6 pb-2">
+                      <div class="file-loading">
+                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image4" accept="image/*">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <textarea class="form-control" value="<?php echo $b4; ?>" name="b4" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Benefício 4</label>
                       </div>
                     </div>
                   </div>

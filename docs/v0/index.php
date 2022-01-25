@@ -97,7 +97,7 @@
   }
 
   .carousel-wrap {
-    margin-top:20px;
+    margin-top: 20px;
     padding: 0 5%;
     width: 100%;
     position: relative;
@@ -231,6 +231,150 @@
       <div class="item"><img src="http://placehold.it/150x150"></div>
     </div>
   </div>
+  <section id="products">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Produtos</h2>
+        <p>Vantagens e descontos exclusivos</p>
+      </div>
+      <div class="carousel-wrap">
+        <div class="owl-carousel">
+          <div class="item box">
+            <!-- Badge -->
+            <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+              -15%
+            </div>
+            <div class="card mb-7">
+              <!-- Image -->
+              <div class="card-img">
+                <!-- Image -->
+                <a class="card-img-hover" href="">
+                  <img src="http://placehold.it/150x150">
+                </a>
+              </div>
+              <!-- Body -->
+              <div class="card-body px-0">
+                <!-- Category -->
+                <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                <!-- Title -->
+                <div class="font-weight-bold">
+                  <a class="text-body" href="">
+                    Produto 1
+                  </a>
+                </div>
+                <!-- Price -->
+                <div class="font-weight-bold">
+                  <span class="font-size-xs text-gray-350 text-decoration-line-through">R$13,98</span>
+                  <span class="text-card-product">R$11,88</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item box">
+            <!-- Badge -->
+            <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+              -5%
+            </div>
+            <div class="card mb-7">
+              <!-- Image -->
+              <div class="card-img">
+                <!-- Image -->
+                <a class="card-img-hover" href="">
+                  <img src="http://placehold.it/150x150">
+                </a>
+              </div>
+              <!-- Body -->
+              <div class="card-body px-0">
+                <!-- Category -->
+                <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                <!-- Title -->
+                <div class="font-weight-bold">
+                  <a class="text-body" href="">
+                    Produto 2
+                  </a>
+                </div>
+                <!-- Price -->
+                <div class="font-weight-bold">
+                  <span class="font-size-xs text-gray-350 text-decoration-line-through">R$20,00</span>
+                  <span class="text-card-product">R$15,00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item box">
+            <!-- Badge -->
+            <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+              -5%
+            </div>
+            <div class="card mb-7">
+              <!-- Image -->
+              <div class="card-img">
+                <!-- Image -->
+                <a class="card-img-hover" href="">
+                  <img src="http://placehold.it/150x150">
+                </a>
+              </div>
+              <!-- Body -->
+              <div class="card-body px-0">
+                <!-- Category -->
+                <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                <!-- Title -->
+                <div class="font-weight-bold">
+                  <a class="text-body" href="">
+                    Produto 3
+                  </a>
+                </div>
+                <!-- Price -->
+                <div class="font-weight-bold">
+                  <span class="font-size-xs text-gray-350 text-decoration-line-through">R$150,00</span>
+                  <span class="text-card-product">R$139,90</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item box">
+            <!-- Badge -->
+            <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+              -5%
+            </div>
+            <div class="card mb-7">
+              <!-- Image -->
+              <div class="card-img">
+                <!-- Image -->
+                <a class="card-img-hover" href="">
+                  <img src="http://placehold.it/150x150">
+                </a>
+              </div>
+              <!-- Body -->
+              <div class="card-body px-0">
+                <!-- Category -->
+                <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                <!-- Title -->
+                <div class="font-weight-bold">
+                  <a class="text-body" href="">
+                    Produto 4
+                  </a>
+                </div>
+                <!-- Price -->
+                <div class="font-weight-bold">
+                  <span class="font-size-xs text-gray-350 text-decoration-line-through">R$13,98</span>
+                  <span class="text-card-product">R$11,88</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <div class="container">
     <footer class="py-5">
       <div class="row">
