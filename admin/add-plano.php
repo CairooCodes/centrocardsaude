@@ -61,7 +61,7 @@ if (isset($_POST['btnsave'])) {
     $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
     // rename uploading image
     $name2 = preg_replace("/\s+/", "", $name);
-    $name3 = substr($name2,0,-1);
+    $name3 = substr($name2, 0, -1);
     $userpic  = $name3 . "icon1" . "." . $imgExt;
     $userpic2 = $name3 . "icon2" . "." . $imgExt2;
     $userpic3 = $name3 . "icon3" . "." . $imgExt3;
@@ -178,7 +178,7 @@ if (isset($_POST['btnsave'])) {
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="painel-banners.php">Painel Banners</a></li>
+          <li class="breadcrumb-item"><a href="painel-planos.php">Painel Planos</a></li>
           <li class="breadcrumb-item active">Adicionar Plano</li>
         </ol>
       </nav>
@@ -189,7 +189,6 @@ if (isset($_POST['btnsave'])) {
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Informações do Banner</h5>
               <?php
               if (isset($errMSG)) {
               ?>
@@ -201,30 +200,42 @@ if (isset($_POST['btnsave'])) {
               ?>
               <!-- Vertical Form -->
               <form method="POST" enctype="multipart/form-data" class="row">
-                <div class="col-md-6">
-                  <div class="col-12">
-                    <label class="form-label">Nome</label>
-                    <input value="<?php echo $nome; ?>" name="nome" type="text" placeholder="Nome do banner" class="form-control">
-                  </div>
-                  <div class="col-12">
-                    <label class="form-label pt-3">Tipo</label>
-                    <select name="type" class="form-select">
-                      <option value="home">HOME</option>
-                      <option value="empresas">EMPRESAS</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <label class="form-label pt-3">Link</label>
-                    <input value="<?php echo $link; ?>" name="link" type="text" placeholder="Link de redirecionamento" class="form-control">
+                <div class="col-md-4">
+                  <h5 class="card-title">Informações do Banner</h5>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="email" class="form-control" id="floatingEmail" placeholder="Your Email">
+                        <label for="floatingEmail">Nome do Plano</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Preço do Plano</label>
+                      </div>
+                    </div>
+                    <div class="col-12 pt-3">
+                      <div class="form-floating">
+                        <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Descrição</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <h6 class="text-bold text-center">
-                    Banner
-                  </h6>
-                  <div class="col-12 pb-2">
-                    <div class="file-loading">
-                      <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                <div class="col-md-8">
+                  <h5 class="card-title">Benefícios</h5>
+                  <div class="row">
+                    <div class="col-6 pb-2">
+                      <div class="file-loading">
+                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <textarea class="form-control" placeholder="Address" id="floatingTextarea" style="height: 100px;"></textarea>
+                        <label for="floatingTextarea">Benefício 1</label>
+                      </div>
                     </div>
                   </div>
                 </div>
