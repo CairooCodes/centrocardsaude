@@ -76,7 +76,7 @@ if (isset($_GET['delete_id'])) {
     <section class="section">
       <div class="row">
         <?php
-        $stmt = $DB_con->prepare('SELECT id, speed, data_create FROM plans ORDER BY id DESC');
+        $stmt = $DB_con->prepare('SELECT id, name FROM plans ORDER BY id DESC');
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -86,7 +86,7 @@ if (isset($_GET['delete_id'])) {
             <div class="col-lg-2">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title text-center">PLANO <?php echo $speed; ?> MEGAS</h5>
+                  <h5 class="card-title text-center"><?php echo $name; ?></h5>
                   <div class="d-flex justify-content-center">
                     <div>
                       <button type="button" class="btn btn-success">Editar</button>

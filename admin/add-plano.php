@@ -12,6 +12,7 @@ error_reporting(~E_ALL); // avoid notice
 if (isset($_POST['btnsave'])) {
   $name = $_POST['name'];
   $price = $_POST['price'];
+  $price2 = $_POST['price2'];
   $description = $_POST['description'];
   $b1 = $_POST['b1'];
   $b2 = $_POST['b2'];
@@ -107,9 +108,10 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,description,b1,icon1,b2,icon2,b3,icon3,b4,icon4) VALUES(:uname,:uprice,:udescription,:ub1,:upic,:ub2,:upic2,:ub3,:upic3,:ub4,:upic4)');
+    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,price2,description,b1,icon1,b2,icon2,b3,icon3,b4,icon4) VALUES(:uname,:uprice,:uprice2,:udescription,:ub1,:upic,:ub2,:upic2,:ub3,:upic3,:ub4,:upic4)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':uprice', $price);
+    $stmt->bindParam(':uprice2', $price2);
     $stmt->bindParam(':udescription', $description);
     $stmt->bindParam(':ub1', $b1);
     $stmt->bindParam(':upic', $userpic);
@@ -198,7 +200,7 @@ if (isset($_POST['btnsave'])) {
                 <div class="col-md-4">
                   <h5 class="card-title">Informações do Banner</h5>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $name; ?>" name="name"  placeholder="Nome do Plano">
                         <label for="floatingEmail">Nome do Plano</label>
@@ -206,8 +208,14 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $price; ?>" name="price"  placeholder="Preço do Plano">
+                        <input type="text" class="form-control" value="<?php echo $price2; ?>" name="price2"  placeholder="Preço do Plano">
                         <label for="floatingPassword">Preço do Plano</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $price; ?>" name="price"  placeholder="Preço do Plano">
+                        <label for="floatingPassword">Preço de Venda</label>
                       </div>
                     </div>
                     <div class="col-12 pt-3">

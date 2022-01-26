@@ -1,5 +1,8 @@
+<?php
+require_once './admin/dbconfig.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -156,60 +159,33 @@
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
-              <h3>Plano 1</h3>
-              <h4><sup>R$</sup>0<span> / mês</span></h4>
-              <ul>
-                <li>Sem Anuidade</li>
-                <li>Cash Back</li>
-                <li>Benefícios Internacional</li>
-                <li>Cartão virtual</li>
-                <li class="na">Telemedicina</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Contrate agora</a>
-              </div>
-            </div>
-          </div>
+          <?php
+          $stmt = $DB_con->prepare('SELECT id, name,price,b1,b2,b3 FROM plans ORDER BY id DESC');
+          $stmt->execute();
+          if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              extract($row);
+          ?>
 
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="fade-up" data-aos-delay="300">
-              <h3>Plano 2</h3>
-              <h4><sup>R$</sup>0<span> / mês</span></h4>
-              <ul>
-                <li>Sem Anuidade</li>
-                <li>Cash Back</li>
-                <li>Benefícios Internacional</li>
-                <li>Cartão virtual</li>
-                <li>Telemedicina</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Contrate agora</a>
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+                  <h3><?php echo $name; ?></h3>
+                  <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                  <ul>
+                    <li><?php echo $b1; ?></li>
+                    <li><?php echo $b2; ?></li>
+                    <li><?php echo $b3; ?></li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="#" class="btn-buy">Saiba mais</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="fade-up" data-aos-delay="400">
-              <span class="advanced">O melhor</span>
-              <h3>Plano 3</h3>
-              <h4><sup>R$</sup>0<span> / mês</span></h4>
-              <ul>
-              <li>Sem Anuidade</li>
-                <li>Cash Back</li>
-                <li>Benefícios Internacional</li>
-                <li>Cartão virtual</li>
-                <li>Telemedicina</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Contrate agora</a>
-              </div>
-            </div>
-          </div>
-
+          <?php
+            }
+          }
+          ?>
         </div>
-
       </div>
     </section><!-- End Pricing Section -->
 
