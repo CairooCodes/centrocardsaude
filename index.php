@@ -104,48 +104,33 @@ require_once './admin/dbconfig.php';
     <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
       <div class="container">
-
-        <div class="row">
-          <div class="col-lg-4 d-flex align-items-stretch">
-            <div class="content">
-              <h3>Descontos exclusivos com nosso cartão</h3>
-              <p>
-                Com o cartão de crédito CENTROCARD você não paga anuidade e ainda ganha descontos exclusivos para você ter uma saúde melhor
-              </p>
-              <div class="text-center">
-                <a href="#" class="more-btn">Saiba Mais <i class="bx bx-chevron-right"></i></a>
+        <div class="icon-boxes d-flex flex-column justify-content-center">
+          <div class="row">
+            <div class="col-xl-3 d-flex align-items-stretch">
+              <div class="icon-box mt-4 mt-xl-0">
+                <i class='bx bx-calendar-plus'></i>
+                <h4>Médico Online 24 horas</h4>
+              </div>
+            </div>
+            <div class="col-xl-3 d-flex align-items-stretch">
+              <div class="icon-box mt-4 mt-xl-0">
+                <i class='bx bx-injection'></i>
+                <h4>Rede de descontos de saúde e benefícios</h4>
+              </div>
+            </div>
+            <div class="col-xl-3 d-flex align-items-stretch">
+              <div class="icon-box mt-4 mt-xl-0">
+                <i class='bx bxs-user'></i>
+                <h4>Central de Atendimento com APP</h4>
+              </div>
+            </div>
+            <div class="col-xl-2 d-flex align-items-center">
+              <div class="mt-4 mt-xl-0">
+                <h4>E muito mais <i class='bx bxs-user'></i></h4>
               </div>
             </div>
           </div>
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="icon-boxes d-flex flex-column justify-content-center">
-              <div class="row">
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class='bx bx-calendar-plus'></i>
-                    <h4>Marque uma Consulta</h4>
-                    <p>Com a carterinha do seu convênio em mãos marque sua consulta</p>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class='bx bx-injection'></i>
-                    <h4>Exames Online</h4>
-                    <p>Escolhe o tipo de exame você gostaria de marcar totalmente online</p>
-                  </div>
-                </div>
-                <div class="col-xl-4 d-flex align-items-stretch">
-                  <div class="icon-box mt-4 mt-xl-0">
-                    <i class='bx bxs-user'></i>
-                    <h4>Seja um afiliado</h4>
-                    <p>Seja um de nossos afiliados e comece a ter uma renda extra</p>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End .content-->
-          </div>
-        </div>
-
+        </div><!-- End .content-->
       </div>
     </section><!-- End Why Us Section -->
 
