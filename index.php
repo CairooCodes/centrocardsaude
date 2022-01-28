@@ -90,9 +90,19 @@ require_once './admin/dbconfig.php';
 
     </div>
   </header><!-- End Header -->
+  <div class="contact-nav">
+  <div class="btn-contact-nav">
+    <button aria-label="Abrir Contato" type="button" class="btn" data-toggle="modal" data-target="#exampleModalCenter">
+      <i class="fas fa-headset"></i>
+    </button>
+  </div>
+</div>
+<!-- Button trigger modal -->
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
+    
     <!-- <div class="container">
       <h1>Welcome to Medilab</h1>
       <h2>We are team of talented designers making websites with Bootstrap</h2>
@@ -868,7 +878,7 @@ require_once './admin/dbconfig.php';
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a> -->
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter.js"></script>
