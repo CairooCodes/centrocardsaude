@@ -38,9 +38,6 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
-
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Seja um afiliado</a>
-
     </div>
   </header><!-- End Header -->
   <div class="contact-nav">

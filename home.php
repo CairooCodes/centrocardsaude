@@ -40,7 +40,7 @@ $URI = new URI();
 </head>
 
 <body>
-<?php include "nav.php"; ?>
+  <?php include "nav.php"; ?>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
@@ -52,8 +52,7 @@ $URI = new URI();
   </section><!-- End Hero -->
 
   <main id="main">
-    <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
+    <!-- <section id="why-us" class="why-us">
       <div class="container">
         <div class="icon-boxes d-flex flex-column justify-content-center">
           <div class="row">
@@ -96,50 +95,9 @@ $URI = new URI();
               </div>
             </div>
           </div>
-        </div><!-- End .content-->
-      </div>
-    </section><!-- End Why Us Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Nossos Planos</h2>
-          <p>Conheça as vantagens de nossos planos</p>
-        </div>
-
-        <div class="row justify-content-center">
-          <?php
-          $stmt = $DB_con->prepare('SELECT id, name,price,b1,t1,b2,t2,t3,b3 FROM plans ORDER BY id ASC');
-          $stmt->execute();
-          if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              extract($row);
-          ?>
-
-              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-                <div class="box featured" data-aos="fade-up" data-aos-delay="200">
-                  <h3><?php echo $name; ?></h3>
-                  <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
-                  <ul>
-                    <li><?php echo $t1; ?></li>
-                    <li><?php echo $t2; ?></li>
-                    <li><?php echo $t3; ?></li>
-                  </ul>
-                  <div class="btn-wrap">
-                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="btn-buy">Saiba mais</a>
-                  </div>
-                </div>
-              </div>
-          <?php
-            }
-          }
-          ?>
         </div>
       </div>
-    </section><!-- End Pricing Section -->
-
+    </section> -->
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
@@ -200,6 +158,45 @@ $URI = new URI();
 
       </div>
     </section><!-- End Services Section -->
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Nossos Planos</h2>
+          <p>Conheça as vantagens de nossos planos</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <?php
+          $stmt = $DB_con->prepare('SELECT id, name,price,b1,t1,b2,t2,t3,b3 FROM plans ORDER BY id ASC');
+          $stmt->execute();
+          if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              extract($row);
+          ?>
+
+              <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                <div class="box featured" data-aos="fade-up" data-aos-delay="200">
+                  <h3><?php echo $name; ?></h3>
+                  <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                  <ul>
+                    <li><?php echo $t1; ?></li>
+                    <li><?php echo $t2; ?></li>
+                    <li><?php echo $t3; ?></li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="btn-buy">Saiba mais</a>
+                  </div>
+                </div>
+              </div>
+          <?php
+            }
+          }
+          ?>
+        </div>
+      </div>
+    </section><!-- End Pricing Section -->
 
     <!-- ======= Appointment Section ======= -->
     <section id="appointment" class="appointment section-bg">
@@ -265,7 +262,7 @@ $URI = new URI();
             </li>
 
             <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Pergunta 2 ?  <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Pergunta 2 ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
                 <p>
                   Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
