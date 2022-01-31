@@ -676,7 +676,7 @@ section {
 # Why Us
 --------------------------------------------------------------*/
 .why-us .content {
-  padding      : 30px;
+  padding      : 30px 30px 0px 30px;
   background   : #0079a4;
   border-radius: 4px;
   color        : #fff;
@@ -715,7 +715,7 @@ section {
   border-radius: 10px;
   background   : #fff;
   box-shadow   : 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding      : 40px 30px;
+  padding      : 40px 20px 20px 20px;
   width        : 100%;
 }
 
@@ -726,9 +726,9 @@ section {
 }
 
 .why-us .icon-boxes .icon-box h4 {
-  font-size  : 20px;
+  font-size  : 18px;
   font-weight: 700;
-  margin     : 0 0 30px 0;
+
 }
 
 .why-us .icon-boxes .icon-box p {
@@ -959,7 +959,7 @@ section {
 .services .icon-box {
   text-align: center;
   border    : 1px solid #d5e1ed;
-  padding   : 80px 20px;
+  padding   : 40px 20px;
   transition: all ease-in-out 0.3s;
 }
 
@@ -1889,7 +1889,7 @@ section {
 /*--------------------------------------------------------------
 # Pricing
 --------------------------------------------------------------*/
-.pricing .box {
+.pricing .box,.planos .box {
   padding      : 20px;
   background   : #fff;
   text-align   : center;
@@ -1899,7 +1899,7 @@ section {
   overflow     : hidden;
 }
 
-.pricing h3 {
+.pricing h3,.planos .box h3 {
   font-weight: 400;
   margin     : -20px -20px 20px -20px;
   padding    : 20px 15px;
@@ -1908,8 +1908,12 @@ section {
   color      : #777777;
   background : #f8f8f8;
 }
-
-.pricing h4 {
+.planos h1 {
+  font-size    : 36px;
+  color        : #0079a4;
+  font-weight  : 600;
+}
+.pricing h4,.planos .box h4 {
   font-size    : 36px;
   color        : #0079a4;
   font-weight  : 600;
@@ -1917,13 +1921,13 @@ section {
   margin-bottom: 20px;
 }
 
-.pricing h4 sup {
+.pricing h4 sup,.planos .box h4 sup {
   font-size: 20px;
   top      : -15px;
   left     : -3px;
 }
 
-.pricing h4 span {
+.pricing h4 span,.planos .box h4 span {
   color      : #bababa;
   font-size  : 16px;
   font-weight: 300;
@@ -1953,14 +1957,14 @@ section {
   text-decoration: line-through;
 }
 
-.pricing .btn-wrap {
+.pricing .btn-wrap,.planos .box .btn-wrap {
   margin    : 20px -20px -20px -20px;
   padding   : 20px 15px;
   background: #f8f8f8;
   text-align: center;
 }
 
-.pricing .btn-buy {
+.pricing .btn-buy,.planos .box .btn-buy {
   background   : #0079a4;
   display      : inline-block;
   padding      : 8px 35px 10px 35px;
@@ -2019,4 +2023,13 @@ section {
 .btn-contact-nav i {
   color    : white;
   font-size: 22px;
+}
+
+.planos {
+  padding-top: 150px;
+}
+.icon-plan {
+  background-color: #0079a4;
+  margin:5px;
+  border-radius:5px;
 }
