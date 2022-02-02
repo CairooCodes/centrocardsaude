@@ -1,6 +1,6 @@
 <?php
 require_once './admin/dbconfig.php';
-// include "./admin/insert_form.php";
+include "./admin/insert_form.php";
 require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
