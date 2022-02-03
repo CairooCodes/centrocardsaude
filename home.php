@@ -37,6 +37,7 @@ $URI = new URI();
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/filter-services.css" rel="stylesheet">
 </head>
 
 <body>
@@ -100,64 +101,62 @@ $URI = new URI();
     </section> -->
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
-      <div class="container">
-
+      <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Benefícios CENTRO CARD SAÚDE</h2>
+          <h2>CONHEÇA NOSSOS BENEFÍCIOS</h2>
         </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="">Médico online 24 horas</a></h4>
-              <p>Consultas médicas com clínico 24 horas, através de telemedicina, com prescrição de medicamentos e requisição de exames sem nenhuma taxa adicional.</p>
-            </div>
+        <h5 class="text-center">Escolha um plano</h5>
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="services-flters">
+              <li data-filter="*" class="filter-active">PLATINUM</li>
+              <li data-filter=".filter-gold">GOLD</li>
+              <li data-filter=".filter-essencial">ESSENCIAL</li>
+            </ul>
           </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="">Assistência farmacêutica</a></h4>
-              <p>Programa de Desconto Farmassist, com até 60% de descontos nas principais farmácias do Brasil.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="">Rede de descontos de saúde e benefícios</a></h4>
-              <p>Rede de desconto, podendo economizar até 60% em serviços médico do Centrocardio e diversas clínicas, laboratórios e hospitais em Teresina e região.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="">Assistência nutricional</a></h4>
-              <p>Acesso a profissionais de nutrição disponível via telefone para realização de um programa alimentar contínuo para você alcançar os seus objetivos.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="">Seguro para acidentes</a></h4>
-              <p>Seguro por morte acidental ou invalidez por acidente com cobertura de R$ 10.000,00 para os dependentes legais.</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="">Assistência personal fitness</a></h4>
-              <p>Serviço de orientação via telefone com profissional qualificado sobre atividades físicas, melhor condicionamento e qualidade de vida pra você.</p>
-            </div>
-          </div>
-
         </div>
 
+        <div class="row justify-content-center services-container">
+          <?php
+          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2 FROM benefits ORDER BY id ASC');
+          $stmt->execute();
+          if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              extract($row);
+          ?>
+              <div class="col-lg-3 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                <div class="container-service">
+                  <a data-bs-toggle="collapse" href="#collapseExample<?php echo $id; ?>" role="button" aria-expanded="false" aria-controls="collapseExample<?php echo $id; ?>">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="icon-service">
+                        <div class="container-icon">
+                          <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                        </div>
+                      </div>
+                      <div class="title-service text-center text-black">
+                        <h5><?php echo $benefit; ?></h5>
+                      </div>
+                      <div class="down-service">
+                        <i class="bx bx-chevron-down icon-show"></i>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="collapse" id="collapseExample<?php echo $id; ?>">
+                    <div class="card card-body" style="z-index:2;">
+                      <?php echo $description; ?>
+                      <div class="btn-wrap">
+                        <a href="#" class="btn-service">Saiba mais</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <?php
+            }
+          } ?>
+        </div>
       </div>
-    </section><!-- End Services Section -->
+    </section><!-- End services Section -->
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
@@ -198,8 +197,8 @@ $URI = new URI();
       </div>
     </section><!-- End Pricing Section -->
 
-    <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
+
+    <!-- <section id="appointment" class="appointment section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -236,7 +235,7 @@ $URI = new URI();
         </form>
 
       </div>
-    </section><!-- End Appointment Section -->
+    </section> -->
 
 
 
@@ -252,15 +251,6 @@ $URI = new URI();
 
         <div class="faq-list">
           <ul>
-            <li data-aos="fade-up">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Pergunta 1 ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                  Resposta da pergunta
-                </p>
-              </div>
-            </li>
-
             <li data-aos="fade-up" data-aos-delay="100">
               <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Pergunta 2 ? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
               <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
@@ -302,79 +292,7 @@ $URI = new URI();
 
       </div>
     </section><!-- End Frequently Asked Questions Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contato</h2>
-        </div>
-      </div>
-
-      <div>
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-      </div>
-
-      <div class="container">
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Localização:</h4>
-                <p></p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Telefone:</h4>
-                <p>+55 00000000</p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Mensagem" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Enviar</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
+   
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -457,10 +375,13 @@ $URI = new URI();
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="./assets/js/filter-services.js"></script>
   <script>
     $('.owl-carousel').owlCarousel({
       loop: true,

@@ -33,7 +33,8 @@
         </li>
         <li><a class="nav-link scrollto" href="#services">Befefícios</a></li>
         <!-- <li><a class="nav-link scrollto" href="#doctors">Blog</a></li> -->
-        <li><a class="nav-link scrollto" href="#contact">Contato</a></li>
+        <li><a class="nav-link scrollto" href="#contact">AFILIADO</a></li>
+        <li><a class="nav-link scrollto" href="#contact">CREDENCIAMENTO</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
