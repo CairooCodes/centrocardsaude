@@ -292,7 +292,51 @@ $URI = new URI();
 
       </div>
     </section><!-- End Frequently Asked Questions Section -->
-
+    <section id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Produtos</h2>
+          <p>Vantagens e descontos exclusivos</p>
+        </div>
+        <div class="carousel-wrap">
+          <div class="owl-carousel">
+            <div class="item box">
+              <!-- Badge -->
+              <div class="badge badge-danger card-badge card-badge-left text-uppercase">
+                -15%
+              </div>
+              <div class="card mb-7">
+                <!-- Image -->
+                <div class="card-img">
+                  <!-- Image -->
+                  <a class="card-img-hover" href="">
+                    <img src="http://placehold.it/150x150">
+                  </a>
+                </div>
+                <!-- Body -->
+                <div class="card-body px-0">
+                  <!-- Category -->
+                  <!-- <div class="font-size-xs">
+                    <a class="text-muted" href="">categoria</a>
+                  </div> -->
+                  <!-- Title -->
+                  <div class="font-weight-bold">
+                    <a class="text-body" href="">
+                      Produto 1
+                    </a>
+                  </div>
+                  <!-- Price -->
+                  <div class="font-weight-bold">
+                    <span class="font-size-xs text-gray-350 text-decoration-line-through">R$13,98</span>
+                    <span class="text-card-product">R$11,88</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
