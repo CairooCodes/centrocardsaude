@@ -1,3 +1,66 @@
+<!-- ======= Search Section ======= -->
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+  <div class="title-box-d">
+    <h3 class="title-d">Busque aqui</h3>
+  </div>
+  <span class="close-box-collapse right-boxed bi bi-x"></span>
+  <div class="box-collapse-wrap form">
+    <form action="#">
+      <select name="SelectOptions" id="SelectOptions" required>
+        <option value="Div1">REDE CENTROCARD</option>
+        <option value="Div2">REDE TEM</option>
+      </select>
+    </form>
+
+    <div class="DivPai">
+      <div class="Div1">
+        <form class="form-a">
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <div class="form-group">
+                <label class="pb-2" for="Type"></label>
+                <input type="text" class="form-control form-control-lg form-control-a" placeholder="Planos, especialidades e exames">
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="Type">Escolha uma categoria</label>
+                <select class="form-control form-select form-control-a" id="Type">
+                  <option>Especialidade</option>
+                  <option>Exames</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="city">Cidade</label>
+                <select class="form-control form-select form-control-a" id="city">
+                  <option>Todas</option>
+                  <option>Teresina</option>
+                  <option>Maranhão</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-b">Buscar no sistema</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="Div2">
+        <img src="Images/Farol.jpg" alt="Foto">
+        <p>
+          Realize consultas médicas, odontológicas e exames nas melhores clínicas e laboratórios particulares com preços que cabem no seu bolso.
+        </p>
+        <button>Buscar</button>
+      </div>
+    </div>
+  </div>
+</div><!-- End Search Section -->
+
 <!-- ======= Top Bar ======= -->
 <div id="topbar" class="d-flex align-items-center fixed-top">
   <div class="container d-flex justify-content-between">
@@ -18,8 +81,16 @@
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
-  <div class="container d-flex align-items-center">
-    <a href="<?php echo $URI->base('/home') ?>" class="logo me-auto"><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" class="img-fluid"></a>
+  <div class="container d-flex align-items-center justify-content-between">
+    <!-- <a class="nav-link navbar-toggle-box navbar-toggle-box-collapse d-block d-md-none" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+      <i class="bi bi-search" style="font-size:18px"></i>
+    </a> -->
+    <li class="nav-search">
+      <a class="nav-link navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <span class="d-none d-md-block">Buscar</span><i class="bi bi-search"></i>
+      </a>
+    </li>
+    <a href="<?php echo $URI->base('/home') ?>" class="logo me-md-auto"><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" class="img-fluid"></a>
 
     <nav id="navbar" class="navbar order-last order-lg-0">
       <ul>

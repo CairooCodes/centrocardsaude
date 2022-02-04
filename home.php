@@ -292,7 +292,7 @@ $URI = new URI();
 
       </div>
     </section><!-- End Frequently Asked Questions Section -->
-   
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -405,6 +405,17 @@ $URI = new URI();
         }
       }
     })
+  </script>
+  <script>
+    $(document).ready(function() {
+      //Select para mostrar e esconder divs
+      $('#SelectOptions').on('change', function() {
+        var SelectValue = '.' + $(this).val();
+        $('.DivPai .Div1').hide();
+        $('.DivPai .Div2').hide();
+        $(SelectValue).toggle();
+      });
+    });
   </script>
 
 </body>

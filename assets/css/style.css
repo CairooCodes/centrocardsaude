@@ -959,9 +959,9 @@ section {
 # Services
 --------------------------------------------------------------*/
 .services {
-  padding-top:40px;
-  background: #f1f7fd;
-  padding-bottom:250px;
+  padding-top   : 40px;
+  background    : #f1f7fd;
+  padding-bottom: 250px;
 }
 
 .services .icon-box {
@@ -1042,14 +1042,16 @@ section {
 }
 
 .container-service {
-  padding:5px;
-  background-color:white;
+  padding         : 5px;
+  background-color: white;
 }
+
 .icon-service {
   background-color: #31578e;
 }
+
 .container-icon {
-  padding:10px;
+  padding: 10px;
 }
 
 .services .btn-wrap {
@@ -2083,6 +2085,185 @@ section {
   border-radius   : 5px;
 }
 
+.btn.btn-b {
+  border-radius : 0;
+  padding       : 1rem 3rem;
+  letter-spacing: 0.05rem;
+}
+
+.btn.btn-b {
+  background-color: #0079a4;
+  color           : white;
+}
+
+.btn.btn-b:hover {
+  background-color: #000000;
+  color           : #ffffff;
+}
+
+.title-box-d {
+  padding-bottom: 1.8rem;
+  margin-bottom : 1rem;
+  position      : relative;
+}
+
+.title-box-d .title-d {
+  font-weight: 600;
+  font-size  : 2rem;
+}
+
+.title-box-d .title-d:after {
+  content         : "";
+  position        : absolute;
+  width           : 70px;
+  height          : 4px;
+  background-color: #0079a4;
+  bottom          : 20px;
+  left            : 0;
+}
+
+.box-collapse {
+  position        : fixed;
+  top             : 0;
+  bottom          : 0;
+  right           : 0;
+  width           : 100%;
+  z-index         : 1040;
+  background-color: #ffffff;
+  transform       : translateX(100%);
+  transition      : all 0.6s ease;
+}
+
+.Div2 {
+  display: none;
+}
+
+#SelectOptions {
+  width        : 100%;
+  height       : 40px;
+  border-radius: 5px;
+  border-color:#ced4da;
+}
+
+
+@media (min-width: 768px) {
+  .box-collapse {
+    width: 40%;
+  }
+}
+
+.box-collapse .title-box-d {
+  top             : 30px;
+  left            : 60px;
+  opacity         : 0;
+  transition      : all 1s ease;
+  transition-delay: 0.3s;
+}
+
+@media (max-width: 575px) {
+  .box-collapse .title-box-d {
+    left: 35px;
+  }
+}
+
+@media (max-width: 575px) {
+  .box-collapse .title-box-d .title-d {
+    font-size: 1.3rem;
+  }
+}
+
+.box-collapse-wrap {
+  opacity      : 0;
+  position     : absolute;
+  left         : 0;
+  top          : 6.5rem;
+  bottom       : 5rem;
+  padding-left : 10%;
+  padding-right: 10%;
+  overflow-x   : hidden;
+  overflow-y   : auto;
+  margin       : 0;
+  transform    : translateY(3rem);
+  transition   : transform 0.5s 0.5s ease, opacity 0.5s 0.5s ease;
+}
+
+.box-collapse-open .click-closed {
+  visibility: visible;
+}
+
+.box-collapse-open .box-collapse {
+  transform : translateX(0);
+  box-shadow: 0 0 65px rgba(0, 0, 0, 0.07);
+  opacity   : 1;
+}
+
+.box-collapse-open .box-collapse .title-box-d {
+  transform: translate(0);
+  opacity  : 1;
+}
+
+.box-collapse-open .box-collapse-wrap {
+  transform: translate(0);
+  opacity  : 1;
+}
+
+.box-collapse-closed .box-collapse {
+  opacity         : 0.7;
+  transition-delay: 0s;
+}
+
+.box-collapse-closed .box-collapse .title-box-d {
+  opacity         : 0;
+  transition-delay: 0s;
+}
+
+.box-collapse-closed .box-collapse .form-a {
+  opacity         : 0;
+  transition-delay: 0s;
+}
+
+.click-closed {
+  position        : fixed;
+  top             : 0;
+  left            : 0;
+  width           : 100%;
+  height          : 100%;
+  visibility      : hidden;
+  z-index         : 1035;
+  background-color: #000000;
+  opacity         : 0.4;
+}
+
+.close-box-collapse {
+  position   : absolute;
+  z-index    : 1050;
+  top        : 2rem;
+  font-size  : 3.5rem;
+  line-height: 1;
+  color      : #000000;
+  cursor     : pointer;
+  transition : all 0.3s ease;
+}
+
+.right-boxed {
+  right: 10px;
+  top  : 20px;
+}
+
+.navbar-toggle-box {
+  display        : inline-flex;
+  align-items    : center;
+  justify-content: center;
+  line-height    : 0;
+  padding        : 10px;
+}
+
+.navbar-toggle-box i {
+  line-height: 0;
+}
+
+
+
 @media (max-width: 767px) {
   #topbar {
     display: none !important;
@@ -2095,5 +2276,31 @@ section {
   #hero {
     height    : 20vh;
     margin-top: 100px;
+  }
+
+  .nav-search {
+    list-style-type: none;
+    color          : #0079a4;
+  }
+}
+
+@media (min-width: 767px) {
+  .nav-search {
+    list-style-type: none;
+    position       : absolute;
+    right          : 10%;
+    font-family    : 'Conneqt';
+    font-size      : 14px;
+    white-space    : nowrap;
+  }
+
+  .nav-search span {
+    color: #0079a4;
+  }
+
+  .nav-search i {
+    color       : #0079a4;
+    font-size   : 16px;
+    padding-left: 10px;
   }
 }
