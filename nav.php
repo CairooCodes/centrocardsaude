@@ -87,12 +87,12 @@
     </a> -->
     <li class="nav-search">
       <a class="nav-link navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-        <span class="d-none d-md-block">Buscar</span><i class="bi bi-search"></i>
+        <i class="bi bi-search"></i>
       </a>
     </li>
     <a href="<?php echo $URI->base('/home') ?>" class="logo me-md-auto"><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" class="img-fluid"></a>
 
-    <nav id="navbar" class="navbar order-last order-lg-0">
+    <nav id="navbar" class="navbar">
       <ul>
         <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
         <li class="dropdown"><a href="#"><span>PLANOS</span> <i class="bi bi-chevron-down"></i></a>

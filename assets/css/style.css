@@ -2288,9 +2288,9 @@ section {
   .nav-search {
     list-style-type: none;
     position       : absolute;
-    right          : 10%;
+    right          : 10px;
     font-family    : 'Conneqt';
-    font-size      : 14px;
+    font-size      : 20px;
     white-space    : nowrap;
   }
 
