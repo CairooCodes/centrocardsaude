@@ -10,7 +10,7 @@
   padding: 2px 15px;
 }
 .services #services-flters li {
-  box-shadow: 1px 2px 5px #afafaf;
+  box-shadow: 0px 0px 4px rgb(0 0 0 / 12%);
   cursor: pointer;
   display: inline-block;
   padding: 10px 15px 8px 15px;
@@ -22,11 +22,12 @@
   background-color:white;
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
+  border-radius:20px;
 }
 .services #services-flters li:hover,
 .services #services-flters li.filter-active {
   color: white;
-  background-color: #31578e;
+  background-color: #0079a4;
 }
 .services #services-flters li:last-child {
   margin-right: 0;
@@ -158,12 +159,12 @@
   font-size:18px;
 }
 .btn-primary-card {
-  background-color: #31578e;
+  background-color: #0079a4;
   color: white;
 }
 
 .btn-primary-title {
-  background-color: #31578e;
+  background-color: #0079a4;
   color: white;
   display: block;
   margin-left: auto;

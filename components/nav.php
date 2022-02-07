@@ -51,11 +51,11 @@
       </div>
 
       <div class="Div2">
-        <img src="Images/Farol.jpg" alt="Foto">
+        <img class="img-fluid" src="assets/img/tem-saude.png" alt="Foto">
         <p>
           Realize consultas médicas, odontológicas e exames nas melhores clínicas e laboratórios particulares com preços que cabem no seu bolso.
         </p>
-        <button>Buscar</button>
+        <button class="btn" style="background-color:orangered;color:white;">Buscar</button>
       </div>
     </div>
   </div>

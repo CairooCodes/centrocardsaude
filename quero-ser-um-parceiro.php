@@ -41,48 +41,71 @@ $URI = new URI();
 </head>
 
 <body>
-  <?php include "components/nav.php"; ?>
+  <?php include "nav.php"; ?>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">
-          <h1>Seu cartão de saúde e benefícios</h1>
-          <!-- <h2>We are team of talented designers making websites with Bootstrap</h2> -->
-          <a href="#about" class="btn-get-started scrollto">Saiba mais</a>
-        </div>
-      </div>
-    </div>
+
+    <!-- <div class="container">
+      <h1>Welcome to Medilab</h1>
+      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+    </div> -->
   </section><!-- End Hero -->
-  </div>
 
   <main id="main">
-    <section id="about" class="about">
+    <!-- <section id="why-us" class="why-us">
       <div class="container">
-
-        <div class="row">
-          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-2 px-lg-5">
-            <h3>O Centrocard Saúde plataforma de saúde e benefícios</h3>
-            <p>Muito mais que um cartão de desconto, nossa solução é um programa de benefícios e proteção que oferece descontos em consultas e exames, telemedicina 24 horas e muitas vantagens. </p>
-            <div class="col-md-5">
-              <a href="#about" class="btn-about scrollto">Contrate agora</a>
+        <div class="icon-boxes d-flex flex-column justify-content-center">
+          <div class="row">
+            <div class="col-lg-4 d-flex align-items-stretch">
+              <div class="content">
+                <h3>Descontos exclusivos com nosso cartão</h3>
+                <div class="text-center">
+                  <a href="#" class="more-btn">Saiba Mais <i class="bx bx-chevron-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-2 d-flex align-items-stretch">
+              <div class="icon-box mt-4 mt-xl-0">
+                <i class='bx bx-calendar-plus'></i>
+                <h4>Médico Online 24 horas</h4>
+              </div>
+            </div>
+            <div class="col-xl-2 d-flex align-items-stretch">
+              <div class="icon-box mt-4 mt-xl-0">
+                <i class='bx bx-injection'></i>
+                <h4>Rede de descontos de saúde e benefícios</h4>
+              </div>
+            </div>
+            <div class="col-xl-2 d-flex align-items-stretch">
+              <div class="icon-box mt-4 mt-xl-0">
+                <i class='bx bxs-user'></i>
+                <h4>Central de Atendimento com APP</h4>
+              </div>
+            </div>
+            <div class="col-xl-2 d-flex align-items-center">
+              <div class="mt-4 mt-xl-0">
+                <div class="d-flex align-items-center">
+                  <div>
+                    <h4>E muito mais</h4>
+                  </div>
+                  <div>
+                    <i class='bx bx-right-arrow-alt'></i>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
-            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
-          </div>
         </div>
-
       </div>
-    </section>
+    </section> -->
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Solução inteligente em saúde e benefícios</h2>
+          <h2>CONHEÇA NOSSOS BENEFÍCIOS</h2>
         </div>
-        <p>Nossos planos oferecem uma solução completa em saúde, benefícios e proteção, com médico 24 horas por dia através da telemedicina, descontos de até 70% em consultas, exames e até hospitais e programa completo de proteção.</p>
-        <h5 class="text-center pt-4">Escolha um plano</h5>
+        <h5 class="text-center">Escolha um plano</h5>
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="services-flters">
@@ -139,7 +162,8 @@ $URI = new URI();
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">OS MELHORES PLANOS</h2>
+          <h2 class="display-5 fw-bold lh-1 mb-3 pt-4 text-center">Nossos Planos</h2>
+          <p>Conheça as vantagens de nossos planos</p>
         </div>
 
         <div class="row justify-content-center">
@@ -305,7 +329,7 @@ $URI = new URI();
                       <!-- Title -->
                       <div class="font-weight-bold">
                         <a class="text-body" href="">
-
+                       
                         </a>
                       </div>
                       <!-- Price -->
@@ -324,9 +348,78 @@ $URI = new URI();
       </div>
     </section>
   </main><!-- End #main -->
-  <?php include "components/footer.php"; ?>
 
-  <!-- <div id="preloader"></div> -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>CENTROCARD SAÚDE</h3>
+            <p>
+              <strong>Telefone:</strong> +55 0000000<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>centrocardsaude.com.br</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Planos</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Benefícios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Termos de Serviço</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Politica de Privacidade</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Planos</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Essencial</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Gold</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Platinum</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Receba novidades e promoções exclusivas</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Inscrever">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>CENTROCARD SAÚDE</span></strong>. Todos os direitos reservados
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
   <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a> -->
 
   <!-- Vendor JS Files -->
@@ -341,42 +434,6 @@ $URI = new URI();
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="./assets/js/filter-services.js"></script>
-  <script>
-    $('.owl-carousel').owlCarousel({
-      loop: true,
-      margin: 50,
-      nav: true,
-      navText: [
-        "<i class='fa fa-caret-left'></i>",
-        "<i class='fa fa-caret-right'></i>"
-      ],
-      autoplay: true,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        600: {
-          items: 3
-        },
-        1000: {
-          items: 4
-        }
-      }
-    })
-  </script>
-  <script>
-    $(document).ready(function() {
-      //Select para mostrar e esconder divs
-      $('#SelectOptions').on('change', function() {
-        var SelectValue = '.' + $(this).val();
-        $('.DivPai .Div1').hide();
-        $('.DivPai .Div2').hide();
-        $(SelectValue).toggle();
-      });
-    });
-  </script>
 
 </body>
 

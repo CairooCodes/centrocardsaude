@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[4];
+$idPost = $url[3];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -49,7 +49,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 </head>
 
 <body>
-  <?php include "nav.php"; ?>
+  <?php include "components/nav.php"; ?>
   <?php
   if (isset($errMSG)) {
   ?>
@@ -60,7 +60,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   }
   ?>
   <?php
-  $stmt = $DB_con->prepare("SELECT id, price2, price, name,t1,t2,t3,t4,b1,b2,b3,b4,icon1,icon2,icon3,icon4 FROM plans where name='$post'");
+  $stmt = $DB_con->prepare("SELECT id, price2, price, name,t1,t2,t3,t4,b1,b2,b3,b4,icon1,icon2,icon3,icon4,t5,t6,t7,t8,b5,b6,b7,b8,icon5,icon6,icon7,icon8,t9,t10,t11,t12,b9,b10,b11,b12,icon9,icon10,icon11,icon12 FROM plans where name='$post'");
   $stmt->execute();
   if ($stmt->rowCount() > 0) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -122,12 +122,121 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 <?php echo $b4; ?>
               </div>
             </div>
+            <?php if ($t5 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon5'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t5; ?></h4>
+                  <?php echo $b5; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t6 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon6'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t6; ?></h4>
+                  <?php echo $b6; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t7 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon7'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t7; ?></h4>
+                  <?php echo $b7; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t8 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon8'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t8; ?></h4>
+                  <?php echo $b8; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t9 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon9'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t9; ?></h4>
+                  <?php echo $b9; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t10 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon10'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t10; ?></h4>
+                  <?php echo $b10; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t11 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon11'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t11; ?></h4>
+                  <?php echo $b11; ?>
+                </div>
+              </div>
+            <?php } ?>
+            <?php if ($t12 != '') { ?>
+              <div class="d-flex">
+                <div class="icon-plan">
+                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon12'] . '') ?>">
+                </div>
+                <div>
+
+                  <h4><?php echo $t12; ?></h4>
+                  <?php echo $b12; ?>
+                </div>
+              </div>
+            <?php } ?>
           </div>
         </div>
       </section>
-
   <?php
     }
   } ?>
+  </main>
+  <?php include "components/footer.php"; ?>
+  <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>
+  <script src="<?php echo $URI->base('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+  <script src="<?php echo $URI->base('/assets/vendor/glightbox/js/glightbox.min.js') ?>"></script>
+  <script src="<?php echo $URI->base('/assets/vendor/swiper/swiper-bundle.min.js') ?>"></script>
+  <script src="<?php echo $URI->base('/assets/vendor/php-email-form/validate.js') ?>"></script>
+  <script src="<?php echo $URI->base('/assets/vendor/aos/aos.js') ?>"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="<?php echo $URI->base('/assets/js/main.js') ?>"></script>
+</body>
 
 </html>
