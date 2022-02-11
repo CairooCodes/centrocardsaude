@@ -101,16 +101,16 @@ $URI = new URI();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               extract($row);
           ?>
-              <div class="col-lg-3 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+              <div class="col-lg-4 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                 <div class="container-service">
                   <a data-bs-toggle="collapse" href="#collapseExample<?php echo $id; ?>" role="button" aria-expanded="false" aria-controls="collapseExample<?php echo $id; ?>">
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="icon-service">
-                        <div class="container-icon">
-                          <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
-                        </div>
-                      </div>
-                      <div class="title-service text-center text-black">
+                    <div class="icon-box">
+                      <div class="icon"><img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>"></div>
+
+                    </div>
+                    <div class="container d-flex justify-content-between align-items-center">
+
+                      <div class="title-service text-center text-black pl-2">
                         <h5><?php echo $benefit; ?></h5>
                       </div>
                       <div class="down-service">
