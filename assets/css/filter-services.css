@@ -22,7 +22,7 @@
   background-color:white;
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
-  border-radius:20px;
+  border-radius:5px;
 }
 .services #services-flters li:hover,
 .services #services-flters li.filter-active {

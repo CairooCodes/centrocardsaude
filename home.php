@@ -189,7 +189,7 @@ $URI = new URI();
                     </ul>
 
                     <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn">Saiba Mias</a>
+                      <a href="#" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -280,7 +280,7 @@ $URI = new URI();
         </div>
         <div class="row gy-5 services-container mt-2">
           <?php
-          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2 FROM benefits ORDER BY id ASC');
+          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits ORDER BY id ASC');
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -289,8 +289,7 @@ $URI = new URI();
 
               <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                 <div class="service-item">
-                  <div class="img">
-                    <img src="assets/img/services-1.jpg" class="img-fluid" alt="">
+                  <div class="img" style="background-image: url('./admin/uploads/beneficios/<?php echo $row['img_2']; ?>');">
                   </div>
                   <div class="details position-relative">
                     <div class="icon">
@@ -317,14 +316,18 @@ $URI = new URI();
 
         <div class="clients-slider swiper">
           <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="assets/img/clients/client-1.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
+            <?php
+            $stmt = $DB_con->prepare('SELECT id, name,img FROM partners ORDER BY id ASC');
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                extract($row);
+            ?>
+                <div class="swiper-slide"><img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt=""></div>
+            <?php
+              }
+            }
+            ?>
           </div>
         </div>
 
@@ -340,10 +343,10 @@ $URI = new URI();
           <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
             <div class="content px-xl-5">
-              <h3>Frequently Asked <strong>Questions</strong></h3>
-              <p>
+              <h3>Perguntas <strong>Frequentes</strong></h3>
+              <!-- <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-              </p>
+              </p> -->
             </div>
 
             <div class="accordion accordion-flush px-xl-5" id="faqlist">
@@ -352,12 +355,12 @@ $URI = new URI();
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
                     <i class="bi bi-question-circle question-icon"></i>
-                    Non consectetur a erat nam at lectus urna duis?
+                    Pergunta 1?
                   </button>
                 </h3>
                 <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                   <div class="accordion-body">
-                    Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                    Resposta da pergunta
                   </div>
                 </div>
               </div><!-- # Faq item-->
@@ -366,7 +369,7 @@ $URI = new URI();
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
                     <i class="bi bi-question-circle question-icon"></i>
-                    Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
+                    Pergunta 2?
                   </button>
                 </h3>
                 <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -380,7 +383,7 @@ $URI = new URI();
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
                     <i class="bi bi-question-circle question-icon"></i>
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
+                    Pergunta 3?
                   </button>
                 </h3>
                 <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -394,7 +397,7 @@ $URI = new URI();
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
                     <i class="bi bi-question-circle question-icon"></i>
-                    Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
+                    Pergunta 4?
                   </button>
                 </h3>
                 <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -409,7 +412,7 @@ $URI = new URI();
                 <h3 class="accordion-header">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
                     <i class="bi bi-question-circle question-icon"></i>
-                    Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
+                    Pergunta 5?
                   </button>
                 </h3>
                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
@@ -435,7 +438,7 @@ $URI = new URI();
 
         <div class="section-header">
           <h2>Blog</h2>
-          <p>Recent posts form our Blog</p>
+          <p>Postagens recentes</p>
         </div>
 
         <div class="row">
@@ -444,12 +447,12 @@ $URI = new URI();
             <div class="post-box">
               <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
               <div class="meta">
-                <span class="post-date">Tue, December 12</span>
-                <span class="post-author"> / Julia Parker</span>
+                <span class="post-date">Seg, Fev 14</span>
+                <span class="post-author"> / Cairo Felipe</span>
               </div>
-              <h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis voluptatem consequuntur sit</h3>
-              <p>Illum voluptas ab enim placeat. Adipisci enim velit nulla. Vel omnis laudantium. Asperiores eum ipsa est officiis. Modi cupiditate exercitationem qui magni est...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <h3 class="post-title">Dicas para começar o dia bem</h3>
+              <p>Conheça as principais dicas dos nossos especialista para começar um dia bem</p>
+              <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
@@ -457,12 +460,12 @@ $URI = new URI();
             <div class="post-box">
               <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
               <div class="meta">
-                <span class="post-date">Fri, September 05</span>
-                <span class="post-author"> / Mario Douglas</span>
+                <span class="post-date">Seg, Fev 14</span>
+                <span class="post-author"> / Cairo Felipe</span>
               </div>
-              <h3 class="post-title">Et repellendus molestiae qui est sed omnis voluptates magnam</h3>
-              <p>Voluptatem nesciunt omnis libero autem tempora enim ut ipsam id. Odit quia ab eum assumenda. Quisquam omnis aliquid necessitatibus tempora consectetur doloribus...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <h3 class="post-title">Cuide de sua saúde mental, visite um psicólogo</h3>
+              <p>Cuidar da saúde mental evita o desencadeamento de diversas doenças, como depressão e ansiedade. Confira como promover esse cuidado e ter mais qualidade de vida</p>
+              <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
@@ -470,12 +473,12 @@ $URI = new URI();
             <div class="post-box">
               <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
               <div class="meta">
-                <span class="post-date">Tue, July 27</span>
-                <span class="post-author"> / Lisa Hunter</span>
+                <span class="post-date">Seg, Fev 14</span>
+                <span class="post-author"> / Cairo Felipe</span>
               </div>
-              <h3 class="post-title">Quia assumenda est et veritatis aut quae</h3>
-              <p>Quia nam eaque omnis explicabo similique eum quaerat similique laboriosam. Quis omnis repellat sed quae consectetur magnam veritatis dicta nihil...</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <h3 class="post-title">Vantagens do home office</h3>
+              <p>Veja como o home office traz vantagens a empresas e trabalhadores, como diminuição de custos, mais produtividade e qualidade de vida</p>
+              <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
 
@@ -490,8 +493,8 @@ $URI = new URI();
       <div class="container">
 
         <div class="section-header">
-          <h2>Contact Us</h2>
-          <p>Ea vitae aspernatur deserunt voluptatem impedit deserunt magnam occaecati dssumenda quas ut ad dolores adipisci aliquam.</p>
+          <h2>Contato</h2>
+          <p>Preencha o formulário abaixo e tenha atendimento especializado</p>
         </div>
 
       </div>
@@ -504,24 +507,24 @@ $URI = new URI();
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                 </div>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" placeholder="Message" required></textarea>
+                <textarea class="form-control" name="message" placeholder="Mensagem" required></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button class="btn" type="submit">Enviar Mensagem</button></div>
             </form>
           </div><!-- End Contact Form -->
 
@@ -541,47 +544,30 @@ $URI = new URI();
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>HeroBiz</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
+              <a href="<?php echo $URI->base('/home') ?>" class="logo me-md-auto">
+                <center><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" width="200px"></center>
+              </a>
             </div>
           </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>centrocardsaude.com.br</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Benefícios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Credenciamento</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Autorizador</a></li>
             </ul>
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+          <div class="col-lg-5 col-md-6 footer-links">
+            <h4>Planos</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Essencial</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Gold</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Platinum</a></li>
             </ul>
           </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-
-          </div>
-
         </div>
       </div>
     </div>
@@ -591,14 +577,14 @@ $URI = new URI();
 
         <div class="d-flex flex-column align-items-center align-items-lg-start">
           <div class="copyright">
-            &copy; Copyright <strong><span>HeroBiz</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>CENTROCARD SAÚDE</span></strong>. Todos os direitos reservados
           </div>
           <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Desenvolvido por: <a href="https://bootstrapmade.com/">Cairo Felipe Dev</a>
           </div>
         </div>
 
