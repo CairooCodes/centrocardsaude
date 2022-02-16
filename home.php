@@ -39,38 +39,7 @@ $URI = new URI();
 </head>
 
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top" data-scrollto-offset="0">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/icon-semfundo.png" alt="">
-      </a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home') ?>">Home</a></li>
-          <li class="dropdown"><a href="#"><span>Planos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="<?php echo $URI->base('/plano/essencial') ?>">Plano Essencial</a></li>
-              <li><a href="<?php echo $URI->base('/plano/gold') ?>">Plano Gold</a></li>
-              <li><a href="<?php echo $URI->base('/plano/platinum') ?>">Plano Platinum</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#services">Benefícios</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Afiliado</a></li>
-          <li><a class="nav-link scrollto" href="index.html#portfolio">Blog</a></li>
-          <li><a class="nav-link scrollto" href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle d-none"></i>
-      </nav><!-- .navbar -->
-
-      <a class="btn-getstarted scrollto" href="index.html#about">Login</a>
-
-    </div>
-  </header><!-- End Header -->
+  <?php include "components/navbar.php"; ?>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -535,71 +504,7 @@ $URI = new URI();
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-
-    <div class="footer-content">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <a href="<?php echo $URI->base('/home') ?>" class="logo me-md-auto">
-                <center><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" width="200px"></center>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>centrocardsaude.com.br</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Benefícios</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Credenciamento</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Autorizador</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-5 col-md-6 footer-links">
-            <h4>Planos</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Essencial</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Gold</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Platinum</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-legal text-center">
-      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
-
-        <div class="d-flex flex-column align-items-center align-items-lg-start">
-          <div class="copyright">
-            &copy; Copyright <strong><span>CENTROCARD SAÚDE</span></strong>. Todos os direitos reservados
-          </div>
-          <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-            Desenvolvido por: <a href="https://bootstrapmade.com/">Cairo Felipe Dev</a>
-          </div>
-        </div>
-
-        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
-          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        </div>
-
-      </div>
-    </div>
-
-  </footer><!-- End Footer -->
+<?php include "components/footer.php"; ?>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
