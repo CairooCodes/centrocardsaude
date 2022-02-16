@@ -158,7 +158,7 @@ $URI = new URI();
                     </ul>
 
                     <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -185,7 +185,7 @@ $URI = new URI();
                       <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
                     </ul>
                     <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -213,7 +213,7 @@ $URI = new URI();
                     </ul>
 
                     <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>

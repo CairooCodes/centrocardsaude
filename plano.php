@@ -30,26 +30,24 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="icon">
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="<?php echo $URI->base('/assets/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo $URI->base('/assets/vendor/animate.css/animate.min.css') ?>" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
   <link href="<?php echo $URI->base('/assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
   <link href="<?php echo $URI->base('/assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
-  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link href="<?php echo $URI->base('/assets/vendor/aos/aos.css') ?>" rel="stylesheet">
   <link href="<?php echo $URI->base('/assets/vendor/glightbox/css/glightbox.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo $URI->base('/assets/vendor/remixicon/remixicon.css') ?>" rel="stylesheet">
   <link href="<?php echo $URI->base('/assets/vendor/swiper/swiper-bundle.min.css') ?>" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
+  <link href="<?php echo $URI->base('/assets/css/variables.css') ?>" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="<?php echo $URI->base('/assets/css/style.css') ?>" rel="stylesheet">
+  <link href="<?php echo $URI->base('/assets/css/main.css') ?>" rel="stylesheet">
 </head>
 
 <body>
-  <?php include "components/nav.php"; ?>
+  <?php include "components/navbar-blue.php"; ?>
   <?php
   if (isset($errMSG)) {
   ?>
@@ -66,159 +64,124 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
       extract($row);
   ?>
-      <section class="planos container">
-        <h1 class="text-center pb-4">Plano <?php echo $name; ?></h1>
+      <section class="pricing container-fluid" style="padding-top:150px;">
         <div class="row justify-content-center">
           <div class="col-md-3">
-            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
-              <h3>DE R$ <?php echo $price2; ?> POR</h3>
-              <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
-              <ul>
-                em 12x no cartão ou R$ 358,80 à vista ou em até 3 parcelas no boleto + taxa de adesão.
-              </ul>
-              <div class="btn-wrap">
-                <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="btn-buy">Contrate agora</a>
-              </div>
-            </div>
+            <?php if ($name == 'Essencial') { ?>
+              <div data-aos="zoom-in" data-aos-delay="200">
+                <div class="pricing-item">
+
+                  <div class="pricing-header">
+                    <h3><?php echo $name; ?></h3>
+                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                  </div>
+                  <ul>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <li class="na"><i class="bi bi-x"></i> <span>Assistência Farmacêutica </span></li>
+                    <li class="na"><i class="bi bi-x"></i> <span>Assistência Personal Fitness</span></li>
+                  </ul>
+
+                  <div class="text-center mt-auto">
+                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                  </div>
+
+                </div>
+              </div><!-- End Pricing Item -->
+            <?php
+            }
+            ?>
+            <?php if ($name == 'Platinum') { ?>
+              <div data-aos="zoom-in" data-aos-delay="400">
+                <div class="pricing-item featured">
+
+                  <div class="pricing-header">
+                    <h3><?php echo $name; ?></h3>
+                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                  </div>
+
+                  <ul>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                  </ul>
+                  <div class="text-center mt-auto">
+                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                  </div>
+
+                </div>
+              </div><!-- End Pricing Item -->
+            <?php
+            }
+            ?>
+            <?php if ($name == 'Gold') { ?>
+              <div data-aos="zoom-in" data-aos-delay="600">
+                <div class="pricing-item">
+
+                  <div class="pricing-header">
+                    <h3><?php echo $name; ?></h3>
+                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                  </div>
+
+                  <ul>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
+                    <li class="na"><i class="bi bi-x"></i> <span>Conta Saúde </span></li>
+                    <li class="na"><i class="bi bi-x"></i> <span> Especialidades Médicas</span></li>
+                  </ul>
+
+                  <div class="text-center mt-auto">
+                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                  </div>
+
+                </div>
+              </div><!-- End Pricing Item -->
+            <?php
+            }
+            ?>
           </div>
           <div class="col-md-9">
-            <div class="d-flex">
-              <div class="icon-plan">
-                <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon1'] . '') ?>">
-              </div>
-              <div>
+            <section id="services" class="services">
+              <div class="row gy-5 services-container mt-2">
 
-                <h4><?php echo $t1; ?></h4>
-                <?php echo $b1; ?>
-              </div>
-            </div>
-            <div class="d-flex">
-              <div class="icon-plan">
-                <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon2'] . '') ?>">
-              </div>
-              <div>
+                <?php
+                $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits where plan_1='$post'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                ?>
 
-                <h4><?php echo $t2; ?></h4>
-                <?php echo $b2; ?>
-              </div>
-            </div>
-            <div class="d-flex">
-              <div class="icon-plan">
-                <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon3'] . '') ?>">
-              </div>
-              <div>
-
-                <h4><?php echo $t3; ?></h4>
-                <?php echo $b3; ?>
-              </div>
-            </div>
-            <div class="d-flex">
-              <div class="icon-plan">
-                <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon4'] . '') ?>">
-              </div>
-              <div>
-
-                <h4><?php echo $t4; ?></h4>
-                <?php echo $b4; ?>
-              </div>
-            </div>
-            <?php if ($t5 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon5'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t5; ?></h4>
-                  <?php echo $b5; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t6 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon6'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t6; ?></h4>
-                  <?php echo $b6; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t7 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon7'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t7; ?></h4>
-                  <?php echo $b7; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t8 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon8'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t8; ?></h4>
-                  <?php echo $b8; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t9 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon9'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t9; ?></h4>
-                  <?php echo $b9; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t10 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon10'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t10; ?></h4>
-                  <?php echo $b10; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t11 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon11'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t11; ?></h4>
-                  <?php echo $b11; ?>
-                </div>
-              </div>
-            <?php } ?>
-            <?php if ($t12 != '') { ?>
-              <div class="d-flex">
-                <div class="icon-plan">
-                  <img src="<?php echo $URI->base('/admin/uploads/planos/' . $row['icon12'] . '') ?>">
-                </div>
-                <div>
-
-                  <h4><?php echo $t12; ?></h4>
-                  <?php echo $b12; ?>
-                </div>
-              </div>
-            <?php } ?>
+                    <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                      <div class="service-item">
+                        <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
+                        </div>
+                        <div class="details position-relative">
+                          <div class="icon">
+                            <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                          </div>
+                          <a href="#" class="stretched-link">
+                            <h3><?php echo $benefit; ?></h3>
+                          </a>
+                          <p><?php echo $description; ?></p>
+                        </div>
+                      </div>
+                    </div><!-- End Service Item -->
+                <?php
+                  }
+                } ?>
+            </section>
           </div>
+
+        </div>
         </div>
       </section>
   <?php

@@ -2,9 +2,9 @@
 <header id="header" class="header fixed-top header-blue" data-scrollto-offset="0">
   <div class="container d-flex align-items-center justify-content-between">
 
-    <a href="index.html" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
+    <a href="<?php echo $URI->base('/home') ?>" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
       <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="assets/img/icon-semfundo.png" alt="">
+      <img src="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" alt="">
     </a>
 
     <nav id="navbar" class="navbar">
@@ -21,11 +21,11 @@
         <li><a class="nav-link scrollto">Afiliado</a></li>
         <li><a class="nav-link scrollto" href="index.html#portfolio">Blog</a></li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
-        <li><a class="nav-link scrollto" href="buscar.php">Buscar <i class="bi bi-search"></i></a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/buscar.php') ?>">Buscar <i class="bi bi-search"></i></a></li>
         <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-box-arrow-in-right"></i></a>
           <ul>
-            <li><a href="./admin/login.php">Cliente</a></li>
-            <li><a href="./admin/login.php">Credenciado</a></li>
+            <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Cliente</a></li>
+            <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Credenciado</a></li>
           </ul>
         </li>
       </ul>

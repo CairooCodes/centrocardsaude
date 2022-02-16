@@ -41,7 +41,7 @@ $URI = new URI();
 <body>
   <?php include "components/navbar-blue.php"; ?>
   <!-- ======= Contact Section ======= -->
-  <section id="redes" class="redes mt-4">
+  <section id="redes" class="redes">
     <div class="container">
 
       <div class="section-header">
@@ -53,14 +53,33 @@ $URI = new URI();
     <div class="container">
 
       <div class="row gy-5 gx-lg-5 justify-content-center">
-
-        <div class="col-md-4 text-center">
-          <h1>REDE CENTROCARD</h1>
-          <img class="img-fluid" src="assets/img/logo.jpg">
+        <div class="col-xl-4 col-md-6">
+          <div class="rede-item">
+            <div class="img" style="background-image: url('assets/img/logo.jpg');">
+            </div>
+            <div class="details position-relative">
+              <a class="stretched-link">
+                <h3>REDE CENTROCARD</h3>
+              </a>
+              <p>Rede de desconto, podendo economizar até 60% em serviços médico do Centrocardio e diversas clínicas, laboratórios e hospitais em Teresina e região.</p>
+              <button class="btn btn-primary">Buscar <i class="bi bi-search"></i></button>
+              <p class="pt-2 p-disponivel">Disponível em: Plano Gold e Essencial</p>
+            </div>
+          </div>
         </div>
-        <div class="col-md-4 text-center">
-          <h1>REDE NACIONAL</h1>
-          <img class="img-fluid" src="assets/img/tem-saude.png">
+        <div class="col-xl-4 col-md-6">
+          <div class="rede-item">
+            <div class="img" style="background-image: url('assets/img/tem-saude.png');">
+            </div>
+            <div class="details position-relative">
+              <a  class="stretched-link">
+                <h3>REDE NACIONAL</h3>
+              </a>
+              <p>Realize consultas médicas, odontológicas e exames nas melhores clínicas e laboratórios particulares com preços que cabem no seu bolso.</p>
+              <button class="btn btn-primary">Buscar <i class="bi bi-search"></i></button>
+              <p class="pt-2 p-disponivel">Disponível em: Plano Platinum</p>
+            </div>
+          </div>
         </div>
       </div>
 
