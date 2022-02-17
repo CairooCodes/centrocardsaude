@@ -1,11 +1,19 @@
 <?php
 require_once './admin/dbconfig.php';
-include "./admin/insert_form.php";
 require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
-?>
 
+$url = explode("/", $_SERVER['REQUEST_URI']);
+$idPost = $url[4];
+
+$stmt = $DB_con->prepare("SELECT id,benefit FROM benefits where id='$idPost' ORDER BY id DESC");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+  extract($row);
+  $post = $benefit;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -13,10 +21,15 @@ $URI = new URI();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CENTROCARD SAÚDE</title>
+  <title><?php echo $post ?> CENTROCARD SAÚDE</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Favicons -->
+  <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="icon">
+  <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
@@ -33,57 +46,22 @@ $URI = new URI();
 
 <body>
   <?php include "components/navbar-blue.php"; ?>
-  <!-- ======= Hero Section ======= -->
-  <section id="parceiro" class="section-bg">
-    <div class="container">
-      <div class="section-header">
-        <h2>QUEM PODE SE CREDENCIAR?</h2>
-      </div>
-      <div class="row gy-5 gx-lg-5 justify-content-center">
-        <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/medicos.jpg');">
-            </div>
-            <div class="d-flex align-items-center details position-relative">
-              <p>Médicos e dentistas de todas as especialidades.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/laboratorios.jpg');">
-            </div>
-            <div class="d-flex align-items-center  algim-itens-center details position-relative">
-              <p>Laboratórios e clínicas preparadas para os mais diversos tipos de exames diagnósticos.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/gallery-5.jpg');">
-            </div>
-            <div class="d-flex align-items-center  algim-itens-center details position-relative">
-              <p>Profissionais de saúde complementar, como psicólogos, fonoaudiólogos e outros.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/gallery-7.jpg');">
-            </div>
-            <div class="d-flex align-items-center  algim-itens-center details position-relative">
-              <p>Empresas que comercializam produtos relacionados à saúde, bem-estar e beleza.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mt-auto">
-      <a href="<?php echo $URI->base('/#') ?>" class="btn-parceiro">CADASTRE-SE AGORA</a>
-    </div>
-  </section>
-  </main><!-- End #main -->
-  
+  <main>
+    <?php
+    $stmt = $DB_con->prepare("SELECT * FROM benefits where benefit='$post'");
+    $stmt->execute();
+    if ($stmt->rowCount() > 0) {
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        extract($row);
+    ?>
+        <section id="hero2" class="hero2" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_3'] . '') ?>');">
+        </section><!-- End Hero Section -->
+
+    <?php
+      }
+    }
+    ?>
+  </main>
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
   <?php include "components/footer.php"; ?>
   <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>

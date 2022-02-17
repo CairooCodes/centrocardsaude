@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[3];
+$idPost = $url[4];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -30,7 +30,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="icon">
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="apple-touch-icon">
 
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,15 +47,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 <body>
   <?php include "components/navbar-blue.php"; ?>
-  <?php
-  if (isset($errMSG)) {
-  ?>
-    <div class="alert alert-danger container">
-      <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
-    </div>
-  <?php
-  }
-  ?>
+
   <?php
   $stmt = $DB_con->prepare("SELECT id, price2, price, name,t1,t2,t3,t4,b1,b2,b3,b4,icon1,icon2,icon3,icon4,t5,t6,t7,t8,b5,b6,b7,b8,icon5,icon6,icon7,icon8,t9,t10,t11,t12,b9,b10,b11,b12,icon9,icon10,icon11,icon12 FROM plans where name='$post'");
   $stmt->execute();
@@ -180,7 +171,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                           </div>
                         </div>
                       </div><!-- End Service Item -->
-                <?php
+                    <?php
                     }
                   }
                 }
@@ -190,7 +181,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       extract($row);
-                ?>
+                    ?>
 
                       <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                         <div class="service-item">
@@ -207,7 +198,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                           </div>
                         </div>
                       </div><!-- End Service Item -->
-                <?php
+                    <?php
                     }
                   }
                 }
@@ -217,7 +208,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       extract($row);
-                ?>
+                    ?>
 
                       <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                         <div class="service-item">
@@ -250,6 +241,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     }
   } ?>
   </main>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
   <?php include "components/footer.php"; ?>
   <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>
   <script src="<?php echo $URI->base('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>

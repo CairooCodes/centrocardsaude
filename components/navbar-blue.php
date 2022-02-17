@@ -32,7 +32,7 @@
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
 
-    <a class="btn-getstarted scrollto" href="index.html#services">COMPRE AGORA</a>
+    <a class="btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a>
 
   </div>
 </header><!-- End Header -->

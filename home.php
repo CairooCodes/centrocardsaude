@@ -42,51 +42,53 @@ $URI = new URI();
   <?php include "components/navbar.php"; ?>
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero carousel  carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-    <?php
-    $stmt = $DB_con->prepare('SELECT id, name,description,img_1,type,add_button,type_button,name_button,url_button FROM banners ORDER BY id ASC');
-    $stmt->execute();
-    if ($stmt->rowCount() > 0) {
-      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        extract($row);
-    ?>
-        <div class="carousel-item 
+  <section id="hero" class="hero carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-inner">
+      <?php
+      $stmt = $DB_con->prepare('SELECT id, name,description,img_1,type,add_button,type_button,name_button,url_button FROM banners ORDER BY id ASC');
+      $stmt->execute();
+      if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          extract($row);
+      ?>
+          <div class="carousel-item 
         <?php if ($type == '1') {
-          echo 'active';
-        } ?>" style="background-image: url('./admin/uploads/banners/<?php echo $row['img_1']; ?>');">
-          <div class="container">
-            <div class="row justify-content-center gy-6">
-              <div class="col-lg-9 text-center">
-                <h2><?php echo $name; ?></h2>
-              </div>
-              <div class="col-md-4 text-center">
-                <p><?php echo $description; ?></p>
-              </div>
-              <?php if ($add_button == '1') { ?>
-                <?php if ($type_button == 'video') { ?>
-                  <div class="col-md-9 text-center">
-                    <a href="<?php echo $url_button; ?>" class="glightbox btn-get-started scrollto "><i class="bi bi-play-circle"></i> <?php echo $name_button; ?></a>
-                  </div>
+            echo 'active';
+          } ?>" style="background-image: url('./admin/uploads/banners/<?php echo $row['img_1']; ?>');">
+            <div class="container">
+              <div class="row justify-content-center gy-6">
+                <div class="col-lg-9 text-center">
+                  <h2><?php echo $name; ?></h2>
+                </div>
+                <div class="col-md-4 text-center">
+                  <p><?php echo $description; ?></p>
+                </div>
+                <?php if ($add_button == '1') { ?>
+                  <?php if ($type_button == 'video') { ?>
+                    <div class="col-md-9 text-center">
+                      <a href="<?php echo $url_button; ?>" class="glightbox btn-get-started scrollto "><i class="bi bi-play-circle"></i> <?php echo $name_button; ?></a>
+                    </div>
+                  <?php
+                  }
+                  ?>
+                  <?php if ($type_button == 'padrao') { ?>
+                    <div class="col-md-9 text-center">
+                      <a href="<?php echo $url_button; ?>" class="btn-get-started scrollto "><?php echo $name_button; ?></a>
+                    </div>
+                  <?php
+                  }
+                  ?>
                 <?php
                 }
                 ?>
-                <?php if ($type_button == 'padrao') { ?>
-                  <div class="col-md-9 text-center">
-                    <a href="<?php echo $url_button; ?>" class="btn-get-started scrollto "><?php echo $name_button; ?></a>
-                  </div>
-                <?php
-                }
-                ?>
-              <?php
-              }
-              ?>
+              </div>
             </div>
-          </div>
-        </div><!-- End Carousel Item -->
-    <?php
+          </div><!-- End Carousel Item -->
+      <?php
+        }
       }
-    }
-    ?>
+      ?>
+    </div>
     <a class="carousel-control-prev" href="#hero" role="button" data-bs-slide="prev">
       <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
     </a>
@@ -264,10 +266,13 @@ $URI = new URI();
                     <div class="icon">
                       <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                     </div>
-                    <a href="#" class="stretched-link">
+                    <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="stretched-link">
                       <h3><?php echo $benefit; ?></h3>
                     </a>
                     <p><?php echo $description; ?></p>
+                    <div class="text-center mt-auto">
+                      <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                    </div>
                   </div>
                 </div>
               </div><!-- End Service Item -->
@@ -407,7 +412,7 @@ $URI = new URI();
 
   </main><!-- End #main -->
 
-<?php include "components/footer.php"; ?>
+  <?php include "components/footer.php"; ?>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
