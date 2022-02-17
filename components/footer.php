@@ -18,6 +18,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Benefícios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">FAQ</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Credenciamento</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Autorizador</a></li>
             </ul>

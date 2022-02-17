@@ -18,8 +18,8 @@
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="#services">Benefícios</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Afiliado</a></li>
-        <li><a class="nav-link scrollto" href="index.html#portfolio">Blog</a></li>
+        <!-- <li><a class="nav-link scrollto">Afiliado</a></li> -->
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home#recent-blog-posts') ?>">Blog</a></li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/buscar.php') ?>">Buscar <i class="bi bi-search"></i></a></li>
         <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-box-arrow-in-right"></i></a>

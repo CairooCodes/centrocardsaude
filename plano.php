@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[4];
+$idPost = $url[3];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -149,39 +149,101 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             ?>
           </div>
           <div class="col-md-9">
-            <section id="services" class="services">
-              <div class="row gy-5 services-container mt-2">
+            <div id="services" class="services">
+              <div class="section-header" style="padding-bottom:0%">
+                <h2>Benefícios</h2>
+              </div>
+              <div class="row gy-5 services-container">
 
                 <?php
-                $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits where plan_1='$post'");
-                $stmt->execute();
-                if ($stmt->rowCount() > 0) {
-                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    extract($row);
+
+                if ($post == 'Platinum') {
+                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits");
+                  $stmt->execute();
+                  if ($stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                      extract($row);
                 ?>
 
-                    <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
-                      <div class="service-item">
-                        <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
-                        </div>
-                        <div class="details position-relative">
-                          <div class="icon">
-                            <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                        <div class="service-item">
+                          <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
                           </div>
-                          <a href="#" class="stretched-link">
-                            <h3><?php echo $benefit; ?></h3>
-                          </a>
-                          <p><?php echo $description; ?></p>
+                          <div class="details position-relative">
+                            <div class="icon">
+                              <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                            </div>
+                            <a href="#" class="stretched-link">
+                              <h3><?php echo $benefit; ?></h3>
+                            </a>
+                            <p><?php echo $description; ?></p>
+                          </div>
                         </div>
-                      </div>
-                    </div><!-- End Service Item -->
+                      </div><!-- End Service Item -->
                 <?php
+                    }
                   }
-                } ?>
-            </section>
-          </div>
+                }
+                if ($post == 'Gold') {
+                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits where plan_1 = 'gold' or plan_1= 'essencial'");
+                  $stmt->execute();
+                  if ($stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                      extract($row);
+                ?>
 
-        </div>
+                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                        <div class="service-item">
+                          <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
+                          </div>
+                          <div class="details position-relative">
+                            <div class="icon">
+                              <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                            </div>
+                            <a href="#" class="stretched-link">
+                              <h3><?php echo $benefit; ?></h3>
+                            </a>
+                            <p><?php echo $description; ?></p>
+                          </div>
+                        </div>
+                      </div><!-- End Service Item -->
+                <?php
+                    }
+                  }
+                }
+                if ($post == 'Essencial') {
+                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits where plan_1 = 'essencial'");
+                  $stmt->execute();
+                  if ($stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                      extract($row);
+                ?>
+
+                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                        <div class="service-item">
+                          <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
+                          </div>
+                          <div class="details position-relative">
+                            <div class="icon">
+                              <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                            </div>
+                            <a href="#" class="stretched-link">
+                              <h3><?php echo $benefit; ?></h3>
+                            </a>
+                            <p><?php echo $description; ?></p>
+                          </div>
+                        </div>
+                      </div><!-- End Service Item -->
+                <?php
+                    }
+                  }
+                }
+
+                ?>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
   <?php
