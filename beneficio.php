@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[3];
+$idPost = $url[4];
 
 $stmt = $DB_con->prepare("SELECT id,benefit FROM benefits where id='$idPost' ORDER BY id DESC");
 $stmt->execute();

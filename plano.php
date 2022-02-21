@@ -57,7 +57,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   ?>
       <section class="pricing container-fluid" style="padding-top:150px;">
         <div class="row justify-content-center">
-          <div class="col-md-3">
+          <div class="col-lg-3">
             <?php if ($name == 'Essencial') { ?>
               <div data-aos="zoom-in" data-aos-delay="200">
                 <div class="pricing-item">
@@ -139,9 +139,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             }
             ?>
           </div>
-          <div class="col-md-9">
+          <div class="col-lg-9">
             <div id="services" class="services">
-              <div class="section-header" style="padding-bottom:0%">
+              <div class="section-header pt-4" style="padding-bottom:0%">
                 <h2>Benefícios</h2>
               </div>
               <div class="row gy-5 services-container">
@@ -160,7 +160,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         <div class="service-item">
                           <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
                           </div>
-                          <div class="details position-relative">
+                          <div class="details2 position-relative">
                             <div class="icon">
                               <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
@@ -168,6 +168,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                               <h3><?php echo $benefit; ?></h3>
                             </a>
                             <p><?php echo $description; ?></p>
+                            <div class="text-center mt-auto">
+                              <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
                           </div>
                         </div>
                       </div><!-- End Service Item -->
