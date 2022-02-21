@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[4];
+$idPost = $url[3];
 
 $stmt = $DB_con->prepare("SELECT id,benefit FROM benefits where id='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -56,7 +56,34 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     ?>
         <section id="hero2" class="hero2" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_3'] . '') ?>');">
         </section><!-- End Hero Section -->
-
+        <div class="container pt-4 info-benefit">
+          <div class="col-md-6">
+            <p class="lead"><?php echo $description; ?> </p>
+            <h4 class="pt-4">CONHEÇA ALGUNS DOS PRINCIPAIS SERVIÇOS</h4>
+            <div class="row align-items-center pt-4">
+              <div class="col-3 col-md-2">
+                <div class="icon-benefit">
+                  <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                </div>
+              </div>
+              <div class="col-12 col-md-10 pt-2">
+                <h5><?php echo $title_s1; ?></h5>
+                <p class="lead"><?php echo $service_1; ?></p>
+                <h5><?php echo $title_s2; ?></h5>
+                <p class="lead"><?php echo $service_2; ?></p>
+                <h5><?php echo $title_s3; ?></h5>
+                <p class="lead"><?php echo $service_3; ?></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container box-benefift d-md-block d-none">
+          <div class="col-10">
+            <h3>ACIONE SUA <?php echo $benefit; ?>:</h3>
+            <h4 class="pt-4">LIGUE AGORA</h4>
+            <h3><i class="bi bi-whatsapp"></i> 0800-0000</h3>
+          </div>
+        </div>
     <?php
       }
     }

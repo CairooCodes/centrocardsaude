@@ -17,7 +17,7 @@
             <li><a href="<?php echo $URI->base('/plano/platinum') ?>">Plano Platinum</a></li>
           </ul>
         </li>
-        <li><a class="nav-link scrollto" href="#services">Benefícios</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home#services') ?>">Benefícios</a></li>
         <!-- <li><a class="nav-link scrollto">Afiliado</a></li> -->
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home#recent-blog-posts') ?>">Blog</a></li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
