@@ -36,7 +36,43 @@ $URI = new URI();
   <!-- CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/filter-services.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<style>
+  .carousel-wrap {
+    margin-top: 20px;
+    padding: 0 5%;
+    width: 100%;
+    position: relative;
+  }
+
+  /* fix blank or flashing items on carousel */
+  .owl-carousel .item {
+    position: relative;
+    z-index: 100;
+  }
+
+  /* end fix */
+  .owl-nav>div {
+    margin-top: -26px;
+    position: absolute;
+    top: 50%;
+    color: #cdcbcd;
+  }
+
+  .owl-nav i {
+    font-size: 52px;
+  }
+
+  .owl-nav .owl-prev {
+    left: -30px;
+  }
+
+  .owl-nav .owl-next {
+    right: -30px;
+  }
+</style>
 
 <body>
   <?php include "components/navbar.php"; ?>
@@ -287,9 +323,8 @@ $URI = new URI();
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
       <div class="container" data-aos="zoom-out">
-
-        <div class="clients-slider swiper">
-          <div class="swiper-wrapper align-items-center">
+        <div class="carousel-wrap clients-slider">
+          <div class="owl-carousel">
             <?php
             $stmt = $DB_con->prepare('SELECT id, name,img FROM partners ORDER BY id ASC');
             $stmt->execute();
@@ -297,15 +332,43 @@ $URI = new URI();
               while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 extract($row);
             ?>
-                <div class="swiper-slide"><img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt=""></div>
+                <div class="item">
+                  <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt="">
+                  <a href="#jsModal<?php echo $id; ?>" id="popup" class="jsModalTrigger">
+                    <button class="btn btn-faq" type="button" id="popup" class="jsModalTrigger">
+                      saiba mais
+                    </button>
+                  </a>
+                  <div class="collapse" id="collapseExample<?php echo $id; ?>">
+                    <div class="card card-body">
+                      <?php echo $name; ?>
+                    </div>
+                  </div>
+                </div>
             <?php
               }
             }
             ?>
           </div>
         </div>
-
       </div>
+      <?php
+      $stmt = $DB_con->prepare('SELECT id,name,img FROM partners ORDER BY id ASC');
+      $stmt->execute();
+      if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+          extract($row);
+      ?>
+          <div id="jsModal<?php echo $id; ?>" class="modal2">
+            <div class="modal__overlay jsOverlay"></div>
+            <div class="modal__container">
+              <p> <?php echo $name; ?></p>
+              <button class="modal__close jsModalClose">&#10005;</button>
+            </div>
+          </div>
+      <?php
+        }
+      } ?>
     </section><!-- End Clients Section -->
 
     <!-- ======= Recent Blog Posts Section ======= -->
@@ -425,10 +488,36 @@ $URI = new URI();
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/script.js"></script>
   <script src="assets/js/filter-services.js"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 50,
+      nav: true,
+      navText: [
+        "<i class='fa fa-caret-left'></i>",
+        "<i class='fa fa-caret-right'></i>"
+      ],
+      autoplay: true,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 3
+        },
+        1000: {
+          items: 5
+        }
+      }
+    })
+  </script>
 </body>
 
 </html>
