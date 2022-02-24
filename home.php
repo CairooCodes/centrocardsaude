@@ -334,10 +334,11 @@ $URI = new URI();
             ?>
                 <div class="item">
                   <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt="">
-                  <a href="#jsModal<?php echo $id; ?>" id="popup" class="jsModalTrigger">
-                    <button class="btn btn-faq" type="button" id="popup" class="jsModalTrigger">
-                      saiba mais
-                    </button>
+                  <a href="#parceiro-<?php echo $name; ?>" id="popup" class="jsModalTrigger">
+                    <center> <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
+                        Saiba Mais
+                      </button>
+                    </center>
                   </a>
                   <div class="collapse" id="collapseExample<?php echo $id; ?>">
                     <div class="card card-body">
@@ -359,7 +360,7 @@ $URI = new URI();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
           extract($row);
       ?>
-          <div id="jsModal<?php echo $id; ?>" class="modal2">
+          <div id="parceiro-<?php echo $name; ?>" class="modal2">
             <div class="modal__overlay jsOverlay"></div>
             <div class="modal__container">
               <p> <?php echo $name; ?></p>
@@ -429,7 +430,7 @@ $URI = new URI();
     </section><!-- End Recent Blog Posts Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
       <div class="container">
 
         <div class="section-header">
@@ -466,12 +467,13 @@ $URI = new URI();
               </div>
               <div class="text-center"><button class="btn" type="submit">Enviar Mensagem</button></div>
             </form>
-          </div><!-- End Contact Form -->
+          </div>
 
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section> -->
+    <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
@@ -507,7 +509,7 @@ $URI = new URI();
       autoplayHoverPause: true,
       responsive: {
         0: {
-          items: 1
+          items: 2
         },
         600: {
           items: 3

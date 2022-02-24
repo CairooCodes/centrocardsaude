@@ -534,7 +534,7 @@ $URI = new URI();
   </section><!-- End Contact Section -->
 
   <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
+  <!-- <section id="contact" class="contact">
     <div class="container">
 
       <div class="section-header">
@@ -576,7 +576,7 @@ $URI = new URI();
       </div>
 
     </div>
-  </section><!-- End Contact Section -->
+  </section>End Contact Section -->
 
   </main><!-- End #main -->
 
