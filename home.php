@@ -354,7 +354,7 @@ $URI = new URI();
         </div>
       </div>
       <?php
-      $stmt = $DB_con->prepare('SELECT id,name,img FROM partners ORDER BY id ASC');
+      $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
       $stmt->execute();
       if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -363,7 +363,15 @@ $URI = new URI();
           <div id="parceiro-<?php echo $name; ?>" class="modal2">
             <div class="modal__overlay jsOverlay"></div>
             <div class="modal__container">
-              <p> <?php echo $name; ?></p>
+              <div class="row">
+                <div class="col-md-6">
+                  <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-6">
+                  <h5>Contatos</h5>
+                  <p> <?php echo $esp_1; ?></p>
+                </div>
+              </div>
               <button class="modal__close jsModalClose">&#10005;</button>
             </div>
           </div>
