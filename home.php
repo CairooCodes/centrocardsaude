@@ -363,13 +363,125 @@ $URI = new URI();
           <div id="parceiro-<?php echo $name; ?>" class="modal2">
             <div class="modal__overlay jsOverlay"></div>
             <div class="modal__container">
-              <div class="row">
-                <div class="col-md-6">
-                  <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt="">
+              <div class="parceiro-box d-flex">
+                <div class="parceiro-img">
+                  <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>">
                 </div>
-                <div class="col-md-6">
-                  <h5>Contatos</h5>
-                  <p> <?php echo $esp_1; ?></p>
+                <div class="parceiro-infos">
+                  <h4>Contatos</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <?php echo $tel; ?>
+                    </div>
+                    <div class="col-md-6">
+                      <?php echo $email; ?>
+                    </div>
+                  </div>
+                  <?php if ($esp_1 != '') { ?>
+                    <h4>Especialidades</h4>
+                    <div class="row">
+                      <?php if ($esp_1 != '') { ?>
+                        <div class="col-md-6">
+                          <?php echo $esp_1; ?>
+                        </div>
+                        <?php } ?>
+                        <?php if ($esp_2 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_2; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_3 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_3; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_4 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_4; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_5 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_5; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_6 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_6; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_7 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_7; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_8 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_8; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_9 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_9; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_10 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_10; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_11 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_11; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_12 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_12; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_13 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_13; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_14 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_14; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_15 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_15; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_16 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_16; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_17 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_17; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_18 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_18; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_19 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_19; ?>
+                          </div>
+                        <?php } ?>
+                        <?php if ($esp_20 != '') { ?>
+                          <div class="col-md-6">
+                            <?php echo $esp_20; ?>
+                          </div>
+                        <?php } ?>
+                      <?php } ?>
+                    </div>
                 </div>
               </div>
               <button class="modal__close jsModalClose">&#10005;</button>

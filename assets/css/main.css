@@ -3631,7 +3631,6 @@ section {
   position: relative;
   z-index: 9999;
   width: 50%;
-  height: 50%;
   top: 50%;
   transform: translateY(-50%);
   box-shadow: 0 0 5px #fff;
@@ -3641,7 +3640,12 @@ section {
   text-align: center;
   border-radius: 10px;
 }
-
-.modal__container p {
-  /* padding-top: 20px; */
+.modal__container img {
+  width: 40%;
 }
+.modal__container .parceiro-img {
+ width: 50%;
+}
+.modal__container .parceiro-infos {
+  width: 50%;
+ }
