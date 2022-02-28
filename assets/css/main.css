@@ -718,6 +718,56 @@ section {
   justify-content    : center;
 }
 
+.hero3 {
+  height             : 200px;
+  margin-top         : 70px;
+  width              : 100%;
+  padding            : 0;
+  background         : var(--color-primary);
+  background-size    : cover;
+  background-position: bottom;
+  background-repeat  : no-repeat;
+  position           : relative;
+  display            : flex;
+  flex-direction     : column;
+  justify-content    : center;
+}
+
+.hero3 h2 {
+  color      : white;
+  font-size  : 42px;
+  font-weight: 700;
+}
+
+.hero4 {
+  height             : 300px;
+  margin-top         : 70px;
+  width              : 100%;
+  padding            : 0;
+  background         : var(--color-primary);
+  background-size    : cover;
+  background-position: top;
+  background-repeat  : no-repeat;
+  position           : relative;
+  display            : flex;
+  flex-direction     : column;
+  justify-content    : center;
+}
+
+.hero4 h2 {
+  color      : white;
+  text-shadow: 1px 1px 1px black;
+  font-size  : 42px;
+  font-weight: 700;
+}
+
+.hero4 h5 {
+  color      : white;
+  text-shadow: 1px 1px 1px black;
+  font-size  : 32px;
+  font-weight: 700;
+}
+
 .hero .carousel-item {
   min-height         : 100vh;
   padding-top        : 25%;
@@ -3532,6 +3582,23 @@ section {
 
 .redes {
   margin-top: 50px;
+  background: var(--color-primary);
+}
+
+.redes h2 {
+  color: var(--color-white);
+}
+
+.redes .container-form {
+  background-color: var(--color-white);
+  padding         : 20px;
+  border-radius   : 10px;
+}
+
+@media (max-width: 767px) {
+  .container-form {
+    width: 90%;
+  }
 }
 
 #parceiro {

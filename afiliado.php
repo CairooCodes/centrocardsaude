@@ -31,10 +31,32 @@ $URI = new URI();
 
   <link href="<?php echo $URI->base('/assets/css/main.css') ?>" rel="stylesheet">
 </head>
+<style>
+  .btn-cred {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 35px;
+    margin-top: 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    color: white;
+    background: #0079a4;
+  }
+</style>
 
 <body>
   <?php include "components/navbar-blue.php"; ?>
-  <!-- ======= Hero Section ======= -->
+  <section id="hero4" class="hero4" style="background-image: url('<?php echo $URI->base('/assets/img/topo-programa-afiliados.png') ?>');">
+    <div class="container">
+      <h2>PROGRAMA DE AFILIADOS</h2>
+      <h5>Crie gratuitamente sua conta de afiliado e tenha renda extra</h5>
+      <button type="submit" class="btn btn-cred">CADASTRE-SE</button>
+    </div>
+  </section><!-- End Hero Section -->
   <section id="parceiro" class="section-bg">
     <div class="container">
       <div class="section-header">
@@ -84,7 +106,7 @@ $URI = new URI();
     </div>
   </section>
   </main><!-- End #main -->
-  
+
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
   <?php include "components/footer.php"; ?>
   <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>

@@ -50,7 +50,7 @@ $URI = new URI();
 
     </div>
 
-    <div class="container">
+    <div class="container container-form">
       <table id="example" class="display" style="width:100%">
         <thead>
           <tr>
@@ -63,7 +63,7 @@ $URI = new URI();
         </thead>
         <tbody>
           <?php
-          $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
+          $stmt = $DB_con->prepare('SELECT * FROM specialties ORDER BY id ASC');
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
