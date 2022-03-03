@@ -57,18 +57,19 @@ $URI = new URI();
       <button type="submit" class="btn btn-cred">CADASTRE-SE</button>
     </div>
   </section><!-- End Hero Section -->
-  <section id="parceiro" class="section-bg">
+  <section id="afiliado" class="section-bg">
     <div class="container">
       <div class="section-header">
-        <h2>QUEM PODE SE CREDENCIAR?</h2>
+        <h2>Muito fácil compartilhar e faturar</h2>
       </div>
       <div class="row gy-5 gx-lg-5 justify-content-center">
         <div class="col-xl-3 col-md-3">
           <div class="cred-item">
             <div class="img" style="background-image: url('assets/img/medicos.jpg');">
             </div>
-            <div class="d-flex align-items-center details position-relative">
-              <p>Médicos e dentistas de todas as especialidades.</p>
+            <div class="details position-relative">
+              <h3>CADASTRE SEUS DADOS</h3>
+              <p>Insira seus dados e começe a fazer parte dos afiliados</p>
             </div>
           </div>
         </div>
@@ -102,7 +103,7 @@ $URI = new URI();
       </div>
     </div>
     <div class="text-center mt-auto">
-      <a href="<?php echo $URI->base('/credenciamento') ?>" class="btn-parceiro">CADASTRE-SE AGORA</a>
+      <a href="<?php echo $URI->base('/credenciamento') ?>" class="btn-afiliado">CADASTRE-SE AGORA</a>
     </div>
   </section>
   </main><!-- End #main -->

@@ -3618,6 +3618,18 @@ section {
   border       : 1px solid var(--color-primary);
 }
 
+#afiliado .btn-afiliado {
+  margin-top   : 40px;
+  display      : inline-block;
+  padding      : 12px 40px;
+  border-radius: 6px;
+  color        : var(--color-primary);
+  transition   : none;
+  font-size    : 16px;
+  font-weight  : 700;
+  transition   : 0.3s;
+  border       : 1px solid var(--color-primary);
+}
 .btn-benefit {
   margin-top   : 10px;
   position     : absolute;
