@@ -64,39 +64,32 @@ $URI = new URI();
       </div>
       <div class="row gy-5 gx-lg-5 justify-content-center">
         <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/medicos.jpg');">
+          <div class="afiliado-item">
+            <div class="img" style="background-image: url('assets/img/usando-PC-2-1.jpg');">
             </div>
             <div class="details position-relative">
-              <h3>CADASTRE SEUS DADOS</h3>
+              <h3>Cadastre-se</h3>
               <p>Insira seus dados e começe a fazer parte dos afiliados</p>
             </div>
           </div>
         </div>
         <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/laboratorios.jpg');">
+          <div class="afiliado-item">
+            <div class="img" style="background-image: url('assets/img/Blog-Arquivo-Link-de-Afiliado-720x400px.png');">
             </div>
-            <div class="d-flex align-items-center  algim-itens-center details position-relative">
-              <p>Laboratórios e clínicas preparadas para os mais diversos tipos de exames diagnósticos.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/gallery-5.jpg');">
-            </div>
-            <div class="d-flex align-items-center  algim-itens-center details position-relative">
-              <p>Profissionais de saúde complementar, como psicólogos, fonoaudiólogos e outros.</p>
+            <div class="details position-relative">
+              <h3>Divulgue seu link</h3>
+              <p>Compartilhe seu link, em suas redes sociais para mais chances</p>
             </div>
           </div>
         </div>
         <div class="col-xl-3 col-md-3">
-          <div class="cred-item">
-            <div class="img" style="background-image: url('assets/img/gallery-7.jpg');">
+          <div class="afiliado-item">
+            <div class="img" style="background-image: url('assets/img/Posso-receber-o-beneficioa.jpg');">
             </div>
-            <div class="d-flex align-items-center  algim-itens-center details position-relative">
-              <p>Empresas que comercializam produtos relacionados à saúde, bem-estar e beleza.</p>
+            <div class="details position-relative">
+              <h3>Receba suas recompensas</h3>
+              <p>Toda compra realizada pelo seu link gera comissão para você</p>
             </div>
           </div>
         </div>
