@@ -53,7 +53,7 @@ $URI = new URI();
       <div class="row gy-5 gx-lg-5 justify-content-center">
         <div class="col-xl-4 col-md-6">
           <div class="rede-item">
-            <div class="img" style="background-image: url('assets/img/logo.jpg');">
+            <div class="img" style="background-image: url('assets/img/icon-semfundo.png');">
             </div>
             <div class="details position-relative">
               <a href="busca-rede-centrocard" class="stretched-link">
@@ -83,52 +83,6 @@ $URI = new URI();
 
     </div>
   </section><!-- End Contact Section -->
-
-  <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container">
-
-      <div class="section-header">
-        <h2>Contato</h2>
-        <p>Preencha o formulário abaixo e tenha atendimento especializado</p>
-      </div>
-
-    </div>
-
-    <div class="container">
-
-      <div class="row gy-5 gx-lg-5 justify-content-center">
-
-        <div class="col-lg-8">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-              </div>
-            </div>
-            <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-            </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control" name="message" placeholder="Mensagem" required></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button class="btn" type="submit">Enviar Mensagem</button></div>
-          </form>
-        </div><!-- End Contact Form -->
-
-      </div>
-
-    </div>
-  </section><!-- End Contact Section -->
-
   </main><!-- End #main -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>

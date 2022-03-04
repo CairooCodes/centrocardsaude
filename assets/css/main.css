@@ -296,6 +296,13 @@ section {
   }
 }
 
+@media (max-width: 767px) {
+
+  .header.sticked .navbar a {
+    color: var(--color-white);
+  }
+}
+
 /*--------------------------------------------------------------
 # Desktop Navigation 
 --------------------------------------------------------------*/
@@ -844,7 +851,7 @@ section {
 
 @media (max-width: 767px) {
   .hero h2 {
-    font-size: 70px;
+    font-size: 50px;
   }
 
   .hero2 {
@@ -3698,6 +3705,7 @@ section {
   transition   : 0.3s;
   border       : 1px solid var(--color-primary);
 }
+
 .btn-benefit {
   margin-top   : 10px;
   position     : absolute;

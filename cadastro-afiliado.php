@@ -50,53 +50,59 @@ $URI = new URI();
 
 <body>
   <?php include "components/navbar-blue.php"; ?>
-  <section id="hero4" class="hero4" style="background-image: url('<?php echo $URI->base('/assets/img/topo-programa-afiliados.png') ?>');">
+  <section id="hero3" class="hero3">
     <div class="container">
-      <h2>PROGRAMA DE AFILIADOS</h2>
-      <h5>Crie gratuitamente sua conta de afiliado e tenha renda extra</h5>
-      <button type="submit" class="btn btn-cred">CADASTRE-SE</button>
+      <h2>CADASTRO AFILIADO</h2>
     </div>
   </section><!-- End Hero Section -->
-  <section id="afiliado" class="section-bg">
+  <section>
     <div class="container">
-      <div class="section-header">
-        <h2>Muito fácil compartilhar e faturar</h2>
-      </div>
-      <div class="row gy-5 gx-lg-5 justify-content-center">
-        <div class="col-xl-3 col-md-3">
-          <div class="afiliado-item">
-            <div class="img" style="background-image: url('assets/img/usando-PC-2-1.jpg');">
-            </div>
-            <div class="details position-relative">
-              <h3>Cadastre-se</h3>
-              <p>Insira seus dados e começe a fazer parte dos afiliados</p>
-            </div>
-          </div>
+      <form class="row g-3 bg-white">
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Nome Completo</label>
+          <input type="text" class="form-control" id="inputAddress">
         </div>
-        <div class="col-xl-3 col-md-3">
-          <div class="afiliado-item">
-            <div class="img" style="background-image: url('assets/img/Blog-Arquivo-Link-de-Afiliado-720x400px.png');">
-            </div>
-            <div class="details position-relative">
-              <h3>Divulgue seu link</h3>
-              <p>Compartilhe seu link, em suas redes sociais para mais chances</p>
-            </div>
-          </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Whats-App</label>
+          <input type="text" class="form-control" id="inputAddress2">
         </div>
-        <div class="col-xl-3 col-md-3">
-          <div class="afiliado-item">
-            <div class="img" style="background-image: url('assets/img/Posso-receber-o-beneficioa.jpg');">
-            </div>
-            <div class="details position-relative">
-              <h3>Receba suas recompensas</h3>
-              <p>Toda compra realizada pelo seu link gera comissão para você</p>
-            </div>
-          </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Email</label>
+          <input type="text" class="form-control" id="inputAddress2">
         </div>
-      </div>
-    </div>
-    <div class="text-center mt-auto">
-      <a href="<?php echo $URI->base('/cadastro-afiliado') ?>" class="btn-afiliado">CADASTRE-SE AGORA</a>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="inputAddress">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Bairro</label>
+          <input type="text" class="form-control" id="inputAddress2">
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Cidade</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-6">
+          <label for="inputZip" class="form-label">Estado
+          </label>
+          <input type="text" class="form-control" id="inputZip">
+        </div>
+        <h2>Segurança</h2>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Login
+          </label>
+          <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">
+            Senha
+          </label>
+          <input type="password" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-cred">CADASTRE-SE</button>
+        </div>
+      </form>
     </div>
   </section>
   </main><!-- End #main -->

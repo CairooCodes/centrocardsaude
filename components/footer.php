@@ -16,20 +16,19 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>centrocardsaude.com.br</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Benefícios</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">FAQ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Credenciamento</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Autorizador</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/home') ?>">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/#services') ?>">Benefícios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/afiliado') ?>">Afiliado</a></li>
             </ul>
           </div>
 
           <div class="col-lg-5 col-md-6 footer-links">
             <h4>Planos</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Essencial</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Gold</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Plano Platinum</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/plano/essencial') ?>">Plano Essencial</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/plano/gold') ?>">Plano Gold</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/plano/platinum') ?>">Plano Platinum</a></li>
             </ul>
           </div>
         </div>
