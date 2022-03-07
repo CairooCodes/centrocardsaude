@@ -86,7 +86,7 @@ endif;
 
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-bag-fill"></i>
+                      <i class="bi bi-bag-plus-fill"></i>
                       </div>
                       <div class="ps-3">
                         <h6>3</h6>
@@ -117,11 +117,11 @@ endif;
                 </div> -->
 
                 <div class="card-body">
-                  <h5 class="card-title">Leads</span></h5>
+                  <h5 class="card-title">Benefícios</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="fas fa-comment-alt"></i>
+                    <i class="bi bi-plus-circle-fill"></i>
                     </div>
                     <div class="ps-3">
                       <h6>15</h6>
@@ -159,8 +159,6 @@ endif;
                     </div>
                     <div class="ps-3">
                       <h6>15</h6>
-                      <span class="text-danger small pt-1 fw-bold">+2</span> <span class="text-muted small pt-2 ps-1">novos usuários</span>
-
                     </div>
                   </div>
 

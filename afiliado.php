@@ -13,9 +13,13 @@ $URI = new URI();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>CENTROCARD SAÚDE</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>AFILIADO CENTROCARD SAÚDE</title>
+  <meta name="description" content="CENTROCARD SAÚDE - Solução inteligente em saúde e benefícios" />
+  <meta content="CENTROCARD, SAÚDE, Solução inteligente" name="keywords">
+  <meta property="og:title" content="CENTROCARD SAÚDE" />
+  <meta property="og:url" content="https://centrocardsaude.com.br/" />
+  <meta property="og:image" content="https://centrocardsaude.com.br/assets/img/logo.jpg" />
+
   <link href="./assets/img/icon-semfundo.png" rel="icon">
   <link href="./assets/img/icon-semfundo.png" rel="apple-touch-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">

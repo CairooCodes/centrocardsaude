@@ -221,9 +221,14 @@ section {
 --------------------------------------------------------------*/
 
 .header-blue .navbar a {
-  color: var(--color-black);
+  color: black;
 }
 
+@media screen and (max-width: 768px) {
+  .header-blue .navbar a {
+    color: white;
+  }
+}
 .header-blue .btn-getstarted,
 .header-blue .btn-getstarted:focus {
   color     : var(--color-white) !important;
@@ -293,6 +298,7 @@ section {
   .header .btn-getstarted,
   .header .btn-getstarted:focus {
     margin-right: 50px;
+    margin-left: 20px;
   }
 }
 
@@ -1413,8 +1419,8 @@ section {
   margin-bottom: 60px;
 }
 
-.cta .container {
-  padding      : 80px;
+.cta .content-cta {
+  padding      : 40px;
   background   : rgba(var(--color-secondary-rgb), 0.1);
   border-radius: 15px;
 }
@@ -1423,17 +1429,20 @@ section {
   .cta {
     padding: 60px 0px 0px 0px;
   }
+
+  .cta .content h3 {
+    font-size  : 48px;
+  }
 }
 
 @media (max-width: 992px) {
-  .cta .container {
-    padding: 60px;
+  .cta .content h3 {
+    font-size  : 32px;
   }
 }
 
 .cta .content h3 {
   color      : var(--color-secondary);
-  font-size  : 48px;
   font-weight: 700;
 }
 
@@ -2004,6 +2013,7 @@ section {
 }
 
 .services .details .icon {
+  padding:10px;
   margin         : 0;
   width          : 72px;
   height         : 72px;

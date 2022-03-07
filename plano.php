@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[4];
+$idPost = $url[3];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -22,10 +22,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Plano <?php echo $post ?> CENTROCARD SAÚDE</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
+  <title>PLANO <?php echo $post ?> CENTROCARD SAÚDE</title>
+  <meta name="description" content="CENTROCARD SAÚDE - Solução inteligente em saúde e benefícios" />
+  <meta content="CENTROCARD, SAÚDE, Solução inteligente" name="keywords">
+  <meta property="og:title" content="CENTROCARD SAÚDE" />
+  <meta property="og:url" content="https://centrocardsaude.com.br/" />
+  <meta property="og:image" content="https://centrocardsaude.com.br/assets/img/logo.jpg" />
   <!-- Favicons -->
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="icon">
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="apple-touch-icon">
@@ -162,7 +164,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                           </div>
                           <div class="details2 position-relative">
                             <div class="icon">
-                              <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                              <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
                             <a href="#" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
@@ -192,7 +194,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                           </div>
                           <div class="details position-relative">
                             <div class="icon">
-                              <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                              <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
                             <a href="#" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
@@ -219,7 +221,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                           </div>
                           <div class="details position-relative">
                             <div class="icon">
-                              <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                              <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
                             <a href="#" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>

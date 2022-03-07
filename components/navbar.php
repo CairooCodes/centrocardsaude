@@ -28,11 +28,12 @@
             <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Credenciado</a></li>
           </ul>
         </li>
+        <li><a class="d-md-none d-block btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
 
-    <a class="btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a>
+    <a class="d-none d-md-block btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a>
 
   </div>
 </header><!-- End Header -->

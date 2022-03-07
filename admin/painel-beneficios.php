@@ -26,7 +26,7 @@ if (isset($_GET['delete_id'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Planos / Painel Administrativo</title>
+  <title>Benefícios / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,16 +60,16 @@ if (isset($_GET['delete_id'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Planos</h1>
+      <h1>Benefícios</h1>
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-            <li class="breadcrumb-item active">Planos</li>
+            <li class="breadcrumb-item active">Benefícios</li>
           </ol>
         </nav>
         <a href="add-plano.php">
-          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
+          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Benefício</button>
         </a>
       </div>
     </div><!-- End Page Title -->
@@ -77,7 +77,7 @@ if (isset($_GET['delete_id'])) {
     <section class="section">
       <div class="row">
         <?php
-        $stmt = $DB_con->prepare('SELECT * FROM plans ORDER BY id DESC');
+        $stmt = $DB_con->prepare('SELECT * FROM benefits ORDER BY id DESC');
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -87,15 +87,14 @@ if (isset($_GET['delete_id'])) {
             <div class="col-lg-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title text-center"><?php echo $name; ?></h5>
+                  <h5 class="card-title text-center"><?php echo $benefit; ?></h5>
+                  <img class="img-fluid" src="./uploads/beneficios/<?php echo $row['img_2']; ?>">
                   <div class="row">
-                    <div class="col-md-6">
-                      <p>Preço de Venda</p>
-                      <h5><?php echo $price; ?></h5>
-                    </div>
-                    <div class="col-md-6">
-                      <p>Preço de Compra</p>
-                      <h5><?php echo $price2; ?></h5>
+                    <div class="col-md-12">
+                      <p><?php echo $nome; ?></p>
+                      <p><?php echo $whats; ?></p>
+                      <p><?php echo $email; ?></p>
+                      <p><?php echo $msg; ?></p>
                     </div>
                   </div>
                   <div class="d-flex justify-content-between">

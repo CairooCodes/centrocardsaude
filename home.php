@@ -13,8 +13,11 @@ $URI = new URI();
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>CENTROCARD SAÚDE</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta name="description" content="CENTROCARD SAÚDE - Solução inteligente em saúde e benefícios" />
+  <meta content="CENTROCARD, SAÚDE, Solução inteligente" name="keywords">
+  <meta property="og:title" content="CENTROCARD SAÚDE" />
+  <meta property="og:url" content="https://centrocardsaude.com.br/" />
+  <meta property="og:image" content="https://centrocardsaude.com.br/assets/img/logo.jpg" />
 
   <!-- Favicons -->
   <link href="./assets/img/icon-semfundo.png" rel="icon">
@@ -96,7 +99,7 @@ $URI = new URI();
                 <div class="col-lg-9 text-center">
                   <h2><?php echo $name; ?></h2>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-6 col-lg-4 text-center">
                   <p><?php echo $description; ?></p>
                 </div>
                 <?php if ($add_button == '1') { ?>
@@ -142,13 +145,13 @@ $URI = new URI();
 
     <!-- ======= Call To Action Section ======= -->
     <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-out">
+      <div class="container content-cta" data-aos="zoom-out">
 
         <div class="row g-5">
 
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
             <h3>Solução inteligente em saúde e benefícios</h3>
-            <p> Nossos planos oferecem uma solução completa em saúde, benefícios e proteção, , oferecendo desde disponibilidade médica de 24h e rede de descontos em consultas até assistência funeral familiar e nutricional. Saiba qual o plano ideal para você.</p>
+            <p> Nossos planos oferecem uma solução completa em saúde, benefícios e proteção, oferecendo desde disponibilidade médica de 24h e rede de descontos em consultas até assistência funeral familiar e nutricional. Saiba qual o plano ideal para você.</p>
             <a class="cta-btn align-self-start" href="#">Conheça agora</a>
           </div>
 
@@ -300,7 +303,7 @@ $URI = new URI();
                   </div>
                   <div class="details position-relative">
                     <div class="icon">
-                      <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                      <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                     </div>
                     <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="stretched-link">
                       <h3><?php echo $benefit; ?></h3>
@@ -504,7 +507,7 @@ $URI = new URI();
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
-  <div id="preloader"></div>
+  <!-- <div id="preloader"></div> -->
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

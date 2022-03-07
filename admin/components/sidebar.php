@@ -4,27 +4,33 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="painel-controle.php">
           <i class="bi bi-grid"></i>
           <span>Painel Administrativo</span>
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="painel-planos.php">
-          <i class="bi bi-bag-fill"></i>
+        <i class="bi bi-bag-plus-fill"></i>
           <span>Planos</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="fas fa-align-justify"></i>
-          <span>Leads</span>
+        <a class="nav-link collapsed" href="painel-beneficios.php">
+        <i class="bi bi-plus-circle-fill"></i>
+          <span>Benefícios</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-briefcase-fill"></i>
-          <span>Serviços</span>
+        <a class="nav-link collapsed" href="painel-banners.php">
+          <i class="fas fa-images"></i>
+          <span>Banners</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="painel-leads.php">
+          <i class="fas fa-align-justify"></i>
+          <span>Leads</span>
         </a>
       </li>
       <!-- <li class="nav-heading">Pages</li> -->
@@ -44,13 +50,6 @@
         <a class="nav-link collapsed" href="pages-faq.html">
           <i class="fas fa-question"></i>
           <span>F.A.Q</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="fas fa-images"></i>
-          <span>Banners</span>
         </a>
       </li>
 

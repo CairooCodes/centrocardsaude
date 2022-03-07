@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[4];
+$idPost = $url[3];
 
 $stmt = $DB_con->prepare("SELECT id,benefit FROM benefits where id='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -22,9 +22,11 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title><?php echo $post ?> CENTROCARD SAÚDE</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
+  <meta name="description" content="CENTROCARD SAÚDE - Solução inteligente em saúde e benefícios" />
+  <meta content="CENTROCARD, SAÚDE, Solução inteligente" name="keywords">
+  <meta property="og:title" content="CENTROCARD SAÚDE" />
+  <meta property="og:url" content="https://centrocardsaude.com.br/" />
+  <meta property="og:image" content="https://centrocardsaude.com.br/assets/img/logo.jpg" />
   <!-- Favicons -->
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="icon">
   <link href="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" rel="apple-touch-icon">
@@ -63,7 +65,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             <div class="row align-items-center pt-4">
               <div class="col-3 col-md-2">
                 <div class="icon-benefit">
-                  <img src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
+                  <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                 </div>
               </div>
               <div class="col-12 col-md-10 pt-2">
