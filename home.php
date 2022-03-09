@@ -151,7 +151,7 @@ $URI = new URI();
 
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
             <h3>Solução inteligente em saúde e benefícios</h3>
-            <p> Nossos planos oferecem uma solução completa em saúde, benefícios e proteção, oferecendo desde disponibilidade médica de 24h e rede de descontos em consultas até assistência funeral familiar e nutricional. Saiba qual o plano ideal para você.</p>
+            <p>Nossos planos oferecem uma solução completa em saúde, benefícios e proteção, oferecendo médico online 24 horas, rede de descontos em saúde, desconto farmácia, seguros e vários outros benefícios para você, sua família ou sua empresa.</p>
             <a class="cta-btn align-self-start" href="#">Conheça agora</a>
           </div>
 
@@ -196,8 +196,10 @@ $URI = new URI();
                       <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
                       <li class="na"><i class="bi bi-x"></i> <span>Assistência Farmacêutica </span></li>
                       <li class="na"><i class="bi bi-x"></i> <span>Assistência Personal Fitness</span></li>
+                      <div class="text-center mt-auto">
+                      <a href="#" class="buy-btn2">Compre agora</a>
+                    </div>
                     </ul>
-
                     <div class="text-center mt-auto">
                       <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
@@ -224,6 +226,9 @@ $URI = new URI();
                       <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                      <div class="text-center mt-auto">
+                      <a href="#" class="buy-btn2">Compre agora</a>
+                    </div>
                     </ul>
                     <div class="text-center mt-auto">
                       <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
@@ -251,6 +256,9 @@ $URI = new URI();
                       <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
                       <li class="na"><i class="bi bi-x"></i> <span>Conta Saúde </span></li>
                       <li class="na"><i class="bi bi-x"></i> <span> Especialidades Médicas</span></li>
+                      <div class="text-center mt-auto">
+                      <a href="#" class="buy-btn2">Compre agora</a>
+                    </div>
                     </ul>
 
                     <div class="text-center mt-auto">

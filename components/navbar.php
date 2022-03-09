@@ -21,19 +21,18 @@
         <!-- <li><a class="nav-link scrollto">Afiliado</a></li> -->
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home#recent-blog-posts') ?>">Blog</a></li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
-        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/buscar.php') ?>">Buscar <i class="bi bi-search"></i></a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/buscar.php') ?>">Rede de Descontos <i class="bi bi-search"></i></a></li>
         <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-box-arrow-in-right"></i></a>
           <ul>
             <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Cliente</a></li>
             <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Credenciado</a></li>
           </ul>
         </li>
-        <li><a class="d-md-none d-block btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
 
-    <a class="d-none d-md-block btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a>
+    <a class="btn-getstarted scrollto" href="<?php echo $URI->base('/home#pricing') ?>">COMPRE AGORA</a>
 
   </div>
 </header><!-- End Header -->
