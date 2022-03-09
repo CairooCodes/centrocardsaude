@@ -11,7 +11,7 @@ error_reporting(~E_ALL);
 
 if (isset($_GET['delete_id'])) {
   // it will delete an actual record from db
-  $stmt_delete = $DB_con->prepare('DELETE FROM plans WHERE id =:uid');
+  $stmt_delete = $DB_con->prepare('DELETE FROM leads WHERE id =:uid');
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
@@ -64,7 +64,7 @@ if (isset($_GET['delete_id'])) {
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
             <li class="breadcrumb-item active">Leads</li>
           </ol>
         </nav>

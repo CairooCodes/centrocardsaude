@@ -11,7 +11,7 @@ error_reporting(~E_ALL);
 
 if (isset($_GET['delete_id'])) {
   // it will delete an actual record from db
-  $stmt_delete = $DB_con->prepare('DELETE FROM plans WHERE id =:uid');
+  $stmt_delete = $DB_con->prepare('DELETE FROM banners WHERE id =:uid');
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
@@ -64,7 +64,7 @@ if (isset($_GET['delete_id'])) {
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
             <li class="breadcrumb-item active">Banners</li>
           </ol>
         </nav>
@@ -89,14 +89,6 @@ if (isset($_GET['delete_id'])) {
                 <div class="card-body">
                   <h5 class="card-title text-center"><?php echo $name; ?></h5>
                   <img class="img-fluid" src="./uploads/banners/<?php echo $row['img_1']; ?>">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p><?php echo $nome; ?></p>
-                      <p><?php echo $whats; ?></p>
-                      <p><?php echo $email; ?></p>
-                      <p><?php echo $msg; ?></p>
-                    </div>
-                  </div>
                   <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-success">Editar</button>
                     <button type="button" class="btn btn-danger">Excluir</button>

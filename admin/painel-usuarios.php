@@ -11,7 +11,7 @@ error_reporting(~E_ALL);
 
 if (isset($_GET['delete_id'])) {
   // it will delete an actual record from db
-  $stmt_delete = $DB_con->prepare('DELETE FROM benefits WHERE id =:uid');
+  $stmt_delete = $DB_con->prepare('DELETE FROM users WHERE id =:uid');
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
@@ -26,7 +26,7 @@ if (isset($_GET['delete_id'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Benefícios / Painel Administrativo</title>
+  <title>Usuários / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,16 +60,16 @@ if (isset($_GET['delete_id'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Benefícios</h1>
+      <h1>Banners</h1>
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-            <li class="breadcrumb-item active">Benefícios</li>
+            <li class="breadcrumb-item active">Usuários</li>
           </ol>
         </nav>
         <a href="add-plano.php">
-          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Benefício</button>
+          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Banner</button>
         </a>
       </div>
     </div><!-- End Page Title -->
@@ -77,7 +77,7 @@ if (isset($_GET['delete_id'])) {
     <section class="section">
       <div class="row">
         <?php
-        $stmt = $DB_con->prepare('SELECT * FROM benefits ORDER BY id DESC');
+        $stmt = $DB_con->prepare('SELECT * FROM users ORDER BY id DESC');
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -87,9 +87,14 @@ if (isset($_GET['delete_id'])) {
             <div class="col-lg-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title text-center"><?php echo $benefit; ?></h5>
-                  <img class="img-fluid" src="./uploads/beneficios/<?php echo $row['img_2']; ?>">
-                  <div class="d-flex justify-content-between">
+                  <h5 class="card-title text-center"><?php echo $name; ?></h5>
+                  <?php
+                  if ($type == 1) {
+                    echo "<h5 class='card-title-2 text-center'>Administrador</h5>";
+                  }
+                  ?>
+                  <img class="img-fluid" src="./uploads/usuarios/<?php echo $row['img']; ?>">
+                  <div class="d-flex justify-content-between pt-2">
                     <button type="button" class="btn btn-success">Editar</button>
                     <button type="button" class="btn btn-danger">Excluir</button>
                   </div>
@@ -102,7 +107,7 @@ if (isset($_GET['delete_id'])) {
           ?>
           <div class="bg-yellow-500 px-4 py-4 rounded">
             <div>
-              <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
+              <p class="text-blueGray-600 font-bold">Sem Usuários Cadastrado ...</p>
             </div>
           </div>
         <?php
