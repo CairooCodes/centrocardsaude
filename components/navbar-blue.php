@@ -4,7 +4,7 @@
 
     <a href="<?php echo $URI->base('/home') ?>" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
       <!-- Uncomment the line below if you also wish to use an image logo -->
-      <img src="<?php echo $URI->base('/assets/img/icon-semfundo.png') ?>" alt="">
+      <img src="<?php echo $URI->base('/assets/img/logo-semfundo.png') ?>" alt="">
     </a>
 
     <nav id="navbar" class="navbar">
