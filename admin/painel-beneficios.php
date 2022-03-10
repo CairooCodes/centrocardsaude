@@ -89,7 +89,7 @@ if (isset($_GET['delete_id'])) {
                 <div class="card-body">
                   <h5 class="card-title text-center"><?php echo $benefit; ?></h5>
                   <img class="img-fluid" src="./uploads/beneficios/<?php echo $row['img_2']; ?>">
-                  <div class="d-flex justify-content-between">
+                  <div class="d-flex justify-content-between pt-2">
                     <button type="button" class="btn btn-success">Editar</button>
                     <button type="button" class="btn btn-danger">Excluir</button>
                   </div>

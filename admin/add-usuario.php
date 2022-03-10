@@ -16,10 +16,11 @@ if (isset($_POST['btnsave'])) {
   $pass = $_POST['pass'];
   $type = $_POST['type'];
   $whats = $_POST['whats'];
-  $user_create = $_POST['user_create'];
   $address = $_POST['address'];
+  $bairro = $_POST['bairro'];
   $city = $_POST['city'];
   $state = $_POST['state'];
+  $status = $_POST['status'];
 
   $imgFile = $_FILES['user_image']['name'];
   $tmp_dir = $_FILES['user_image']['tmp_name'];
@@ -27,9 +28,7 @@ if (isset($_POST['btnsave'])) {
 
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
-  }
-
-  else {
+  } else {
     $upload_dir = 'uploads/usuarios/'; // upload directory
     $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
 
@@ -50,7 +49,7 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO plans (name,login,email,pass,type,whats,img,user_create,address,bairro,city,state) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uuser_create,:uaddress,:ubairro,:ucity,:ustate,:upic)');
+    $stmt = $DB_con->prepare('INSERT INTO users (name,login,email,pass,type,whats,address,bairro,city,state,img,status) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uaddress,:ubairro,:ucity,:ustate,:upic,:ustatus)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':ulogin', $login);
     $stmt->bindParam(':uemail', $email);
@@ -58,11 +57,11 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':utype', $type);
     $stmt->bindParam(':upic', $userpic);
     $stmt->bindParam(':uwhats', $whats);
-    $stmt->bindParam(':uuser_create', $user_create);
     $stmt->bindParam(':uaddress', $address);
     $stmt->bindParam(':ubairro', $bairro);
     $stmt->bindParam(':ucity', $city);
     $stmt->bindParam(':ustate', $state);
+    $stmt->bindParam(':ustatus', $status);
 
     if ($stmt->execute()) {
       echo ("<script>window.location = 'painel-usuarios.php';</script>");
@@ -84,8 +83,8 @@ if (isset($_POST['btnsave'])) {
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../assets/img/logo-mit.png" rel="icon">
-  <link href="../assets/img/logo-mit.png" rel="apple-touch-icon">
+  <link href="../assets/img/icon-semfundo.png" rel="icon">
+  <link href="../assets/img/icon-semfundo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -124,7 +123,7 @@ if (isset($_POST['btnsave'])) {
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-10 justify-content-center">
 
           <div class="card">
             <div class="card-body">
@@ -139,85 +138,99 @@ if (isset($_POST['btnsave'])) {
               ?>
               <!-- Vertical Form -->
               <form method="POST" enctype="multipart/form-data" class="row">
-                <div class="col-md-4">
-                  <h5 class="card-title">Informações do Usuário</h5>
+                <div class="col-md-6">
+                  <h5 class="card-title">Informações</h5>
                   <div class="row">
-                    <div class="col-md-12 pb-3">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name"  placeholder="Nome do Plano">
-                        <label for="floatingEmail">Nome do Plano</label>
+                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome Completo">
+                        <label for="">Nome do Usuário</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $price2; ?>" name="price2"  placeholder="Preço do Plano">
-                        <label for="floatingPassword">Preço do Plano</label>
+                        <input type="text" class="form-control" value="<?php echo $email; ?>" name="email" placeholder="Email">
+                        <label for="">Email</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $price; ?>" name="price"  placeholder="Preço do Plano">
-                        <label for="floatingPassword">Preço de Venda</label>
+                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="whats" placeholder="Preço do Plano">
+                        <label for="">Telefone</label>
                       </div>
                     </div>
-                    <div class="col-12 pt-3">
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo">
+                          <option value="1">Administrador</option>
+                          <option value="2">Afiliado</option>
+                          <option value="3">Marketing</option>
+                        </select>
+                        <label for="floatingSelect">Tipo</label>
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-floating mb-3">
+                        <select name="status" class="form-select" id="floatingSelect" aria-label="Status">
+                          <option value="1">Ativado</option>
+                          <option value="2">Desativado</option>
+                        </select>
+                        <label for="floatingSelect">Status</label>
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="card-title">Login</h5>
+                  <div class="row">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea class="form-control" placeholder="Descrição do plano" value="<?php echo $description; ?>" name="description" style="height: 100px;"><?php echo $description; ?></textarea>
-                        <label for="floatingTextarea">Descrição</label>
+                        <input type="text" class="form-control" value="<?php echo $login; ?>" name="login" placeholder="Login do Usuário">
+                        <label for="">Login do Usuário</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="password" class="form-control" value="<?php echo $pass; ?>" name="pass" placeholder="Senha do Usuário">
+                        <label for="">Senha do Usuário</label>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-8">
-                  <h5 class="card-title">Benefícios</h5>
+                <div class="col-md-6">
+                  <h5 class="card-title">Localização</h5>
                   <div class="row">
-                    <div class="col-6 pb-2">
-                      <div class="file-loading">
-                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $address; ?>" name="address" placeholder="Endereço">
+                        <label for="">Endereço</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <textarea class="form-control" value="<?php echo $b1; ?>" name="b1" style="height: 100px;"></textarea>
-                        <label for="floatingTextarea">Benefício 1</label>
+                        <input type="text" class="form-control" value="<?php echo $bairro; ?>" name="bairro" placeholder="Email">
+                        <label for="">Bairro</label>
                       </div>
                     </div>
-                    <div class="col-6 pb-2">
-                      <div class="file-loading">
-                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image2" accept="image/*">
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $city; ?>" name="city" placeholder="Cidade">
+                        <label for="">Cidade</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <textarea class="form-control" value="<?php echo $b2; ?>" name="b2" style="height: 100px;"></textarea>
-                        <label for="floatingTextarea">Benefício 1</label>
-                      </div>
-                    </div>
-                    <div class="col-6 pb-2">
-                      <div class="file-loading">
-                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <textarea class="form-control" value="<?php echo $b3; ?>" name="b3" style="height: 100px;"></textarea>
-                        <label for="floatingTextarea">Benefício 3</label>
-                      </div>
-                    </div>
-                    <div class="col-6 pb-2">
-                      <div class="file-loading">
-                        <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image4" accept="image/*">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <textarea class="form-control" value="<?php echo $b4; ?>" name="b4" style="height: 100px;"></textarea>
-                        <label for="floatingTextarea">Benefício 4</label>
+                        <input type="text" class="form-control" value="<?php echo $state; ?>" name="state" placeholder="Estado">
+                        <label for="">Estado</label>
                       </div>
                     </div>
                   </div>
+                  <h5 class="card-title">Imagens</h5>
+                  <div class="row">
+                    <div class="file-loading">
+                      <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                    </div>
+                  </div>
                 </div>
-                <div class="text-center">
+                <div class="text-center pt-2">
                   <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
                   <button type="reset" class="btn btn-secondary">Resetar</button>
                 </div>
