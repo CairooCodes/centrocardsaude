@@ -60,390 +60,336 @@ endif;
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <a href="painel-planos.php">
-                <div class="card info-card sales-card">
-
-                  <!-- <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div> -->
-
+            <!-- Planos Card -->
+            <?php
+            if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 2) or ($_SESSION['type'] == 3)) {
+            ?>
+              <div class="col-xxl-4 col-md-6">
+                <a href="painel-planos.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Planos</h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-bag-plus-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>
+                            <?php
+                            $sth = $DB_con->prepare('SELECT count(*) as total from plans');
+                            $sth->execute();
+                            print_r($sth->fetchColumn());
+                            ?>
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div><!-- End Sales Card -->
+              <!-- Revenue Card -->
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card revenue-card">
                   <div class="card-body">
-                    <h5 class="card-title">Planos</h5>
+                    <h5 class="card-title">Benefícios</span></h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-plus-circle-fill"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>15</h6>
+                        <span class="text-success small pt-1 fw-bold">+7</span> <span class="text-muted small pt-2 ps-1">novos leads</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-md-6">
+                <div class="card info-card revenue-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Material</span></h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-book-fill"></i>
+                      </div>
+                      <div class="ps-3">
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php
+            }
+            ?>
+            <!-- Customers Card -->
+            <?php
+            if ($_SESSION['type'] == 1) {
+            ?>
+              <div class="col-xxl-4 col-xl-12">
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Usuários/Afiliados</span></h5>
 
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-bag-plus-fill"></i>
+                        <i class="bi bi-people"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>3</h6>
-                        <!-- <span class="text-success small pt-1 fw-bold">+5</span> <span class="text-muted small pt-2 ps-1">novos produtos</span> -->
+                        <h6>15</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div><!-- End Customers Card -->
+            <?php
+            }
+            ?>
+             <?php
+            if ($_SESSION['type'] == 4) {
+            ?>
+              <div class="col-xxl-4 col-xl-12">
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">TELEMEDICINA</span></h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>15</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">CARTEIRA DIGITAL</span></h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>15</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">CONTRATO</span></h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>15</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">MANUEL/REGULAMENTOS</span></h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>15</h6>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                <div class="card info-card customers-card">
+                  <div class="card-body">
+                    <h5 class="card-title">CONTATOS</span></h5>
+
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>15</h6>
                       </div>
                     </div>
                   </div>
-
                 </div>
-              </a>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <!-- <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div> -->
-
-                <div class="card-body">
-                  <h5 class="card-title">Benefícios</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-plus-circle-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>15</h6>
-                      <span class="text-success small pt-1 fw-bold">+7</span> <span class="text-muted small pt-2 ps-1">novos leads</span>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-            </div><!-- End Revenue Card -->
+            <?php
+            }
+            ?>
+            <?php
+            if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 2) or ($_SESSION['type'] == 3)) {
+            ?>
+              <!-- Leads de vendas -->
+              <div class="col-12">
+                <div class="card recent-sales">
 
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filtro</h6>
+                      </li>
 
-              <div class="card info-card customers-card">
-                <!-- <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div> -->
-
-                <div class="card-body">
-                  <h5 class="card-title">Usuários/Afiliados</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>15</h6>
-                    </div>
+                      <li><a class="dropdown-item" href="#">Todos</a></li>
+                      <li><a class="dropdown-item" href="#">Semana</a></li>
+                      <li><a class="dropdown-item" href="#">Mês</a></li>
+                    </ul>
                   </div>
 
-                </div>
-              </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Leads de vendas</h5>
 
-            </div><!-- End Customers Card -->
+                    <table class="table table-borderless datatable">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Plano</th>
+                          <th scope="col">Afiliado</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        if ($_SESSION['type'] == 2) {
+                        ?>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT id, nome, whats,email,opc,data_envio,tipo,dv,status,plan FROM leads where dv='$_SESSION[login]' and tipo='1' ORDER BY id DESC");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <tr>
+                                <th scope="row"><a href="#"><?php echo $id; ?></a></th>
+                                <td>Cairo Felipe</td>
+                                <td><a href="#" class="text-primary"></a><?php echo $plan; ?></td>
+                                <td><?php echo $dv; ?></td>
+                                <?php
+                                if ($status == 1) {
+                                ?>
+                                  <td><span class="badge bg-light text-black">Pendente</span></td>
+                                <?php } ?>
+                              </tr>
+                            <?php
+                            }
+                          } else {
+                            ?>
+                            <div class="pt-4 col-xs-12">
+                              <div class="alert alert-danger">
+                                Sem Lead Cadastrado ...
+                              </div>
+                            </div>
+                        <?php
+                          }
+                        }
+                        ?>
+                      </tbody>
+                    </table>
 
-            <!-- Leads de vendas -->
-            <div class="col-12">
-              <div class="card recent-sales">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtro</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Todos</a></li>
-                    <li><a class="dropdown-item" href="#">Semana</a></li>
-                    <li><a class="dropdown-item" href="#">Mês</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Leads de vendas</h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Plano</th>
-                        <th scope="col">Afiliado</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#0001</a></th>
-                        <td>Cairo Felipe</td>
-                        <td><a href="#" class="text-primary">Plano Gold</a></td>
-                        <td>Cairo</td>
-                        <td><span class="badge bg-success">Aprovado</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#0002</a></th>
-                        <td>Cairo Felipe</td>
-                        <td><a href="#" class="text-primary">Plano Essencial</a></td>
-                        <td>Sem Afiliado</td>
-                        <td><span class="badge bg-warning">Pendente</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#0003</a></th>
-                        <td>Cairo Felipe</td>
-                        <td><a href="#" class="text-primary">Plano Gold</a></td>
-                        <td>Felipe</td>
-                        <td><span class="badge bg-danger">Rejeitado</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  </div>
 
                 </div>
+              </div><!-- End Recent Sales -->
 
-              </div>
-            </div><!-- End Recent Sales -->
+              <!-- Leads do site -->
+              <div class="col-12">
+                <div class="card recent-sales">
 
-            <!-- Leads do site -->
-            <div class="col-12">
-              <div class="card recent-sales">
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filtro</h6>
+                      </li>
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filtro</h6>
-                    </li>
+                      <li><a class="dropdown-item" href="#">Todos</a></li>
+                      <li><a class="dropdown-item" href="#">Semana</a></li>
+                      <li><a class="dropdown-item" href="#">Mês</a></li>
+                    </ul>
+                  </div>
 
-                    <li><a class="dropdown-item" href="#">Todos</a></li>
-                    <li><a class="dropdown-item" href="#">Semana</a></li>
-                    <li><a class="dropdown-item" href="#">Mês</a></li>
-                  </ul>
+                  <div class="card-body">
+                    <h5 class="card-title">Leads do Site</h5>
+
+                    <table class="table table-borderless datatable">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Nome</th>
+                          <th scope="col">Plano</th>
+                          <th scope="col">Afiliado</th>
+                          <th scope="col">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        if ($_SESSION['type'] == 2) {
+                        ?>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT id, nome, whats,email,opc,data_envio,tipo,dv,status,plan FROM leads where dv='$_SESSION[login]' and tipo='2' ORDER BY id DESC");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <tr>
+                                <th scope="row"><a href="#"><?php echo $id; ?></a></th>
+                                <td>Cairo Felipe</td>
+                                <td><a href="#" class="text-primary"></a><?php echo $plan; ?></td>
+                                <td><?php echo $dv; ?></td>
+                                <?php
+                                if ($status == 1) {
+                                ?>
+                                  <td><span class="badge bg-light text-black">Pendente</span></td>
+                                <?php } ?>
+                              </tr>
+                            <?php
+                            }
+                          } else {
+                            ?>
+                            <div class="pt-4 col-xs-12">
+                              <div class="alert alert-danger">
+                                Sem Lead Cadastrado ...
+                              </div>
+                            </div>
+                        <?php
+                          }
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                  </div>
+
                 </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Leads do Site</h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Telefone</th>
-                        <th scope="col">Mensagem</th>
-                        <th scope="col">Afiliado</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#0001</a></th>
-                        <td>Cairo Felipe</td>
-                        <td>86 99632888</td>
-                        <td>Gostaria de saber mais sobre o cartão</td>
-                        <td>Cairo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#0002</a></th>
-                        <td>Cairo Felipe</td>
-                        <td>86 99632888</td>
-                        <td>Gostaria de saber mais sobre o cartão</td>
-                        <td>Sem afiliado</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#0003</a></th>
-                        <td>Cairo Felipe</td>
-                        <td>86 99632888</td>
-                        <td>Gostaria de saber mais sobre o cartão</td>
-                        <td>Sem Afiliado</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-              </div>
-            </div><!-- End Recent Sales -->
-
+              </div><!-- End Recent Sales -->
+            <?php
+            }
+            ?>
           </div>
         </div><!-- End Left side columns -->
-
-        <!-- Right side columns -->
-        <div class="col-lg-4">
-
-          <!-- Recent Activity -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Atividades Recentes</h5>
-
-              <div class="activity">
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">32 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                  <div class="activity-content">
-                    Venda Aprovada
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">56 min</div>
-                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                  <div class="activity-content">
-                    Venda Rejeitada
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 hrs</div>
-                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                  <div class="activity-content">
-                    Novo Lead de Venda
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">1 day</div>
-                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                  <div class="activity-content">
-                    Novo Usuário
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">2 days</div>
-                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                  <div class="activity-content">
-                    Novo Acesso
-                  </div>
-                </div><!-- End activity item-->
-
-                <div class="activity-item d-flex">
-                  <div class="activite-label">4 weeks</div>
-                  <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                  <div class="activity-content">
-                    Novo Afiliado
-                  </div>
-                </div><!-- End activity item-->
-
-              </div>
-
-            </div>
-          </div><!-- End Recent Activity -->
-          <!-- Website Traffic -->
-          <div class="card">
-            <div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Today</a></li>
-                <li><a class="dropdown-item" href="#">This Month</a></li>
-                <li><a class="dropdown-item" href="#">This Year</a></li>
-              </ul>
-            </div>
-
-            <div class="card-body pb-0">
-              <h5 class="card-title">Trafégo do site</h5>
-
-              <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  echarts.init(document.querySelector("#trafficChart")).setOption({
-                    tooltip: {
-                      trigger: 'item'
-                    },
-                    legend: {
-                      top: '5%',
-                      left: 'center'
-                    },
-                    series: [{
-                      name: 'Access From',
-                      type: 'pie',
-                      radius: ['40%', '70%'],
-                      avoidLabelOverlap: false,
-                      label: {
-                        show: false,
-                        position: 'center'
-                      },
-                      emphasis: {
-                        label: {
-                          show: true,
-                          fontSize: '18',
-                          fontWeight: 'bold'
-                        }
-                      },
-                      labelLine: {
-                        show: false
-                      },
-                      data: [{
-                          value: 1048,
-                          name: 'Orgânico'
-                        },
-                        {
-                          value: 735,
-                          name: 'Pago'
-                        },
-                        {
-                          value: 580,
-                          name: 'Email'
-                        },
-                        {
-                          value: 484,
-                          name: 'Instagram'
-                        },
-                        {
-                          value: 300,
-                          name: 'Facebook'
-                        }
-                      ]
-                    }]
-                  });
-                });
-              </script>
-
-            </div>
-          </div><!-- End Website Traffic -->
-
-        </div><!-- End Right side columns -->
-
       </div>
     </section>
 

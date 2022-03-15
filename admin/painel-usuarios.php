@@ -18,6 +18,11 @@ if (isset($_GET['delete_id'])) {
   header("Location: painel-usuarios.php");
 }
 
+if ($_SESSION['type'] != 1) {
+  echo ("
+    <script type= 'text/javascript'>alert('Acesso Restrito!');</script>
+    <script>window.location = 'painel-controle.php';</script>");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -60,7 +65,7 @@ if (isset($_GET['delete_id'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Banners</h1>
+      <h1>Usuários</h1>
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
@@ -95,8 +100,11 @@ if (isset($_GET['delete_id'])) {
                   if ($type == 2) {
                     echo "<h5 class='card-title-2 text-center'>Afiliado</h5>";
                   }
+                  if ($type == 4) {
+                    echo "<h5 class='card-title-2 text-center'>Afiliado</h5>";
+                  }
                   ?>
-                  <img class="img-fluid" src="./uploads/usuarios/<?php echo $row['img']; ?>">
+                  <img class="img-fluid rounded-circle" src="./uploads/usuarios/<?php echo $row['img']; ?>" onerror="this.src='./assets/img/semperfil.png'">
                   <div class="d-flex justify-content-between pt-2">
                     <button type="button" class="btn btn-success">Editar</button>
                     <a href="?delete_id=<?php echo $row['id']; ?>">

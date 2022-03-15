@@ -165,6 +165,7 @@ if (isset($_POST['btnsave'])) {
                           <option value="1">Administrador</option>
                           <option value="2">Afiliado</option>
                           <option value="3">Marketing</option>
+                          <option value="4">Cliente</option>
                         </select>
                         <label for="floatingSelect">Tipo</label>
                       </div>
