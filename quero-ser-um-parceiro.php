@@ -41,7 +41,8 @@ $URI = new URI();
   <section id="parceiro" class="section-bg">
     <div class="container">
       <div class="section-header">
-        <h2>QUEM PODE SE CREDENCIAR?</h2>
+        <h2>Seja nosso credenciado!</h2>
+        <p>Venha fazer parte do nosso sistema de saúde inteligente e receba seus pagamentos à vista com toda segurança. Veja quem pode se credenciar:</p>
       </div>
       <div class="row gy-5 gx-lg-5 justify-content-center">
         <div class="col-xl-3 col-md-3">
@@ -87,7 +88,7 @@ $URI = new URI();
     </div>
   </section>
   </main><!-- End #main -->
-  
+
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
   <?php include "components/footer.php"; ?>
   <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>

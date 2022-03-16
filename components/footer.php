@@ -18,7 +18,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/home') ?>">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/#services') ?>">Benefícios</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Credenciamento</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/afiliado') ?>">Afiliado</a></li>
             </ul>
           </div>
