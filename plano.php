@@ -121,12 +121,10 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             <?php if ($name == 'Gold') { ?>
               <div data-aos="zoom-in" data-aos-delay="600">
                 <div class="pricing-item">
-
                   <div class="pricing-header">
                     <h3><?php echo $name; ?></h3>
                     <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
                   </div>
-
                   <ul>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
@@ -155,19 +153,41 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               <div class="section-header pt-4" style="padding-bottom:0%">
                 <h2>Benefícios</h2>
               </div>
+              <?php if (($post == 'Essencial') or  ($post == 'Gold')) { ?>
+                <div class="text-center p-4">
+                  <h5 class="lead">
+                    Pronto Atendimento em Clínica Médica 24 horas
+                  </h5>
+                  <div class="text-center mt-auto">
+                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Acesse aqui a telemedicina</a>
+                  </div>
+                </div>
+              <?php } ?>
+              <?php if ($post == 'Platinum') { ?>
+                <div class="text-center p-4">
+                  <h5 class="lead">
+                    Atendimento em Clínica Médica e Pediatria
+                  </h5>
+                  <div class="text-center mt-auto">
+                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Acesse aqui a telemedicina</a>
+                  </div>
+                  <div class="text-center mt-auto">
+                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Agendamento de especialidades médicas  </a>
+                  </div>
+                </div>
+              <?php } ?>
               <div class="row gy-5 services-container">
 
                 <?php
 
                 if ($post == 'Platinum') {
-                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits");
+                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits");
                   $stmt->execute();
                   if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       extract($row);
                 ?>
-
-                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                      <div class="col-xl-4 col-md-6 services-item">
                         <div class="service-item">
                           <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
                           </div>
@@ -180,7 +200,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $slug; ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>

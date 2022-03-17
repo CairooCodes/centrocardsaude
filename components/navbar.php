@@ -26,7 +26,7 @@
             <li><a href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
           </ul>
         </li>
-        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/beneficio/1') ?>">Telemedicina</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/beneficio/telemedicina') ?>">Telemedicina</a></li>
         <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-box-arrow-in-right"></i></a>
           <ul>
             <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Cliente</a></li>

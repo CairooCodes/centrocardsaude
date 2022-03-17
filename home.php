@@ -298,7 +298,7 @@ $URI = new URI();
         </div>
         <div class="row gy-5 services-container mt-2">
           <?php
-          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits ORDER BY id ASC');
+          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits ORDER BY id ASC');
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -313,12 +313,12 @@ $URI = new URI();
                     <div class="icon">
                       <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                     </div>
-                    <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="stretched-link">
+                    <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
                       <h3><?php echo $benefit; ?></h3>
                     </a>
                     <p><?php echo $description; ?></p>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/beneficio/' . slugify($id)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                      <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>

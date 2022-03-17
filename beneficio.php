@@ -7,11 +7,12 @@ $URI = new URI();
 $url = explode("/", $_SERVER['REQUEST_URI']);
 $idPost = $url[3];
 
-$stmt = $DB_con->prepare("SELECT id,benefit FROM benefits where id='$idPost' ORDER BY id DESC");
+$stmt = $DB_con->prepare("SELECT id,benefit,slug FROM benefits where slug='$idPost' ORDER BY id DESC");
 $stmt->execute();
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   extract($row);
   $post = $benefit;
+  $slug2 = $slug;
 }
 ?>
 <!DOCTYPE html>
@@ -50,7 +51,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <?php include "components/navbar-blue.php"; ?>
   <main>
     <?php
-    $stmt = $DB_con->prepare("SELECT * FROM benefits where benefit='$post'");
+    $stmt = $DB_con->prepare("SELECT * FROM benefits where slug='$slug2'");
     $stmt->execute();
     if ($stmt->rowCount() > 0) {
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -61,7 +62,8 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         <div class="container pt-4 info-benefit">
           <div class="col-md-6">
             <p class="lead"><?php echo $description; ?> </p>
-            <h4 class="pt-4">CONHEÇA ALGUNS DOS PRINCIPAIS SERVIÇOS</h4>
+            <h4 class="pt-4 text-uppercase">QUANDO ACIONAR O <?php echo $benefit; ?>
+            </h4>
             <div class="row align-items-center pt-4">
               <div class="col-3 col-md-2">
                 <div class="icon-benefit">
@@ -81,7 +83,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         </div>
         <div class="container box-benefift d-md-block d-none">
           <div class="col-10">
-            <h3>ACIONE SUA <?php echo $benefit; ?>:</h3>
+            <h3>ACIONE AGORA <?php echo $benefit; ?>:</h3>
             <h4 class="pt-4">LIGUE AGORA</h4>
             <h3><i class="bi bi-whatsapp"></i> 0800-0000</h3>
           </div>
