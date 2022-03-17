@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[3];
+$idPost = $url[4];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -172,7 +172,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Acesse aqui a telemedicina</a>
                   </div>
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Agendamento de especialidades médicas  </a>
+                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Agendamento de especialidades médicas </a>
                   </div>
                 </div>
               <?php } ?>
@@ -195,12 +195,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $slug; ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -210,7 +210,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   }
                 }
                 if ($post == 'Gold') {
-                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits where plan_1 = 'gold' or plan_1= 'essencial'");
+                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits where plan_1 = 'gold' or plan_1= 'essencial'");
                   $stmt->execute();
                   if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -225,10 +225,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
                             <p><?php echo $description; ?></p>
+                            <div class="text-center mt-auto">
+                              <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
                           </div>
                         </div>
                       </div><!-- End Service Item -->
@@ -237,7 +240,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   }
                 }
                 if ($post == 'Essencial') {
-                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2 FROM benefits where plan_1 = 'essencial'");
+                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits where plan_1 = 'essencial'");
                   $stmt->execute();
                   if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -252,10 +255,14 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
-                            <a href="#" class="stretched-link">
+                            <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
+
                             <p><?php echo $description; ?></p>
+                            <div class="text-center mt-auto">
+                              <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                            </div>
                           </div>
                         </div>
                       </div><!-- End Service Item -->

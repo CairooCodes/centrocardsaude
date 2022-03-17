@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[3];
+$idPost = $url[4];
 
 $stmt = $DB_con->prepare("SELECT id,benefit,slug FROM benefits where slug='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -85,7 +85,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
           <div class="col-10">
             <h3>ACIONE AGORA <?php echo $benefit; ?>:</h3>
             <h4 class="pt-4">LIGUE AGORA</h4>
-            <h3><i class="bi bi-whatsapp"></i> 0800-0000</h3>
+            <h3><i class="bi bi-whatsapp"></i> (86)99559-0009</h3>
           </div>
         </div>
     <?php

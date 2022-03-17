@@ -49,54 +49,127 @@ $URI = new URI();
 
       <div class="section-header">
         <h2>Busque em uma de nossas redes</h2>
+        <form action="#">
+          <h4 class="text-white">Escolha uma categoria</h4>
+          <div class="row justify-content-center">
+            <div class="col-md-6">
+              <select class="form-select" name="SelectOptions" id="SelectOptions" required>
+                <option value="Div1">EXAMES E DIAGNÓSTICOS</option>
+                <option value="Div2">CONSULTAS</option>
+                <option value="Div3">LABORATÓRIA</option>
+                <option value="Div4">HOSPITAIS</option>
+              </select>
+            </div>
+          </div>
+        </form>
       </div>
 
     </div>
-
-    <div class="container container-form">
-      <table id="example" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>NOME</th>
-            <th>ESPECIALIDADE</th>
-            <th>TELEFONE</th>
-            <th>CIDADE</th>
-            <th>ESTADO</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $stmt = $DB_con->prepare('SELECT * FROM specialties ORDER BY id ASC');
-          $stmt->execute();
-          if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              extract($row);
-          ?>
+    <div class="DivPai">
+      <div class="Div1">
+        <div class="container container-form">
+          <table id="example" class="display" style="width:100%">
+            <thead>
               <tr>
-                <td><?php echo $name; ?></td>
-                <td>
-                  <?php if ($esp_1 != '') { ?>
-                    <p><?php echo $esp_1; ?></p>
-                  <?php } ?>
-                </td>
-                <td><p><?php echo $tel; ?></p></td>
-                <td>TERESINA</td>
-                <td>PI</td>
+                <th>NOME</th>
+                <th>ESPECIALIDADE</th>
+                <th>TELEFONE</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
               </tr>
-          <?php
-            }
-          } ?>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th>NOME</th>
-            <th>ESPECIALIDADE</th>
-            <th>TELEFONE</th>
-            <th>CIDADE</th>
-            <th>ESTADO</th>
-          </tr>
-        </tfoot>
-      </table>
+            </thead>
+            <tbody>
+              <?php
+              $stmt = $DB_con->prepare('SELECT * FROM specialties ORDER BY id ASC');
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <tr>
+                    <td><?php echo $name; ?></td>
+                    <td>
+                      <?php if ($esp_1 != '') { ?>
+                        <p><?php echo $esp_1; ?></p>
+                      <?php } ?>
+                    </td>
+                    <td>
+                      <p><?php echo $tel; ?></p>
+                    </td>
+                    <td>TERESINA</td>
+                    <td>PI</td>
+                  </tr>
+              <?php
+                }
+              } ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>NOME</th>
+                <th>ESPECIALIDADE</th>
+                <th>TELEFONE</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="Div2">
+        <div class="container container-form">
+          <table id="example2" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>NOME</th>
+                <th>ESPECIALIDADE</th>
+                <th>TELEFONE</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $stmt = $DB_con->prepare('SELECT * FROM specialties ORDER BY id ASC');
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <tr>
+                    <td><?php echo $name; ?></td>
+                    <td>
+                      <?php if ($esp_1 != '') { ?>
+                        <p><?php echo $esp_1; ?></p>
+                      <?php } ?>
+                    </td>
+                    <td>
+                      <p><?php echo $tel; ?></p>
+                    </td>
+                    <td>TERESINA</td>
+                    <td>PI</td>
+                  </tr>
+              <?php
+                }
+              } ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>NOME</th>
+                <th>ESPECIALIDADE</th>
+                <th>TELEFONE</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="Div3">
+        LABORATORIOS
+      </div>
+      <div class="Div4">
+        HOSPITAIS
+      </div>
     </div>
   </section><!-- End Contact Section -->
 
@@ -169,6 +242,29 @@ $URI = new URI();
           url: 'assets/js/dataBr.json'
         },
         responsive: true
+      });
+    });
+  </script>
+   <script>
+    $(document).ready(function() {
+      $('#example2').DataTable({
+        language: {
+          url: 'assets/js/dataBr.json'
+        },
+        responsive: true
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      //Select para mostrar e esconder divs
+      $('#SelectOptions').on('change', function() {
+        var SelectValue = '.' + $(this).val();
+        $('.DivPai .Div1').hide();
+        $('.DivPai .Div2').hide();
+        $('.DivPai .Div3').hide();
+        $('.DivPai .Div4').hide();
+        $(SelectValue).toggle();
       });
     });
   </script>

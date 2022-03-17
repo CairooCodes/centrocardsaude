@@ -229,6 +229,7 @@ section {
     color: white;
   }
 }
+
 .header-blue .btn-getstarted,
 .header-blue .btn-getstarted:focus {
   color     : var(--color-white) !important;
@@ -298,8 +299,8 @@ section {
   .header .btn-getstarted,
   .header .btn-getstarted:focus {
     margin-right: 50px;
-    margin-left: 20px;
-    font-size:12px;
+    margin-left : 20px;
+    font-size   : 12px;
   }
 }
 
@@ -1432,13 +1433,13 @@ section {
   }
 
   .cta .content h3 {
-    font-size  : 48px;
+    font-size: 48px;
   }
 }
 
 @media (max-width: 992px) {
   .cta .content h3 {
-    font-size  : 32px;
+    font-size: 32px;
   }
 }
 
@@ -2014,7 +2015,7 @@ section {
 }
 
 .services .details .icon {
-  padding:10px;
+  padding        : 10px;
   margin         : 0;
   width          : 72px;
   height         : 72px;
@@ -2315,14 +2316,14 @@ section {
 }
 
 .pricing .buy-btn2 {
-  display      : inline-block;
+  display        : inline-block;
   text-decoration: underline;
-  border-radius: 6px;
-  color: var(--color-primary-dark);
-  transition   : none;
-  font-size    : 16px;
-  font-weight  : 700;
-  transition   : 0.3s;
+  border-radius  : 6px;
+  color          : var(--color-primary-dark);
+  transition     : none;
+  font-size      : 16px;
+  font-weight    : 700;
+  transition     : 0.3s;
 }
 
 .pricing .buy-btn:hover {
@@ -3690,6 +3691,12 @@ section {
   background-color: var(--color-white);
   padding         : 20px;
   border-radius   : 10px;
+}
+
+.Div2,
+.Div3,
+.Div4 {
+  display: none;
 }
 
 @media (max-width: 767px) {
