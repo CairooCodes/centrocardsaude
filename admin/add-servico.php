@@ -112,18 +112,18 @@ if (isset($_POST['btnsave'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Adicionar Plano</h1>
+      <h1>Adicionar Serviço</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="painel-usuarios.php">Painel Usuários</a></li>
-          <li class="breadcrumb-item active">Adicionar Usuário</li>
+          <li class="breadcrumb-item"><a href="painel-usuarios.php">Painel Serviços</a></li>
+          <li class="breadcrumb-item active">Adicionar Serviço</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <section class="section">
-      <div class="row">
-        <div class="col-lg-10 justify-content-center">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
 
           <div class="card">
             <div class="card-body">
@@ -138,39 +138,58 @@ if (isset($_POST['btnsave'])) {
               ?>
               <!-- Vertical Form -->
               <form method="POST" enctype="multipart/form-data" class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <h5 class="card-title">Informações</h5>
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome Completo">
-                        <label for="">Nome do Usuário</label>
+                        <label for="">Nome do Serviço</label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $email; ?>" name="email" placeholder="Email">
-                        <label for="">Email</label>
+                      <div class="form-floating mb-3">
+                        <select name="type" class="form-select" id="floatingSelect" aria-label="Parceiro">
+                          <?php
+                          $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="1"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
+                        </select>
+                        <label for="floatingSelect">Parceiro</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="whats" placeholder="Preço do Plano">
-                        <label for="">Telefone</label>
+                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="whats" placeholder="Preço Particular">
+                        <label for="">Preço Particular</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="whats" placeholder="Preço Particular">
+                        <label for="">Preço CENTROCARD</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo">
-                          <option value="1">Administrador</option>
-                          <option value="2">Afiliado</option>
-                          <option value="3">Marketing</option>
-                          <option value="4">Cliente</option>
+                          <option value="1">EXAME</option>
+                          <option value="2">CONSULTA</option>
+                          <option value="3">LABORATÓRIO</option>
+                          <option value="4">HOSPITAL</option>
                         </select>
                         <label for="floatingSelect">Tipo</label>
                       </div>
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="status" class="form-select" id="floatingSelect" aria-label="Status">
                           <option value="1">Ativado</option>
@@ -178,56 +197,6 @@ if (isset($_POST['btnsave'])) {
                         </select>
                         <label for="floatingSelect">Status</label>
                       </div>
-                    </div>
-                  </div>
-                  <h5 class="card-title">Login</h5>
-                  <div class="row">
-                    <div class="col-md-6 pb-3">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $login; ?>" name="login" placeholder="Login do Usuário">
-                        <label for="">Login do Usuário</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="password" class="form-control" value="<?php echo $pass; ?>" name="pass" placeholder="Senha do Usuário">
-                        <label for="">Senha do Usuário</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <h5 class="card-title">Localização</h5>
-                  <div class="row">
-                    <div class="col-md-6 pb-3">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $address; ?>" name="address" placeholder="Endereço">
-                        <label for="">Endereço</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $bairro; ?>" name="bairro" placeholder="Email">
-                        <label for="">Bairro</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 pb-3">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $city; ?>" name="city" placeholder="Cidade">
-                        <label for="">Cidade</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $state; ?>" name="state" placeholder="Estado">
-                        <label for="">Estado</label>
-                      </div>
-                    </div>
-                  </div>
-                  <h5 class="card-title">Imagens</h5>
-                  <div class="row">
-                    <div class="file-loading">
-                      <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
                     </div>
                   </div>
                 </div>

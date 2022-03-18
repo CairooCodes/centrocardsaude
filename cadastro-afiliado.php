@@ -62,7 +62,8 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':ustatus', $status);
 
     if ($stmt->execute()) {
-      echo ("<script>window.location = 'painel-usuarios.php';</script>");
+      echo ("<script type= 'text/javascript'>alert('Obrigado! Em breve nossa equipe entrará em contato com você');</script>
+      <script>window.location = 'home';</script>");
     } else {
       $errMSG = "Erro..";
     }
@@ -124,50 +125,52 @@ if (isset($_POST['btnsave'])) {
   </section><!-- End Hero Section -->
   <section>
     <div class="container">
-      <form method="POST"  class="row g-3 bg-white">
+      <form method="POST" class="row g-3 bg-white">
         <div class="col-12">
-          <label for="inputAddress" class="form-label">Nome Completo</label>
-          <input type="text" value="<?php echo $name; ?>" name="name" placeholder="Digite seu nome completo" class="form-control" id="inputAddress">
+          <label for="inputName" class="form-label">Nome Completo</label>
+          <input type="text" value="<?php echo $name; ?>" name="name" placeholder="Digite seu nome completo" class="form-control" id="inputName">
         </div>
         <div class="col-12">
-          <label for="inputAddress2" class="form-label">Whats-App</label>
-          <input type="text"  value="<?php echo $whats; ?>" name="whats" placeholder="Número de telefone"  class="form-control" id="inputAddress2">
+          <label for="inputPhone" class="form-label">Whats-App</label>
+          <input type="text" value="<?php echo $whats; ?>" name="whats" placeholder="Número de telefone" class="form-control" id="inputPhone">
         </div>
         <div class="col-12">
-          <label for="inputAddress2" class="form-label">Email</label>
-          <input type="text"  value="<?php echo $email ?>" name="email" placeholder="Emaail para contato"  class="form-control" id="inputAddress2">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="text" value="<?php echo $email ?>" name="email" placeholder="Email para contato" class="form-control" id="inputEmail">
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">Endereço</label>
           <input type="text" value="<?php echo $address; ?>" name="address" placeholder="Endereço" class="form-control" id="inputAddress">
         </div>
         <div class="col-12">
-          <label for="inputAddress2" class="form-label">Bairro</label>
-          <input type="text"  value="<?php echo $bairro; ?>" name="bairro" placeholder="Bairro" class="form-control" id="inputAddress2">
+          <label for="inputBairro" class="form-label">Bairro</label>
+          <input type="text" value="<?php echo $bairro; ?>" name="bairro" placeholder="Bairro" class="form-control" id="inputBairro">
         </div>
         <div class="col-md-6">
           <label for="inputCity" class="form-label">Cidade</label>
           <input type="text" value="<?php echo $city; ?>" name="city" placeholder="Cidade" class="form-control" id="inputCity">
         </div>
         <div class="col-md-6">
-          <label for="inputZip" class="form-label">Estado
+          <label for="inputState" class="form-label">Estado
           </label>
-          <input type="text" value="<?php echo $state; ?>" name="Estado" placeholder="Estado" class="form-control" id="inputZip">
+          <input type="text" value="<?php echo $state; ?>" name="Estado" placeholder="Estado" class="form-control" id="inputState">
         </div>
         <h2>Segurança</h2>
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Login
+          <label for="inputLogin" class="form-label">Login
           </label>
-          <input type="login" value="<?php echo $login; ?>" name="login" placeholder="Login" class="form-control" id="inputEmail4">
+          <input type="login" value="<?php echo $login; ?>" name="login" placeholder="Login" class="form-control" id="inputLogin">
         </div>
         <div class="col-md-6">
           <label for="inputPassword4" class="form-label">
             Senha
           </label>
-          <input type="password" value="<?php echo $pass; ?>" name="pass" placeholder="Cidade" class="form-control" id="inputPassword4">
+          <input type="password" value="<?php echo $pass; ?>" name="pass" placeholder="Senha" class="form-control" id="inputPassword">
         </div>
+        <input type="hidden" value="2" name="status">
+        <input type="hidden" value="2" name="type">
         <div class="col-12">
-          <button  type="submit" name="btnsave"  class="btn btn-cred">CADASTRE-SE</button>
+          <button type="submit" name="btnsave" class="btn btn-cred">CADASTRE-SE</button>
         </div>
       </form>
     </div>

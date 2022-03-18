@@ -74,16 +74,18 @@ if (isset($_GET['delete_id'])) {
             </div>
         </div><!-- End Page Title -->
 
-        <section class="section">
-            <div class="row">
+        <section class="section card-body">
+            <div class="row bg-white">
                 <table class="table table-borderless datatable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Plano</th>
-                            <th scope="col">Afiliado</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">PARCEIRO</th>
+                            <th scope="col">ENDEREÇO</th>
+                            <th scope="col">CIDADE</th>
+                            <th scope="col">FONE</th>
+                            <th scope="col">PARTICULAR</th>
+                            <th scope="col">CENTROCARD</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,14 +99,11 @@ if (isset($_GET['delete_id'])) {
 
                                 <tr>
                                     <th scope="row"><a href="#"><?php echo $id; ?></a></th>
-                                    <td>Cairo Felipe</td>
-                                    <td><a href="#" class="text-primary"></a><?php echo $plan; ?></td>
+                                    <td><?php echo $name; ?></td>
+                                    <td><?php echo $partner; ?></td>
                                     <td><?php echo $dv; ?></td>
-                                    <?php
-                                    if ($status == 1) {
-                                    ?>
-                                        <td><span class="badge bg-light text-black">Pendente</span></td>
-                                    <?php } ?>
+                                    <td><?php echo $private; ?></td>
+                                    <td><?php echo $centrocard; ?></td>
                                 </tr>
                             <?php
                             }
