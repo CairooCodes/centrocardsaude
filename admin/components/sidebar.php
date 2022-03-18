@@ -22,6 +22,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="painel-servicos.php">
+          <i class="bi bi-plus-circle-fill"></i>
+          <span>Serviços</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="painel-banners.php">
           <i class="fas fa-images"></i>
           <span>Banners</span>
