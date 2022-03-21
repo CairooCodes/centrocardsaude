@@ -61,6 +61,8 @@ endif;
 
         <!-- Left side columns -->
         <div class="col-lg-12">
+          <input type="text" value="Hello World" id="myInput">
+          <button onclick="myFunction()">Copy text</button>
           <div class="row">
             <!-- Planos Card -->
             <?php
@@ -419,7 +421,22 @@ endif;
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    function myFunction() {
+      /* Get the text field */
+      var copyText = document.getElementById("myInput");
 
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      /* Alert the copied text */
+      alert("Código copiado, compartilhe em suas redes sociais");
+    }
+  </script>
 </body>
 
 </html>

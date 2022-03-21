@@ -4,6 +4,7 @@ include "./admin/insert_form.php";
 require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
+$dv = $_GET['dv'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

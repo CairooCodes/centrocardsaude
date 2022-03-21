@@ -9,6 +9,16 @@ else :
 endif;
 error_reporting(~E_ALL); // avoid notice
 
+if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
+  $id = $_GET['edit_id'];
+  $stmt_edit = $DB_con->prepare('SELECT name,partner,private,centrocard,type FROM services WHERE id =:uid');
+  $stmt_edit->execute(array(':uid' => $id));
+  $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
+  extract($edit_row);
+} else {
+  header("Location: painel-servicos.php");
+}
+
 if (isset($_POST['btnsave'])) {
   $name = $_POST['name'];
   $partner = $_POST['partner'];
@@ -16,18 +26,25 @@ if (isset($_POST['btnsave'])) {
   $centrocard = $_POST['centrocard'];
   $type = $_POST['type'];
 
-
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype)');
+    $stmt = $DB_con->prepare('UPDATE services SET 
+    name=:uname,
+    partner=:upartner,
+    private=:uprivate,
+    centrocard=:ucentrocard,
+    type=:utype
+    WHERE id=:uid');
+
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':upartner', $partner);
     $stmt->bindParam(':uprivate', $private);
     $stmt->bindParam(':ucentrocard', $centrocard);
     $stmt->bindParam(':utype', $type);
+    $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
       echo ("<script>window.location = 'painel-servicos.php';</script>");
@@ -116,6 +133,7 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="partner" class="form-select" id="floatingSelect" aria-label="Parceiro">
+                          <option value="<?php echo $partner; ?>"><?php echo $partner; ?></option>
                           <?php
                           $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
                           $stmt->execute();
@@ -134,19 +152,20 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="private" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $private; ?>" name="private" placeholder="Preço Particular">
                         <label for="">Preço Particular</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="centrocard" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $centrocard; ?>" name="centrocard" placeholder="Preço Particular">
                         <label for="">Preço CENTROCARD</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="type" class="form-select" id="floatingSelect" aria-label="Parceiro">
+                          <option value="<?php echo $type; ?>"><?php echo $type; ?></option>
                           <?php
                           $stmt = $DB_con->prepare('SELECT * FROM categorys ORDER BY id ASC');
                           $stmt->execute();

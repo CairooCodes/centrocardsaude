@@ -11,11 +11,11 @@ error_reporting(~E_ALL);
 
 if (isset($_GET['delete_id'])) {
     // it will delete an actual record from db
-    $stmt_delete = $DB_con->prepare('DELETE FROM plans WHERE id =:uid');
+    $stmt_delete = $DB_con->prepare('DELETE FROM services WHERE id =:uid');
     $stmt_delete->bindParam(':uid', $_GET['delete_id']);
     $stmt_delete->execute();
 
-    header("Location: painel-plans.php");
+    header("Location: painel-servicos.php");
 }
 
 ?>
@@ -47,7 +47,8 @@ if (isset($_GET['delete_id'])) {
     <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -75,65 +76,114 @@ if (isset($_GET['delete_id'])) {
         </div><!-- End Page Title -->
 
         <section class="section card-body">
-            <div class="row bg-white">
-                <table class="table table-borderless datatable">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">SERVIÇO</th>
-                            <th scope="col">PARCEIRO</th>
-                            <th scope="col">ENDEREÇO</th>
-                            <th scope="col">CIDADE</th>
-                            <th scope="col">TELEFONE</th>
-                            <th scope="col">PARTICULAR</th>
-                            <th scope="col">CENTROCARD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $stmt = $DB_con->prepare('SELECT * FROM services ORDER BY id DESC');
-                        $stmt->execute();
-                        if ($stmt->rowCount() > 0) {
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                extract($row);
-                        ?>
-
-                                <tr>
-                                    <th scope="row"><a href="#"><?php echo $id; ?></a></th>
-                                    <td><?php echo $name; ?></td>
-                                    <td><?php echo $partner; ?></td>
-                                    <?php
-                                    $stmt = $DB_con->prepare("SELECT * FROM partners where name='$partner'");
-                                    $stmt->execute();
-                                    if ($stmt->rowCount() > 0) {
-                                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                            extract($row);
-                                    ?>
-                                            <td><?php echo $address; ?></td>
-                                            <td><?php echo $city; ?></td>
-                                            <td><?php echo $tel; ?></td>
-                                    <?php
-                                        }
-                                    }
-                                    ?>
-                                    <td><?php echo $private; ?></td>
-                                    <td><?php echo $centrocard; ?></td>
-                                </tr>
+            <div class="card recent-sales">
+                <div class="card-body">
+                    <h5 class="card-title">Serviços</h5>
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>SERVIÇO</th>
+                                <th>PARCEIRO</th>
+                                <th>ENDEREÇO E CONTATO</th>
+                                <th>PARTICULAR</th>
+                                <th>CENTROCARD</th>
+                                <th>OPÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $stmt = $DB_con->prepare("SELECT * FROM services ORDER BY id DESC");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row);
+                            ?>
+                                    <tr>
+                                        <td><?php echo $name; ?></td>
+                                        <td><?php echo $partner; ?></td>
+                                        <td>
+                                            <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
+                                                <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
+                                                    Saiba Mais
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td><?php echo $private; ?></td>
+                                        <td><?php echo $centrocard; ?></td>
+                                        <td>
+                                            <a href="edit-servico.php?edit_id=<?php echo $row['id']; ?>">
+                                                <button type="button" class="btn btn-success">Editar</button>
+                                            </a>
+                                            <a href="?delete_id=<?php echo $row['id']; ?>">
+                                                <button type="button" class="btn btn-danger">Excluir</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <div class="pt-4 col-xs-12">
+                                    <div class="alert alert-danger">
+                                        Sem Lead Cadastrado ...
+                                    </div>
+                                </div>
                             <?php
                             }
-                        } else {
                             ?>
-                            <div class="pt-4 col-xs-12">
-                                <div class="alert alert-danger">
-                                    Sem Lead Cadastrado ...
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>SERVIÇO</th>
+                                <th>PARCEIRO</th>
+                                <th>ENDEREÇO E CONTATO</th>
+                                <th>PARTICULAR</th>
+                                <th>CENTROCARD</th>
+                                <th>OPÇÕES</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <?php
+            $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+            ?>
+                    <div id="parceiro-<?php echo $name; ?>" class="modal2">
+                        <div class="modal__overlay jsOverlay"></div>
+                        <div class="modal__container">
+                            <div class="parceiro-box d-flex">
+                                <div class="parceiro-infos">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h4>Endereço</h4>
+                                            <p class="lead"><?php echo $address; ?></p>
+                                            <p class="lead"><?php echo $city; ?> - <?php echo $state; ?></p>
+                                            <p class="lead"><?php echo $district; ?></p>
+                                            <p class="lead"><?php echo $zip; ?></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4>Contato</h4>
+                                            <div class="row justify-content-center">
+                                                <p class="lead"><?php echo $tel; ?></p>
+                                                <p class="lead"><?php echo $whats; ?></p>
+                                                <?php if ($email != '') { ?>
+                                                    <p class="lead parceiro-email"><?php echo $email; ?></p>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                            <button class="modal__close jsModalClose">&#10005;</button>
+                        </div>
+                    </div>
+            <?php
+                }
+            } ?>
         </section>
 
     </main><!-- End #main -->
@@ -148,13 +198,26 @@ if (isset($_GET['delete_id'])) {
     <script src="assets/vendor/chart.js/chart.min.js"></script>
     <script src="assets/vendor/echarts/echarts.min.js"></script>
     <script src="assets/vendor/quill/quill.min.js"></script>
-    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
-
+    <script src="assets/js/script.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                language: {
+                    url: '../assets/js/dataBr.json'
+                },
+                responsive: true
+            });
+        });
+    </script>
 </body>
 
 </html>
