@@ -80,10 +80,11 @@ if (isset($_GET['delete_id'])) {
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">SERVIÇO</th>
                             <th scope="col">PARCEIRO</th>
                             <th scope="col">ENDEREÇO</th>
                             <th scope="col">CIDADE</th>
-                            <th scope="col">FONE</th>
+                            <th scope="col">TELEFONE</th>
                             <th scope="col">PARTICULAR</th>
                             <th scope="col">CENTROCARD</th>
                         </tr>
@@ -101,7 +102,20 @@ if (isset($_GET['delete_id'])) {
                                     <th scope="row"><a href="#"><?php echo $id; ?></a></th>
                                     <td><?php echo $name; ?></td>
                                     <td><?php echo $partner; ?></td>
-                                    <td><?php echo $dv; ?></td>
+                                    <?php
+                                    $stmt = $DB_con->prepare("SELECT * FROM partners where name='$partner'");
+                                    $stmt->execute();
+                                    if ($stmt->rowCount() > 0) {
+                                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                            extract($row);
+                                    ?>
+                                            <td><?php echo $address; ?></td>
+                                            <td><?php echo $city; ?></td>
+                                            <td><?php echo $tel; ?></td>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
                                     <td><?php echo $private; ?></td>
                                     <td><?php echo $centrocard; ?></td>
                                 </tr>

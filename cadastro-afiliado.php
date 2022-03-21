@@ -153,7 +153,7 @@ if (isset($_POST['btnsave'])) {
         <div class="col-md-6">
           <label for="inputState" class="form-label">Estado
           </label>
-          <input type="text" value="<?php echo $state; ?>" name="Estado" placeholder="Estado" class="form-control" id="inputState">
+          <input type="text" value="<?php echo $state; ?>" name="state" placeholder="Estado" class="form-control" id="inputState">
         </div>
         <h2>Segurança</h2>
         <div class="col-md-6">

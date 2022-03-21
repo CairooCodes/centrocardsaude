@@ -4,6 +4,81 @@ include "./admin/insert_form.php";
 require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
+
+error_reporting(~E_ALL); // avoid notice
+
+if (isset($_POST['btnsave'])) {
+  $name = $_POST['name'];
+  $address = $_POST['address'];
+  $city = $_POST['city'];
+  $district = $_POST['district'];
+  $state = $_POST['state'];
+  $tel = $_POST['tel'];
+  $whats = $_POST['whats'];
+  $email = $_POST['email'];
+  $id_national = $_POST['id_national'];
+  $site = $_POST['site'];
+  $type_service = $_POST['type_service'];
+  $type_attendance = $_POST['$type_attendance'];
+  $zip = $_POST['$zip'];
+  $how = $_POST['$how'];
+  $status = $_POST['status'];
+
+  $imgFile = $_FILES['user_image']['name'];
+  $tmp_dir = $_FILES['user_image']['tmp_name'];
+  $imgSize = $_FILES['user_image']['size'];
+
+  if (empty($name)) {
+    $errMSG = "Por favor, insira o nome";
+  } else {
+    $upload_dir = 'uploads/usuarios/'; // upload directory
+    $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
+
+    $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
+    // rename uploading image
+    $name2 = preg_replace("/\s+/", "", $name);
+    $name3 = substr($name2, 0, -1);
+    $userpic  = $name3 . "parceiro" . "." . $imgExt;
+
+    // allow valid image file formats
+    if (in_array($imgExt, $valid_extensions)) {
+      // Check file size '5MB'
+      if ($imgSize < 5000000) {
+        move_uploaded_file($tmp_dir, $upload_dir . $userpic);
+      } else {
+        $errMSG = "Imagem muito grande.";
+      }
+    }
+  }
+  if (!isset($errMSG)) {
+    $stmt = $DB_con->prepare('INSERT INTO partners (name,address,city,district,state,tel,whats,email,img,id_national,site,type_service, type_attendance,zip,how,status) VALUES(:uname,:uaddress,:ucity,:udistrict,:ustate,:utel,:uwhats,:uemail,:upic,:uid_national,:usite,:utype_service,:utype_attendance,:uzip,:uhow,:ustatus)');
+
+    $stmt->bindParam(':uname', $name);
+    $stmt->bindParam(':uaddress', $address);
+    $stmt->bindParam(':ucity', $city);
+    $stmt->bindParam(':udistrict', $district);
+    $stmt->bindParam(':ustate', $state);
+    $stmt->bindParam(':utel', $tel);
+    $stmt->bindParam(':uwhats', $whats);
+    $stmt->bindParam(':uemail', $email);
+    $stmt->bindParam(':upic', $userpic);
+    $stmt->bindParam(':uid_national', $id_national);
+    $stmt->bindParam(':usite', $site);
+    $stmt->bindParam(':utype_service', $type_service);
+    $stmt->bindParam(':utype_attendance', $type_attendance);
+    $stmt->bindParam(':uzip', $zip);
+    $stmt->bindParam(':uhow', $how);
+    $stmt->bindParam(':ustatus', $status);
+
+    if ($stmt->execute()) {
+      echo ("<script type= 'text/javascript'>alert('Obrigado! Em breve nossa equipe entrará em contato com você');</script>
+      <script>window.location = 'home';</script>");
+    } else {
+      $errMSG = "Erro..";
+    }
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -60,136 +135,80 @@ $URI = new URI();
   </section><!-- End Hero Section -->
   <section>
     <div class="container">
-      <form class="row g-3 bg-white">
-        <div class="col-12">
-          <label for="inputAddress" class="form-label">Razão social</label>
-          <input type="text" class="form-control" id="inputAddress">
-        </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Nome Fantasia</label>
-          <input type="text" class="form-control" id="inputAddress2">
+      <form  method="POST" class="row g-3 bg-white">
+        <div class="col-12 col-md-6">
+          <label for="inputName" class="form-label">Nome Fantasia/Nome Completo</label>
+          <input type="text" value="<?php echo $name; ?>" name="name" placeholder="Digite seu nome completo" class="form-control" id="inputName">
         </div>
         <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">CNPJ</label>
-          <input type="email" class="form-control" id="inputEmail4">
+          <label for="inputCnpjCPF" class="form-label">CNPJ/CPF</label>
+          <input type="text" value="<?php echo $id_national; ?>" name="id_national" placeholder="CPNJ ou CNPJ do prestador" class="form-control" id="inputCnpjCPF">
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Site</label>
-          <input type="password" class="form-control" id="inputPassword4">
+          <label for="typeService" class="form-label">Tipo de prestador de Serviço</label>
+          <select name="type_service" class="form-select" id="floatingSelect" aria-label="Tipo">
+            <option value="1">CLÍNICA/POLICLÍNICA</option>
+            <option value="2">CONSULTÓRIO MÉDICO/ODONTOLÓGICO</option>
+            <option value="3">LABORATÓRIO DE ANÁLISES CLÍNICAS</option>
+            <option value="4">DIAGNÓSTICOS POR IMAGEM</option>
+          </select>
         </div>
         <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Tipo de prestador de Serviço</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              CLÍNICA/POLICLÍNICA
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              CONSULTÓRIO MÉDICO/ODONTOLÓGICO
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              LABORATÓRIO DE ANÁLISES CLÍNICAS
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              DIAGNÓSTICOS POR IMAGEM
-            </label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">Tipos de Atendimentos</label>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              PRESENCIAL
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              ONLINE
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              DOMICILIAR
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              OUTROS
-            </label>
-          </div>
+          <label for="typeAttendance" class="form-label">Tipos de Atendimentos</label>
+          <select name="type_attendance" class="form-select" id="floatingSelect" aria-label="Tipo">
+            <option value="1">PRESENCIAL</option>
+            <option value="2">ONLINE</option>
+            <option value="3">DOMICILIAR</option>
+            <option value="4">PRESENCIAL E ONLINE</option>
+            <option value="5">PRESENCIAL E DOMICILIAR</option>
+            <option value="6">ONLINE E DOMICILIAR</option>
+            <option value="7">TODOS</option>
+          </select>
         </div>
         <div class="col-12">
           <label for="inputAddress" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="inputAddress">
+          <input type="text" value="<?php echo $address; ?>" name="address" placeholder="Endereço" class="form-control" id="inputAddress">
         </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Complemento</label>
-          <input type="text" class="form-control" id="inputAddress2">
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
           <label for="inputCity" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="inputCity">
+          <input type="text" value="<?php echo $city; ?>" name="city" placeholder="Cidade" class="form-control" id="inputCity">
         </div>
-        <div class="col-md-4">
-          <label for="inputZip" class="form-label">Estado
+        <div class="col-md-3">
+          <label for="inputState" class="form-label">Estado
           </label>
-          <input type="text" class="form-control" id="inputZip">
+          <input type="text" value="<?php echo $state; ?>" name="state" placeholder="Estado" class="form-control" id="inputState">
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
+          <label for="inputState" class="form-label">Bairro
+          </label>
+          <input type="text" value="<?php echo $district; ?>" name="district" placeholder="Bairro" class="form-control" id="inputDistrict">
+        </div>
+        <div class="col-md-3">
           <label for="inputZip" class="form-label">
             CEP</label>
-          <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="col-md-6">
-          <label for="inputEmail4" class="form-label">Responsável
-          </label>
-          <input type="email" class="form-control" id="inputEmail4">
-        </div>
-        <div class="col-md-6">
-          <label for="inputPassword4" class="form-label">
-            Cargo
-          </label>
-          <input type="password" class="form-control" id="inputPassword4">
+          <input type="text" value="<?php echo $zip; ?>" name="zip" placeholder="CEP" class="form-control" id="inputZip">
         </div>
         <div class="col-md-4">
-          <label for="inputCity" class="form-label">Telefone</label>
-          <input type="text" class="form-control" id="inputCity">
-        </div>
-        <div class="col-md-4">
-          <label for="inputZip" class="form-label">Telefone</label>
-          <input type="text" class="form-control" id="inputZip">
+          <label for="inputTel" class="form-label">Telefone</label>
+          <input type="text" value="<?php echo $tel; ?>" name="tel" placeholder="Número de telefone" class="form-control" id="inputPhone">
         </div>
         <div class="col-md-4">
           <label for="inputZip" class="form-label">
             Celular/WhatsApp</label>
-          <input type="text" class="form-control" id="inputZip">
+          <input type="text" value="<?php echo $whats; ?>" name="whats" placeholder="Número de Celular" class="form-control" id="inputPhone">
+        </div>
+        <div class="col-md-4">
+          <label for="inputEmail" class="form-label">
+            Email</label>
+          <input type="text" value="<?php echo $email ?>" name="email" placeholder="Email para contato" class="form-control" id="inputEmail">
         </div>
         <div class="col-12">
-          <label for="inputAddress2" class="form-label">Email
+          <label for="inputHow" class="form-label">Como você conheceu ?
           </label>
-          <input type="text" class="form-control" id="inputAddress2">
+          <input type="text" value="<?php echo $how ?>" name="how" placeholder="Diga como nós conheceu" class="form-control" id="inputHow">
         </div>
         <div class="col-12">
-          <label for="inputAddress2" class="form-label">Como você conheceu ?
-
-          </label>
-          <input type="text" class="form-control" id="inputAddress2">
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-cred">CADASTRE-SE</button>
+          <button type="submit" name="btnsave" class="btn btn-cred">CADASTRE-SE</button>
         </div>
       </form>
     </div>
