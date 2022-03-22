@@ -47,7 +47,7 @@ if ($_SESSION['type'] != 1) {
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
@@ -106,7 +106,9 @@ if ($_SESSION['type'] != 1) {
                   ?>
                   <img class="img-fluid rounded-circle" src="./uploads/usuarios/<?php echo $row['img']; ?>" onerror="this.src='./assets/img/semperfil.png'">
                   <div class="d-flex justify-content-between pt-2">
-                    <button type="button" class="btn btn-success">Editar</button>
+                    <a href="painel-perfil.php?edit_id=<?php echo $_SESSION['id']; ?>">
+                      <button type="button" class="btn btn-success">Editar</button>
+                    </a>
                     <a href="?delete_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </a>

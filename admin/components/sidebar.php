@@ -31,7 +31,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-leads.php">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-book-fill"></i>
             <span>Material</span>
           </a>
@@ -55,7 +55,7 @@
 
         <!-- <li class="nav-heading">Pages</li> -->
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-afiliado.php">
+          <a class="nav-link collapsed" href="#">
             <i class="fas fa-handshake"></i>
             <span>Afiliados</span>
           </a>
@@ -67,14 +67,14 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-parceiros.php">
+          <a class="nav-link collapsed" href="#">
             <i class="fas fa-hands-helping"></i>
             <span>Parceiros</span>
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-blog.php">
+          <a class="nav-link collapsed" href="#">
             <i class="fas fa-newspaper"></i>
             <span>Blog</span>
           </a>

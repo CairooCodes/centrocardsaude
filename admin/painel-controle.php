@@ -67,7 +67,7 @@ endif;
             if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 2) or ($_SESSION['type'] == 3)) {
             ?>
               <div class="col-xxl-3 col-md-6">
-                <a href="painel-planos.php">
+                <a href="painel-leads.php">
                   <div class="card info-card sales-card">
                     <div class="card-body">
                       <h5 class="card-title">Leads</h5>
@@ -129,43 +129,47 @@ endif;
               </div><!-- End Sales Card -->
               <!-- Revenue Card -->
               <div class="col-xxl-3 col-md-6">
-                <div class="card info-card revenue-card">
-                  <div class="card-body">
-                    <h5 class="card-title">Benefícios</span></h5>
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-heart-pulse-fill"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6>
-                          <?php
-                          $sth = $DB_con->prepare('SELECT count(*) as total from benefits');
-                          $sth->execute();
-                          print_r($sth->fetchColumn());
-                          ?>
-                        </h6>
+                <a href="painel-beneficios.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Benefícios</span></h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-heart-pulse-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>
+                            <?php
+                            $sth = $DB_con->prepare('SELECT count(*) as total from benefits');
+                            $sth->execute();
+                            print_r($sth->fetchColumn());
+                            ?>
+                          </h6>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
               <div class="col-xxl-3 col-md-6">
-                <div class="card info-card revenue-card">
-                  <div class="card-body">
-                    <h5 class="card-title">Material</span></h5>
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-book-fill"></i>
-                      </div>
-                      <div class="ps-3">
+                <a href="#">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Material</span></h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-book-fill"></i>
+                        </div>
+                        <div class="ps-3">
 
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
               <p class="lead text-center">Link de divulgação</p>
-              <div class="d-flex">
+              <div class="d-flex pb-3">
                 <input class="btn form-control" disabled value="https://centrocardsaude.com.br/home.php?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
                 <button class="btn btn-primary" onclick="myFunction()">Copiar Link</button>
               </div>
@@ -177,22 +181,80 @@ endif;
             if ($_SESSION['type'] == 1) {
             ?>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
-                  <div class="card-body">
-                    <h5 class="card-title">Usuários/Afiliados</span></h5>
+                <a href="painel-usuarios.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Usuários/Afiliados</span></h5>
 
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-people"></i>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-people"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>
+                            <?php
+                            $sth = $DB_con->prepare('SELECT count(*) as total from users');
+                            $sth->execute();
+                            print_r($sth->fetchColumn());
+                            ?>
+                          </h6>
+                        </div>
                       </div>
-                      <div class="ps-3">
-                        <h6>15</h6>
-                      </div>
+
                     </div>
-
                   </div>
-                </div>
-              </div><!-- End Customers Card -->
+                </a>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                <a href="painel-servicos.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Serviços</span></h5>
+
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-plus-circle-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>
+                            <?php
+                            $sth = $DB_con->prepare('SELECT count(*) as total from services');
+                            $sth->execute();
+                            print_r($sth->fetchColumn());
+                            ?>
+                          </h6>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="col-xxl-4 col-xl-12">
+                <a href="painel-banners.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Banners</span></h5>
+
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="fas fa-images"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>
+                            <?php
+                            $sth = $DB_con->prepare('SELECT count(*) as total from banners');
+                            $sth->execute();
+                            print_r($sth->fetchColumn());
+                            ?>
+                          </h6>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </a>
+              </div>
             <?php
             }
             ?>
@@ -201,7 +263,7 @@ endif;
             ?>
               <div class="col-xxl-4 col-xl-12">
                 <a href="https://klinics.videoconsultas.app/paciente/autogestion">
-                  <div class="card info-card customers-card">
+                  <div class="card info-card sales-card">
                     <div class="card-body">
                       <h5 class="card-title">TELEMEDICINA</span></h5>
                       <div class="d-flex align-items-center">
@@ -217,7 +279,7 @@ endif;
                 </a>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
+                <div class="card info-card sales-card">
                   <div class="card-body">
                     <h5 class="card-title">CARTEIRA DIGITAL</span></h5>
                     <div class="d-flex align-items-center">
@@ -233,7 +295,7 @@ endif;
                 </div>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
+                <div class="card info-card sales-card">
                   <div class="card-body">
                     <h5 class="card-title">CONTRATO</span></h5>
 
@@ -250,7 +312,7 @@ endif;
                 </div>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
+                <div class="card info-card sales-card">
                   <div class="card-body">
                     <h5 class="card-title">MANUAL</span></h5>
 
@@ -266,7 +328,7 @@ endif;
                 </div>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
+                <div class="card info-card sales-card">
                   <div class="card-body">
                     <h5 class="card-title">CONTATOS</span></h5>
 
