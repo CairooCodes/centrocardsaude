@@ -30,7 +30,7 @@ endif;
   <!-- Vendor CSS Files -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
@@ -61,14 +61,50 @@ endif;
 
         <!-- Left side columns -->
         <div class="col-lg-12">
-          <input type="text" value="Hello World" id="myInput">
-          <button onclick="myFunction()">Copy text</button>
           <div class="row">
             <!-- Planos Card -->
             <?php
             if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 2) or ($_SESSION['type'] == 3)) {
             ?>
-              <div class="col-xxl-4 col-md-6">
+              <div class="col-xxl-3 col-md-6">
+                <a href="painel-planos.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Leads</h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="fas fa-align-justify"></i>
+                        </div>
+                        <div class="ps-3">
+                          <?php
+                          if ($_SESSION['type'] == 2) {
+                          ?>
+                            <h6>
+                              <?php
+                              $sth = $DB_con->prepare("SELECT count(*) as total from leads where dv='$_SESSION[login]'");
+                              $sth->execute();
+                              print_r($sth->fetchColumn());
+                              ?>
+                            </h6>
+                          <?php }  ?>
+                          <?php
+                          if ($_SESSION['type'] == 1) {
+                          ?>
+                            <h6>
+                              <?php
+                              $sth = $DB_con->prepare("SELECT count(*) as total from leads");
+                              $sth->execute();
+                              print_r($sth->fetchColumn());
+                              ?>
+                            </h6>
+                          <?php }  ?>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div><!-- End Sales Card -->
+              <div class="col-xxl-3 col-md-6">
                 <a href="painel-planos.php">
                   <div class="card info-card sales-card">
                     <div class="card-body">
@@ -92,23 +128,28 @@ endif;
                 </a>
               </div><!-- End Sales Card -->
               <!-- Revenue Card -->
-              <div class="col-xxl-4 col-md-6">
+              <div class="col-xxl-3 col-md-6">
                 <div class="card info-card revenue-card">
                   <div class="card-body">
                     <h5 class="card-title">Benefícios</span></h5>
                     <div class="d-flex align-items-center">
                       <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-plus-circle-fill"></i>
+                        <i class="bi bi-heart-pulse-fill"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>15</h6>
-                        <span class="text-success small pt-1 fw-bold">+7</span> <span class="text-muted small pt-2 ps-1">novos leads</span>
+                        <h6>
+                          <?php
+                          $sth = $DB_con->prepare('SELECT count(*) as total from benefits');
+                          $sth->execute();
+                          print_r($sth->fetchColumn());
+                          ?>
+                        </h6>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-xxl-4 col-md-6">
+              <div class="col-xxl-3 col-md-6">
                 <div class="card info-card revenue-card">
                   <div class="card-body">
                     <h5 class="card-title">Material</span></h5>
@@ -122,6 +163,11 @@ endif;
                     </div>
                   </div>
                 </div>
+              </div>
+              <p class="lead text-center">Link de divulgação</p>
+              <div class="d-flex">
+                <input class="btn form-control" disabled value="https://centrocardsaude.com.br/home.php?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
+                <button class="btn btn-primary" onclick="myFunction()">Copiar Link</button>
               </div>
             <?php
             }
@@ -154,19 +200,21 @@ endif;
             if ($_SESSION['type'] == 4) {
             ?>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card customers-card">
-                  <div class="card-body">
-                    <h5 class="card-title">TELEMEDICINA</span></h5>
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-camera-video-fill"></i>
-                      </div>
-                      <div class="ps-3">
-                        <p>Agende agora com um de nossos especialistas</p>
+                <a href="https://klinics.videoconsultas.app/paciente/autogestion">
+                  <div class="card info-card customers-card">
+                    <div class="card-body">
+                      <h5 class="card-title">TELEMEDICINA</span></h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-camera-video-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <p class="text-black">Agende agora com um de nossos especialistas</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
               <div class="col-xxl-4 col-xl-12">
                 <div class="card info-card customers-card">

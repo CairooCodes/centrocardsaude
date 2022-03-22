@@ -8,7 +8,7 @@ if (isset($_POST["submit"])) {
     $msg = $_POST['msg'];
     $opc = $_POST['opc'];
     $tipo = $_POST['tipo'];
-
+    $dv = $_POST['dv'];
     $nome2 = trim($nome);
     $whats2 = trim($whats);
 
@@ -57,34 +57,35 @@ if (isset($_POST["submit"])) {
         $errMSG = "Email inválido";
     }
     if (!isset($errMSG)) {
-        $stmt = $DB_con->prepare('INSERT INTO leads (nome,whats,email,msg,tipo,opc) VALUES(:unome,:uwhats,:uemail,:umsg,:utipo,:uopc)');
+        $stmt = $DB_con->prepare('INSERT INTO leads (nome,whats,email,msg,tipo,opc,dv) VALUES(:unome,:uwhats,:uemail,:umsg,:utipo,:uopc,:udv)');
         $stmt->bindParam(':unome', $nome);
         $stmt->bindParam(':uwhats', $whats);
         $stmt->bindParam(':uemail', $email);
         $stmt->bindParam(':umsg', $msg);
         $stmt->bindParam(':utipo', $tipo);
         $stmt->bindParam(':uopc', $opc);
-
-
+        $stmt->bindParam(':udv', $dv);
 
         if ($stmt->execute()) {
             if ($tipo == 1) {
                 echo ("
         <script type= 'text/javascript'>alert('Obrigado! Em breve nossa equipe entrará em contato com você');</script>
-        <script>window.location = 'index.php';</script>");
+        <script>window.location = 'home';</script>");
             }
             if ($tipo == 2) {
                 echo ("
             <script type= 'text/javascript'>alert('Obrigado! Em breve nossa equipe entrará em contato com você');</script>
-            <script>window.location = 'index.php';</script>");
+            <script>window.location = 'home';</script>");
             }
             if ($tipo == 3) {
                 echo ("
             <script type= 'text/javascript'>alert('Parabéns! Sua inscrição foi realizada.');</script>
-            <script>window.location = 'index.php';</script>");
+            <script>window.location = 'home';</script>");
             }
         } else {
-            $errMSG = "Erro!";
+            echo ("
+            <script type= 'text/javascript'>alert('Mensagem não enviada, tente novamente...');</script>
+            <script>window.location = 'home';</script>");
         }
     }
 }
