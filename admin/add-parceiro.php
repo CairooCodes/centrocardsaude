@@ -11,15 +11,19 @@ error_reporting(~E_ALL); // avoid notice
 
 if (isset($_POST['btnsave'])) {
   $name = $_POST['name'];
-  $login = $_POST['login'];
-  $email = $_POST['email'];
-  $pass = $_POST['pass'];
-  $type = $_POST['type'];
-  $whats = $_POST['whats'];
   $address = $_POST['address'];
-  $district = $_POST['district'];
   $city = $_POST['city'];
+  $district = $_POST['district'];
   $state = $_POST['state'];
+  $tel = $_POST['tel'];
+  $whats = $_POST['whats'];
+  $email = $_POST['email'];
+  $id_national = $_POST['id_national'];
+  $site = $_POST['site'];
+  $type_service = $_POST['type_service'];
+  $type_attendance = $_POST['type_attendance'];
+  $zip = $_POST['zip'];
+  $how = $_POST['how'];
   $status = $_POST['status'];
 
   $imgFile = $_FILES['user_image']['name'];
@@ -29,7 +33,7 @@ if (isset($_POST['btnsave'])) {
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
   } else {
-    $upload_dir = 'uploads/usuarios/'; // upload directory
+    $upload_dir = 'uploads/parceiros/'; // upload directory
     $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
 
     $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
@@ -49,22 +53,27 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO users (name,login,email,pass,type,whats,address,district,city,state,img,status) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uaddress,:udistrict,:ucity,:ustate,:upic,:ustatus)');
+    $stmt = $DB_con->prepare('INSERT INTO partners (name,address,city,district,state,tel,whats,email,img,id_national,site,type_service, type_attendance,zip,how,status) VALUES(:uname,:uaddress,:ucity,:udistrict,:ustate,:utel,:uwhats,:uemail,:upic,:uid_national,:usite,:utype_service,:utype_attendance,:uzip,:uhow,:ustatus)');
+
     $stmt->bindParam(':uname', $name);
-    $stmt->bindParam(':ulogin', $login);
-    $stmt->bindParam(':uemail', $email);
-    $stmt->bindParam(':upass', $pass);
-    $stmt->bindParam(':utype', $type);
-    $stmt->bindParam(':upic', $userpic);
-    $stmt->bindParam(':uwhats', $whats);
     $stmt->bindParam(':uaddress', $address);
-    $stmt->bindParam(':udistrict', $district);
     $stmt->bindParam(':ucity', $city);
+    $stmt->bindParam(':udistrict', $district);
     $stmt->bindParam(':ustate', $state);
+    $stmt->bindParam(':utel', $tel);
+    $stmt->bindParam(':uwhats', $whats);
+    $stmt->bindParam(':uemail', $email);
+    $stmt->bindParam(':upic', $userpic);
+    $stmt->bindParam(':uid_national', $id_national);
+    $stmt->bindParam(':usite', $site);
+    $stmt->bindParam(':utype_service', $type_service);
+    $stmt->bindParam(':utype_attendance', $type_attendance);
+    $stmt->bindParam(':uzip', $zip);
+    $stmt->bindParam(':uhow', $how);
     $stmt->bindParam(':ustatus', $status);
 
     if ($stmt->execute()) {
-      echo ("<script>window.location = 'painel-usuarios.php';</script>");
+      echo ("<script>window.location = 'painel-parceiros.php';</script>");
     } else {
       $errMSG = "Erro..";
     }
@@ -78,7 +87,7 @@ if (isset($_POST['btnsave'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Adicionar Usuário / Painel Administrativo</title>
+  <title>Adicionar Parceiro / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -112,12 +121,12 @@ if (isset($_POST['btnsave'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Adicionar Usuário</h1>
+      <h1>Adicionar Parceiro</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="painel-usuarios.php">Painel Usuários</a></li>
-          <li class="breadcrumb-item active">Adicionar Usuário</li>
+          <li class="breadcrumb-item"><a href="painel-parceiros.php">Painel Parceiros</a></li>
+          <li class="breadcrumb-item active">Adicionar Parceiros</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -143,55 +152,66 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome Completo">
-                        <label for="">Nome do Usuário</label>
+                        <input type="text" value="<?php echo $name; ?>" name="name" placeholder="Nome Fantasia/Nome Completo" class="form-control" id="inputName">
+                        <label for="">Nome Fantasia/Nome Completo</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" value="<?php echo $id_national; ?>" name="id_national" placeholder="CPNJ ou CNPJ do prestador" class="form-control" id="inputCnpjCPF">
+                        <label for="">CNPJ/CPF</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <select name="type_service" class="form-select" id="floatingSelect" aria-label="Tipo">
+                          <option value="1">CLÍNICA/POLICLÍNICA</option>
+                          <option value="2">CONSULTÓRIO MÉDICO/ODONTOLÓGICO</option>
+                          <option value="3">LABORATÓRIO DE ANÁLISES CLÍNICAS</option>
+                          <option value="4">DIAGNÓSTICOS POR IMAGEM</option>
+                        </select>
+                        <label for="floatingSelect">Tipo de prestador de Serviço</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <select name="type_attendance" class="form-select" id="floatingSelect" aria-label="Tipo">
+                          <option value="1">PRESENCIAL</option>
+                          <option value="2">ONLINE</option>
+                          <option value="3">DOMICILIAR</option>
+                          <option value="4">PRESENCIAL E ONLINE</option>
+                          <option value="5">PRESENCIAL E DOMICILIAR</option>
+                          <option value="6">ONLINE E DOMICILIAR</option>
+                          <option value="7">TODOS</option>
+                        </select>
+                        <label for="floatingSelect">Tipos de Atendimentos</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $email; ?>" name="email" placeholder="Email">
                         <label for="">Email</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="whats" placeholder="Telefone do usuário">
+                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="whats" placeholder="Número do WhatsApp">
+                        <label for="">WhatsApp</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $tel; ?>" name="tel" placeholder="Número de telefone">
                         <label for="">Telefone</label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating mb-3">
-                        <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo">
-                          <option value="1">Administrador</option>
-                          <option value="2">Afiliado</option>
-                          <option value="3">Marketing</option>
-                          <option value="4">Cliente</option>
-                        </select>
-                        <label for="floatingSelect">Tipo</label>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
                       <div class="form-floating mb-3">
                         <select name="status" class="form-select" id="floatingSelect" aria-label="Status">
                           <option value="1">Ativado</option>
                           <option value="2">Desativado</option>
                         </select>
                         <label for="floatingSelect">Status</label>
-                      </div>
-                    </div>
-                  </div>
-                  <h5 class="card-title">Login</h5>
-                  <div class="row">
-                    <div class="col-md-6 pb-3">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $login; ?>" name="login" placeholder="Login do Usuário">
-                        <label for="">Login do Usuário</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="password" class="form-control" value="<?php echo $pass; ?>" name="pass" placeholder="Senha do Usuário">
-                        <label for="">Senha do Usuário</label>
                       </div>
                     </div>
                   </div>
@@ -205,7 +225,7 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Endereço</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $district; ?>" name="district" placeholder="Email">
                         <label for="">Bairro</label>
@@ -217,10 +237,16 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Cidade</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $state; ?>" name="state" placeholder="Estado">
                         <label for="">Estado</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $zip; ?>" name="zip" placeholder="CEP">
+                        <label for="">CEP</label>
                       </div>
                     </div>
                   </div>

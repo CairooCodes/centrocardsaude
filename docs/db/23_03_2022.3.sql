@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.9 (64 bit)
-MySQL - 10.4.22-MariaDB : Database - centrocard
+SQLyog Community v13.1.7 (64 bit)
+MySQL - 10.4.19-MariaDB : Database - centrocard
 *********************************************************************
 */
 
@@ -12,7 +12,6 @@ MySQL - 10.4.22-MariaDB : Database - centrocard
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
 /*Table structure for table `banners` */
 
 DROP TABLE IF EXISTS `banners`;
@@ -135,8 +134,8 @@ CREATE TABLE `leads` (
 
 insert  into `leads`(`id`,`nome`,`whats`,`opc`,`email`,`msg`,`data_envio`,`dv`,`tipo`,`status`,`user_vz`,`data_vz`,`user_ok`,`data_ok`,`plan`) values 
 (286,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','Teste','2022-02-02 11:25:02',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(287,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','Teste','2022-02-02 11:26:43','afiliado','1',NULL,NULL,NULL,NULL,NULL,NULL),
-(288,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','esdqdqdq','2022-02-02 11:26:51','afiliado','1',NULL,NULL,NULL,NULL,NULL,NULL);
+(287,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','Teste','2022-02-02 11:26:43','afiliado','1','1',NULL,NULL,NULL,NULL,'Gold'),
+(288,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','esdqdqdq','2022-02-02 11:26:51','afiliado','1','1',NULL,NULL,NULL,NULL,'Platinum');
 
 /*Table structure for table `logs` */
 
@@ -148,7 +147,7 @@ CREATE TABLE `logs` (
   `data_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 /*Data for the table `logs` */
 
@@ -185,7 +184,13 @@ insert  into `logs`(`id`,`name`,`data_log`,`type`) values
 (30,'CentroCard Saúde','2022-03-22 21:22:04','login'),
 (31,'Cairo Felipe dos Reis Machado','2022-03-22 22:02:49','login'),
 (32,'Centro Card Saúde','2022-03-22 22:49:20','login'),
-(33,'Cairo Felipe','2022-03-22 22:56:15','login');
+(33,'Cairo Felipe','2022-03-22 22:56:15','login'),
+(34,'Centro Card Saúde','2022-03-23 09:31:36','login'),
+(35,'Cairo Felipe','2022-03-23 09:32:43','login'),
+(36,'Centro Card Saúde','2022-03-23 09:39:25','login'),
+(37,'Cairo Felipe dos Reis Machado','2022-03-23 10:09:59','login'),
+(38,'Cairo Felipe dos Reis Machado','2022-03-23 10:24:53','login'),
+(39,'Centro Card Saúde','2022-03-23 16:25:47','login');
 
 /*Table structure for table `partners` */
 
@@ -210,7 +215,7 @@ CREATE TABLE `partners` (
   `status` varchar(10) DEFAULT NULL,
   `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `partners` */
 
@@ -327,7 +332,7 @@ CREATE TABLE `services` (
   `centrocard` varchar(20) DEFAULT NULL,
   `type` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `services` */
 
@@ -342,7 +347,26 @@ insert  into `services`(`id`,`name`,`partner`,`private`,`centrocard`,`type`) val
 (12,'CINTILOGRAFIAS DAS GLÂNDULAS SALIVARES ','Bionuclear','550,00','470,00','EXAME'),
 (13,'DACRIOCINTILOGRAFIA ','Bionuclear','530,00','450,00','EXAME'),
 (14,'PESQUISA DE REFLUXO GASTRO-ESOFÁGICO','Bionuclear','530,00','450,00','EXAME'),
-(15,'ASPIRAÇÃO PULMONAR','Bionuclear','530,00','450,00','EXAME');
+(15,'ASPIRAÇÃO PULMONAR','Bionuclear','530,00','450,00','EXAME'),
+(16,'CINTILOGRAFIA PULMONAR (VENTILAÇÃO) ','Bionuclear','530,00','450,00','EXAME'),
+(17,'CINTILOGRAFIA PULMONAR (PERFUSÃO) ','Bionuclear','530,00','450,00','EXAME'),
+(18,'CINTILOGRAFIA HEPÁTICA (VIAS BILIARES) ','Bionuclear','530,00','450,00','EXAME'),
+(19,'CINTILOGRAFIA HEPÁTICA (FÍGADO E BAÇO)','Bionuclear','530,00','450,00','EXAME'),
+(20,'CINTILOGRAFIA DE FLUXO SANGUINEO HEPÁTICO','Bionuclear','530,00','450,00','EXAME'),
+(21,'CINTILOGRAFIA RENAL ESTÁTICA (QUANT./QUALIT.) DMSA ','Bionuclear','460,00','390,00','EXAME'),
+(22,'ESTUDO RENAL DINÂMICO DTPA','Bionuclear','460,00','390,00','EXAME'),
+(23,'ESTUDO RENAL DINÂMICO COM DIURÉTICO','Bionuclear','530,00','450,00','EXAME'),
+(24,'CISTOCINTILOGRAFIA INDIRETA ','Bionuclear','760,00','640,00','EXAME'),
+(25,'CINTILOGRAFIA DE PERFUSÃO CEREBRAL','Bionuclear','910,00','760,00','EXAME'),
+(26,'CINTILOGRAFIA DE PERFUSÃO CEREBRAL COM TRODAT','Bionuclear','2.030,00','1.733,00','EXAME'),
+(27,'CINTILOGRAFIA GÁSTRICA PARA ESVAZIAMENTO (LÍQUIDO)','Bionuclear','530,00','450,00','EXAME'),
+(28,'CINTILOGRAFIA GÁSTRICA PARA ESVAZIAMENTO (SÓLIDO) ','Bionuclear','530,00','450,00','EXAME'),
+(29,'CINTILOGRAFIA TESTICULAR ','Bionuclear','530,00','450,00','EXAME'),
+(30,'LINFOCINTILOGRAFIA','Bionuclear','640,00','545,00','EXAME'),
+(31,'DETECÇÃO RADIOGUIADA DE LINFONODO SENTINELA ','Bionuclear','640,00','545,00','EXAME'),
+(32,'CINTILOGRAFIA COM ANÁLOGO DE SOMATOSTATINA','Bionuclear','7.260,00','5.610,00','EXAME'),
+(33,'CINTILOGRAFIA COM MIBG (METAIOBENZIGUANIDINA) ','Bionuclear','1.300,00','1.105,00','EXAME'),
+(34,'PESQUISA DE SANGRAMENTO DIGESTIVO','Bionuclear','870,00','825,00',NULL);
 
 /*Table structure for table `specialties` */
 

@@ -84,31 +84,31 @@
       if ($_SESSION['type'] == 4) {
       ?>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-blog.php">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-camera-video-fill"></i>
             <span>Telemdicina</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-blog.php">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-credit-card-2-front-fill"></i>
             <span>Carteira Digital</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-blog.php">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-file-earmark-text-fill"></i>
             <span>Contrato</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-blog.php">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-book-fill"></i>
             <span>Manual</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="painel-blog.php">
+          <a class="nav-link collapsed" href="#">
             <i class="bi bi-telephone-fill"></i>
             <span>Contatos</span>
           </a>

@@ -105,7 +105,7 @@ if (isset($_GET['delete_id'])) {
                       </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                      <button type="button" class="btn btn-success">Editar</button>
+                      <button disabled type="button" class="btn btn-success">Editar</button>
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </div>
                   </div>

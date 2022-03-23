@@ -15,7 +15,7 @@ if (isset($_GET['delete_id'])) {
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
-  header("Location: painel-banners.php");
+  header("Location: painel-parceiros.php");
 }
 
 ?>
@@ -68,8 +68,8 @@ if (isset($_GET['delete_id'])) {
             <li class="breadcrumb-item active">Parceiros</li>
           </ol>
         </nav>
-        <a href="#">
-          <button disabled type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Banner</button>
+        <a href="add-parceiro.php">
+          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Parceiro</button>
         </a>
       </div>
     </div><!-- End Page Title -->
@@ -90,8 +90,12 @@ if (isset($_GET['delete_id'])) {
                   <h5 class="card-title text-center"><?php echo $name; ?></h5>
                   <img class="img-fluid" src="./uploads/parceiros/<?php echo $row['img']; ?>">
                   <div class="d-flex justify-content-between pt-2">
-                    <button disabled type="button" class="btn btn-success">Editar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
+                    <a href="editar-parceiro.php?edit_id=<?php echo $row['id']; ?>">
+                      <button type="button" class="btn btn-success">Editar</button>
+                    </a>
+                    <a href="?delete_id=<?php echo $row['id']; ?>">
+                      <button type="button" class="btn btn-danger">Excluir</button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -102,7 +106,7 @@ if (isset($_GET['delete_id'])) {
           ?>
           <div class="bg-yellow-500 px-4 py-4 rounded">
             <div>
-              <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
+              <p class="text-blueGray-600 font-bold">Sem Parceiro cadastrado ...</p>
             </div>
           </div>
         <?php

@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.9 (64 bit)
-MySQL - 10.4.22-MariaDB : Database - centrocard
+SQLyog Community v13.1.7 (64 bit)
+MySQL - 10.4.19-MariaDB : Database - centrocard
 *********************************************************************
 */
 
@@ -12,7 +12,6 @@ MySQL - 10.4.22-MariaDB : Database - centrocard
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
 /*Table structure for table `banners` */
 
 DROP TABLE IF EXISTS `banners`;
@@ -135,8 +134,8 @@ CREATE TABLE `leads` (
 
 insert  into `leads`(`id`,`nome`,`whats`,`opc`,`email`,`msg`,`data_envio`,`dv`,`tipo`,`status`,`user_vz`,`data_vz`,`user_ok`,`data_ok`,`plan`) values 
 (286,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','Teste','2022-02-02 11:25:02',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(287,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','Teste','2022-02-02 11:26:43','afiliado','1',NULL,NULL,NULL,NULL,NULL,NULL),
-(288,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','esdqdqdq','2022-02-02 11:26:51','afiliado','1',NULL,NULL,NULL,NULL,NULL,NULL);
+(287,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','Teste','2022-02-02 11:26:43','afiliado','1','1',NULL,NULL,NULL,NULL,'Gold'),
+(288,'Cairo Felipe dos Reis Machado','086999069329',NULL,'cairofelipedev@gmail.com','esdqdqdq','2022-02-02 11:26:51','afiliado','1','1',NULL,NULL,NULL,NULL,'Platinum');
 
 /*Table structure for table `logs` */
 
@@ -148,7 +147,7 @@ CREATE TABLE `logs` (
   `data_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 /*Data for the table `logs` */
 
@@ -185,7 +184,12 @@ insert  into `logs`(`id`,`name`,`data_log`,`type`) values
 (30,'CentroCard Saúde','2022-03-22 21:22:04','login'),
 (31,'Cairo Felipe dos Reis Machado','2022-03-22 22:02:49','login'),
 (32,'Centro Card Saúde','2022-03-22 22:49:20','login'),
-(33,'Cairo Felipe','2022-03-22 22:56:15','login');
+(33,'Cairo Felipe','2022-03-22 22:56:15','login'),
+(34,'Centro Card Saúde','2022-03-23 09:31:36','login'),
+(35,'Cairo Felipe','2022-03-23 09:32:43','login'),
+(36,'Centro Card Saúde','2022-03-23 09:39:25','login'),
+(37,'Cairo Felipe dos Reis Machado','2022-03-23 10:09:59','login'),
+(38,'Cairo Felipe dos Reis Machado','2022-03-23 10:24:53','login');
 
 /*Table structure for table `partners` */
 

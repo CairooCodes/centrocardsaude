@@ -56,7 +56,8 @@ $URI = new URI();
               <select class="form-select" name="SelectOptions" id="SelectOptions" required>
                 <option value="Div1">EXAMES E DIAGNÓSTICOS</option>
                 <option value="Div2">CONSULTAS</option>
-                <option value="Div3">LABORATÓRIA</option>
+                <option value="Div2">CONSULTAS DE URGÊNCIA</option>
+                <option value="Div3">LABORATÓRIOS</option>
                 <option value="Div4">HOSPITAIS</option>
               </select>
             </div>

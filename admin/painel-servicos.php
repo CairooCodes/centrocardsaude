@@ -111,7 +111,7 @@ if (isset($_GET['delete_id'])) {
                                         <td><?php echo $private; ?></td>
                                         <td><?php echo $centrocard; ?></td>
                                         <td>
-                                            <a href="edit-servico.php?edit_id=<?php echo $row['id']; ?>">
+                                            <a href="editar-servico.php?edit_id=<?php echo $row['id']; ?>">
                                                 <button type="button" class="btn btn-success">Editar</button>
                                             </a>
                                             <a href="?delete_id=<?php echo $row['id']; ?>">

@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[3];
+$idPost = $url[4];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -61,7 +61,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         <div class="row justify-content-center">
           <div class="col-lg-3">
             <?php if ($name == 'Essencial') { ?>
-              <div data-aos="zoom-in" data-aos-delay="200">
+              <div>
                 <div class="pricing-item">
 
                   <div class="pricing-header">
@@ -89,7 +89,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             }
             ?>
             <?php if ($name == 'Platinum') { ?>
-              <div data-aos="zoom-in" data-aos-delay="400">
+              <div>
                 <div class="pricing-item featured">
 
                   <div class="pricing-header">
@@ -119,7 +119,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             }
             ?>
             <?php if ($name == 'Gold') { ?>
-              <div data-aos="zoom-in" data-aos-delay="600">
+              <div>
                 <div class="pricing-item">
                   <div class="pricing-header">
                     <h3><?php echo $name; ?></h3>
