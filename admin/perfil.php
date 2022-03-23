@@ -162,7 +162,7 @@ if (isset($_POST['btnsave'])) {
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="./uploads/usuarios/<?php echo $img; ?>" onerror="this.src='./assets/img/semperfil.png'" class="rounded-circle">
+              <img src="./uploads/usuarios/<?php echo $img; ?>" onerror="this.src='./assets/img/semperfil.png'" class="rounded">
               <h2><?php echo $name; ?></h2>
               <h3>
                 <?php
@@ -229,7 +229,14 @@ if (isset($_POST['btnsave'])) {
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Endereço</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $address; ?></div>
+                    <div class="col-lg-9 col-md-8">
+                      <?php
+                      if ($address == null) {
+                        echo "não informado";
+                      } else {
+                        echo $address;
+                      } ?>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Telefone</div>
@@ -272,6 +279,12 @@ if (isset($_POST['btnsave'])) {
                       </div>
                     </div>
                     <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Senha</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="pass" type="password" class="form-control" id="pass" value="<?php echo $pass; ?>">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
                       <label for="Country" class="col-md-4 col-lg-3 col-form-label">Endereço</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="address" type="text" class="form-control" id="address" value="<?php echo $address; ?>">
@@ -304,8 +317,51 @@ if (isset($_POST['btnsave'])) {
                         <input name="whats" type="text" class="form-control" id="whats" value="<?php echo $whats; ?>">
                       </div>
                     </div>
-                    <input name="pass" type="hidden" id="whats" value="<?php echo $pass; ?>">
-                    <input name="type" type="hidden" id="type" value="<?php echo $type; ?>">
+                    <?php
+                    if ($_SESSION['type'] == 1) {
+                    ?>
+                      <div class="row mb-3">
+                        <label for="Tipo de Usuário" class="col-md-4 col-lg-3 col-form-label">Tipo</label>
+                        <div class="col-md-8 col-lg-9">
+                          <select name="type" class="form-select" aria-label="Tipo">
+                            <option value="<?php echo $type; ?>">
+                              <?php
+                              if ($type == 1) {
+                                echo "Administrador";
+                              }
+                              if ($type == 2) {
+                                echo "Afiliado";
+                              }
+                              if ($type == 4) {
+                                echo "Cliente";
+                              } ?> (selecionado)
+                            </option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Afiliado</option>
+                            <option value="3">Marketing</option>
+                            <option value="4">Cliente</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row mb-3">
+                        <label for="Tipo de Usuário" class="col-md-4 col-lg-3 col-form-label">Status</label>
+                        <div class="col-md-8 col-lg-9">
+                          <select name="status" class="form-select" aria-label="Status">
+                            <option value="<?php echo $status; ?>">
+                              <?php
+                              if ($type == 1) {
+                                echo "Ativado";
+                              }
+                              if ($type == 2) {
+                                echo "Desativado";
+                              } ?> (selecionado)
+                            </option>
+                            <option value="1">Ativodo</option>
+                            <option value="2">Desativado</option>
+                          </select>
+                        </div>
+                      </div>
+                    <?php } ?>
                     <div class="text-center">
                       <button type="submit" name="btnsave" class="btn btn-primary">Salvar</button>
                     </div>
@@ -324,18 +380,7 @@ if (isset($_POST['btnsave'])) {
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-  </footer><!-- End Footer -->
+  <?php include "components/footer.php"; ?>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

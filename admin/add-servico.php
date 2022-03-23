@@ -44,7 +44,7 @@ if (isset($_POST['btnsave'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Adicionar Usuário / Painel Administrativo</title>
+  <title>Adicionar Serviço / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -89,7 +89,7 @@ if (isset($_POST['btnsave'])) {
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">

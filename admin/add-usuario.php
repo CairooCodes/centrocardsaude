@@ -17,7 +17,7 @@ if (isset($_POST['btnsave'])) {
   $type = $_POST['type'];
   $whats = $_POST['whats'];
   $address = $_POST['address'];
-  $bairro = $_POST['bairro'];
+  $district = $_POST['district'];
   $city = $_POST['city'];
   $state = $_POST['state'];
   $status = $_POST['status'];
@@ -49,7 +49,7 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO users (name,login,email,pass,type,whats,address,bairro,city,state,img,status) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uaddress,:ubairro,:ucity,:ustate,:upic,:ustatus)');
+    $stmt = $DB_con->prepare('INSERT INTO users (name,login,email,pass,type,whats,address,district,city,state,img,status) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uaddress,:udistrict,:ucity,:ustate,:upic,:ustatus)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':ulogin', $login);
     $stmt->bindParam(':uemail', $email);
@@ -58,7 +58,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':upic', $userpic);
     $stmt->bindParam(':uwhats', $whats);
     $stmt->bindParam(':uaddress', $address);
-    $stmt->bindParam(':ubairro', $bairro);
+    $stmt->bindParam(':udistrict', $district);
     $stmt->bindParam(':ucity', $city);
     $stmt->bindParam(':ustate', $state);
     $stmt->bindParam(':ustatus', $status);
@@ -112,7 +112,7 @@ if (isset($_POST['btnsave'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Adicionar Plano</h1>
+      <h1>Adicionar Usuário</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
@@ -123,7 +123,7 @@ if (isset($_POST['btnsave'])) {
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row">
-        <div class="col-lg-10 justify-content-center">
+        <div class="col-lg-12 justify-content-center">
 
           <div class="card">
             <div class="card-body">
@@ -207,7 +207,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $bairro; ?>" name="bairro" placeholder="Email">
+                        <input type="text" class="form-control" value="<?php echo $district; ?>" name="district" placeholder="Email">
                         <label for="">Bairro</label>
                       </div>
                     </div>

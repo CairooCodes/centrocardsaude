@@ -68,54 +68,105 @@ if (isset($_GET['delete_id'])) {
             <li class="breadcrumb-item active">Leads</li>
           </ol>
         </nav>
-        <a href="add-plano.php">
-          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
-        </a>
       </div>
     </div><!-- End Page Title -->
 
     <section class="section">
-      <div class="row">
-        <?php
-        $stmt = $DB_con->prepare('SELECT * FROM leads ORDER BY id DESC');
-        $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-        ?>
+      <?php
+      if ($_SESSION['type'] == 1) {
+      ?>
+        <div class="row">
+          <?php
+          $stmt = $DB_con->prepare('SELECT * FROM leads ORDER BY id DESC');
+          $stmt->execute();
+          if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              extract($row);
+          ?>
 
-            <div class="col-lg-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title text-center"><?php echo $data_envio; ?></h5>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <p><?php echo $nome; ?></p>
-                      <p><?php echo $whats; ?></p>
-                      <p><?php echo $email; ?></p>
-                      <p><?php echo $msg; ?></p>
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><?php echo $data_envio; ?></h5>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p><?php echo $nome; ?></p>
+                        <p><?php echo $whats; ?></p>
+                        <p><?php echo $email; ?></p>
+                        <p><?php echo $msg; ?></p>
+                        <p>
+                          <?php
+                          if ($dv == null) {
+                            echo "Lead sem afiliado";
+                          } else {
+                            echo "Afiliado: " . $dv;
+                          } ?>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <button type="button" class="btn btn-success">Editar</button>
+                      <button type="button" class="btn btn-danger">Excluir</button>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-success">Editar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
-                  </div>
                 </div>
+              </div>
+            <?php
+            }
+          } else {
+            ?>
+            <div class="bg-yellow-500 px-4 py-4 rounded">
+              <div>
+                <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
               </div>
             </div>
           <?php
           }
-        } else {
           ?>
-          <div class="bg-yellow-500 px-4 py-4 rounded">
-            <div>
-              <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
+        </div>
+      <?php } ?>
+      <?php
+      if ($_SESSION['type'] == 2) {
+      ?>
+        <div class="row">
+          <?php
+          $stmt = $DB_con->prepare("SELECT * FROM leads where dv='$_SESSION[login]' ORDER BY id DESC");
+          $stmt->execute();
+          if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              extract($row);
+          ?>
+
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><?php echo $data_envio; ?></h5>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p><?php echo $nome; ?></p>
+                        <p><?php echo $whats; ?></p>
+                        <p><?php echo $email; ?></p>
+                        <p><?php echo $msg; ?></p>
+                        <p>Afiliado: <?php echo $dv; ?></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php
+            }
+          } else {
+            ?>
+            <div class="bg-yellow-500 px-4 py-4 rounded">
+              <div>
+                <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
+              </div>
             </div>
-          </div>
-        <?php
-        }
-        ?>
-      </div>
+          <?php
+          }
+          ?>
+        </div>
+      <?php } ?>
     </section>
 
   </main><!-- End #main -->

@@ -54,12 +54,12 @@
         </li>
 
         <!-- <li class="nav-heading">Pages</li> -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link collapsed" href="#">
             <i class="fas fa-handshake"></i>
             <span>Afiliados</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="painel-usuarios.php">
             <i class="fas fa-user"></i>
@@ -67,18 +67,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="painel-parceiros.php">
             <i class="fas fa-hands-helping"></i>
             <span>Parceiros</span>
           </a>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link collapsed" href="#">
             <i class="fas fa-newspaper"></i>
             <span>Blog</span>
           </a>
-        </li>
+        </li> -->
       <?php } ?>
       <?php
       if ($_SESSION['type'] == 4) {

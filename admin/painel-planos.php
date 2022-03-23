@@ -68,9 +68,13 @@ if (isset($_GET['delete_id'])) {
             <li class="breadcrumb-item active">Planos</li>
           </ol>
         </nav>
-        <a href="add-plano.php">
-          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
-        </a>
+        <?php
+        if ($_SESSION['type'] == 1) {
+        ?>
+          <a href="#">
+            <button type="submit" disabled name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
+          </a>
+        <?php } ?>
       </div>
     </div><!-- End Page Title -->
 
@@ -98,9 +102,17 @@ if (isset($_GET['delete_id'])) {
                       <h5><?php echo $price2; ?></h5>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-success">Editar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
+                  <?php
+                  if ($_SESSION['type'] == 1) {
+                  ?>
+                    <div class="d-flex justify-content-between">
+                      <button disabled type="button" class="btn btn-success">Editar</button>
+                      <button type="button" class="btn btn-danger">Excluir</button>
+                    </div>
+                  <?php } ?>
+                  <div class="pb-3">
+                    <input class="btn form-control" disabled value="https://centrocardsaude.com.br/plano/<?php echo $name; ?>/?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
+                    <button class="btn btn-primary" onclick="myFunction()">Copiar Link do plano</button>
                   </div>
                 </div>
               </div>
@@ -138,6 +150,23 @@ if (isset($_GET['delete_id'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function myFunction() {
+      /* Get the text field */
+      var copyText = document.getElementById("myInput");
+
+      /* Select the text field */
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+      /* Copy the text inside the text field */
+      navigator.clipboard.writeText(copyText.value);
+
+      /* Alert the copied text */
+      alert("Código copiado, compartilhe em suas redes sociais");
+    }
+  </script>
 
 </body>
 

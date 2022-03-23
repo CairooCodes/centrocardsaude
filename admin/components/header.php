@@ -27,13 +27,13 @@
     <li class="nav-item dropdown pe-3">
 
       <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-        <img src="./uploads/users/<?php echo $_SESSION['img']; ?>" onerror="this.src='./assets/img/semperfil.png'" alt="Profile" class="rounded-circle">
+        <img src="./uploads/usuarios/<?php echo $_SESSION['img']; ?>" onerror="this.src='./assets/img/semperfil.png'" alt="Profile" class="rounded">
         <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $_SESSION['name']; ?></span>
       </a><!-- End Profile Iamge Icon -->
 
       <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
         <li>
-          <a class="dropdown-item d-flex align-items-center" href="painel-perfil.php?edit_id=<?php echo $_SESSION['id']; ?>">
+          <a class="dropdown-item d-flex align-items-center" href="perfil.php?edit_id=<?php echo $_SESSION['id']; ?>">
             <i class="bi bi-person"></i>
             <span>Perfil</span>
           </a>
