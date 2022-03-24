@@ -150,7 +150,7 @@ if (isset($_POST['btnsave'])) {
             <option value="1">CLÍNICA/POLICLÍNICA</option>
             <option value="2">CONSULTÓRIO MÉDICO/ODONTOLÓGICO</option>
             <option value="3">LABORATÓRIO DE ANÁLISES CLÍNICAS</option>
-            <option value="4">DIAGNÓSTICOS POR IMAGEM</option>
+            <option value="4">HOSPITAL</option>
           </select>
         </div>
         <div class="col-md-6">

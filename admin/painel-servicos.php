@@ -78,7 +78,7 @@ if (isset($_GET['delete_id'])) {
         <section class="section card-body">
             <div class="card recent-sales">
                 <div class="card-body">
-                    <h5 class="card-title">Serviços</h5>
+                    <h5 class="card-title">EXAMES</h5>
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
@@ -92,7 +92,73 @@ if (isset($_GET['delete_id'])) {
                         </thead>
                         <tbody>
                             <?php
-                            $stmt = $DB_con->prepare("SELECT * FROM services ORDER BY id DESC");
+                            $stmt = $DB_con->prepare("SELECT * FROM services where type='EXAME' ORDER BY id DESC");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row);
+                            ?>
+                                    <tr>
+                                        <td><?php echo $name; ?></td>
+                                        <td><?php echo $partner; ?></td>
+                                        <td>
+                                            <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
+                                                <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
+                                                    Saiba Mais
+                                                </button>
+                                            </a>
+                                        </td>
+                                        <td><?php echo $private; ?></td>
+                                        <td><?php echo $centrocard; ?></td>
+                                        <td>
+                                            <a href="editar-servico.php?edit_id=<?php echo $row['id']; ?>">
+                                                <button type="button" class="btn btn-success">Editar</button>
+                                            </a>
+                                            <a href="?delete_id=<?php echo $row['id']; ?>">
+                                                <button type="button" class="btn btn-danger">Excluir</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            } else {
+                                ?>
+                                <div class="pt-4 col-xs-12">
+                                    <div class="alert alert-danger">
+                                        Sem Lead Cadastrado ...
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>SERVIÇO</th>
+                                <th>PARCEIRO</th>
+                                <th>ENDEREÇO E CONTATO</th>
+                                <th>PARTICULAR</th>
+                                <th>CENTROCARD</th>
+                                <th>OPÇÕES</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <hr>
+                    <h5 class="card-title">TRATAMENTOS</h5>
+                    <table id="example2" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>SERVIÇO</th>
+                                <th>PARCEIRO</th>
+                                <th>ENDEREÇO E CONTATO</th>
+                                <th>PARTICULAR</th>
+                                <th>CENTROCARD</th>
+                                <th>OPÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $stmt = $DB_con->prepare("SELECT * FROM services where type='TRATAMENTO' ORDER BY id DESC");
                             $stmt->execute();
                             if ($stmt->rowCount() > 0) {
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -211,6 +277,16 @@ if (isset($_GET['delete_id'])) {
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
+                language: {
+                    url: '../assets/js/dataBr.json'
+                },
+                responsive: true
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example2').DataTable({
                 language: {
                     url: '../assets/js/dataBr.json'
                 },

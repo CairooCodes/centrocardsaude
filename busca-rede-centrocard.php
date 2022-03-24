@@ -54,11 +54,11 @@ $URI = new URI();
           <div class="row justify-content-center">
             <div class="col-md-6">
               <select class="form-select" name="SelectOptions" id="SelectOptions" required>
-                <option value="Div1">EXAMES E DIAGNÓSTICOS</option>
-                <option value="Div2">CONSULTAS</option>
-                <option value="Div2">CONSULTAS DE URGÊNCIA</option>
-                <option value="Div3">LABORATÓRIOS</option>
+                <option value="Div1">EXAMES E CONSULTAS</option>
+                <option value="Div2">TRATAMENTOS</option>
+                <option value="Div3">CLINÍCAS E LABORATÓRIOS</option>
                 <option value="Div4">HOSPITAIS</option>
+                <!-- <option value="Div5">CONSULTAS DE URGÊNCIA</option> -->
               </select>
             </div>
           </div>
@@ -72,16 +72,16 @@ $URI = new URI();
           <table id="example" class="display" style="width:100%">
             <thead>
               <tr>
-                <th>NOME</th>
-                <th>ESPECIALIDADE</th>
-                <th>TELEFONE</th>
-                <th>CIDADE</th>
-                <th>ESTADO</th>
+                <th>SERVIÇO</th>
+                <th>PARCEIRO</th>
+                <th>ENDEREÇO E CONTATO</th>
+                <th>PARTICULAR</th>
+                <th>CENTROCARD</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              $stmt = $DB_con->prepare('SELECT * FROM specialties ORDER BY id ASC');
+              $stmt = $DB_con->prepare("SELECT * FROM services where type='EXAME' ORDER BY id ASC");
               $stmt->execute();
               if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -89,16 +89,16 @@ $URI = new URI();
               ?>
                   <tr>
                     <td><?php echo $name; ?></td>
+                    <td><?php echo $partner; ?></td>
                     <td>
-                      <?php if ($esp_1 != '') { ?>
-                        <p><?php echo $esp_1; ?></p>
-                      <?php } ?>
+                      <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
+                        <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
+                          Saiba Mais
+                        </button>
+                      </a>
                     </td>
-                    <td>
-                      <p><?php echo $tel; ?></p>
-                    </td>
-                    <td>TERESINA</td>
-                    <td>PI</td>
+                    <td><?php echo $private; ?></td>
+                    <td><?php echo $centrocard; ?></td>
                   </tr>
               <?php
                 }
@@ -121,16 +121,16 @@ $URI = new URI();
           <table id="example2" class="display" style="width:100%">
             <thead>
               <tr>
-                <th>NOME</th>
-                <th>ESPECIALIDADE</th>
-                <th>TELEFONE</th>
-                <th>CIDADE</th>
-                <th>ESTADO</th>
+                <th>SERVIÇO</th>
+                <th>PARCEIRO</th>
+                <th>ENDEREÇO E CONTATO</th>
+                <th>PARTICULAR</th>
+                <th>CENTROCARD</th>
               </tr>
             </thead>
             <tbody>
               <?php
-              $stmt = $DB_con->prepare('SELECT * FROM specialties ORDER BY id ASC');
+              $stmt = $DB_con->prepare("SELECT * FROM services where type='TRATAMENTO' ORDER BY id DESC");
               $stmt->execute();
               if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -138,16 +138,59 @@ $URI = new URI();
               ?>
                   <tr>
                     <td><?php echo $name; ?></td>
+                    <td><?php echo $partner; ?></td>
                     <td>
-                      <?php if ($esp_1 != '') { ?>
-                        <p><?php echo $esp_1; ?></p>
-                      <?php } ?>
+                      <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
+                        <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
+                          Saiba Mais
+                        </button>
+                      </a>
                     </td>
-                    <td>
-                      <p><?php echo $tel; ?></p>
-                    </td>
-                    <td>TERESINA</td>
-                    <td>PI</td>
+                    <td><?php echo $private; ?></td>
+                    <td><?php echo $centrocard; ?></td>
+                  </tr>
+              <?php
+                }
+              } ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>SERVIÇO</th>
+                <th>PARCEIRO</th>
+                <th>ENDEREÇO E CONTATO</th>
+                <th>PARTICULAR</th>
+                <th>CENTROCARD</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="Div3">
+        <div class="container container-form">
+          <table id="example3" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>NOME</th>
+                <th>ENDEREÇO</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
+                <th>CONTATO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $stmt = $DB_con->prepare("SELECT * FROM partners where type_service='1' or type_service='3' ORDER BY id DESC");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <tr>
+                    <td><?php echo $name; ?></td>
+                    <td><?php echo $address; ?></td>
+                    <td><?php echo $city; ?></td>
+                    <td><?php echo $state; ?></td>
+                    <td><?php echo $tel; ?></td>
                   </tr>
               <?php
                 }
@@ -156,69 +199,99 @@ $URI = new URI();
             <tfoot>
               <tr>
                 <th>NOME</th>
-                <th>ESPECIALIDADE</th>
-                <th>TELEFONE</th>
+                <th>ENDEREÇO</th>
                 <th>CIDADE</th>
                 <th>ESTADO</th>
+                <th>CONTATO</th>
               </tr>
             </tfoot>
           </table>
         </div>
       </div>
-      <div class="Div3">
-        LABORATORIOS
-      </div>
       <div class="Div4">
-        HOSPITAIS
+        <div class="container container-form">
+          <table id="example3" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>NOME</th>
+                <th>ENDEREÇO</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
+                <th>CONTATO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $stmt = $DB_con->prepare("SELECT * FROM partners where type_service='4' ORDER BY id DESC");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <tr>
+                    <td><?php echo $name; ?></td>
+                    <td><?php echo $address; ?></td>
+                    <td><?php echo $city; ?></td>
+                    <td><?php echo $state; ?></td>
+                    <td><?php echo $tel; ?></td>
+                  </tr>
+              <?php
+                }
+              } ?>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>NOME</th>
+                <th>ENDEREÇO</th>
+                <th>CIDADE</th>
+                <th>ESTADO</th>
+                <th>CONTATO</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </div>
   </section><!-- End Contact Section -->
-
-  <!-- ======= Contact Section ======= -->
-  <!-- <section id="contact" class="contact">
-    <div class="container">
-
-      <div class="section-header">
-        <h2>Contato</h2>
-        <p>Preencha o formulário abaixo e tenha atendimento especializado</p>
-      </div>
-
-    </div>
-
-    <div class="container">
-
-      <div class="row gy-5 gx-lg-5 justify-content-center">
-
-        <div class="col-lg-8">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
+  <?php
+  $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
+  $stmt->execute();
+  if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      extract($row);
+  ?>
+      <div id="parceiro-<?php echo $name; ?>" class="modal2">
+        <div class="modal__overlay jsOverlay"></div>
+        <div class="modal__container">
+          <div class="parceiro-box d-flex">
+            <div class="parceiro-infos">
+              <div class="row">
+                <div class="col-md-6">
+                  <h4>Endereço</h4>
+                  <p class="lead"><?php echo $address; ?></p>
+                  <p class="lead"><?php echo $city; ?> - <?php echo $state; ?></p>
+                  <p class="lead"><?php echo $district; ?></p>
+                  <p class="lead"><?php echo $zip; ?></p>
+                </div>
+                <div class="col-md-6">
+                  <h4>Contato</h4>
+                  <div class="row justify-content-center">
+                    <p class="lead"><?php echo $tel; ?></p>
+                    <p class="lead"><?php echo $whats; ?></p>
+                    <?php if ($email != '') { ?>
+                      <p class="lead parceiro-email"><?php echo $email; ?></p>
+                    <?php } ?>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-              </div>
             </div>
-            <div class="form-group mt-3">
-              <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-            </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control" name="message" placeholder="Mensagem" required></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button class="btn" type="submit">Enviar Mensagem</button></div>
-          </form>
+          </div>
+          <button class="modal__close jsModalClose">&#10005;</button>
         </div>
-
       </div>
-
-    </div>
-  </section>End Contact Section -->
-
+  <?php
+    }
+  } ?>
   </main><!-- End #main -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
@@ -236,6 +309,7 @@ $URI = new URI();
   <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="assets/js/script.js"></script>
   <script>
     $(document).ready(function() {
       $('#example').DataTable({
@@ -246,9 +320,29 @@ $URI = new URI();
       });
     });
   </script>
-   <script>
+  <script>
     $(document).ready(function() {
       $('#example2').DataTable({
+        language: {
+          url: 'assets/js/dataBr.json'
+        },
+        responsive: true
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#example3').DataTable({
+        language: {
+          url: 'assets/js/dataBr.json'
+        },
+        responsive: true
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      $('#example4').DataTable({
         language: {
           url: 'assets/js/dataBr.json'
         },
