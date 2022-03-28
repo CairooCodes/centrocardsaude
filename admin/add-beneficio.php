@@ -7,18 +7,7 @@ if (isset($_SESSION['logado'])) :
 else :
   header("Location: login.php");
 endif;
-error_reporting(~E_ALL);
-
-if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
-    $id = $_GET['edit_id'];
-    $stmt_edit = $DB_con->prepare('SELECT * FROM benefits WHERE id =:uid');
-    $stmt_edit->execute(array(':uid' => $id));
-    $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
-    extract($edit_row);
-  } else {
-    header("Location: painel-beneficios.php");
-  }
-  
+error_reporting(~E_ALL); // avoid notice
 
 if (isset($_POST['btnsave'])) {
   $benefit = $_POST['benefit'];
@@ -45,90 +34,50 @@ if (isset($_POST['btnsave'])) {
   $tmp_dir3 = $_FILES['user_image3']['tmp_name'];
   $imgSize3 = $_FILES['user_image3']['size'];
 
-  if ($imgFile) {
-    $upload_dir = 'uploads/beneficios/'; // upload directory	
-    $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // get image extension
-    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
+  if (empty($name)) {
+    $errMSG = "Por favor, insira o nome";
+  } else {
+    $upload_dir = 'uploads/beneficios/'; // upload directory
+    $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
+    $imgExt2 =  strtolower(pathinfo($imgFile2, PATHINFO_EXTENSION));
+    $imgExt3 =  strtolower(pathinfo($imgFile3, PATHINFO_EXTENSION));
+
+    $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
+    // rename uploading image
     $benefit2 = preg_replace("/\s+/", "", $benefit);
     $benefit3 = substr($benefit2, 0, -1);
-    $userpic = $benefit3 . "edit" . "." . $imgExt;
+    
+    $userpic  = $benefit3 . "beneficio1" . "." . $imgExt;
+    $userpic2  = $benefit3 . "beneficio2" . "." . $imgExt2;
+    $userpic3  = $benefit3 . "beneficio3" . "." . $imgExt2;
+    // allow valid image file formats
     if (in_array($imgExt, $valid_extensions)) {
+      // Check file size '5MB'
       if ($imgSize < 5000000) {
-        unlink($upload_dir . $edit_row['img_1']);
         move_uploaded_file($tmp_dir, $upload_dir . $userpic);
       } else {
-        $errMSG = "Imagem grande demais, max 5MB";
+        $errMSG = "Imagem muito grande.";
       }
-    } else {
-      $errMSG = "Imagens apenas nos formatos JPG, JPEG, PNG & GIF files are allowed.";
     }
-  } else {
-    // if no image selected the old image remain as it is.
-    $userpic = $edit_row['img_1']; // old image from database
-  }
-
-  if ($imgFile2) {
-    $upload_dir = 'uploads/beneficios/'; // upload directory	
-    $imgExt2 = strtolower(pathinfo($imgFile2, PATHINFO_EXTENSION)); // get image extension
-    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-    $benefit2 = preg_replace("/\s+/", "", $benefit);
-    $benefit3 = substr($benefit2, 0, -1);
-    $userpic2 = $benefit3 . "edit" . "." . $imgExt2;
     if (in_array($imgExt2, $valid_extensions)) {
-      if ($imgSize2 < 5000000) {
-        unlink($upload_dir . $edit_row['img_1']);
-        move_uploaded_file($tmp_dir2, $upload_dir . $userpic2);
-      } else {
-        $errMSG = "Imagem grande demais, max 5MB";
+        // Check file size '5MB'
+        if ($imgSize2 < 5000000) {
+          move_uploaded_file($tmp_dir2, $upload_dir . $userpic2);
+        } else {
+          $errMSG = "Imagem muito grande.";
+        }
       }
-    } else {
-      $errMSG = "Imagens apenas nos formatos JPG, JPEG, PNG & GIF files are allowed.";
-    }
-  } else {
-    // if no image selected the old image remain as it is.
-    $userpic2 = $edit_row['img_2']; // old image from database
-  }
-
-  if ($imgFile3) {
-    $upload_dir = 'uploads/beneficios/'; // upload directory	
-    $imgExt3 = strtolower(pathinfo($imgFile3, PATHINFO_EXTENSION)); // get image extension
-    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
-    $benefit2 = preg_replace("/\s+/", "", $benefit);
-    $benefit3 = substr($benefit2, 0, -1);
-    $userpic3 = $benefit3 . "edit" . "." . $imgExt3;
-    if (in_array($imgExt3, $valid_extensions)) {
-      if ($imgSize3 < 5000000) {
-        unlink($upload_dir . $edit_row['img_3']);
-        move_uploaded_file($tmp_dir3, $upload_dir . $userpic3);
-      } else {
-        $errMSG = "Imagem grande demais, max 5MB";
+      if (in_array($imgExt3, $valid_extensions)) {
+        // Check file size '5MB'
+        if ($imgSize3 < 5000000) {
+          move_uploaded_file($tmp_dir3, $upload_dir . $userpic3);
+        } else {
+          $errMSG = "Imagem muito grande.";
+        }
       }
-    } else {
-      $errMSG = "Imagens apenas nos formatos JPG, JPEG, PNG & GIF files are allowed.";
-    }
-  } else {
-    // if no image selected the old image remain as it is.
-    $userpic3 = $edit_row['img_3']; // old image from database
   }
-
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('UPDATE benefits
-    SET 
-    benefit=:ubenefit,
-    description=:udescription,
-    title_s1=:utitle_s1,
-    service_1=:uservice_1,
-    title_s2=:utitle_s2,
-    service_2=:uservice_2,
-    title_s3=:utitle_s3,
-    service_3=:uservice_3,
-    img_1=:upic,
-    img_2=:upic2,
-    img_3=:upic3,
-    plan_1=:uplan_1,
-    plan_2=:u plan_2,
-    slug=:uslug
-    WHERE id=:uid');
+    $stmt = $DB_con->prepare('INSERT INTO benefits (benefit,description,title_s1,service_1,title_s2,service_2,title_s3,service_3,img_1,img_2,img_3,plan_1,plan_2,slug) VALUES(:ubenefit,:udescription,:utitle_s1,:uservice_1,:utitle_s2,:uservice_2,:utitle_s3,:uservice_3,:upic,:upic2,:upic3,:uplan_1,:uplan_2,:uslug)');
 
     $stmt->bindParam(':ubenefit', $benefit);
     $stmt->bindParam(':udescription', $description);
@@ -145,7 +94,6 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uplan_1', $plan_1);
     $stmt->bindParam(':uplan_2', $plan_2);
     $stmt->bindParam(':uslug', $slug);
-    $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
       echo ("<script>window.location = 'painel-beneficios.php';</script>");
@@ -201,7 +149,7 @@ if (isset($_POST['btnsave'])) {
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
           <li class="breadcrumb-item"><a href="painel-beneficios.php">Painel Benefícios</a></li>
-          <li class="breadcrumb-item active">Editar Benefício</li>
+          <li class="breadcrumb-item active">Adicionar Benefício</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -248,7 +196,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea type="text" class="form-control" value="<?php echo $service_1; ?>" name="service_1" placeholder="Descrição do Serviço 1" style="height: 100px;"><?php echo $service_1; ?>"</textarea>
+                        <textarea type="text" class="form-control" value="<?php echo $service_1; ?>" name="service_1" placeholder="Descrição do Serviço 1" style="height: 100px;"></textarea>
                         <label for="">Descrição do Serviço 1</label>
                       </div>
                     </div>
@@ -260,7 +208,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea type="text" class="form-control" value="<?php echo $service_2; ?>" name="service_2" placeholder="Descrição do Serviço 2" style="height: 100px;"><?php echo $service_2; ?></textarea>
+                        <textarea type="text" class="form-control" value="<?php echo $service_2; ?>" name="service_2" placeholder="Descrição do Serviço 2" style="height: 100px;"></textarea>
                         <label for="">Descrição do Serviço 2</label>
                       </div>
                     </div>
@@ -272,7 +220,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea type="text" class="form-control" value="<?php echo $service_3; ?>" name="service_3" placeholder="Descrição do Serviço 3" style="height: 100px;"><?php echo $service_3; ?></textarea>
+                        <textarea type="text" class="form-control" value="<?php echo $service_3; ?>" name="service_3" placeholder="Descrição do Serviço 3" style="height: 100px;"></textarea>
                         <label for="">Descrição do Serviço 3</label>
                       </div>
                     </div>

@@ -71,8 +71,8 @@ if (isset($_GET['delete_id'])) {
         <?php
         if ($_SESSION['type'] == 1) {
         ?>
-          <a href="#">
-            <button disabled type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Benefício</button>
+          <a href="add-beneficio.php">
+            <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Benefício</button>
           </a>
         <?php } ?>
       </div>
@@ -97,7 +97,9 @@ if (isset($_GET['delete_id'])) {
                   if ($_SESSION['type'] == 1) {
                   ?>
                     <div class="d-flex justify-content-between pt-2">
-                      <button disabled type="button" class="btn btn-success">Editar</button>
+                    <a href="editar-beneficio.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </div>
                   <?php } ?>
