@@ -15,7 +15,7 @@ if (isset($_GET['delete_id'])) {
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
-  header("Location: painel-plans.php");
+  header("Location: painel-leads.php");
 }
 
 ?>
@@ -26,7 +26,7 @@ if (isset($_GET['delete_id'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Leads / Painel Administrativo</title>
+  <title>Painel Leads / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -65,7 +65,7 @@ if (isset($_GET['delete_id'])) {
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-            <li class="breadcrumb-item active">Leads</li>
+            <li class="breadcrumb-item"><a href="painel-leads.php">Painel Leads</a></li>
           </ol>
         </nav>
       </div>
@@ -75,9 +75,10 @@ if (isset($_GET['delete_id'])) {
       <?php
       if ($_SESSION['type'] == 1) {
       ?>
+        <h5 class="card-title">Leads do Site</h5>
         <div class="row">
           <?php
-          $stmt = $DB_con->prepare('SELECT * FROM leads ORDER BY id DESC');
+          $stmt = $DB_con->prepare("SELECT * FROM leads where tipo='1' ORDER BY id DESC");
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -87,13 +88,19 @@ if (isset($_GET['delete_id'])) {
               <div class="col-lg-3">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title text-center"><?php echo $data_envio; ?></h5>
+                    <h5 class="card-title text-center">
+                      <i class="bi bi-clock"></i>
+                      <?php
+                      $date = new DateTime($data_envio);
+                      echo $date->format('H:i:s d-m-Y');
+                      ?>
+                    </h5>
                     <div class="row">
                       <div class="col-md-12">
-                        <p><?php echo $nome; ?></p>
-                        <p><?php echo $whats; ?></p>
-                        <p><?php echo $email; ?></p>
-                        <p><?php echo $msg; ?></p>
+                        <p><i class="bi bi-person-circle"></i> <?php echo $nome; ?></p>
+                        <p><i class="bi bi-whatsapp"></i> <?php echo $whats; ?></p>
+                        <p><i class="bi bi-envelope"></i> <?php echo $email; ?></p>
+                        <p><i class="bi bi-chat"></i> <?php echo $msg; ?></p>
                         <p>
                           <?php
                           if ($dv == null) {
@@ -105,7 +112,9 @@ if (isset($_GET['delete_id'])) {
                       </div>
                     </div>
                     <div class="d-flex justify-content-between">
-                      <button disabled type="button" class="btn btn-success">Editar</button>
+                      <a href="editar-lead.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </div>
                   </div>
@@ -117,7 +126,80 @@ if (isset($_GET['delete_id'])) {
             ?>
             <div class="bg-yellow-500 px-4 py-4 rounded">
               <div>
-                <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
+                <p class="text-blueGray-600 font-bold">Sem Lead Cadastrado ...</p>
+              </div>
+            </div>
+          <?php
+          }
+          ?>
+        </div>
+        <hr>
+        <h5 class="card-title">Leads de Venda</h5>
+        <div class="row">
+          <?php
+          $stmt = $DB_con->prepare("SELECT * FROM leads where tipo='2' ORDER BY id DESC");
+          $stmt->execute();
+          if ($stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+              extract($row);
+          ?>
+
+              <div class="col-lg-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">
+                      <i class="bi bi-clock"></i>
+                      <?php
+                      $date = new DateTime($data_envio);
+                      echo $date->format('H:i:s d-m-Y');
+                      ?>
+                    </h5>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <p><i class="bi bi-person-circle"></i> <?php echo $nome; ?></p>
+                        <p><i class="bi bi-whatsapp"></i> <?php echo $whats; ?></p>
+                        <p><i class="bi bi-envelope"></i> <?php echo $email; ?></p>
+                        <p><i class="bi bi-chat"></i> <?php echo $msg; ?></p>
+                        <p>
+                          <?php
+                          if ($dv == null) {
+                            echo "Lead sem afiliado";
+                          } else {
+                            echo "Afiliado: " . $dv;
+                          } ?>
+                        </p>
+
+                        <?php
+                        if ($status == 1) {
+                          echo " <p class='bg-light text-center rounded text-black'>Pendente </p>";
+                        }
+                        if ($status == 2) {
+                          echo " <p class='bg-success text-center rounded text-white'>Aprovado </p>";
+                        }
+                        if ($status == 3) {
+                          echo " <p class='bg-danger text-center rounded text-white'>Não aprovado </p>";
+                        }
+
+                        ?>
+
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <a href="editar-lead.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
+                      <button type="button" class="btn btn-danger">Excluir</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php
+            }
+          } else {
+            ?>
+            <div class="bg-yellow-500 px-4 py-4 rounded">
+              <div>
+                <p class="text-blueGray-600 font-bold">Sem Lead Cadastrado ...</p>
               </div>
             </div>
           <?php
@@ -159,7 +241,7 @@ if (isset($_GET['delete_id'])) {
             ?>
             <div class="bg-yellow-500 px-4 py-4 rounded">
               <div>
-                <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
+                <p class="text-blueGray-600 font-bold">Sem Lead cadastrado ...</p>
               </div>
             </div>
           <?php

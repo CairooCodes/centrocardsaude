@@ -61,7 +61,7 @@ if (isset($_POST['btnsave'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Adicionar Usuário / Painel Administrativo</title>
+  <title>Editar Serviço / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -99,7 +99,7 @@ if (isset($_POST['btnsave'])) {
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="painel-usuarios.php">Painel Serviços</a></li>
+          <li class="breadcrumb-item"><a href="painel-servicos.php">Painel Serviços</a></li>
           <li class="breadcrumb-item active">Adicionar Serviço</li>
         </ol>
       </nav>
