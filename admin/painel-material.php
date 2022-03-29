@@ -11,18 +11,13 @@ error_reporting(~E_ALL);
 
 if (isset($_GET['delete_id'])) {
   // it will delete an actual record from db
-  $stmt_delete = $DB_con->prepare('DELETE FROM users WHERE id =:uid');
+  $stmt_delete = $DB_con->prepare('DELETE FROM material WHERE id =:uid');
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
-  header("Location: painel-usuarios.php");
+  header("Location: painel-material.php");
 }
 
-if ($_SESSION['type'] != 1) {
-  echo ("
-    <script type= 'text/javascript'>alert('Acesso Restrito!');</script>
-    <script>window.location = 'painel-controle.php';</script>");
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,7 +26,7 @@ if ($_SESSION['type'] != 1) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Usuários / Painel Administrativo</title>
+  <title>Material / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -65,16 +60,16 @@ if ($_SESSION['type'] != 1) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Usuários</h1>
+      <h1>Parceiros</h1>
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-            <li class="breadcrumb-item active">Usuários</li>
+            <li class="breadcrumb-item active">Material</li>
           </ol>
         </nav>
-        <a href="add-usuario.php">
-          <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Usuário</button>
+        <a href="add-material.php">
+          <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Material</button>
         </a>
       </div>
     </div><!-- End Page Title -->
@@ -82,7 +77,7 @@ if ($_SESSION['type'] != 1) {
     <section class="section">
       <div class="row">
         <?php
-        $stmt = $DB_con->prepare('SELECT * FROM users ORDER BY id DESC');
+        $stmt = $DB_con->prepare('SELECT * FROM material ORDER BY id DESC');
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -93,20 +88,9 @@ if ($_SESSION['type'] != 1) {
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title text-center"><?php echo $name; ?></h5>
-                  <?php
-                  if ($type == 1) {
-                    echo "<h5 class='card-title-2 text-center'>Administrador</h5>";
-                  }
-                  if ($type == 2) {
-                    echo "<h5 class='card-title-2 text-center'>Afiliado</h5>";
-                  }
-                  if ($type == 4) {
-                    echo "<h5 class='card-title-2 text-center'>Cliente</h5>";
-                  }
-                  ?>
-                  <img class="img-fluid" src="./uploads/usuarios/<?php echo $row['img']; ?>" onerror="this.src='./assets/img/semperfil.png'">
+                  <img class="img-fluid" src="./uploads/material/<?php echo $row['img']; ?>">
                   <div class="d-flex justify-content-between pt-2">
-                    <a href="perfil.php?edit_id=<?php echo $row['id']; ?>">
+                    <a href="editar-parceiro.php?edit_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-success">Editar</button>
                     </a>
                     <a href="?delete_id=<?php echo $row['id']; ?>">
@@ -122,7 +106,7 @@ if ($_SESSION['type'] != 1) {
           ?>
           <div class="bg-yellow-500 px-4 py-4 rounded">
             <div>
-              <p class="text-blueGray-600 font-bold">Sem Usuários Cadastrado ...</p>
+              <p class="text-blueGray-600 font-bold">Sem Material Cadastrado ...</p>
             </div>
           </div>
         <?php

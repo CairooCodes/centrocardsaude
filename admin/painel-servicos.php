@@ -70,7 +70,7 @@ if (isset($_GET['delete_id'])) {
                     </ol>
                 </nav>
                 <a href="add-servico.php">
-                    <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Serviços</button>
+                    <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Serviços</button>
                 </a>
             </div>
         </div><!-- End Page Title -->

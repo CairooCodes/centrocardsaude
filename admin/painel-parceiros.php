@@ -69,7 +69,7 @@ if (isset($_GET['delete_id'])) {
           </ol>
         </nav>
         <a href="add-parceiro.php">
-          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Parceiro</button>
+          <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Parceiro</button>
         </a>
       </div>
     </div><!-- End Page Title -->
