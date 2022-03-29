@@ -11,11 +11,11 @@ error_reporting(~E_ALL);
 
 if (isset($_GET['delete_id'])) {
   // it will delete an actual record from db
-  $stmt_delete = $DB_con->prepare('DELETE FROM benefits WHERE id =:uid');
+  $stmt_delete = $DB_con->prepare('DELETE FROM material WHERE id =:uid');
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
-  header("Location: painel-beneficios.php");
+  header("Location: painel-material.php");
 }
 
 ?>
@@ -26,7 +26,7 @@ if (isset($_GET['delete_id'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Benefícios / Painel Administrativo</title>
+  <title>Material / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -60,28 +60,24 @@ if (isset($_GET['delete_id'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Benefícios</h1>
+      <h1>Parceiros</h1>
       <div class="d-flex justify-content-between">
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-            <li class="breadcrumb-item active">Benefícios</li>
+            <li class="breadcrumb-item active">Material</li>
           </ol>
         </nav>
-        <?php
-        if ($_SESSION['type'] == 1) {
-        ?>
-          <a href="add-beneficio.php">
-            <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Benefício</button>
-          </a>
-        <?php } ?>
+        <a href="add-material.php">
+          <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Material</button>
+        </a>
       </div>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
         <?php
-        $stmt = $DB_con->prepare('SELECT * FROM benefits ORDER BY id DESC');
+        $stmt = $DB_con->prepare('SELECT * FROM material ORDER BY id DESC');
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
           while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -91,23 +87,15 @@ if (isset($_GET['delete_id'])) {
             <div class="col-lg-3">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title text-center"><?php echo $benefit; ?></h5>
-                  <img class="img-fluid" src="./uploads/beneficios/<?php echo $row['img_2']; ?>">
-                  <?php
-                  if ($_SESSION['type'] == 1) {
-                  ?>
-                    <div class="d-flex justify-content-between pt-2">
-                      <a href="editar-beneficio.php?edit_id=<?php echo $row['id']; ?>">
-                        <button type="button" class="btn btn-success">Editar</button>
-                      </a>
-                      <a href="?delete_id=<?php echo $row['id']; ?>">
+                  <h5 class="card-title text-center"><?php echo $name; ?></h5>
+                  <img class="img-fluid" src="./uploads/material/<?php echo $row['img']; ?>">
+                  <div class="d-flex justify-content-between pt-2">
+                    <a href="editar-parceiro.php?edit_id=<?php echo $row['id']; ?>">
+                      <button type="button" class="btn btn-success">Editar</button>
+                    </a>
+                    <a href="?delete_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </a>
-                    </div>
-                  <?php } ?>
-                  <div class="pb-3">
-                    <input class="btn form-control" disabled value="https://centrocardsaude.com.br/beneficio/<?php echo $slug; ?>/?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
-                    <button class="btn btn-primary" onclick="myFunction()">Copiar Link do Benefício</button>
                   </div>
                 </div>
               </div>
@@ -118,7 +106,7 @@ if (isset($_GET['delete_id'])) {
           ?>
           <div class="bg-yellow-500 px-4 py-4 rounded">
             <div>
-              <p class="text-blueGray-600 font-bold">Sem cadastro...</p>
+              <p class="text-blueGray-600 font-bold">Sem Material Cadastrado ...</p>
             </div>
           </div>
         <?php
@@ -145,22 +133,6 @@ if (isset($_GET['delete_id'])) {
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script>
-    function myFunction() {
-      /* Get the text field */
-      var copyText = document.getElementById("myInput");
-
-      /* Select the text field */
-      copyText.select();
-      copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-      /* Copy the text inside the text field */
-      navigator.clipboard.writeText(copyText.value);
-
-      /* Alert the copied text */
-      alert("Código copiado, compartilhe em suas redes sociais");
-    }
-  </script>
 
 </body>
 

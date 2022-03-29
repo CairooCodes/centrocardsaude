@@ -72,7 +72,7 @@ if (isset($_GET['delete_id'])) {
         if ($_SESSION['type'] == 1) {
         ?>
           <a href="#">
-            <button type="submit" disabled name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
+            <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
           </a>
         <?php } ?>
       </div>

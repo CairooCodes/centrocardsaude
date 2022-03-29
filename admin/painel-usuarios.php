@@ -74,7 +74,7 @@ if ($_SESSION['type'] != 1) {
           </ol>
         </nav>
         <a href="add-usuario.php">
-          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Usuário</button>
+          <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Usuário</button>
         </a>
       </div>
     </div><!-- End Page Title -->
