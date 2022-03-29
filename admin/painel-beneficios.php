@@ -97,7 +97,7 @@ if (isset($_GET['delete_id'])) {
                   if ($_SESSION['type'] == 1) {
                   ?>
                     <div class="d-flex justify-content-between pt-2">
-                    <a href="editar-beneficio.php?edit_id=<?php echo $row['id']; ?>">
+                      <a href="editar-beneficio.php?edit_id=<?php echo $row['id']; ?>">
                         <button type="button" class="btn btn-success">Editar</button>
                       </a>
                       <button type="button" class="btn btn-danger">Excluir</button>

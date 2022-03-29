@@ -247,7 +247,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea type="text" class="form-control" value="<?php echo $service_1; ?>" name="service_1" placeholder="Descrição do Serviço 1" style="height: 100px;"><?php echo $service_1; ?>"</textarea>
+                        <textarea type="text" class="form-control" value="<?php echo $service_1; ?>" name="service_1" placeholder="Descrição do Serviço 1" style="height: 100px;"><?php echo $service_1; ?></textarea>
                         <label for="">Descrição do Serviço 1</label>
                       </div>
                     </div>
@@ -339,7 +339,6 @@ if (isset($_POST['btnsave'])) {
                 </div>
                 <div class="text-center pt-2">
                   <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
-                  <button type="reset" class="btn btn-secondary">Resetar</button>
                 </div>
               </form><!-- Vertical Form -->
 

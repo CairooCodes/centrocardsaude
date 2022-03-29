@@ -68,8 +68,8 @@ if (isset($_GET['delete_id'])) {
             <li class="breadcrumb-item active">Banners</li>
           </ol>
         </nav>
-        <a href="#">
-          <button disabled type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Banner</button>
+        <a href="add-banner.php">
+          <button type="submit" name="btnsave" class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Banner</button>
         </a>
       </div>
     </div><!-- End Page Title -->
@@ -90,8 +90,12 @@ if (isset($_GET['delete_id'])) {
                   <h5 class="card-title text-center"><?php echo $name; ?></h5>
                   <img class="img-fluid" src="./uploads/banners/<?php echo $row['img_1']; ?>">
                   <div class="d-flex justify-content-between pt-2">
-                    <button disabled type="button" class="btn btn-success">Editar</button>
-                    <button type="button" class="btn btn-danger">Excluir</button>
+                    <a href="editar-banner.php?edit_id=<?php echo $row['id']; ?>">
+                      <button type="button" class="btn btn-success">Editar</button>
+                    </a>
+                    <a href="?delete_id=<?php echo $row['id']; ?>">
+                      <button type="button" class="btn btn-danger">Excluir</button>
+                    </a>
                   </div>
                 </div>
               </div>
