@@ -15,7 +15,7 @@ if (isset($_GET['delete_id'])) {
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
-  header("Location: painel-plans.php");
+  header("Location: painel-beneficios.php");
 }
 
 ?>
@@ -100,7 +100,9 @@ if (isset($_GET['delete_id'])) {
                       <a href="editar-beneficio.php?edit_id=<?php echo $row['id']; ?>">
                         <button type="button" class="btn btn-success">Editar</button>
                       </a>
+                      <a href="?delete_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-danger">Excluir</button>
+                    </a>
                     </div>
                   <?php } ?>
                   <div class="pb-3">

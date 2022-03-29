@@ -232,7 +232,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea type="text" class="form-control" value="<?php echo $description; ?>" name="description" placeholder="Descrição do Benefício" style="height: 100px;"></textarea>
+                        <textarea type="text" class="form-control" value="<?php echo $description; ?>" name="description" placeholder="Descrição do Benefício" style="height: 100px;"><?php echo $description; ?></textarea>
                         <label for="">Descrição do Benefício</label>
                       </div>
                     </div>
@@ -283,6 +283,15 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
                         <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
+                        <option value="<?php echo $status; ?>">
+                            <?php
+                            if ($status == 'essencial') {
+                              echo "Disponível";
+                            }
+                            if ($status != 'essencial') {
+                              echo "Indisponível";
+                            } ?> (selecionado)
+                          </option>
                           <option value="essencial">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
                         </select>
@@ -292,6 +301,15 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Gold">
+                        <option value="<?php echo $status; ?>">
+                            <?php
+                            if ($status == 'gold') {
+                              echo "Disponível";
+                            }
+                            if ($status != 'gold') {
+                              echo "Indisponível";
+                            } ?> (selecionado)
+                          </option>
                           <option value="gold">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
                         </select>

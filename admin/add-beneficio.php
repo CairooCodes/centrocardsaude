@@ -34,8 +34,8 @@ if (isset($_POST['btnsave'])) {
   $tmp_dir3 = $_FILES['user_image3']['tmp_name'];
   $imgSize3 = $_FILES['user_image3']['size'];
 
-  if (empty($name)) {
-    $errMSG = "Por favor, insira o nome";
+  if (empty($benefit)) {
+    $errMSG = "Por favor, insira um nome para o benefício";
   } else {
     $upload_dir = 'uploads/beneficios/'; // upload directory
     $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
@@ -90,7 +90,6 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':upic', $userpic);
     $stmt->bindParam(':upic2', $userpic2);
     $stmt->bindParam(':upic3', $userpic3);
-    $stmt->bindParam(':uwhats', $whats);
     $stmt->bindParam(':uplan_1', $plan_1);
     $stmt->bindParam(':uplan_2', $plan_2);
     $stmt->bindParam(':uslug', $slug);
@@ -162,7 +161,7 @@ if (isset($_POST['btnsave'])) {
               <?php
               if (isset($errMSG)) {
               ?>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger mt-2">
                   <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
                 </div>
               <?php
