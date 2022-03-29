@@ -10,15 +10,15 @@ endif;
 error_reporting(~E_ALL);
 
 if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
-    $id = $_GET['edit_id'];
-    $stmt_edit = $DB_con->prepare('SELECT * FROM benefits WHERE id =:uid');
-    $stmt_edit->execute(array(':uid' => $id));
-    $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
-    extract($edit_row);
-  } else {
-    header("Location: painel-beneficios.php");
-  }
-  
+  $id = $_GET['edit_id'];
+  $stmt_edit = $DB_con->prepare('SELECT * FROM benefits WHERE id =:uid');
+  $stmt_edit->execute(array(':uid' => $id));
+  $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
+  extract($edit_row);
+} else {
+  header("Location: painel-beneficios.php");
+}
+
 
 if (isset($_POST['btnsave'])) {
   $benefit = $_POST['benefit'];
@@ -126,7 +126,7 @@ if (isset($_POST['btnsave'])) {
     img_2=:upic2,
     img_3=:upic3,
     plan_1=:uplan_1,
-    plan_2=:u plan_2,
+    plan_2=:uplan_2,
     slug=:uslug
     WHERE id=:uid');
 
@@ -141,7 +141,6 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':upic', $userpic);
     $stmt->bindParam(':upic2', $userpic2);
     $stmt->bindParam(':upic3', $userpic3);
-    $stmt->bindParam(':uwhats', $whats);
     $stmt->bindParam(':uplan_1', $plan_1);
     $stmt->bindParam(':uplan_2', $plan_2);
     $stmt->bindParam(':uslug', $slug);
@@ -162,7 +161,7 @@ if (isset($_POST['btnsave'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Adicionar Benefício / Painel Administrativo</title>
+  <title>Editar Benefício / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -196,7 +195,7 @@ if (isset($_POST['btnsave'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Adicionar Benefício</h1>
+      <h1>Editar Benefício</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
@@ -282,7 +281,7 @@ if (isset($_POST['btnsave'])) {
                   <h5 class="card-title">Planos</h5>
                   <div class="row">
                     <div class="col-md-6 pb-3">
-                    <div class="form-floating mb-3">
+                      <div class="form-floating mb-3">
                         <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
                           <option value="essencial">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
@@ -291,34 +290,55 @@ if (isset($_POST['btnsave'])) {
                       </div>
                     </div>
                     <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Gold">
+                      <div class="form-floating mb-3">
+                        <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Gold">
                           <option value="gold">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
                         </select>
                         <label for="floatingSelect">Plano Gold</label>
                       </div>
                     </div>
-                   
+
                   </div>
                   <h5 class="card-title">Imagens</h5>
                   <div class="row">
-                  <h5 class="card-title text-center">Capa</h5>
-                    <div class="file-loading">
-                      <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
+                    <h5 class="card-title text-center">Capa</h5>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img src="./uploads/beneficios/<?php echo $img_2; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="file-loading">
+                          <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image2" accept="image/*">
+                        </div>
+                      </div>
                     </div>
                     <h5 class="card-title text-center">Banner</h5>
-                    <div class="file-loading">
-                      <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image2" accept="image/*">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img src="./uploads/beneficios/<?php echo $img_3; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="file-loading">
+                          <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
+                        </div>
+                      </div>
                     </div>
                     <h5 class="card-title text-center">Ícone</h5>
-                    <div class="file-loading">
-                      <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img src="./uploads/beneficios/<?php echo $img_1; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="file-loading">
+                          <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="text-center pt-2">
-                  <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
+                  <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
                   <button type="reset" class="btn btn-secondary">Resetar</button>
                 </div>
               </form><!-- Vertical Form -->
