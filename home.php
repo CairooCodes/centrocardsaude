@@ -85,7 +85,7 @@ $dv = $_GET['dv'];
   <section id="hero" class="hero carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
     <div class="carousel-inner">
       <?php
-      $stmt = $DB_con->prepare('SELECT id, name,description,img_1,type,add_button,type_button,name_button,url_button FROM banners ORDER BY id ASC');
+      $stmt = $DB_con->prepare('SELECT * FROM banners ORDER BY id ASC');
       $stmt->execute();
       if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -103,24 +103,6 @@ $dv = $_GET['dv'];
                 <div class="col-md-6 col-lg-4 text-center">
                   <p><?php echo $description; ?></p>
                 </div>
-                <?php if ($add_button == '1') { ?>
-                  <?php if ($type_button == 'video') { ?>
-                    <div class="col-md-9 text-center">
-                      <a href="<?php echo $url_button; ?>" class="glightbox btn-get-started scrollto "><i class="bi bi-play-circle"></i> <?php echo $name_button; ?></a>
-                    </div>
-                  <?php
-                  }
-                  ?>
-                  <?php if ($type_button == 'padrao') { ?>
-                    <div class="col-md-9 text-center">
-                      <a href="<?php echo $url_button; ?>" class="btn-get-started scrollto "><?php echo $name_button; ?></a>
-                    </div>
-                  <?php
-                  }
-                  ?>
-                <?php
-                }
-                ?>
               </div>
             </div>
           </div><!-- End Carousel Item -->

@@ -12,7 +12,6 @@ MySQL - 10.4.22-MariaDB : Database - centrocard
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
 /*Table structure for table `banners` */
 
 DROP TABLE IF EXISTS `banners`;
@@ -24,17 +23,18 @@ CREATE TABLE `banners` (
   `img_1` varchar(200) DEFAULT NULL,
   `url` varchar(500) DEFAULT NULL,
   `data_create` timestamp NULL DEFAULT current_timestamp(),
+  `type` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `banners` */
 
-insert  into `banners`(`id`,`name`,`description`,`img_1`,`url`,`data_create`) values 
-(1,'SAÚDE','Somos uma plataforma inteligente que vai ajudar você cuidar de sua saúde com custo reduzido e muitos benefícios','banner2.jpg',NULL,NULL),
-(2,'PROTEÇÃO','Muito mais que um cartão de desconto, somos um programa de benefícios e proteção criado para facilitar a sua vida. ','banner1.jpg',NULL,NULL),
-(3,'BENEFÍCIOS','Médico 24 horas online, descontos em consultas e exames, assistência farmácia, assistência nutricional, assistência personal fitness, seguro de acidentes pessoais e muito mais.','banner-3.png',NULL,NULL),
-(4,'SEGURANÇA','Garantia do grupo Centrocardio, empresa com mais de 15 anos de mercado e referência em atendimento médico de alta qualidade e da Previsul Seguros, empresa do grupo Caixa, com mais de 110 anos de atividade e credibilidade. ','banner-4.jpg',NULL,NULL),
-(5,'INOVAÇÃO','Juntamos as melhores empresas do mercado e construímos um projeto inovador, aliando saúde, tecnologia e atendimento humanizado.','banner-5.jpg',NULL,NULL);
+insert  into `banners`(`id`,`name`,`description`,`img_1`,`url`,`data_create`,`type`) values 
+(1,'SAÚDE','Somos uma plataforma inteligente que vai ajudar você cuidar de sua saúde com custo reduzido e muitos benefícios','banner2.jpg',NULL,NULL,'1'),
+(2,'PROTEÇÃO','Muito mais que um cartão de desconto, somos um programa de benefícios e proteção criado para facilitar a sua vida. ','banner1.jpg',NULL,NULL,NULL),
+(3,'BENEFÍCIOS','Médico 24 horas online, descontos em consultas e exames, assistência farmácia, assistência nutricional, assistência personal fitness, seguro de acidentes pessoais e muito mais.','banner-3.png',NULL,NULL,NULL),
+(4,'SEGURANÇA','Garantia do grupo Centrocardio, empresa com mais de 15 anos de mercado e referência em atendimento médico de alta qualidade e da Previsul Seguros, empresa do grupo Caixa, com mais de 110 anos de atividade e credibilidade. ','banner-4.jpg',NULL,NULL,NULL),
+(5,'INOVAÇÃO','Juntamos as melhores empresas do mercado e construímos um projeto inovador, aliando saúde, tecnologia e atendimento humanizado.','banner-5.jpg',NULL,NULL,NULL);
 
 /*Table structure for table `benefits` */
 
@@ -255,15 +255,30 @@ CREATE TABLE `plans` (
   `price` varchar(50) DEFAULT NULL,
   `price2` varchar(50) DEFAULT NULL,
   `description` varchar(1500) DEFAULT NULL,
+  `t1` varchar(200) DEFAULT NULL,
+  `t2` varchar(200) DEFAULT NULL,
+  `t3` varchar(200) DEFAULT NULL,
+  `t4` varchar(200) DEFAULT NULL,
+  `t5` varchar(200) DEFAULT NULL,
+  `t6` varchar(200) DEFAULT NULL,
+  `t7` varchar(200) DEFAULT NULL,
+  `t8` varchar(200) DEFAULT NULL,
+  `t9` varchar(200) DEFAULT NULL,
+  `t10` varchar(200) DEFAULT NULL,
+  `t11` varchar(200) DEFAULT NULL,
+  `t12` varchar(200) DEFAULT NULL,
+  `t13` varchar(200) DEFAULT NULL,
+  `t14` varchar(200) DEFAULT NULL,
+  `t15` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `plans` */
 
-insert  into `plans`(`id`,`name`,`price`,`price2`,`description`) values 
-(6,'Essencial','29,90','59,80',''),
-(7,'Gold','34,90','69,80',NULL),
-(8,'Platinum','49,90','99,80',NULL);
+insert  into `plans`(`id`,`name`,`price`,`price2`,`description`,`t1`,`t2`,`t3`,`t4`,`t5`,`t6`,`t7`,`t8`,`t9`,`t10`,`t11`,`t12`,`t13`,`t14`,`t15`) values 
+(6,'Essencial','29,90','59,80','','Médico Online 24 horas ','Rede Centrocard','Central de agendamento com APP','Familiar até 5 pessoas ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(7,'Gold','34,90','69,80',NULL,'Médico Online 24 horas','Rede Centrocard','Central de agendamento com APP','Familiar até 5 pessoas ','Assistência Farmacêutica','Assistência Nutricional','Assistência Personal Fitness','Assistência Residencial ','Assistência Funeral Familiar ','Seguro de acidentes pessoais',NULL,NULL,NULL,NULL,NULL),
+(8,'Platinum','49,90','99,80',NULL,'Médico Online 24 horas','Rede Centrocard','Central de agendamento com APP','Familiar até 5 pessoas ','Assistência Farmacêutica','Assistência Nutricional','Assistência Personal Fitness','Assistência Residencial ','Assistência Funeral Familiar ','Seguro de acidentes pessoais','Especialidades Médicas','Conta Saúde',NULL,NULL,NULL);
 
 /*Table structure for table `posts` */
 
