@@ -22,15 +22,12 @@ if (isset($_POST['btnsave'])) {
     } else {
         $upload_dir = 'uploads/material/'; // upload directory
         $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
-        $imgExt2 =  strtolower(pathinfo($imgFile2, PATHINFO_EXTENSION));
-        $imgExt3 =  strtolower(pathinfo($imgFile3, PATHINFO_EXTENSION));
 
         $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
         // rename uploading image
         $name2 = preg_replace("/\s+/", "", $name);
         $name3 = substr($name2, 0, -1);
-
-        $userpic  = $name3 . "material" . "." . $imgExt;
+        $userpic  = $name3 . "perfil" . "." . $imgExt;
 
         // allow valid image file formats
         if (in_array($imgExt, $valid_extensions)) {
@@ -43,7 +40,7 @@ if (isset($_POST['btnsave'])) {
         }
     }
     if (!isset($errMSG)) {
-        $stmt = $DB_con->prepare('INSERT INTO banners (name,description,img) VALUES(:uname,:udescription,:uurl,:upic)');
+        $stmt = $DB_con->prepare('INSERT INTO material (name,description,img) VALUES(:uname,:udescription,:upic)');
 
         $stmt->bindParam(':uname', $name);
         $stmt->bindParam(':udescription', $description);

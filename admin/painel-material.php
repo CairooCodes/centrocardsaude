@@ -90,8 +90,8 @@ if (isset($_GET['delete_id'])) {
                   <h5 class="card-title text-center"><?php echo $name; ?></h5>
                   <img class="img-fluid" src="./uploads/material/<?php echo $row['img']; ?>">
                   <div class="d-flex justify-content-between pt-2">
-                    <a href="editar-parceiro.php?edit_id=<?php echo $row['id']; ?>">
-                      <button type="button" class="btn btn-success">Editar</button>
+                    <a download="material-centrocard" href="./uploads/material/<?php echo $row['img']; ?>" title="ImageName">
+                      <button type="button" class="btn btn-success">Baixar</button>
                     </a>
                     <a href="?delete_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-danger">Excluir</button>

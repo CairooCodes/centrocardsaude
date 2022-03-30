@@ -69,9 +69,16 @@ if (isset($_GET['delete_id'])) {
                         <li class="breadcrumb-item active">Serviços</li>
                     </ol>
                 </nav>
-                <a href="add-servico.php">
-                    <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Serviços</button>
-                </a>
+                <div>
+                    <a href="excel-servicos.php">
+                        <button class="btn" type="button">
+                            <i class="fas fa-file-excel"></i> Baixar
+                        </button>
+                    </a>
+                    <a href="add-servico.php">
+                        <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Serviços</button>
+                    </a>
+                </div>
             </div>
         </div><!-- End Page Title -->
 
