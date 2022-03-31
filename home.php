@@ -391,7 +391,7 @@ $dv = $_GET['dv'];
     </section><!-- End Clients Section -->
 
     <!-- ======= Recent Blog Posts Section ======= -->
-    <section id="recent-blog-posts" class="recent-blog-posts">
+    <!-- <section id="recent-blog-posts" class="recent-blog-posts">
 
       <div class="container">
 
@@ -443,7 +443,7 @@ $dv = $_GET['dv'];
 
       </div>
 
-    </section><!-- End Recent Blog Posts Section -->
+    </section> -->
 
     <!-- ======= Contact Section ======= -->
     <!-- <section id="contact" class="contact">
