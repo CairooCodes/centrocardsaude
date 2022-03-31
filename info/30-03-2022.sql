@@ -12,10 +12,6 @@ MySQL - 10.4.22-MariaDB : Database - centrocard
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`centrocard` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-
-USE `centrocard`;
-
 /*Table structure for table `banners` */
 
 DROP TABLE IF EXISTS `banners`;
@@ -25,25 +21,20 @@ CREATE TABLE `banners` (
   `name` varchar(500) DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `img_1` varchar(200) DEFAULT NULL,
-  `img_2` varchar(200) DEFAULT NULL,
-  `type` varchar(100) DEFAULT NULL,
   `url` varchar(500) DEFAULT NULL,
-  `data_create` varchar(50) DEFAULT NULL,
-  `add_button` varchar(100) DEFAULT NULL,
-  `type_button` varchar(100) DEFAULT NULL,
-  `name_button` varchar(100) DEFAULT NULL,
-  `url_button` varchar(500) DEFAULT NULL,
+  `data_create` timestamp NULL DEFAULT current_timestamp(),
+  `type` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `banners` */
 
-insert  into `banners`(`id`,`name`,`description`,`img_1`,`img_2`,`type`,`url`,`data_create`,`add_button`,`type_button`,`name_button`,`url_button`) values 
-(1,'SAÚDE','Somos uma plataforma inteligente que vai ajudar você cuidar de sua saúde com custo reduzido e muitos benefícios','banner2.jpg',NULL,'1',NULL,NULL,'','video','ASSISTA','#'),
-(2,'PROTEÇÃO','Muito mais que um cartão de desconto, somos um programa de benefícios e proteção criado para facilitar a sua vida. ','banner1.jpg',NULL,'2',NULL,NULL,'','padrao','SAIBA MAIS','#about'),
-(3,'BENEFÍCIOS','Médico 24 horas online, descontos em consultas e exames, assistência farmácia, assistência nutricional, assistência personal fitness, seguro de acidentes pessoais e muito mais.','banner-3.png',NULL,'2',NULL,NULL,NULL,NULL,NULL,NULL),
-(4,'SEGURANÇA','Garantia do grupo Centrocardio, empresa com mais de 15 anos de mercado e referência em atendimento médico de alta qualidade e da Previsul Seguros, empresa do grupo Caixa, com mais de 110 anos de atividade e credibilidade. ','banner-4.jpg',NULL,'2',NULL,NULL,NULL,NULL,NULL,NULL),
-(5,'INOVAÇÃO','Juntamos as melhores empresas do mercado e construímos um projeto inovador, aliando saúde, tecnologia e atendimento humanizado.','banner-5.jpg',NULL,'2',NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `banners`(`id`,`name`,`description`,`img_1`,`url`,`data_create`,`type`) values 
+(1,'SAÚDE','Somos uma plataforma inteligente que vai ajudar você cuidar de sua saúde com custo reduzido e muitos benefícios','banner2.jpg',NULL,NULL,'1'),
+(2,'PROTEÇÃO','Muito mais que um cartão de desconto, somos um programa de benefícios e proteção criado para facilitar a sua vida. ','banner1.jpg',NULL,NULL,NULL),
+(3,'BENEFÍCIOS','Médico 24 horas online, descontos em consultas e exames, assistência farmácia, assistência nutricional, assistência personal fitness, seguro de acidentes pessoais e muito mais.','banner-3.png',NULL,NULL,NULL),
+(4,'SEGURANÇA','Garantia do grupo Centrocardio, empresa com mais de 15 anos de mercado e referência em atendimento médico de alta qualidade e da Previsul Seguros, empresa do grupo Caixa, com mais de 110 anos de atividade e credibilidade. ','banner-4.jpg',NULL,NULL,NULL),
+(5,'INOVAÇÃO','Juntamos as melhores empresas do mercado e construímos um projeto inovador, aliando saúde, tecnologia e atendimento humanizado.','banner-5.jpg',NULL,NULL,NULL);
 
 /*Table structure for table `benefits` */
 
@@ -66,7 +57,7 @@ CREATE TABLE `benefits` (
   `plan_2` varchar(100) DEFAULT NULL,
   `slug` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `benefits` */
 
@@ -82,7 +73,7 @@ insert  into `benefits`(`id`,`benefit`,`description`,`title_s1`,`service_1`,`tit
 (9,'Assistência Residencial ','Serviços especializados de manutenção e reparos em geral com eletricista e encanador...',NULL,NULL,NULL,NULL,NULL,NULL,'residencial-icon.png','residencial.png','banner-residencial.jpg','gold',NULL,'assistencia-residencial'),
 (10,'Assistência Funeral Familiar ','Nos momentos difíceis, a central de apoio social, estará disponível...',NULL,NULL,NULL,NULL,NULL,NULL,'funeral-icon.png','funeral.png','banner-funeral.jpg','gold',NULL,'assistencia-funeral-familiar'),
 (11,'Seguro de acidentes pessoais','Seguro por morte acidental ou invalidez por acidente com cobertura de R$ 10.000,00 para os dependentes legais.',NULL,'Além da indenização que você recebe, nossos seguros também ajudam você no dia a dia com vários serviços emergenciais disponíveis 24h, além de possibilitar descontos em lojas no Brasil todo e também em medicamentos.',NULL,NULL,NULL,NULL,'acidentes-icon.png','acidentes.png','banner-seguro.jpg','gold',NULL,'seguro-acidentes'),
-(12,'Familiar até 5 pessoas ','','','teste','','','','','familiar-icon.png','familiar.png','banner-familia.jpg','essencial','gold',NULL);
+(12,'Familiar até 5 pessoas ','Os descontos da Rede Centrocard são válidos para o titular e mais 4 dependentes legais (Cônjuge e filhos menores de 21 anos)','','teste','','','','','familiar-icon.png','familiar.png','banner-familia.jpg','gold','essencial','familiar-ate-5-pessoas');
 
 /*Table structure for table `categorys` */
 
@@ -148,7 +139,7 @@ CREATE TABLE `logs` (
   `data_log` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 /*Data for the table `logs` */
 
@@ -197,7 +188,28 @@ insert  into `logs`(`id`,`name`,`data_log`,`type`) values
 (42,'Centro Card Saúde','2022-03-24 16:42:56','login'),
 (43,'Centro Card Saúde','2022-03-27 20:52:30','login'),
 (44,'Centro Card Saúde','2022-03-28 19:38:20','login'),
-(45,'Centro Card Saúde','2022-03-28 23:08:46','login');
+(45,'Centro Card Saúde','2022-03-28 23:08:46','login'),
+(46,'Centro Card Saúde','2022-03-29 17:08:11','login'),
+(47,'Centro Card Saúde','2022-03-29 17:15:23','login'),
+(48,'Centro Card Saúde','2022-03-30 19:16:38','login'),
+(49,'Centro Card Saúde','2022-03-30 20:44:21','login'),
+(50,'Centro Card Saúde','2022-03-30 23:04:41','login'),
+(51,'Centro Card Saúde','2022-03-30 23:51:30','login');
+
+/*Table structure for table `material` */
+
+DROP TABLE IF EXISTS `material`;
+
+CREATE TABLE `material` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `img` varchar(200) DEFAULT NULL,
+  `data_create` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*Data for the table `material` */
 
 /*Table structure for table `partners` */
 
@@ -247,60 +259,31 @@ CREATE TABLE `plans` (
   `price` varchar(50) DEFAULT NULL,
   `price2` varchar(50) DEFAULT NULL,
   `description` varchar(1500) DEFAULT NULL,
+  `link` varchar(200) DEFAULT NULL,
   `t1` varchar(200) DEFAULT NULL,
-  `b1` varchar(500) DEFAULT NULL,
-  `icon1` varchar(200) DEFAULT NULL,
   `t2` varchar(200) DEFAULT NULL,
-  `b2` varchar(500) DEFAULT NULL,
-  `icon2` varchar(200) DEFAULT NULL,
   `t3` varchar(200) DEFAULT NULL,
-  `b3` varchar(500) DEFAULT NULL,
-  `icon3` varchar(200) DEFAULT NULL,
   `t4` varchar(200) DEFAULT NULL,
-  `b4` varchar(500) DEFAULT NULL,
-  `icon4` varchar(200) DEFAULT NULL,
   `t5` varchar(200) DEFAULT NULL,
-  `b5` varchar(500) DEFAULT NULL,
-  `icon5` varchar(200) DEFAULT NULL,
   `t6` varchar(200) DEFAULT NULL,
-  `b6` varchar(500) DEFAULT NULL,
-  `icon6` varchar(200) DEFAULT NULL,
   `t7` varchar(200) DEFAULT NULL,
-  `b7` varchar(500) DEFAULT NULL,
-  `icon7` varchar(200) DEFAULT NULL,
   `t8` varchar(200) DEFAULT NULL,
-  `b8` varchar(500) DEFAULT NULL,
-  `icon8` varchar(200) DEFAULT NULL,
   `t9` varchar(200) DEFAULT NULL,
-  `b9` varchar(500) DEFAULT NULL,
-  `icon9` varchar(200) DEFAULT NULL,
   `t10` varchar(200) DEFAULT NULL,
-  `b10` varchar(500) DEFAULT NULL,
-  `icon10` varchar(200) DEFAULT NULL,
   `t11` varchar(200) DEFAULT NULL,
-  `b11` varchar(200) DEFAULT NULL,
-  `icon11` varchar(200) DEFAULT NULL,
   `t12` varchar(200) DEFAULT NULL,
-  `b12` varchar(500) DEFAULT NULL,
-  `icon12` varchar(200) DEFAULT NULL,
   `t13` varchar(200) DEFAULT NULL,
-  `b13` varchar(500) DEFAULT NULL,
-  `icon13` varchar(200) DEFAULT NULL,
   `t14` varchar(200) DEFAULT NULL,
-  `b14` varchar(1000) DEFAULT NULL,
-  `icon14` varchar(200) DEFAULT NULL,
   `t15` varchar(200) DEFAULT NULL,
-  `b15` varchar(500) DEFAULT NULL,
-  `icon15` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `plans` */
 
-insert  into `plans`(`id`,`name`,`price`,`price2`,`description`,`t1`,`b1`,`icon1`,`t2`,`b2`,`icon2`,`t3`,`b3`,`icon3`,`t4`,`b4`,`icon4`,`t5`,`b5`,`icon5`,`t6`,`b6`,`icon6`,`t7`,`b7`,`icon7`,`t8`,`b8`,`icon8`,`t9`,`b9`,`icon9`,`t10`,`b10`,`icon10`,`t11`,`b11`,`icon11`,`t12`,`b12`,`icon12`,`t13`,`b13`,`icon13`,`t14`,`b14`,`icon14`,`t15`,`b15`,`icon15`) values 
-(6,'Essencial','29,90','59,80','','Médico Online 24 horas ','Consultas médicas com clínico 24 horas, através de telemedicina, com prescrição de medicamentos e requisição de exames sem nenhuma taxa adicional. ','medico.png','Rede Centrocard','Rede de desconto, podendo economizar até 60% em serviços médico do Centrocardio e diversas clínicas, laboratórios e hospitais em Teresina e região.','rede.png','Central de agendamento com APP','\r\nMarcação de consultas e exames no Centrocardio através de aplicativo, call center ou central de atendimento presencial \r\n','central.png','Familiar até 5 pessoas ','\r\nOs descontos da Rede Centrocard são válidos para o titular e mais 4 dependentes legais (Cônjuge e filhos menores de 21 anos)\r\n','familiar.png',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(7,'Gold','34,90','69,80',NULL,'Médico Online 24 horas','Consultas médicas com clínico 24 horas, através de telemedicina, com prescrição de medicamentos e requisição de exames sem nenhuma taxa adicional. ','medico.png','Rede Centrocard','Rede de desconto, podendo economizar até 60% em serviços médico do Centrocardio e diversas clínicas, laboratórios e hospitais em Teresina e região.','rede.png','Central de agendamento com APP','Marcação de consultas e exames no Centrocardio através de aplicativo, call center ou central de atendimento presencial ','central.png','Familiar até 5 pessoas ','Os descontos da Rede Centrocard são válidos para o titular e mais 4 dependentes legais (Cônjuge e filhos menores de 21 anos)','familiar.png','Assistência Farmacêutica','Programa de Desconto Farmassist, com até 60% de descontos nas principais farmácias do Brasil.','farmacia.png','Assistência Nutricional','Acesso a profissionais de nutrição disponível via telefone para realização de um programa alimentar contínuo para você alcançar os seus objetivos.','nutricional.png','Assistência Personal Fitness','Serviços especializados de manutenção e reparos em geral com eletricista e encanador...','fitness.png','Assistência Residencial ','Serviços especializados de manutenção e reparos em geral com eletricista e encanador...','residencial.png','Assistência Funeral Familiar ','Nos momentos difíceis, a central de apoio social, estará disponível...','funeral.png','Seguro de acidentes pessoais','Seguro por morte acidental ou invalidez por acidente com cobertura de R$ 10.000,00 para os dependentes legais.','acidentes.png',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-(8,'Platinum','49,90','99,80',NULL,'Médico Online 24 horas','Consultas médicas com clínico e pediatra 24 horas, através da telemedicina, com prescrição de medicamentos e requisição de exames sem nenhuma taxa adicional.','medico.png','Rede Centrocard','Rede de desconto, podendo economizar até 60% em serviços médico do Centrocardio e diversas clínicas, laboratórios e hospitais em Teresina e região.','rede.png','Central de agendamento com APP','Rede nacional de descontos nas principais cidades do país através de cartão pré-pago digital.','central.png','Familiar até 5 pessoas ','Os descontos da Rede Centrocard são válidos para o titular e mais 4 dependentes legais (Cônjuge e filhos menores de 21 anos)','familiar.png','Assistência Farmacêutica','Programa de Desconto Farmassist, com até 60% de descontos nas principais farmácias do Brasil.','farmacia.png','Assistência Nutricional','Acesso a profissionais de nutrição disponível via telefone para realização de um programa alimentar contínuo para você alcançar os seus objetivos.','nutricional.png','Assistência Personal Fitness','Serviço de orientação via telefone com profissional qualificado sobre atividades físicas, melhor condicionamento e qualidade de vida pra você.','fitness.png','Assistência Residencial ','Serviços especializados de manutenção e reparos em geral com eletricista e encanador...','residencial.png','Assistência Funeral Familiar ','Nos momentos difíceis, a central de apoio social, estará disponível...','funeral.png','Seguro de acidentes pessoais','Seguro por morte acidental ou invalidez por acidente com cobertura de R$ 10.000,00 para os dependentes legais.','acidentes.png','Especialidades Médicas','Consultas através de telemedicina, com agendamento nas especialidades de Cardiologia, Endocrinologia, Nutrição, Psicologia, Psiquiatria, Pediatria Geral, Homeopatia Pediátrica, Infectologia Pediátrica','especialidades.png','Conta Saúde','Rede nacional de descontos nas principais cidades do país através de cartão pré-pago digital.','conta.png',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `plans`(`id`,`name`,`price`,`price2`,`description`,`link`,`t1`,`t2`,`t3`,`t4`,`t5`,`t6`,`t7`,`t8`,`t9`,`t10`,`t11`,`t12`,`t13`,`t14`,`t15`) values 
+(6,'Essencial','29,90','59,80','',NULL,'Médico Online 24 horas ','Rede Centrocard','Central de agendamento com APP','Familiar até 5 pessoas ',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+(7,'Gold','34,90','69,80',NULL,NULL,'Médico Online 24 horas','Rede Centrocard','Central de agendamento com APP','Familiar até 5 pessoas ','Assistência Farmacêutica','Assistência Nutricional','Assistência Personal Fitness','Assistência Residencial ','Assistência Funeral Familiar ','Seguro de acidentes pessoais',NULL,NULL,NULL,NULL,NULL),
+(8,'Platinum','49,90','99,80',NULL,NULL,'','Rede Centrocard','Central de agendamento com APP','Familiar até 5 pessoas ','Assistência Farmacêutica','Assistência Nutricional',NULL,'Assistência Residencial ',NULL,'Seguro de acidentes pessoais','Especialidades Médicas','Conta Saúde',NULL,NULL,NULL);
 
 /*Table structure for table `posts` */
 

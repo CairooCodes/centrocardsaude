@@ -71,9 +71,9 @@ if (isset($_GET['delete_id'])) {
         <?php
         if ($_SESSION['type'] == 1) {
         ?>
-          <a href="#">
+          <!-- <a href="#">
             <button class="btn btn-primary"><i class="bi bi-plus-circle-fill"></i> Adicionar Plano</button>
-          </a>
+          </a> -->
         <?php } ?>
       </div>
     </div><!-- End Page Title -->
@@ -106,12 +106,14 @@ if (isset($_GET['delete_id'])) {
                   if ($_SESSION['type'] == 1) {
                   ?>
                     <div class="d-flex justify-content-between">
-                      <button disabled type="button" class="btn btn-success">Editar</button>
+                       <a href="editar-plano.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </div>
                   <?php } ?>
-                  <div class="pb-3">
-                    <input class="btn form-control" disabled value="https://centrocardsaude.com.br/plano/<?php echo $name; ?>/?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
+                  <div class="pb-3 mt-2">
+                    <input class="btn form-control mb-2" disabled value="https://centrocardsaude.com.br/plano/<?php echo $name; ?>/?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
                     <button class="btn btn-primary" onclick="myFunction()">Copiar Link do plano</button>
                   </div>
                 </div>

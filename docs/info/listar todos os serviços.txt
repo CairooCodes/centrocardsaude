@@ -1,9 +1,0 @@
-listar todos os serviços
-primeiro os beneficos
-remover destaque de afiliados
-
-formulario de rede credenciada, associado. 
-nome do estabelicmento, endereço, telefone, especialidades. 
-remover mapa e localizacao
-previsul
-adicionar mais campos para serviços/ pagina so para serviço

@@ -22,7 +22,7 @@ if ($stmt->rowCount() > 0) {
     extract($row);
 
     $arqexcel .= "<tr>
-      <td>$nome</td>
+      <td>$name</td>
       <td>";
       if ($partner == null or '') {
         $arqexcel .= "NÃO INFORMADO";

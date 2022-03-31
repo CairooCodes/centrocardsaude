@@ -5,7 +5,7 @@ require "classes/Url.class.php";
 $URI = new URI();
 
 $url = explode("/", $_SERVER['REQUEST_URI']);
-$idPost = $url[4];
+$idPost = $url[3];
 
 $stmt = $DB_con->prepare("SELECT name FROM plans where name='$idPost' ORDER BY id DESC");
 $stmt->execute();
@@ -37,11 +37,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-  <link href="<?php echo $URI->base('/assets/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo $URI->base('/assets/vendor/bootstrap-icons/bootstrap-icons.css') ?>" rel="stylesheet">
-  <link href="<?php echo $URI->base('/assets/vendor/aos/aos.css') ?>" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link href="<?php echo $URI->base('/assets/vendor/glightbox/css/glightbox.min.css') ?>" rel="stylesheet">
-  <link href="<?php echo $URI->base('/assets/vendor/swiper/swiper-bundle.min.css') ?>" rel="stylesheet">
   <link href="<?php echo $URI->base('/assets/css/variables.css') ?>" rel="stylesheet">
 
   <link href="<?php echo $URI->base('/assets/css/main.css') ?>" rel="stylesheet">
@@ -51,7 +49,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <?php include "components/navbar-blue.php"; ?>
 
   <?php
-  $stmt = $DB_con->prepare("SELECT id, price2, price, name,t1,t2,t3,t4,b1,b2,b3,b4,icon1,icon2,icon3,icon4,t5,t6,t7,t8,b5,b6,b7,b8,icon5,icon6,icon7,icon8,t9,t10,t11,t12,b9,b10,b11,b12,icon9,icon10,icon11,icon12 FROM plans where name='$post'");
+  $stmt = $DB_con->prepare("SELECT * FROM plans where name='$post'");
   $stmt->execute();
   if ($stmt->rowCount() > 0) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -284,13 +282,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   </main>
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
   <?php include "components/footer.php"; ?>
-  <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>
-  <script src="<?php echo $URI->base('/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-  <script src="<?php echo $URI->base('/assets/vendor/glightbox/js/glightbox.min.js') ?>"></script>
-  <script src="<?php echo $URI->base('/assets/vendor/swiper/swiper-bundle.min.js') ?>"></script>
-  <script src="<?php echo $URI->base('/assets/vendor/php-email-form/validate.js') ?>"></script>
-  <script src="<?php echo $URI->base('/assets/vendor/aos/aos.js') ?>"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
   <!-- Template Main JS File -->

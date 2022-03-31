@@ -30,7 +30,8 @@ $dv = $_GET['dv'];
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -128,7 +129,7 @@ $dv = $_GET['dv'];
 
     <!-- ======= Call To Action Section ======= -->
     <section id="cta" class="cta">
-      <div class="container content-cta" data-aos="zoom-out">
+      <div class="container content-cta">
 
         <div class="row g-5">
 
@@ -150,7 +151,7 @@ $dv = $_GET['dv'];
     </section><!-- End Call To Action Section -->
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
 
         <div class="section-header">
           <h2>Nossos planos</h2>
@@ -159,14 +160,14 @@ $dv = $_GET['dv'];
 
         <div class="row gy-4">
           <?php
-          $stmt = $DB_con->prepare('SELECT id, name,price,b1,t1,b2,t2,t3,t4,t5,t6,t12,t11 FROM plans');
+          $stmt = $DB_con->prepare('SELECT id, name,price,t1,t2,t3,t4,t5,t6,t12,t11 FROM plans');
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               extract($row);
           ?>
               <?php if ($name == 'Essencial') { ?>
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-lg-4">
                   <div class="pricing-item">
 
                     <div class="pricing-header">
@@ -193,7 +194,7 @@ $dv = $_GET['dv'];
               }
               ?>
               <?php if ($name == 'Platinum') { ?>
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="col-lg-4">
                   <div class="pricing-item featured">
 
                     <div class="pricing-header">
@@ -223,7 +224,7 @@ $dv = $_GET['dv'];
               }
               ?>
               <?php if ($name == 'Gold') { ?>
-                <div class="col-lg-4" data-aos="zoom-in" data-aos-delay="600">
+                <div class="col-lg-4">
                   <div class="pricing-item">
 
                     <div class="pricing-header">
@@ -264,13 +265,13 @@ $dv = $_GET['dv'];
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
-      <div class="container" data-aos="fade-up">
+      <div class="container">
 
         <div class="section-header">
           <h2>Benefícios</h2>
           <p>Os melhores benefícios pra você e sua família.</p>
         </div>
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="services-flters">
               <li data-filter="*" class="filter-active">PLATINUM</li>
@@ -316,7 +317,7 @@ $dv = $_GET['dv'];
 
     <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients">
-      <div class="container" data-aos="zoom-out">
+      <div class="container">
         <div class="carousel-wrap clients-slider">
           <div class="owl-carousel">
             <?php
@@ -392,7 +393,7 @@ $dv = $_GET['dv'];
     <!-- ======= Recent Blog Posts Section ======= -->
     <section id="recent-blog-posts" class="recent-blog-posts">
 
-      <div class="container" data-aos="fade-up">
+      <div class="container">
 
         <div class="section-header">
           <h2>Blog</h2>
@@ -401,7 +402,7 @@ $dv = $_GET['dv'];
 
         <div class="row">
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-4">
             <div class="post-box">
               <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
               <div class="meta">
@@ -414,7 +415,7 @@ $dv = $_GET['dv'];
             </div>
           </div>
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="col-lg-4">
             <div class="post-box">
               <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
               <div class="meta">
@@ -426,21 +427,19 @@ $dv = $_GET['dv'];
               <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Seg, Fev 14</span>
-                <span class="post-author"> / Cairo Felipe</span>
-              </div>
-              <h3 class="post-title">Vantagens do home office</h3>
-              <p>Veja como o home office traz vantagens a empresas e trabalhadores, como diminuição de custos, mais produtividade e qualidade de vida</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
+          <div class="post-box">
+            <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
+            <div class="meta">
+              <span class="post-date">Seg, Fev 14</span>
+              <span class="post-author"> / Cairo Felipe</span>
             </div>
+            <h3 class="post-title">Vantagens do home office</h3>
+            <p>Veja como o home office traz vantagens a empresas e trabalhadores, como diminuição de custos, mais produtividade e qualidade de vida</p>
+            <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
           </div>
-
         </div>
+
+      </div>
 
       </div>
 
@@ -501,14 +500,10 @@ $dv = $_GET['dv'];
   <!-- <div id="preloader"></div> -->
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/script.js"></script>

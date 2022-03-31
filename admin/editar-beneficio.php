@@ -232,6 +232,12 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $slug; ?>" name="slug" placeholder="Nome do Benefício">
+                        <label for="">Slug</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
                         <textarea type="text" class="form-control" value="<?php echo $description; ?>" name="description" placeholder="Descrição do Benefício" style="height: 100px;"><?php echo $description; ?></textarea>
                         <label for="">Descrição do Benefício</label>
                       </div>
@@ -282,13 +288,13 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
-                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
-                        <option value="<?php echo $status; ?>">
+                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Gold">
+                        <option value="<?php echo $plan_1; ?>">
                             <?php
-                            if ($status == 'essencial') {
+                            if ($plan_1 == 'gold') {
                               echo "Disponível";
                             }
-                            if ($status != 'essencial') {
+                            if ($plan_1 != 'gold') {
                               echo "Indisponível";
                             } ?> (selecionado)
                           </option>
@@ -300,13 +306,13 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Gold">
-                        <option value="<?php echo $status; ?>">
+                        <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
+                        <option value="<?php echo $plan_2; ?>">
                             <?php
-                            if ($status == 'gold') {
+                            if ($plan_2 == 'essencial') {
                               echo "Disponível";
                             }
-                            if ($status != 'gold') {
+                            if ($plan_2 != 'essencial') {
                               echo "Indisponível";
                             } ?> (selecionado)
                           </option>
