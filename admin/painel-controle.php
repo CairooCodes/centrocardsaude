@@ -279,69 +279,76 @@ endif;
                 </a>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card sales-card">
-                  <div class="card-body">
-                    <h5 class="card-title">CARTEIRA DIGITAL</span></h5>
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-credit-card-2-front-fill"></i>
-                      </div>
-                      <div class="ps-3">
-                        <p>Consulte o número e informações de sua carteira</p>
+                <a href="carteira-digital.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="text-black card-title">CARTEIRA DIGITAL</span></h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-credit-card-2-front-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <p class="text-black">Consulte o número e informações de sua carteira</p>
+                        </div>
                       </div>
                     </div>
-
                   </div>
-                </div>
+                </a>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card sales-card">
-                  <div class="card-body">
-                    <h5 class="card-title">CONTRATO</span></h5>
+                <a href="contratos.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">CONTRATO</span></h5>
 
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-file-earmark-text-fill"></i>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-file-earmark-text-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <p class="text-black">Informações contratuais</p>
+                        </div>
                       </div>
-                      <div class="ps-3">
-                        <p>Informações contratuais</p>
-                      </div>
+
                     </div>
-
                   </div>
-                </div>
+                </a>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card sales-card">
-                  <div class="card-body">
-                    <h5 class="card-title">MANUAL</span></h5>
+                <a href="manuais.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">MANUAL</span></h5>
 
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-book-fill"></i>
-                      </div>
-                      <div class="ps-3">
-                        <p>Manual e regualmentos do seu plano e da empresa</p>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-book-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <p class="text-black">Manual e regualmentos do seu plano e da empresa</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
               <div class="col-xxl-4 col-xl-12">
-                <div class="card info-card sales-card">
-                  <div class="card-body">
-                    <h5 class="card-title">CONTATOS</span></h5>
+                <a href="contatos.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">CONTATOS</span></h5>
 
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-telephone-fill"></i>
-                      </div>
-                      <div class="ps-3">
-                        <p>Telefones, WhatsApps, Links e mais</p>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-telephone-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <p>Telefones, WhatsApps, Links e mais</p>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             <?php
             }

@@ -84,31 +84,31 @@
       if ($_SESSION['type'] == 4) {
       ?>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="https://klinics.videoconsultas.app/paciente/autogestion">
             <i class="bi bi-camera-video-fill"></i>
             <span>Telemdicina</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="carteira-digital.php">
             <i class="bi bi-credit-card-2-front-fill"></i>
             <span>Carteira Digital</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="contratos.php">
             <i class="bi bi-file-earmark-text-fill"></i>
             <span>Contrato</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="manuais.php">
             <i class="bi bi-book-fill"></i>
             <span>Manual</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="contatos.php">
             <i class="bi bi-telephone-fill"></i>
             <span>Contatos</span>
           </a>
