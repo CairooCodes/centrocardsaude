@@ -193,12 +193,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
-                            <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
+                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -223,12 +223,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
-                            <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
+                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -253,13 +253,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
-                            <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
+                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
 
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -284,7 +284,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <?php include "components/footer.php"; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
   <!-- Template Main JS File -->
   <script src="<?php echo $URI->base('/assets/js/main.js') ?>"></script>
 </body>

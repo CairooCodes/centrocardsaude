@@ -3888,3 +3888,18 @@ section {
 .owl-nav .owl-next {
   right: -30px;
 }
+
+.btn-cred {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 35px;
+  margin-top: 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: white;
+  background: #0079a4;
+}

@@ -32,10 +32,8 @@ $dv = $_GET['dv'];
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/css/variables.css" rel="stylesheet">
 
   <!-- CSS File -->
@@ -44,40 +42,6 @@ $dv = $_GET['dv'];
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<style>
-  .carousel-wrap {
-    margin-top: 20px;
-    padding: 0 5%;
-    width: 100%;
-    position: relative;
-  }
-
-  /* fix blank or flashing items on carousel */
-  .owl-carousel .item {
-    position: relative;
-    z-index: 100;
-  }
-
-  /* end fix */
-  .owl-nav>div {
-    margin-top: -26px;
-    position: absolute;
-    top: 50%;
-    color: #cdcbcd;
-  }
-
-  .owl-nav i {
-    font-size: 52px;
-  }
-
-  .owl-nav .owl-prev {
-    left: -30px;
-  }
-
-  .owl-nav .owl-next {
-    right: -30px;
-  }
-</style>
 
 <body>
   <?php include "components/navbar.php"; ?>
@@ -185,7 +149,7 @@ $dv = $_GET['dv'];
                       </div>
                     </ul>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -215,7 +179,7 @@ $dv = $_GET['dv'];
                       </div>
                     </ul>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -246,7 +210,7 @@ $dv = $_GET['dv'];
                     </ul>
 
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -297,12 +261,12 @@ $dv = $_GET['dv'];
                     <div class="icon">
                       <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                     </div>
-                    <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
+                    <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
                       <h3><?php echo $benefit; ?></h3>
                     </a>
                     <p><?php echo $description; ?></p>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                      <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>

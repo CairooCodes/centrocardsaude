@@ -7,7 +7,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <a href="<?php echo $URI->base('/home') ?>" class="logo me-md-auto">
+              <a href="<?php echo $URI->base('home') ?>" class="logo me-md-auto">
                 <center><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" width="200px"></center>
               </a>
             </div>
@@ -16,19 +16,20 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>centrocardsaude.com.br</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/home') ?>">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/#services') ?>">Benefícios</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/afiliado') ?>">Afiliado</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('home') ?>">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('#services') ?>">Benefícios</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('afiliado') ?>">Afiliado</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('https://mobi4tech.com.br/seg4tech/centrocard/aut/index.php') ?>">Autorizador</a></li>
             </ul>
           </div>
 
           <div class="col-lg-5 col-md-6 footer-links">
             <h4>Planos</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/plano/essencial') ?>">Plano Essencial</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/plano/gold') ?>">Plano Gold</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('/plano/platinum') ?>">Plano Platinum</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/essencial') ?>">Plano Essencial</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/gold') ?>">Plano Gold</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/platinum') ?>">Plano Platinum</a></li>
             </ul>
           </div>
         </div>
