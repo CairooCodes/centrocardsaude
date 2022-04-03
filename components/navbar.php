@@ -9,28 +9,28 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto" href="<?php echo $URI->base('home') ?>">Home</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home') ?>">Home</a></li>
         <li class="dropdown"><a href="#"><span>Planos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
-            <li><a href="<?php echo $URI->base('plano/essencial') ?>">Plano Essencial</a></li>
-            <li><a href="<?php echo $URI->base('plano/gold') ?>">Plano Gold</a></li>
-            <li><a href="<?php echo $URI->base('plano/platinum') ?>">Plano Platinum</a></li>
+            <li><a href="<?php echo $URI->base('/plano/essencial') ?>">Plano Essencial</a></li>
+            <li><a href="<?php echo $URI->base('/plano/gold') ?>">Plano Gold</a></li>
+            <li><a href="<?php echo $URI->base('/plano/platinum') ?>">Plano Platinum</a></li>
           </ul>
         </li>
-        <li><a class="nav-link scrollto" href="<?php echo $URI->base('home#services') ?>">Benefícios</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home#services') ?>">Benefícios</a></li>
         <!-- <li><a class="nav-link scrollto">Afiliado</a></li> -->
-        <!-- <li><a class="nav-link scrollto" href="<?php echo $URI->base('home#recent-blog-posts') ?>">Blog</a></li> -->
+        <!-- <li><a class="nav-link scrollto" href="<?php echo $URI->base('/home#recent-blog-posts') ?>">Blog</a></li> -->
         <li class="dropdown"><a href="#"><span>Rede de Desconto</span> <i class="bi bi-chevron-down"></i></i></a>
           <ul>
-          <li><a class="nav-link scrollto" href="<?php echo $URI->base('buscar.php') ?>">Busca de Rede <i class="bi bi-search"></i></a></li>
-            <li><a href="<?php echo $URI->base('quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
+          <li><a class="nav-link scrollto" href="<?php echo $URI->base('/buscar.php') ?>">Busca de Rede <i class="bi bi-search"></i></a></li>
+            <li><a href="<?php echo $URI->base('/quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
           </ul>
         </li>
-        <li><a class="nav-link scrollto" href="<?php echo $URI->base('beneficio/telemedicina') ?>">Telemedicina</a></li>
+        <li><a class="nav-link scrollto" href="<?php echo $URI->base('/beneficio/telemedicina') ?>">Telemedicina</a></li>
         <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-box-arrow-in-right"></i></a>
           <ul>
-            <li><a href="<?php echo $URI->base('admin/login.php') ?>">Cliente</a></li>
-            <li><a href="<?php echo $URI->base('admin/login.php') ?>">Credenciado</a></li>
+            <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Cliente</a></li>
+            <li><a href="<?php echo $URI->base('/admin/login.php') ?>">Credenciado</a></li>
           </ul>
         </li>
       </ul>
