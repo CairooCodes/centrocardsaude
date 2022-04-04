@@ -343,7 +343,7 @@ endif;
                           <i class="bi bi-telephone-fill"></i>
                         </div>
                         <div class="ps-3">
-                          <p>Telefones, WhatsApps, Links e mais</p>
+                          <p class="text-black">Telefones, WhatsApps, Links e mais</p>
                         </div>
                       </div>
                     </div>

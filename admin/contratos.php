@@ -76,7 +76,7 @@ if (isset($_GET['delete_id'])) {
         <div class="col-lg-3">
           <div class="bg-warning rounded p-1">
             <div>
-              <p class="pt-2 text-white text-center">Sem contrato Cadastrado ...</p>
+              <p class="pt-2 text-white text-center">Sem contrato disponível ...</p>
             </div>
           </div>
         </div>
