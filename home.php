@@ -5,6 +5,16 @@ require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
 $dv = $_GET['dv'];
+
+$dv = $link_sale;
+
+if ($link_sale != '') {
+  echo "teste";
+}
+
+else {
+  echo "teste2";
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
