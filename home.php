@@ -6,14 +6,14 @@ require "classes/Url.class.php";
 $URI = new URI();
 $dv = $_GET['dv'];
 
-$dv = $link_sale;
+$dateAtual = date("d");
 
-if ($link_sale != '') {
-  echo "teste";
-}
-
-else {
-  echo "teste2";
+$stmt = $DB_con->prepare("SELECT * FROM users where login='$dv'");
+$stmt->execute();
+if ($stmt->rowCount() > 0) {
+  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    extract($row);
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -155,7 +155,12 @@ else {
                       <li class="na"><i class="bi bi-x"></i> <span>Assistência Farmacêutica </span></li>
                       <li class="na"><i class="bi bi-x"></i> <span>Assistência Personal Fitness</span></li>
                       <div class="text-center mt-auto">
-                        <a href="#" class="buy-btn2">Compre agora</a>
+                        <a href="<?php if (isset($dv)) {
+                                    echo $link;
+                                  } else {
+                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php";
+                                  }
+                                  ?>" class="buy-btn2">Compre agora</a>
                       </div>
                     </ul>
                     <div class="text-center mt-auto">
@@ -185,7 +190,12 @@ else {
                       <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
                       <div class="text-center mt-auto">
-                        <a href="#" class="buy-btn2">Compre agora</a>
+                        <a href="<?php if (isset($dv)) {
+                                    echo $link;
+                                  } else {
+                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php";
+                                  }
+                                  ?>" class="buy-btn2">Compre agora</a>
                       </div>
                     </ul>
                     <div class="text-center mt-auto">
@@ -215,7 +225,12 @@ else {
                       <li class="na"><i class="bi bi-x"></i> <span>Conta Saúde </span></li>
                       <li class="na"><i class="bi bi-x"></i> <span> Especialidades Médicas</span></li>
                       <div class="text-center mt-auto">
-                        <a href="#" class="buy-btn2">Compre agora</a>
+                        <a href="<?php if (isset($dv)) {
+                                    echo $link;
+                                  } else {
+                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php";
+                                  }
+                                  ?>" class="buy-btn2">Compre agora</a>
                       </div>
                     </ul>
 

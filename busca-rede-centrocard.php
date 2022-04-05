@@ -53,7 +53,7 @@ $URI = new URI();
           <div class="row justify-content-center">
             <div class="col-md-6">
               <select class="form-select" name="SelectOptions" id="SelectOptions" required>
-                <option value="Div1">EXAMES E CONSULTAS</option>
+                <option value="Div1">EXAMES</option>
                 <option value="Div2">TRATAMENTOS</option>
                 <option value="Div3">CLINÍCAS E LABORATÓRIOS</option>
                 <option value="Div4">HOSPITAIS</option>
@@ -74,8 +74,7 @@ $URI = new URI();
                 <th>SERVIÇO</th>
                 <th>PARCEIRO</th>
                 <th>ENDEREÇO E CONTATO</th>
-                <th>PARTICULAR</th>
-                <th>CENTROCARD</th>
+                <th>PREÇOS</th>
               </tr>
             </thead>
             <tbody>
@@ -96,8 +95,14 @@ $URI = new URI();
                         </button>
                       </a>
                     </td>
-                    <td><?php echo $private; ?></td>
-                    <td><?php echo $centrocard; ?></td>
+                    <td>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5>CENTROCARD</h5>
+                          <?php echo $centrocard; ?>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
               <?php
                 }

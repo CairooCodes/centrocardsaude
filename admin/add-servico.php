@@ -15,6 +15,7 @@ if (isset($_POST['btnsave'])) {
   $private = $_POST['private'];
   $centrocard = $_POST['centrocard'];
   $type = $_POST['type'];
+  $private_status = $_POST['private_status'];
 
 
   if (empty($name)) {
@@ -22,11 +23,12 @@ if (isset($_POST['btnsave'])) {
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype)');
+    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type,private_status) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype,:uprivate_status)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':upartner', $partner);
     $stmt->bindParam(':uprivate', $private);
     $stmt->bindParam(':ucentrocard', $centrocard);
+    $stmt->bindParam(':uprivate_status', $private_status);
     $stmt->bindParam(':utype', $type);
 
     if ($stmt->execute()) {
@@ -136,6 +138,15 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $whats; ?>" name="private" placeholder="Preço Particular">
                         <label for="">Preço Particular</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select name="private_status" class="form-select" id="floatingSelect" aria-label="Exibir preço particular">
+                          <option value="1">Exibir</option>
+                          <option value="2">Ocultar</option>
+                        </select>
+                        <label for="floatingSelect">Exibir preço particular</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-3">

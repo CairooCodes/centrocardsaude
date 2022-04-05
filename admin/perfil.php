@@ -32,6 +32,7 @@ if (isset($_POST['btnsave'])) {
   $state = $_POST['state'];
   $status = $_POST['status'];
   $plan = $_POST['plan'];
+  $link = $_POST['link'];
 
   $imgFile = $_FILES['user_image']['name'];
   $tmp_dir = $_FILES['user_image']['tmp_name'];
@@ -79,8 +80,8 @@ if (isset($_POST['btnsave'])) {
     city=:ucity,
     state=:ustate,
     status=:ustatus,
-    plan=:uplan
-
+    plan=:uplan,
+    link=:ulink
     WHERE id=:uid');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':ulogin', $login);
@@ -95,6 +96,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':ustate', $state);
     $stmt->bindParam(':ustatus', $status);
     $stmt->bindParam(':uplan', $plan);
+    $stmt->bindParam(':ulink', $link);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -361,6 +363,12 @@ if (isset($_POST['btnsave'])) {
                           </select>
                         </div>
                       </div>
+                      <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Link</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="link" type="text" class="form-control" id="link" value="<?php echo $link; ?>">
+                      </div>
+                    </div>
                     <?php } ?>
                     <div class="text-center">
                       <button type="submit" name="btnsave" class="btn btn-primary">Salvar</button>

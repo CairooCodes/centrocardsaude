@@ -15,7 +15,7 @@ if (isset($_POST['btnsave'])) {
   $type = $_POST['type'];
   $whats = $_POST['whats'];
   $address = $_POST['address'];
-  $bairro = $_POST['bairro'];
+  $district = $_POST['district'];
   $city = $_POST['city'];
   $state = $_POST['state'];
   $status = $_POST['status'];
@@ -47,7 +47,7 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO users (name,login,email,pass,type,whats,address,bairro,city,state,img,status) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uaddress,:ubairro,:ucity,:ustate,:upic,:ustatus)');
+    $stmt = $DB_con->prepare('INSERT INTO users (name,login,email,pass,type,whats,address,district,city,state,img,status) VALUES(:uname,:ulogin,:uemail,:upass,:utype,:uwhats,:uaddress,:udistrict,:ucity,:ustate,:upic,:ustatus)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':ulogin', $login);
     $stmt->bindParam(':uemail', $email);
@@ -56,7 +56,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':upic', $userpic);
     $stmt->bindParam(':uwhats', $whats);
     $stmt->bindParam(':uaddress', $address);
-    $stmt->bindParam(':ubairro', $bairro);
+    $stmt->bindParam(':udistrict', $district);
     $stmt->bindParam(':ucity', $city);
     $stmt->bindParam(':ustate', $state);
     $stmt->bindParam(':ustatus', $status);
@@ -125,7 +125,7 @@ if (isset($_POST['btnsave'])) {
         </div>
         <div class="col-12">
           <label for="inputBairro" class="form-label">Bairro</label>
-          <input type="text" value="<?php echo $bairro; ?>" name="bairro" placeholder="Bairro" class="form-control" id="inputBairro">
+          <input type="text" value="<?php echo $district; ?>" name="district" placeholder="Bairro" class="form-control" id="inputBairro">
         </div>
         <div class="col-md-6">
           <label for="inputCity" class="form-label">Cidade</label>
