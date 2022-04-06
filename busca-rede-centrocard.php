@@ -74,7 +74,7 @@ $URI = new URI();
                 <th>SERVIÇO</th>
                 <th>PARCEIRO</th>
                 <th>ENDEREÇO E CONTATO</th>
-                <th>PREÇOS</th>
+                <th class="text-center">PREÇOS</th>
               </tr>
             </thead>
             <tbody>
@@ -97,6 +97,12 @@ $URI = new URI();
                     </td>
                     <td>
                       <div class="row">
+                        <?php if ($private_status == 1) {?>
+                        <div class="col-md-6">
+                          <h5>PARTICULAR</h5>
+                          <?php echo $private; ?>
+                        </div>
+                        <?php } ?>
                         <div class="col-md-6">
                           <h5>CENTROCARD</h5>
                           <?php echo $centrocard; ?>
@@ -108,15 +114,6 @@ $URI = new URI();
                 }
               } ?>
             </tbody>
-            <tfoot>
-              <tr>
-                <th>NOME</th>
-                <th>ESPECIALIDADE</th>
-                <th>TELEFONE</th>
-                <th>CIDADE</th>
-                <th>ESTADO</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
@@ -128,8 +125,7 @@ $URI = new URI();
                 <th>SERVIÇO</th>
                 <th>PARCEIRO</th>
                 <th>ENDEREÇO E CONTATO</th>
-                <th>PARTICULAR</th>
-                <th>CENTROCARD</th>
+                <th>PREÇOS</th>
               </tr>
             </thead>
             <tbody>
@@ -150,22 +146,25 @@ $URI = new URI();
                         </button>
                       </a>
                     </td>
-                    <td><?php echo $private; ?></td>
-                    <td><?php echo $centrocard; ?></td>
+                    <td>
+                      <div class="row">
+                        <?php if ($private_status == 1) {?>
+                        <div class="col-md-6">
+                          <h5>PARTICULAR</h5>
+                          <?php echo $private; ?>
+                        </div>
+                        <?php } ?>
+                        <div class="col-md-6">
+                          <h5>CENTROCARD</h5>
+                          <?php echo $centrocard; ?>
+                        </div>
+                      </div>
+                    </td>
                   </tr>
               <?php
                 }
               } ?>
             </tbody>
-            <tfoot>
-              <tr>
-                <th>SERVIÇO</th>
-                <th>PARCEIRO</th>
-                <th>ENDEREÇO E CONTATO</th>
-                <th>PARTICULAR</th>
-                <th>CENTROCARD</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
@@ -200,15 +199,6 @@ $URI = new URI();
                 }
               } ?>
             </tbody>
-            <tfoot>
-              <tr>
-                <th>NOME</th>
-                <th>ENDEREÇO</th>
-                <th>CIDADE</th>
-                <th>ESTADO</th>
-                <th>CONTATO</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
@@ -243,15 +233,6 @@ $URI = new URI();
                 }
               } ?>
             </tbody>
-            <tfoot>
-              <tr>
-                <th>NOME</th>
-                <th>ENDEREÇO</th>
-                <th>CIDADE</th>
-                <th>ESTADO</th>
-                <th>CONTATO</th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       </div>
