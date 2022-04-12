@@ -73,8 +73,8 @@ $URI = new URI();
               <tr>
                 <th>SERVIÇO</th>
                 <th>PARCEIRO</th>
-                <th>ENDEREÇO E CONTATO</th>
-                <th class="text-center">PREÇOS</th>
+                <th>CONTATO</th>
+                <th>PREÇO CENTROCARD</th>
               </tr>
             </thead>
             <tbody>
@@ -89,25 +89,20 @@ $URI = new URI();
                     <td><?php echo $name; ?></td>
                     <td><?php echo $partner; ?></td>
                     <td>
-                      <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
-                        <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
-                          Saiba Mais
-                        </button>
-                      </a>
+                      <?php
+                      if ($contact != "") {
+                        echo $contact;
+                      }
+                      if ($contact2 != "") {
+                        echo $contact2;
+                      }
+                      ?>
                     </td>
                     <td>
-                      <div class="row">
-                        <?php if ($private_status == 1) {?>
-                        <div class="col-md-6">
-                          <h5>PARTICULAR</h5>
-                          <?php echo $private; ?>
-                        </div>
-                        <?php } ?>
-                        <div class="col-md-6">
-                          <h5>CENTROCARD</h5>
-                          <?php echo $centrocard; ?>
-                        </div>
-                      </div>
+                      <?php if ($private_status == 1) { ?>
+                        <p class="text-center"><?php echo $private; ?></p>
+                      <?php } ?>
+                      <p class="text-center"> <?php echo $centrocard; ?></p>
                     </td>
                   </tr>
               <?php
@@ -139,20 +134,14 @@ $URI = new URI();
                   <tr>
                     <td><?php echo $name; ?></td>
                     <td><?php echo $partner; ?></td>
-                    <td>
-                      <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
-                        <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
-                          Saiba Mais
-                        </button>
-                      </a>
-                    </td>
+                    <td></td>
                     <td>
                       <div class="row">
-                        <?php if ($private_status == 1) {?>
-                        <div class="col-md-6">
-                          <h5>PARTICULAR</h5>
-                          <?php echo $private; ?>
-                        </div>
+                        <?php if ($private_status == 1) { ?>
+                          <div class="col-md-6">
+                            <h5>PARTICULAR</h5>
+                            <?php echo $private; ?>
+                          </div>
                         <?php } ?>
                         <div class="col-md-6">
                           <h5>CENTROCARD</h5>

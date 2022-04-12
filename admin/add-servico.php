@@ -16,19 +16,22 @@ if (isset($_POST['btnsave'])) {
   $centrocard = $_POST['centrocard'];
   $type = $_POST['type'];
   $private_status = $_POST['private_status'];
-
+  $contact = $_POST['contact'];
+  $contact2 = $_POST['contact2'];
 
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type,private_status) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype,:uprivate_status)');
+    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type,private_status,contact,contact2) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype,:uprivate_status,:ucontact,:ucontact2)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':upartner', $partner);
     $stmt->bindParam(':uprivate', $private);
     $stmt->bindParam(':ucentrocard', $centrocard);
     $stmt->bindParam(':uprivate_status', $private_status);
+    $stmt->bindParam(':ucontact', $contact);
+    $stmt->bindParam(':ucontact2', $contact2);
     $stmt->bindParam(':utype', $type);
 
     if ($stmt->execute()) {
@@ -134,6 +137,32 @@ if (isset($_POST['btnsave'])) {
                         <label for="floatingSelect">Parceiro</label>
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select name="contact" class="form-select" id="floatingSelect" aria-label="Whats">
+                          <option value="">Escolha o número de um parceiro</option>
+                          <?php
+                          $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $whats; ?>"><?php echo $name; ?> - Whats: <?php echo $whats; ?> </option>
+                          <?php
+                            }
+                          }
+                          ?>
+                        </select>
+                        <label for="floatingSelect">Contato</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $contact2; ?>" name="contact2" placeholder="Número para contato">
+                        <label for="">Contato</label>
+                      </div>
+                    </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $whats; ?>" name="private" placeholder="Preço Particular">
@@ -178,7 +207,6 @@ if (isset($_POST['btnsave'])) {
                 </div>
                 <div class="text-center pt-2">
                   <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
-                  <button type="reset" class="btn btn-secondary">Resetar</button>
                 </div>
               </form><!-- Vertical Form -->
 

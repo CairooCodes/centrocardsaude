@@ -32,6 +32,9 @@ if (isset($_POST['btnsave'])) {
   $plan_1 = $_POST['plan_1'];
   $plan_2 = $_POST['plan_2'];
   $slug = $_POST['slug'];
+  $title_desc = $_POST['title_desc'];
+  $title_box = $_POST['title_box'];
+  $contact_box = $_POST['contact_box'];
 
   $imgFile = $_FILES['user_image']['name'];
   $tmp_dir = $_FILES['user_image']['tmp_name'];
@@ -240,6 +243,12 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating">
                         <textarea type="text" class="form-control" value="<?php echo $description; ?>" name="description" placeholder="Descrição do Benefício" style="height: 100px;"><?php echo $description; ?></textarea>
                         <label for="">Descrição do Benefício</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $title_desc; ?>" name="title_desc" placeholder="Titulo do Benefício">
+                        <label for="">Titulo do benefício</label>
                       </div>
                     </div>
                   </div>

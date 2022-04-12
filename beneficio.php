@@ -59,7 +59,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         <div class="container pt-4 info-benefit">
           <div class="col-md-6">
             <p class="lead"><?php echo $description; ?> </p>
-            <h4 class="pt-4 text-uppercase">QUANDO ACIONAR O <?php echo $benefit; ?>
+            <h4 class="pt-4 text-uppercase"><?php echo $title_desc; ?>
             </h4>
             <div class="row align-items-center pt-4">
               <div class="col-3 col-md-2">
@@ -80,9 +80,9 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         </div>
         <div class="container box-benefift d-md-block d-none">
           <div class="col-10">
-            <h3>ACIONE AGORA <?php echo $benefit; ?>:</h3>
+            <h3><?php echo $title_box; ?>:</h3>
             <h4 class="pt-4">LIGUE AGORA</h4>
-            <h3><i class="bi bi-whatsapp"></i> (86)99559-0009</h3>
+            <h3><i class="bi bi-whatsapp"></i> <?php echo $contact_box; ?></h3>
           </div>
         </div>
     <?php
