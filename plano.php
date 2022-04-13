@@ -78,7 +78,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   </ul>
 
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                    <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
 
                 </div>
@@ -108,7 +108,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     </div>
                   </ul>
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                    <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
 
                 </div>
@@ -137,7 +137,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   </ul>
 
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                    <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
 
                 </div>
