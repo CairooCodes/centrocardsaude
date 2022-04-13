@@ -64,3 +64,4 @@
     </div>
 
   </footer><!-- End Footer -->
+  <a href="https://api.whatsapp.com/send?phone=5586995590009" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>

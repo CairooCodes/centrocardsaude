@@ -99,7 +99,6 @@ $dv = $_GET['dv'];
 
   <?php include "components/footer.php"; ?>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
   <!-- <div id="preloader"></div> -->
 

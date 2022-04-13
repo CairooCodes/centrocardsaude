@@ -89,7 +89,6 @@ $URI = new URI();
   </section><!-- End Contact Section -->
   </main><!-- End #main -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
   <?php include "components/footer.php"; ?>
   <script src="<?php echo $URI->base('/assets/vendor/purecounter/purecounter.jsg') ?>"></script>

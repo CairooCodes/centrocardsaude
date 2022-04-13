@@ -74,7 +74,7 @@ $URI = new URI();
                 <th>SERVIÇO</th>
                 <th>PARCEIRO</th>
                 <th>CONTATO</th>
-                <th>PREÇO CENTROCARD</th>
+                <th class="text-center">PREÇO CENTROCARD</th>
               </tr>
             </thead>
             <tbody>
@@ -99,10 +99,12 @@ $URI = new URI();
                       ?>
                     </td>
                     <td>
-                      <?php if ($private_status == 1) { ?>
-                        <p class="text-center"><?php echo $private; ?></p>
-                      <?php } ?>
-                      <p class="text-center"> <?php echo $centrocard; ?></p>
+                      <div class="text-search-prices">
+                        <?php if ($private_status == 1) { ?>
+                          <p class="de-price">De <?php echo $private; ?> por:</p>
+                        <?php } ?>
+                        <p class="por-price"> <?php echo $centrocard; ?></p>
+                      </div>
                     </td>
                   </tr>
               <?php
@@ -119,8 +121,8 @@ $URI = new URI();
               <tr>
                 <th>SERVIÇO</th>
                 <th>PARCEIRO</th>
-                <th>ENDEREÇO E CONTATO</th>
-                <th>PREÇOS</th>
+                <th>CONTATO</th>
+                <th class="text-center">PREÇO CENTROCARD</th>
               </tr>
             </thead>
             <tbody>
@@ -134,19 +136,13 @@ $URI = new URI();
                   <tr>
                     <td><?php echo $name; ?></td>
                     <td><?php echo $partner; ?></td>
-                    <td></td>
+                    <td><?php echo $contact; ?></td>
                     <td>
-                      <div class="row">
+                      <div class="text-search-prices">
                         <?php if ($private_status == 1) { ?>
-                          <div class="col-md-6">
-                            <h5>PARTICULAR</h5>
-                            <?php echo $private; ?>
-                          </div>
+                          <p class="de-price">De <?php echo $private; ?> por:</p>
                         <?php } ?>
-                        <div class="col-md-6">
-                          <h5>CENTROCARD</h5>
-                          <?php echo $centrocard; ?>
-                        </div>
+                        <p class="por-price"> <?php echo $centrocard; ?></p>
                       </div>
                     </td>
                   </tr>
@@ -268,7 +264,6 @@ $URI = new URI();
   } ?>
   </main><!-- End #main -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
   <?php include "components/footer.php"; ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
