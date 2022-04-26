@@ -20,7 +20,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('#services') ?>">Benefícios</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('afiliado') ?>">Afiliado</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('https://mobi4tech.com.br/seg4tech/centrocard/aut/index.php') ?>">Autorizador</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://mobi4tech.com.br/seg4tech/centrocard/aut/index.php">Autorizador</a></li>
             </ul>
           </div>
 
@@ -44,11 +44,7 @@
             &copy; <strong><span>CENTROCARD SAÚDE</span></strong>. Todos os direitos reservados
           </div>
           <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/herobiz-bootstrap-business-template/ -->
-            Desenvolvido por: <a href="https://bootstrapmade.com/">Cairo Felipe Dev</a>
+            Desenvolvido por: <a href="https://instagram.com/cairofelipedev">Cairo Felipe Dev</a>
           </div>
         </div>
 
