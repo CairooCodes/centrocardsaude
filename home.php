@@ -164,7 +164,7 @@ if ($stmt->rowCount() > 0) {
                       </div>
                     </ul>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -199,7 +199,7 @@ if ($stmt->rowCount() > 0) {
                       </div>
                     </ul>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -235,7 +235,7 @@ if ($stmt->rowCount() > 0) {
                     </ul>
 
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
+                      <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">Saiba Mais</a>
                     </div>
 
                   </div>
@@ -286,12 +286,12 @@ if ($stmt->rowCount() > 0) {
                     <div class="icon">
                       <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                     </div>
-                    <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="stretched-link">
+                    <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
                       <h3><?php echo $benefit; ?></h3>
                     </a>
                     <p><?php echo $description; ?></p>
                     <div class="text-center mt-auto">
-                      <a href="<?php echo $URI->base('/beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                      <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>

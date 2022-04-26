@@ -53,11 +53,54 @@ $URI = new URI();
           <div class="row justify-content-center">
             <div class="col-md-6">
               <select class="form-select" name="SelectOptions" id="SelectOptions" required>
-                <option value="Div1">EXAMES</option>
-                <option value="Div2">TRATAMENTOS</option>
-                <option value="Div3">CLINÍCAS E LABORATÓRIOS</option>
-                <option value="Div4">HOSPITAIS</option>
-                <!-- <option value="Div5">CONSULTAS DE URGÊNCIA</option> -->
+                <?php
+                $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where id='1' and type='1'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                ?>
+                    <option value="Div1"><?php echo $name ?></option>
+                <?php
+                  }
+                }
+                ?>
+                <?php
+                $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where id='6' and type='1'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                ?>
+                    <option value="Div2"><?php echo $name ?></option>
+                <?php
+                  }
+                }
+                ?>
+                <?php
+                $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where id='3' and type='1'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                ?>
+                    <option value="Div3"><?php echo $name ?></option>
+                <?php
+                  }
+                }
+                ?>
+                <?php
+                $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where id='4' and type='1'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                ?>
+                    <option value="Div4"><?php echo $name ?></option>
+                <?php
+                  }
+                }
+                ?>
               </select>
             </div>
           </div>
@@ -72,7 +115,7 @@ $URI = new URI();
             <thead>
               <tr>
                 <th>SERVIÇO</th>
-                <th>PARCEIRO</th>
+                <th>CREDENCIADO</th>
                 <th>CONTATO</th>
                 <th class="text-center">PREÇO CENTROCARD</th>
               </tr>
@@ -120,7 +163,7 @@ $URI = new URI();
             <thead>
               <tr>
                 <th>SERVIÇO</th>
-                <th>PARCEIRO</th>
+                <th>CREDENCIADO</th>
                 <th>CONTATO</th>
                 <th class="text-center">PREÇO CENTROCARD</th>
               </tr>

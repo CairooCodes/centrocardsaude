@@ -53,13 +53,6 @@
           </a>
         </li>
 
-        <!-- <li class="nav-heading">Pages</li> -->
-        <!-- <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
-            <i class="fas fa-handshake"></i>
-            <span>Afiliados</span>
-          </a>
-        </li> -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="painel-usuarios.php">
             <i class="fas fa-user"></i>
@@ -72,13 +65,24 @@
             <span>Parceiros</span>
           </a>
         </li>
-
-        <!-- <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
-            <i class="fas fa-newspaper"></i>
-            <span>Blog</span>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="painel-consultas.php">
+            <i class="fa-solid fa-file-waveform"></i>
+            <span>Consultas</span>
           </a>
-        </li> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="painel-medicos.php">
+            <i class="fa-solid fa-user-doctor"></i>
+            <span>Médicos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="categorias.php">
+            <i class="fa-solid fa-notes-medical"></i>
+            <span>Categorias</span>
+          </a>
+        </li>
       <?php } ?>
       <?php
       if ($_SESSION['type'] == 4) {
