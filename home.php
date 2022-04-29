@@ -69,7 +69,8 @@ if ($stmt->rowCount() > 0) {
           <div class="carousel-item 
         <?php if ($type == '1') {
             echo 'active';
-          } ?>" style="background-image: url('./admin/uploads/banners/<?php echo $row['img_1']; ?>');">
+          } ?>">
+            <img data-src="./admin/uploads/banners/<?php echo $row['img_1']; ?>" class="img-fluid lazy banners-main">
             <div class="container">
               <div class="row justify-content-center gy-6">
                 <div class="col-lg-9 text-center">
@@ -115,7 +116,7 @@ if ($stmt->rowCount() > 0) {
 
           <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
 
-            <img src="assets/img/cards.png" alt="" class="img-fluid">
+            <img data-src="assets/img/cards.png" alt="" class="img-fluid lazy">
 
           </div>
 
@@ -280,7 +281,10 @@ if ($stmt->rowCount() > 0) {
 
               <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                 <div class="service-item">
-                  <div class="img" style="background-image: url('./admin/uploads/beneficios/<?php echo $row['img_2']; ?>');">
+                  <div class="row justify-content-center">
+                    <div class="img-services col-md-11">
+                      <img data-src="./admin/uploads/beneficios/<?php echo $row['img_2']; ?>" class="img-fluid lazy">
+                    </div>
                   </div>
                   <div class="details position-relative">
                     <div class="icon">
@@ -317,7 +321,8 @@ if ($stmt->rowCount() > 0) {
                 extract($row);
             ?>
                 <div class="item">
-                  <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>" class="img-fluid" alt="">
+                <img data-src="./admin/uploads/parceiros/<?php echo $row['img']; ?>" class="img-fluid lazy">
+                 
                   <a href="#parceiro-<?php echo $name; ?>" id="popup" class="jsModalTrigger">
                     <!-- <center> <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
                         Saiba Mais
@@ -497,6 +502,7 @@ if ($stmt->rowCount() > 0) {
   <script src="assets/js/main.js"></script>
   <script src="assets/js/script.js"></script>
   <script src="assets/js/filter-services.js"></script>
+  <script src="assets/js/loadlazy.js"></script>
   <script>
     $('.owl-carousel').owlCarousel({
       loop: true,

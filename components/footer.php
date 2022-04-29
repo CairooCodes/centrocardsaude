@@ -8,7 +8,8 @@
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
               <a href="<?php echo $URI->base('home') ?>" class="logo me-md-auto">
-                <center><img src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" width="200px"></center>
+              
+                <center><img class="lazy" data-src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" width="200px"></center>
               </a>
             </div>
           </div>
