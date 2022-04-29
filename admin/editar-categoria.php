@@ -17,7 +17,7 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
   $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
   extract($edit_row);
 } else {
-  header("Location: painel-servicos.php");
+  header("Location: categorias.php");
 }
 
 
@@ -26,14 +26,15 @@ if (isset($_POST['btnsave'])) {
   $type = $_POST['type'];
 
 
-  if (empty($name)) {
-    $errMSG = "Por favor Insira o nome";
-  }
-
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO categorys (name,type) VALUES(:uname,:utype)');
+    $stmt = $DB_con->prepare('UPDATE queries SET 
+    name=:uname,
+    type=:utype
+    WHERE id=:uid');
+
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':utype', $type);
+    $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
     } else {
@@ -109,7 +110,7 @@ if (isset($_POST['btnsave'])) {
               <!-- Vertical Form -->
               <form method="POST" class="row">
                 <div class="col-md-12">
-                  <h5 class="card-title">Adicionar Categoria</h5>
+                  <h5 class="card-title">Editar Categoria</h5>
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
@@ -119,7 +120,16 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <select name="type" class="form-select" id="floatingSelect" aria-label="Exibir preço particular">
+                        <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo">
+                        <option value="<?php echo $type; ?>">
+                            <?php
+                            if ($type == 1) {
+                              echo "Serviço";
+                            }
+                            if ($type == 2) {
+                              echo "Especialidade";
+                            } ?> (selecionado)
+                          </option>
                           <option value="1">Serviços</option>
                           <option value="2">Especialidades</option>
                         </select>
@@ -129,7 +139,7 @@ if (isset($_POST['btnsave'])) {
                   </div>
                 </div>
                 <div class="text-center pt-2">
-                  <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
+                  <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
                 </div>
               </form><!-- Vertical Form -->
               <h5 class="card-title">Categorias: </h5>

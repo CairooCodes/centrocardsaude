@@ -151,7 +151,9 @@ if (isset($_POST['btnsave'])) {
                     </h6>
                     <div>
                       <a class="btn btn-danger" href="?delete_id=<?php echo $row['id']; ?>" title="clique para deletar" onclick="return confirm('Excluir categoria?')"><i class="now-ui-icons ui-1_simple-remove"></i> Excluir</a>
-                      <a class="btn btn-success" href="?delete_id=<?php echo $row['id']; ?>" title="clique para deletar" onclick="return confirm('Excluir categoria?')"><i class="now-ui-icons ui-1_simple-remove"></i> Editar</a>
+                      <a href="editar-categoria.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
                     </div>
                   </div>
                 <?php

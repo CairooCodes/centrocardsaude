@@ -11,42 +11,41 @@ error_reporting(~E_ALL); // avoid notice
 
 if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
   $id = $_GET['edit_id'];
-  $stmt_edit = $DB_con->prepare('SELECT name,partner,private,centrocard,type,private_status FROM services WHERE id =:uid');
+  $stmt_edit = $DB_con->prepare('SELECT * FROM queries WHERE id =:uid');
   $stmt_edit->execute(array(':uid' => $id));
   $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
   extract($edit_row);
 } else {
-  header("Location: painel-servicos.php");
+  header("Location: painel-consultas.php");
 }
 
 if (isset($_POST['btnsave'])) {
-  $name = $_POST['name'];
+  $specialty = $_POST['specialty'];
+  $doctor = $_POST['doctor'];
   $partner = $_POST['partner'];
+  $contact = $_POST['contact'];
   $private = $_POST['private'];
-  $centrocard = $_POST['centrocard'];
   $private_status = $_POST['private_status'];
-  $type = $_POST['type'];
-
-  if (empty($name)) {
-    $errMSG = "Por favor, insira o nome";
-  }
+  $centrocard = $_POST['centrocard'];
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('UPDATE services SET 
-    name=:uname,
+    $stmt = $DB_con->prepare('UPDATE queries SET 
+    specialty=:uspecialty,
+    doctor=:udoctor,
     partner=:upartner,
+    contact=:ucontact,
     private=:uprivate,
     private_status=:uprivate_status,
-    centrocard=:ucentrocard,
-    type=:utype
+    centrocard=:ucentrocard
     WHERE id=:uid');
 
-    $stmt->bindParam(':uname', $name);
+    $stmt->bindParam(':uspecialty', $specialty);
+    $stmt->bindParam(':udoctor', $doctor);
     $stmt->bindParam(':upartner', $partner);
+    $stmt->bindParam(':ucontact', $contact);
     $stmt->bindParam(':uprivate', $private);
     $stmt->bindParam(':uprivate_status', $private_status);
     $stmt->bindParam(':ucentrocard', $centrocard);
-    $stmt->bindParam(':utype', $type);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -102,21 +101,21 @@ if (isset($_POST['btnsave'])) {
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="painel-servicos.php">Painel Serviços</a></li>
-          <li class="breadcrumb-item active">Editar Serviço</li>
+          <li class="breadcrumb-item"><a href="painel-consultas.php">Painel Consultas</a></li>
+          <li class="breadcrumb-item active">Editar Consulta</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">
               <?php
               if (isset($errMSG)) {
               ?>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger mt-2">
                   <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
                 </div>
               <?php
@@ -129,8 +128,14 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome Completo">
-                        <label for="">Nome do Serviço</label>
+                        <input type="text" class="form-control" value="<?php echo $specialty; ?>" name="specialty" placeholder="Especialidade">
+                        <label for="">Especialidade</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $doctor; ?>" name="doctor" placeholder="Médico">
+                        <label for="">Médico</label>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -153,6 +158,12 @@ if (isset($_POST['btnsave'])) {
                         <label for="floatingSelect">Parceiro</label>
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-floating pb-3">
+                        <input type="text" class="form-control" value="<?php echo $contact; ?>" name="contact" placeholder="Número para contato">
+                        <label for="">Contato</label>
+                      </div>
+                    </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $private; ?>" name="private" placeholder="Preço Particular">
@@ -169,7 +180,7 @@ if (isset($_POST['btnsave'])) {
                             }
                             if ($private_status == 2) {
                               echo "Ocultar";
-                            }?> (selecionado)
+                            } ?> (selecionado)
                           </option>
                           <option value="1">Exibir</option>
                           <option value="2">Ocultar</option>
@@ -179,37 +190,16 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $centrocard; ?>" name="centrocard" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $contact; ?>" name="centrocard" placeholder="Preço Particular">
                         <label for="">Preço CENTROCARD</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating mb-3">
-                        <select name="type" class="form-select" id="floatingSelect" aria-label="Parceiro">
-                          <option value="<?php echo $type; ?>"><?php echo $type; ?></option>
-                          <?php
-                          $stmt = $DB_con->prepare('SELECT * FROM categorys ORDER BY id ASC');
-                          $stmt->execute();
-                          if ($stmt->rowCount() > 0) {
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                              extract($row);
-                          ?>
-                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
-                          <?php
-                            }
-                          }
-                          ?>
-                        </select>
-                        <label for="floatingSelect">Tipo</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="text-center pt-2">
-                  <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
+                  <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
                 </div>
               </form><!-- Vertical Form -->
-
             </div>
           </div>
         </div>

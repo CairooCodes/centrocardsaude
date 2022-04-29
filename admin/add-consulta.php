@@ -15,23 +15,25 @@ if (isset($_POST['btnsave'])) {
   $partner = $_POST['partner'];
   $contact = $_POST['contact'];
   $private = $_POST['private'];
+  $private_status = $_POST['private_status'];
   $centrocard = $_POST['centrocard'];
 
-  if (empty($name)) {
+  if (empty($specialty)) {
     $errMSG = "Por favor, insira uma especialidade";
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO queries (specialty,doctor,partner,contact,private,centrocard) VALUES(:uspecialty,:udoctor,:upartner,:ucontact,:uprivate,:ucentrocard)');
+    $stmt = $DB_con->prepare('INSERT INTO queries (specialty,doctor,partner,contact,private,centrocard,private_status) VALUES(:uspecialty,:udoctor,:upartner,:ucontact,:uprivate,:ucentrocard,:uprivate_status)');
     $stmt->bindParam(':uspecialty', $specialty);
     $stmt->bindParam(':udoctor', $doctor);
     $stmt->bindParam(':upartner', $partner);
     $stmt->bindParam(':ucontact', $contact);
     $stmt->bindParam(':uprivate', $private);
+    $stmt->bindParam(':uprivate_status', $private_status);
     $stmt->bindParam(':ucentrocard', $centrocard);
 
     if ($stmt->execute()) {
-      echo ("<script>window.location = 'painel-queries.php';</script>");
+      echo ("<script>window.location = 'painel-consultas.php';</script>");
     } else {
       $errMSG = "Erro..";
     }
@@ -97,7 +99,7 @@ if (isset($_POST['btnsave'])) {
               <?php
               if (isset($errMSG)) {
               ?>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger mt-2">
                   <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong>
                 </div>
               <?php
@@ -114,7 +116,6 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Especialidade</label>
                       </div>
                     </div>
-                    <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $doctor; ?>" name="doctor" placeholder="Médico">
@@ -141,14 +142,14 @@ if (isset($_POST['btnsave'])) {
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $contact; ?>" name="contact2" placeholder="Número para contato">
+                      <div class="form-floating pb-3">
+                        <input type="text" class="form-control" value="<?php echo $contact; ?>" name="contact" placeholder="Número para contato">
                         <label for="">Contato</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="private" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $private; ?>" name="private" placeholder="Preço Particular">
                         <label for="">Preço Particular</label>
                       </div>
                     </div>

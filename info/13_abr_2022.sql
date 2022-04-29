@@ -341,13 +341,15 @@ CREATE TABLE `posts` (
 DROP TABLE IF EXISTS `queries`;
 
 CREATE TABLE `queries` (
-  `id` int(11) DEFAULT NULL,
+   `id` int(11) NOT NULL AUTO_INCREMENT,
   `specialty` varchar(100) DEFAULT NULL,
   `doctor` varchar(200) DEFAULT NULL,
   `partner` varchar(100) DEFAULT NULL,
   `contact` varchar(100) DEFAULT NULL,
   `private` varchar(100) DEFAULT NULL,
-  `centrocard` varchar(100) DEFAULT NULL
+  `centrocard` varchar(100) DEFAULT NULL,
+  `private_status` varchar(10) DEFAULT NULL,
+   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `queries` */
