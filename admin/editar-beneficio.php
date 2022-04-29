@@ -130,7 +130,9 @@ if (isset($_POST['btnsave'])) {
     img_3=:upic3,
     plan_1=:uplan_1,
     plan_2=:uplan_2,
-    slug=:uslug
+    slug=:uslug,
+    title_box=:utitle_box,
+    contact_box=:ucontact_box
     WHERE id=:uid');
 
     $stmt->bindParam(':ubenefit', $benefit);
@@ -147,6 +149,8 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uplan_1', $plan_1);
     $stmt->bindParam(':uplan_2', $plan_2);
     $stmt->bindParam(':uslug', $slug);
+    $stmt->bindParam(':utitle_box', $title_box);
+    $stmt->bindParam(':ucontact_box', $contact_box);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -288,6 +292,21 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating">
                         <textarea type="text" class="form-control" value="<?php echo $service_3; ?>" name="service_3" placeholder="Descrição do Serviço 3" style="height: 100px;"><?php echo $service_3; ?></textarea>
                         <label for="">Descrição do Serviço 3</label>
+                      </div>
+                    </div>
+                  </div>
+                  <h5 class="card-title">Box</h5>
+                  <div class="row">
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $title_box; ?>" name="title_box" placeholder="Titulo do Box">
+                        <label for="">Titulo do box</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                      <input type="text" class="form-control" value="<?php echo $contact_box; ?>" name="contact_box" placeholder="Contato do Box">
+                        <label for="">Contato do box</label>
                       </div>
                     </div>
                   </div>

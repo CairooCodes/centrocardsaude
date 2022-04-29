@@ -10,32 +10,28 @@ endif;
 error_reporting(~E_ALL); // avoid notice
 
 if (isset($_POST['btnsave'])) {
-  $name = $_POST['name'];
+  $specialty = $_POST['specialty'];
+  $doctor = $_POST['doctor'];
   $partner = $_POST['partner'];
+  $contact = $_POST['contact'];
   $private = $_POST['private'];
   $centrocard = $_POST['centrocard'];
-  $type = $_POST['type'];
-  $private_status = $_POST['private_status'];
-  $contact = $_POST['contact'];
-  $contact2 = $_POST['contact2'];
 
   if (empty($name)) {
-    $errMSG = "Por favor, insira o nome";
+    $errMSG = "Por favor, insira uma especialidade";
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type,private_status,contact,contact2) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype,:uprivate_status,:ucontact,:ucontact2)');
-    $stmt->bindParam(':uname', $name);
+    $stmt = $DB_con->prepare('INSERT INTO queries (specialty,doctor,partner,contact,private,centrocard) VALUES(:uspecialty,:udoctor,:upartner,:ucontact,:uprivate,:ucentrocard)');
+    $stmt->bindParam(':uspecialty', $specialty);
+    $stmt->bindParam(':udoctor', $doctor);
     $stmt->bindParam(':upartner', $partner);
+    $stmt->bindParam(':ucontact', $contact);
     $stmt->bindParam(':uprivate', $private);
     $stmt->bindParam(':ucentrocard', $centrocard);
-    $stmt->bindParam(':uprivate_status', $private_status);
-    $stmt->bindParam(':ucontact', $contact);
-    $stmt->bindParam(':ucontact2', $contact2);
-    $stmt->bindParam(':utype', $type);
 
     if ($stmt->execute()) {
-      echo ("<script>window.location = 'painel-servicos.php';</script>");
+      echo ("<script>window.location = 'painel-queries.php';</script>");
     } else {
       $errMSG = "Erro..";
     }
@@ -49,7 +45,7 @@ if (isset($_POST['btnsave'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Adicionar Serviço / Painel Administrativo</title>
+  <title>Adicionar Consulta / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -83,12 +79,12 @@ if (isset($_POST['btnsave'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Adicionar Serviço</h1>
+      <h1>Adicionar Consulta</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
-          <li class="breadcrumb-item"><a href="painel-usuarios.php">Painel Serviços</a></li>
-          <li class="breadcrumb-item active">Adicionar Serviço</li>
+          <li class="breadcrumb-item"><a href="painel-consultas.php">Painel Consultas</a></li>
+          <li class="breadcrumb-item active">Adicionar Consulta</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -114,8 +110,15 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome Completo">
-                        <label for="">Nome do Serviço</label>
+                        <input type="text" class="form-control" value="<?php echo $specialty; ?>" name="specialty" placeholder="Especialidade">
+                        <label for="">Especialidade</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $doctor; ?>" name="doctor" placeholder="Médico">
+                        <label for="">Médico</label>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -138,28 +141,8 @@ if (isset($_POST['btnsave'])) {
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating mb-3">
-                        <select name="contact" class="form-select" id="floatingSelect" aria-label="Whats">
-                          <option value="">Escolha o número de um parceiro</option>
-                          <?php
-                          $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
-                          $stmt->execute();
-                          if ($stmt->rowCount() > 0) {
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                              extract($row);
-                          ?>
-                              <option value="<?php echo $whats; ?>"><?php echo $name; ?> - Whats: <?php echo $whats; ?> </option>
-                          <?php
-                            }
-                          }
-                          ?>
-                        </select>
-                        <label for="floatingSelect">Contato</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $contact2; ?>" name="contact2" placeholder="Número para contato">
+                        <input type="text" class="form-control" value="<?php echo $contact; ?>" name="contact2" placeholder="Número para contato">
                         <label for="">Contato</label>
                       </div>
                     </div>
@@ -182,25 +165,6 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $whats; ?>" name="centrocard" placeholder="Preço Particular">
                         <label for="">Preço CENTROCARD</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-floating mb-3">
-                        <select name="type" class="form-select" id="floatingSelect" aria-label="Parceiro">
-                          <?php
-                          $stmt = $DB_con->prepare('SELECT * FROM categorys ORDER BY id ASC');
-                          $stmt->execute();
-                          if ($stmt->rowCount() > 0) {
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                              extract($row);
-                          ?>
-                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
-                          <?php
-                            }
-                          }
-                          ?>
-                        </select>
-                        <label for="floatingSelect">Tipo</label>
                       </div>
                     </div>
                   </div>
