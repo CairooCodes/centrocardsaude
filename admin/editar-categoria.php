@@ -22,12 +22,12 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
 
 
 if (isset($_POST['btnsave'])) {
-  $name = strtolower($_POST['name']);
+  $name = $_POST['name'];
   $type = $_POST['type'];
 
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('UPDATE queries SET 
+    $stmt = $DB_con->prepare('UPDATE categorys SET 
     name=:uname,
     type=:utype
     WHERE id=:uid');
@@ -121,7 +121,7 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo">
-                        <option value="<?php echo $type; ?>">
+                          <option value="<?php echo $type; ?>">
                             <?php
                             if ($type == 1) {
                               echo "Serviço";
@@ -142,9 +142,44 @@ if (isset($_POST['btnsave'])) {
                   <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
                 </div>
               </form><!-- Vertical Form -->
-              <h5 class="card-title">Categorias: </h5>
+              <h5 class="card-title">Categorias Serviços </h5>
               <?php
-              $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys ORDER BY id DESC");
+              $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where type='1' ORDER BY id DESC");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <div class="d-flex justify-content-between pb-2">
+                    <h6 class="">
+                      <?php echo $name ?> -
+                      <?php
+                      if ($type == "1") {
+                        echo "Serviços";
+                      }
+                      if ($type == "2") {
+                        echo "Especialidade";
+                      }
+                      ?>
+                    </h6>
+                    <div>
+                      <a class="btn btn-danger" href="?delete_id=<?php echo $row['id']; ?>" title="clique para deletar" onclick="return confirm('Excluir categoria?')"><i class="now-ui-icons ui-1_simple-remove"></i> Excluir</a>
+                      <a href="editar-categoria.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
+                    </div>
+                  </div>
+                <?php
+                }
+              } else {
+                ?>
+                Sem categoria Cadastrada ...
+              <?php
+              }
+              ?>
+              <h5 class="card-title">Categorias Especialidades </h5>
+              <?php
+              $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where type='2' ORDER BY id DESC");
               $stmt->execute();
               if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

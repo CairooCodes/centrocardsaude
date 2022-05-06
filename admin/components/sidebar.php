@@ -38,7 +38,7 @@
         </li>
       <?php } ?>
       <?php
-      if ($_SESSION['type'] == 1) {
+      if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 6)) {
       ?>
         <li class="nav-item">
           <a class="nav-link collapsed" href="painel-servicos.php">
@@ -46,6 +46,10 @@
             <span>Serviços</span>
           </a>
         </li>
+      <?php } ?>
+      <?php
+      if ($_SESSION['type'] == 1) {
+      ?>
         <li class="nav-item">
           <a class="nav-link collapsed" href="painel-banners.php">
             <i class="fas fa-images"></i>
@@ -59,6 +63,10 @@
             <span>Usuários</span>
           </a>
         </li>
+      <?php } ?>
+      <?php
+      if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 6)) {
+      ?>
         <li class="nav-item">
           <a class="nav-link collapsed" href="painel-parceiros.php">
             <i class="fas fa-hands-helping"></i>

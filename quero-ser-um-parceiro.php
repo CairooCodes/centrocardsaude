@@ -81,7 +81,7 @@ $URI = new URI();
       </div>
     </div>
     <div class="text-center mt-auto">
-      <a href="<?php echo $URI->base('/credenciamento') ?>" class="btn-parceiro">CADASTRE-SE AGORA</a>
+      <a href="<?php echo $URI->base('credenciamento') ?>" class="btn-parceiro">CADASTRE-SE AGORA</a>
     </div>
   </section>
   </main><!-- End #main -->

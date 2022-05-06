@@ -66,6 +66,19 @@ $URI = new URI();
                 }
                 ?>
                 <?php
+                $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where id='2' and type='1'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                ?>
+                    <option value="Div5"><?php echo $name ?></option>
+                <?php
+                  }
+                }
+                ?>
+                ?>
+                <?php
                 $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where id='6' and type='1'");
                 $stmt->execute();
                 if ($stmt->rowCount() > 0) {
@@ -217,7 +230,9 @@ $URI = new URI();
                   extract($row);
               ?>
                   <tr>
-                    <td><?php echo $name; ?></td>
+                    <td>
+                      <?php echo $name; ?>
+                    </td>
                     <td><?php echo $address; ?></td>
                     <td><?php echo $city; ?></td>
                     <td><?php echo $state; ?></td>
@@ -251,11 +266,52 @@ $URI = new URI();
                   extract($row);
               ?>
                   <tr>
-                    <td><?php echo $name; ?></td>
+                    <td>
+                      <?php echo $name; ?>
+                    </td>
                     <td><?php echo $address; ?></td>
                     <td><?php echo $city; ?></td>
                     <td><?php echo $state; ?></td>
                     <td><?php echo $tel; ?></td>
+                  </tr>
+              <?php
+                }
+              } ?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="Div5">
+        <div class="container container-form">
+          <table id="example4" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>ESPECIALIDADE</th>
+                <th>MÉDICO</th>
+                <th>CREDENCIADO</th>
+                <th>TELEFONE</th>
+                <th>PARTICULAR</th>
+                <th>CENTROCARD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              $stmt = $DB_con->prepare("SELECT * FROM queries ORDER BY id DESC");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <tr>
+                    <td>
+                      <?php echo $specialty; ?>
+
+                    </td>
+                    <td><?php echo $doctor; ?></td>
+                    <td><?php echo $partner; ?></td>
+                    <td><?php echo $contact; ?></td>
+                    <td><?php echo $private; ?></td>
+                    <td><?php echo $centrocard; ?></td>
                   </tr>
               <?php
                 }
@@ -368,6 +424,7 @@ $URI = new URI();
         $('.DivPai .Div2').hide();
         $('.DivPai .Div3').hide();
         $('.DivPai .Div4').hide();
+        $('.DivPai .Div5').hide();
         $(SelectValue).toggle();
       });
     });

@@ -162,11 +162,18 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo">
-                          <option value="1">Administrador</option>
-                          <option value="2">Afiliado</option>
-                          <option value="3">Marketing</option>
-                          <option value="4">Cliente</option>
+                          <?php
+                          if ($_SESSION['type'] == 1) {
+                          ?>
+                            <option value="1">Administrador</option>
+                            <option value="2">Afiliado</option>
+                            <option value="3">Marketing</option>
+                            <option value="4">Cliente</option>
+                          <?php
+                          }
+                          ?>
                           <option value="5">Médico</option>
+                          <option value="6">Cadastro</option>
                         </select>
                         <label for="floatingSelect">Tipo</label>
                       </div>

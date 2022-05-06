@@ -18,7 +18,7 @@ if (isset($_GET['delete_id'])) {
   header("Location: painel-usuarios.php");
 }
 
-if ($_SESSION['type'] != 1) {
+if (($_SESSION['type'] == 2) or ($_SESSION['type'] == 4)) {
   echo ("
     <script type= 'text/javascript'>alert('Acesso Restrito!');</script>
     <script>window.location = 'painel-controle.php';</script>");

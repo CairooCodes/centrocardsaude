@@ -159,7 +159,7 @@ if ($stmt->rowCount() > 0) {
                         <a href="<?php if (isset($dv)) {
                                     echo $link;
                                   } else {
-                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php";
+                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
                                   }
                                   ?>" class="buy-btn2">Compre agora</a>
                       </div>
@@ -194,7 +194,7 @@ if ($stmt->rowCount() > 0) {
                         <a href="<?php if (isset($dv)) {
                                     echo $link;
                                   } else {
-                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php";
+                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
                                   }
                                   ?>" class="buy-btn2">Compre agora</a>
                       </div>
@@ -229,7 +229,7 @@ if ($stmt->rowCount() > 0) {
                         <a href="<?php if (isset($dv)) {
                                     echo $link;
                                   } else {
-                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php";
+                                    echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
                                   }
                                   ?>" class="buy-btn2">Compre agora</a>
                       </div>
@@ -342,148 +342,7 @@ if ($stmt->rowCount() > 0) {
           </div>
         </div>
       </div>
-      <?php
-      $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
-      $stmt->execute();
-      if ($stmt->rowCount() > 0) {
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-          extract($row);
-      ?>
-          <div id="parceiro-<?php echo $name; ?>" class="modal2">
-            <div class="modal__overlay jsOverlay"></div>
-            <div class="modal__container">
-              <div class="parceiro-box d-flex">
-                <div class="parceiro-img">
-                  <img src="<?php echo $URI->base('/admin/uploads/parceiros/' . $row['img'] . '') ?>">
-                </div>
-                <div class="parceiro-infos">
-                  <h4 class="text-center">Contato</h4>
-                  <div class="row justify-content-center">
-                    <div class="col-md-4">
-                      <p class="text-center lead"><?php echo $tel; ?></p>
-                    </div>
-                    <?php if ($email != '') { ?>
-                      <div class="col-md-8">
-                        <p class="text-center lead parceiro-email"><?php echo $email; ?></p>
-                      </div>
-                    <?php } ?>
-                  </div>
-                  <h4>Especialidades</h4>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="lead">&nbsp;&bull; <?php echo $esp_1; ?></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button class="modal__close jsModalClose">&#10005;</button>
-            </div>
-          </div>
-      <?php
-        }
-      } ?>
     </section><!-- End Clients Section -->
-
-    <!-- ======= Recent Blog Posts Section ======= -->
-    <!-- <section id="recent-blog-posts" class="recent-blog-posts">
-
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Blog</h2>
-          <p>Postagens recentes</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-1.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Seg, Fev 14</span>
-                <span class="post-author"> / Cairo Felipe</span>
-              </div>
-              <h3 class="post-title">Dicas para começar o dia bem</h3>
-              <p>Conheça as principais dicas dos nossos especialista para começar um dia bem</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="post-box">
-              <div class="post-img"><img src="assets/img/blog/blog-2.jpg" class="img-fluid" alt=""></div>
-              <div class="meta">
-                <span class="post-date">Seg, Fev 14</span>
-                <span class="post-author"> / Cairo Felipe</span>
-              </div>
-              <h3 class="post-title">Cuide de sua saúde mental, visite um psicólogo</h3>
-              <p>Cuidar da saúde mental evita o desencadeamento de diversas doenças, como depressão e ansiedade. Confira como promover esse cuidado e ter mais qualidade de vida</p>
-              <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-          <div class="post-box">
-            <div class="post-img"><img src="assets/img/blog/blog-3.jpg" class="img-fluid" alt=""></div>
-            <div class="meta">
-              <span class="post-date">Seg, Fev 14</span>
-              <span class="post-author"> / Cairo Felipe</span>
-            </div>
-            <h3 class="post-title">Vantagens do home office</h3>
-            <p>Veja como o home office traz vantagens a empresas e trabalhadores, como diminuição de custos, mais produtividade e qualidade de vida</p>
-            <a href="blog-details.html" class="readmore stretched-link"><span>Saiba Mais</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-
-      </div>
-
-      </div>
-
-    </section> -->
-
-    <!-- ======= Contact Section ======= -->
-    <!-- <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-header">
-          <h2>Contato</h2>
-          <p>Preencha o formulário abaixo e tenha atendimento especializado</p>
-        </div>
-
-      </div>
-
-      <div class="container">
-
-        <div class="row gy-5 gx-lg-5 justify-content-center">
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" placeholder="Mensagem" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button class="btn" type="submit">Enviar Mensagem</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End Contact Section -->
 
   </main><!-- End #main -->
 

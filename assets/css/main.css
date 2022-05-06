@@ -3684,7 +3684,8 @@ section {
 
 .Div2,
 .Div3,
-.Div4 {
+.Div4,
+.Div5 {
   display: none;
 }
 

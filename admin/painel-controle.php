@@ -176,6 +176,35 @@ endif;
             <?php
             }
             ?>
+            <?php
+            if ($_SESSION['type'] == 6) {
+            ?>
+              <div class="col-xxl-3 col-md-6">
+                <a href="painel-servicos.php">
+                  <div class="card info-card sales-card">
+                    <div class="card-body">
+                      <h5 class="card-title">Serviços</h5>
+                      <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                          <i class="bi bi-plus-circle-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                          <h6>
+                            <?php
+                            $sth = $DB_con->prepare('SELECT count(*) as total from services');
+                            $sth->execute();
+                            print_r($sth->fetchColumn());
+                            ?>
+                          </h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div><!-- End Sales Card -->
+            <?php
+            }
+            ?>
             <!-- Customers Card -->
             <?php
             if ($_SESSION['type'] == 1) {
