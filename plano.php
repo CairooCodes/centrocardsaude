@@ -70,8 +70,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <li class="na"><i class="bi bi-x"></i> <span>Assistência Farmacêutica </span></li>
-                    <li class="na"><i class="bi bi-x"></i> <span>Assistência Personal Fitness</span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
                     <div class="text-center mt-auto">
                       <a href="#" class="buy-btn2">Compre agora</a>
                     </div>
@@ -99,10 +98,15 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
                     <div class="text-center mt-auto">
                       <a href="#" class="buy-btn2">Compre agora</a>
                     </div>
@@ -127,10 +131,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <li class="na"><i class="bi bi-x"></i> <span>Conta Saúde </span></li>
-                    <li class="na"><i class="bi bi-x"></i> <span> Especialidades Médicas</span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
                     <div class="text-center mt-auto">
                       <a href="#" class="buy-btn2">Compre agora</a>
                     </div>
@@ -185,11 +192,14 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       extract($row);
                 ?>
-                      <div class="col-xl-4 col-md-6 services-item">
+                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                         <div class="service-item">
-                          <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
+                          <div class="row justify-content-center">
+                            <div class="img-services col-md-11">
+                              <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
+                            </div>
                           </div>
-                          <div class="details2 position-relative">
+                          <div class="details position-relative">
                             <div class="icon">
                               <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                             </div>
@@ -214,10 +224,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       extract($row);
                     ?>
-
                       <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                         <div class="service-item">
-                          <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
+                          <div class="row justify-content-center">
+                            <div class="img-services col-md-11">
+                              <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
+                            </div>
                           </div>
                           <div class="details position-relative">
                             <div class="icon">
@@ -244,10 +256,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                       extract($row);
                     ?>
-
                       <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
                         <div class="service-item">
-                          <div class="img" style="background-image: url('<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>');">
+                          <div class="row justify-content-center">
+                            <div class="img-services col-md-11">
+                              <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
+                            </div>
                           </div>
                           <div class="details position-relative">
                             <div class="icon">
@@ -256,7 +270,6 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
                               <h3><?php echo $benefit; ?></h3>
                             </a>
-
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
                               <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
@@ -285,6 +298,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <!-- Template Main JS File -->
   <script src="<?php echo $URI->base('/assets/js/main.js') ?>"></script>
+  <script src="<?php echo $URI->base('/assets/js/loadlazy.js') ?>"></script>
 </body>
 
 </html>

@@ -135,7 +135,7 @@ if ($stmt->rowCount() > 0) {
 
         <div class="row gy-4">
           <?php
-          $stmt = $DB_con->prepare('SELECT id, name,price,t1,t2,t3,t4,t5,t6,t12,t11 FROM plans');
+          $stmt = $DB_con->prepare('SELECT * FROM plans');
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -153,8 +153,7 @@ if ($stmt->rowCount() > 0) {
                       <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                      <li class="na"><i class="bi bi-x"></i> <span>Assistência Farmacêutica </span></li>
-                      <li class="na"><i class="bi bi-x"></i> <span>Assistência Personal Fitness</span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
                       <div class="text-center mt-auto">
                         <a href="<?php if (isset($dv)) {
                                     echo $link;
@@ -186,10 +185,15 @@ if ($stmt->rowCount() > 0) {
                       <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
                       <div class="text-center mt-auto">
                         <a href="<?php if (isset($dv)) {
                                     echo $link;
@@ -221,10 +225,13 @@ if ($stmt->rowCount() > 0) {
                       <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                      <li class="na"><i class="bi bi-x"></i> <span>Conta Saúde </span></li>
-                      <li class="na"><i class="bi bi-x"></i> <span> Especialidades Médicas</span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
                       <div class="text-center mt-auto">
                         <a href="<?php if (isset($dv)) {
                                     echo $link;
@@ -321,8 +328,8 @@ if ($stmt->rowCount() > 0) {
                 extract($row);
             ?>
                 <div class="item">
-                <img data-src="./admin/uploads/parceiros/<?php echo $row['img']; ?>" class="img-fluid lazy">
-                 
+                  <img data-src="./admin/uploads/parceiros/<?php echo $row['img']; ?>" class="img-fluid lazy">
+
                   <a href="#parceiro-<?php echo $name; ?>" id="popup" class="jsModalTrigger">
                     <!-- <center> <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
                         Saiba Mais
