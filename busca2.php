@@ -62,17 +62,38 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="section-header">
         <h2>Resultado da busca em nossa rede</h2>
       </div>
-      <div class="container">
-        <?php
+    </div>
+    <div class="container container-form">
+          <table id="example" class="display" style="width:100%">
+            <thead>
+              <tr>
+                <th>SERVIÇO</th>
+                <th>CREDENCIADO</th>
+                <th>CONTATO</th>
+                <th class="text-center">PREÇO CENTROCARD</th>
+              </tr>
+            </thead>
+            <tbody>
+            <?php
         if (count($busca) > 0) :
           foreach ($busca as $busca) :
         ?>
-            <p><?php echo $busca['name']; ?></p>
-            <br>
+                              <tr>
+                    <td><?php echo $busca['name']; ?></td>
+                    <td><?php echo $busca['name']; ?></td>
+                    <td>
+                    <?php echo $busca['name']; ?>
+                    </td>
+                    <td>
+                    <?php echo $busca['name']; ?>
+                    </td>
+                  </tr>
         <?php endforeach;
         endif; ?>
-      </div>
-    </div>
+
+            </tbody>
+          </table>
+        </div>
   </section><!-- End Contact Section -->
   </main><!-- End #main -->
 
@@ -88,7 +109,16 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="assets/js/script.js"></script>
-
+  <script>
+    $(document).ready(function() {
+      $('#example').DataTable({
+        language: {
+          url: 'assets/js/dataBr.json'
+        },
+        responsive: true
+      });
+    });
+  </script>
 
 </body>
 
