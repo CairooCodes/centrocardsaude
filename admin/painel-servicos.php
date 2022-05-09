@@ -90,6 +90,7 @@ if (isset($_GET['delete_id'])) {
                         <thead>
                             <tr>
                                 <th>SERVIÇO</th>
+                                <th>ESPECIALIDADE</th>
                                 <th>PARCEIRO</th>
                                 <th>ENDEREÇO E CONTATO</th>
                                 <th>PARTICULAR</th>
@@ -107,6 +108,7 @@ if (isset($_GET['delete_id'])) {
                             ?>
                                     <tr>
                                         <td><?php echo $name; ?></td>
+                                        <td><?php echo $specialty; ?></td>
                                         <td><?php echo $partner; ?></td>
                                         <td>
                                             <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">

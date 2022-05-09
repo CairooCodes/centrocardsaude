@@ -19,7 +19,7 @@ if (isset($_GET['delete_id'])) {
 }
 
 if (isset($_POST['btnsave'])) {
-  $name = strtolower($_POST['name']);
+  $name = $_POST['name'];
   $type = $_POST['type'];
   $status = $_POST['status'];
 

@@ -12,6 +12,7 @@ error_reporting(~E_ALL); // avoid notice
 if (isset($_POST['btnsave'])) {
   $name = $_POST['name'];
   $partner = $_POST['partner'];
+  $specialty = $_POST['specialty'];
   $private = $_POST['private'];
   $centrocard = $_POST['centrocard'];
   $type = $_POST['type'];
@@ -24,9 +25,10 @@ if (isset($_POST['btnsave'])) {
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,private,centrocard,type,private_status,contact,contact2) VALUES(:uname,:upartner,:uprivate,:ucentrocard,:utype,:uprivate_status,:ucontact,:ucontact2)');
+    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,specialty,private,centrocard,type,private_status,contact,contact2) VALUES(:uname,:upartner,:uspecialty,:uprivate,:ucentrocard,:utype,:uprivate_status,:ucontact,:ucontact2)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':upartner', $partner);
+    $stmt->bindParam(':uspecialty', $specialty);
     $stmt->bindParam(':uprivate', $private);
     $stmt->bindParam(':ucentrocard', $centrocard);
     $stmt->bindParam(':uprivate_status', $private_status);
@@ -157,6 +159,25 @@ if (isset($_POST['btnsave'])) {
                         <label for="floatingSelect">Contato</label>
                       </div>
                     </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating mb-3">
+                        <select name="specialty" class="form-select" id="floatingSelect" aria-label="Especialidade">
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM categorys where type='2'");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
+                        </select>
+                        <label for="floatingSelect">Especialidade</label>
+                      </div>
+                    </div>
                     <div class="col-md-6">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $contact2; ?>" name="contact2" placeholder="Número para contato">
@@ -165,7 +186,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="private" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $private; ?>" name="private" placeholder="Preço Particular">
                         <label for="">Preço Particular</label>
                       </div>
                     </div>
@@ -180,7 +201,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="centrocard" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $centrocard; ?>" name="centrocard" placeholder="Preço Particular">
                         <label for="">Preço CENTROCARD</label>
                       </div>
                     </div>

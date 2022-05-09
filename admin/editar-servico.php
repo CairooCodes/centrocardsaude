@@ -11,7 +11,7 @@ error_reporting(~E_ALL); // avoid notice
 
 if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
   $id = $_GET['edit_id'];
-  $stmt_edit = $DB_con->prepare('SELECT name,partner,private,centrocard,type,private_status FROM services WHERE id =:uid');
+  $stmt_edit = $DB_con->prepare('SELECT * FROM services WHERE id =:uid');
   $stmt_edit->execute(array(':uid' => $id));
   $edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
   extract($edit_row);
@@ -20,6 +20,7 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
 }
 
 if (isset($_POST['btnsave'])) {
+  $specialty = $_POST['specialty'];
   $name = $_POST['name'];
   $partner = $_POST['partner'];
   $private = $_POST['private'];
@@ -33,6 +34,7 @@ if (isset($_POST['btnsave'])) {
 
   if (!isset($errMSG)) {
     $stmt = $DB_con->prepare('UPDATE services SET 
+    specialty=:uspecialty,
     name=:uname,
     partner=:upartner,
     private=:uprivate,
@@ -40,7 +42,7 @@ if (isset($_POST['btnsave'])) {
     centrocard=:ucentrocard,
     type=:utype
     WHERE id=:uid');
-
+    $stmt->bindParam(':uspecialty', $specialty);
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':upartner', $partner);
     $stmt->bindParam(':uprivate', $private);
@@ -133,6 +135,26 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Nome do Serviço</label>
                       </div>
                     </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating mb-3">
+                        <select name="specialty" class="form-select" id="floatingSelect" aria-label="Especialidade">
+                          <option value="<?php echo $specialty; ?>"><?php echo $specialty; ?> ( SELECIONADO ) </option> 
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM categorys where type='2'");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
+                        </select>
+                        <label for="floatingSelect">Especialidade</label>
+                      </div>
+                    </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="partner" class="form-select" id="floatingSelect" aria-label="Parceiro">
@@ -169,7 +191,7 @@ if (isset($_POST['btnsave'])) {
                             }
                             if ($private_status == 2) {
                               echo "Ocultar";
-                            }?> (selecionado)
+                            } ?> (selecionado)
                           </option>
                           <option value="1">Exibir</option>
                           <option value="2">Ocultar</option>
