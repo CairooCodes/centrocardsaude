@@ -85,7 +85,7 @@ if (isset($_GET['delete_id'])) {
         <section class="section card-body">
             <div class="card recent-sales">
                 <div class="card-body">
-                    <h5 class="card-title">EXAMES</h5>
+                    <h5 class="card-title">TODOS OS SERVIÇOS</h5>
                     <table id="example" class="display" style="width:100%">
                         <thead>
                             <tr>
@@ -99,7 +99,7 @@ if (isset($_GET['delete_id'])) {
                         </thead>
                         <tbody>
                             <?php
-                            $stmt = $DB_con->prepare("SELECT * FROM services where type='EXAME' ORDER BY id DESC");
+                            $stmt = $DB_con->prepare("SELECT * FROM services ORDER BY id DESC");
                             $stmt->execute();
                             if ($stmt->rowCount() > 0) {
                                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -139,124 +139,9 @@ if (isset($_GET['delete_id'])) {
                             }
                             ?>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>SERVIÇO</th>
-                                <th>PARCEIRO</th>
-                                <th>ENDEREÇO E CONTATO</th>
-                                <th>PARTICULAR</th>
-                                <th>CENTROCARD</th>
-                                <th>OPÇÕES</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <hr>
-                    <h5 class="card-title">TRATAMENTOS</h5>
-                    <table id="example2" class="display" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>SERVIÇO</th>
-                                <th>PARCEIRO</th>
-                                <th>ENDEREÇO E CONTATO</th>
-                                <th>PARTICULAR</th>
-                                <th>CENTROCARD</th>
-                                <th>OPÇÕES</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $stmt = $DB_con->prepare("SELECT * FROM services where type='TRATAMENTO' ORDER BY id DESC");
-                            $stmt->execute();
-                            if ($stmt->rowCount() > 0) {
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    extract($row);
-                            ?>
-                                    <tr>
-                                        <td><?php echo $name; ?></td>
-                                        <td><?php echo $partner; ?></td>
-                                        <td>
-                                            <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
-                                                <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
-                                                    Saiba Mais
-                                                </button>
-                                            </a>
-                                        </td>
-                                        <td><?php echo $private; ?></td>
-                                        <td><?php echo $centrocard; ?></td>
-                                        <td>
-                                            <a href="editar-servico.php?edit_id=<?php echo $row['id']; ?>">
-                                                <button type="button" class="btn btn-success">Editar</button>
-                                            </a>
-                                            <a href="?delete_id=<?php echo $row['id']; ?>">
-                                                <button type="button" class="btn btn-danger">Excluir</button>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                            } else {
-                                ?>
-                                <div class="pt-4 col-xs-12">
-                                    <div class="alert alert-danger">
-                                        Sem Lead Cadastrado ...
-                                    </div>
-                                </div>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>SERVIÇO</th>
-                                <th>PARCEIRO</th>
-                                <th>ENDEREÇO E CONTATO</th>
-                                <th>PARTICULAR</th>
-                                <th>CENTROCARD</th>
-                                <th>OPÇÕES</th>
-                            </tr>
-                        </tfoot>
                     </table>
                 </div>
             </div>
-            <?php
-            $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
-            $stmt->execute();
-            if ($stmt->rowCount() > 0) {
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    extract($row);
-            ?>
-                    <div id="parceiro-<?php echo $name; ?>" class="modal2">
-                        <div class="modal__overlay jsOverlay"></div>
-                        <div class="modal__container">
-                            <div class="parceiro-box d-flex">
-                                <div class="parceiro-infos">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h4>Endereço</h4>
-                                            <p class="lead"><?php echo $address; ?></p>
-                                            <p class="lead"><?php echo $city; ?> - <?php echo $state; ?></p>
-                                            <p class="lead"><?php echo $district; ?></p>
-                                            <p class="lead"><?php echo $zip; ?></p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <h4>Contato</h4>
-                                            <div class="row justify-content-center">
-                                                <p class="lead"><?php echo $tel; ?></p>
-                                                <p class="lead"><?php echo $whats; ?></p>
-                                                <?php if ($email != '') { ?>
-                                                    <p class="lead parceiro-email"><?php echo $email; ?></p>
-                                                <?php } ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="modal__close jsModalClose">&#10005;</button>
-                        </div>
-                    </div>
-            <?php
-                }
-            } ?>
         </section>
 
     </main><!-- End #main -->

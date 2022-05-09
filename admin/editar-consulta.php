@@ -49,7 +49,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
-      echo ("<script>window.location = 'painel-servicos.php';</script>");
+      echo ("<script>window.location = 'painel-consultas.php';</script>");
     } else {
       $errMSG = "Erro..";
     }
@@ -63,7 +63,7 @@ if (isset($_POST['btnsave'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Editar Serviço / Painel Administrativo</title>
+  <title>Editar Consulta / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -190,14 +190,14 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $contact; ?>" name="centrocard" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $centrocard; ?>" name="centrocard" placeholder="Preço Particular">
                         <label for="">Preço CENTROCARD</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="text-center pt-2">
-                  <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
+                  <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
                 </div>
               </form><!-- Vertical Form -->
             </div>

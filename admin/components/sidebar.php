@@ -79,12 +79,12 @@
             <span>Consultas</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link collapsed" href="painel-medicos.php">
             <i class="fa-solid fa-user-doctor"></i>
             <span>Médicos</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link collapsed" href="categorias.php">
             <i class="fa-solid fa-notes-medical"></i>

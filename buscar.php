@@ -60,7 +60,7 @@ $URI = new URI();
             <div class="img" style="background-image: url('assets/img/icon-semfundo.png');">
             </div>
             <div class="details position-relative">
-              <a href="/busca-rede-centrocard" class="stretched-link">
+              <a href="/busca-servicos-rede-centrocard" class="stretched-link">
                 <h3>REDE CENTROCARD</h3>
               </a>
               <p>Rede de desconto, podendo economizar até 60% em serviços médico do Centrocardio e diversas clínicas, laboratórios e hospitais em Teresina e região.</p>

@@ -61,42 +61,46 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <div class="section-header">
         <h2>Busque em nossa rede</h2>
+        <div class="d-grid gap-2 d-md-block">
+          <a href="busca-servicos-rede-centrocard">
+            <button class="btn btn-outline-light" type="button">BUSCA REDE CENTROCARD</button>
+          </a>
+          <a href="busca-medica-rede-centrocard">
+            <button class="btn" type="button">BUSCA REDE MÉDICA</button>
+          </a>
+        </div>
       </div>
-      <form action="busca2.php">
-        <div class="row">
-          <div class="col-md-4">
-            <select class="form-select" name="pesquisa">
-              <?php
-              $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1'");
-              $stmt->execute();
-              if ($stmt->rowCount() > 0) {
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                  extract($row);
-              ?>
-                  <option value="<?php echo $name ?>"><?php echo $name ?></option>
-              <?php
-                }
-              }
-              ?>
-            </select>
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-b">PROCURAR</button>
-          </div>
-        </div>
-      </form>
-      <form action="busca2.php">
-        <div class="row">
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <input type="text" name="pesquisa" class="form-control" placeholder="Nome do serviço">
+      <div class="row justify-content-center pb-4">
+        <div class="col-md-6">
+          <form action="busca-servicos-rede-centrocard.php">
+            <div class="d-flex">
+              <div class="col-md-6">
+                <select class="form-select" name="pesquisa">
+                  <?php
+                  $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1' and status='1'");
+                  $stmt->execute();
+                  if ($stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                      extract($row);
+                  ?>
+                      <option value="<?php echo $name ?>"><?php echo $name ?></option>
+                  <?php
+                    }
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary">PROCURAR</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="col-md-2">
-            <button type="submit" class="btn btn-b">PROCURAR</button>
-          </div>
+          </form>
         </div>
-      </form>
+      </div>
+    </div>
+    </div>
     </div>
     <div class="container container-form">
       <table id="example" class="display" style="width:100%">

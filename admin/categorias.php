@@ -21,6 +21,7 @@ if (isset($_GET['delete_id'])) {
 if (isset($_POST['btnsave'])) {
   $name = strtolower($_POST['name']);
   $type = $_POST['type'];
+  $status = $_POST['status'];
 
 
   if (empty($name)) {
@@ -28,10 +29,10 @@ if (isset($_POST['btnsave'])) {
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO categorys (name,type) VALUES(:uname,:utype)');
+    $stmt = $DB_con->prepare('INSERT INTO categorys (name,type,status) VALUES(:uname,:utype,:ustatus)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':utype', $type);
-
+    $stmt->bindParam(':ustatus', $status);
     if ($stmt->execute()) {
     } else {
       $errMSG = "Erro..";
@@ -108,19 +109,28 @@ if (isset($_POST['btnsave'])) {
                 <div class="col-md-12">
                   <h5 class="card-title">Adicionar Categoria</h5>
                   <div class="row">
-                    <div class="col-md-6 pb-3">
+                    <div class="col-md-4 pb-3">
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Insira o nome da categoria">
                         <label for="">Nome da Categoria</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-floating mb-3">
                         <select name="type" class="form-select" id="floatingSelect" aria-label="Exibir preço particular">
                           <option value="1">Serviços</option>
                           <option value="2">Especialidades</option>
                         </select>
                         <label for="floatingSelect">Tipo da Categoria</label>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-floating mb-3">
+                        <select name="status" class="form-select" id="floatingSelect" aria-label="Status da categoria">
+                          <option value="1">Ativada</option>
+                          <option value="2">Desativada</option>
+                        </select>
+                        <label for="floatingSelect">Status da categoria</label>
                       </div>
                     </div>
                   </div>
@@ -131,7 +141,7 @@ if (isset($_POST['btnsave'])) {
               </form><!-- Vertical Form -->
               <h5 class="card-title">Categorias Serviços </h5>
               <?php
-              $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where type='1' ORDER BY id DESC");
+              $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1' ORDER BY id DESC");
               $stmt->execute();
               if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -146,6 +156,14 @@ if (isset($_POST['btnsave'])) {
                       }
                       if ($type == "2") {
                         echo "Especialidade";
+                      }
+                      ?> -
+                      <?php
+                      if ($status == "1") {
+                        echo "<span class='text-success'>ATIVADA</span>";
+                      }
+                      if ($status == "2") {
+                        echo "<span class='text-danger'>DESATIVADA</span>";
                       }
                       ?>
                     </h6>
@@ -166,7 +184,7 @@ if (isset($_POST['btnsave'])) {
               ?>
               <h5 class="card-title">Categorias Especialidades </h5>
               <?php
-              $stmt = $DB_con->prepare("SELECT id,name,type FROM categorys where type='2' ORDER BY id DESC");
+              $stmt = $DB_con->prepare("SELECT * FROM categorys where type='2' ORDER BY id DESC");
               $stmt->execute();
               if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -182,11 +200,21 @@ if (isset($_POST['btnsave'])) {
                       if ($type == "2") {
                         echo "Especialidade";
                       }
+                      ?> -
+                      <?php
+                      if ($status == "1") {
+                        echo "<span class='text-success'>ATIVADA</span>";
+                      }
+                      if ($status == "2") {
+                        echo "<span class='text-danger'>DESATIVADA</span>";
+                      }
                       ?>
                     </h6>
                     <div>
                       <a class="btn btn-danger" href="?delete_id=<?php echo $row['id']; ?>" title="clique para deletar" onclick="return confirm('Excluir categoria?')"><i class="now-ui-icons ui-1_simple-remove"></i> Excluir</a>
-                      <a class="btn btn-success" href="?delete_id=<?php echo $row['id']; ?>" title="clique para deletar" onclick="return confirm('Excluir categoria?')"><i class="now-ui-icons ui-1_simple-remove"></i> Editar</a>
+                      <a href="editar-categoria.php?edit_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-success">Editar</button>
+                      </a>
                     </div>
                   </div>
                 <?php

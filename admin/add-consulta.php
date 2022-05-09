@@ -111,9 +111,22 @@ if (isset($_POST['btnsave'])) {
                   <h5 class="card-title">Informações</h5>
                   <div class="row">
                     <div class="col-md-6 pb-3">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $specialty; ?>" name="specialty" placeholder="Especialidade">
-                        <label for="">Especialidade</label>
+                      <div class="form-floating mb-3">
+                        <select name="specialty" class="form-select" id="floatingSelect" aria-label="Especialidade">
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM categorys where type='2'");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
+                        </select>
+                        <label for="floatingSelect">Especialidade</label>
                       </div>
                     </div>
                     <div class="col-md-6 pb-3">
