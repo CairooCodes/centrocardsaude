@@ -60,40 +60,87 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container">
 
       <div class="section-header">
-        <h2>Resultado da busca em nossa rede</h2>
+        <h2>Busque em nossa rede</h2>
       </div>
+      <form action="busca2.php">
+        <div class="row">
+          <div class="col-md-4">
+            <select class="form-select" name="pesquisa">
+              <?php
+              $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1'");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <option value="<?php echo $name ?>"><?php echo $name ?></option>
+              <?php
+                }
+              }
+              ?>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-b">PROCURAR</button>
+          </div>
+        </div>
+      </form>
+      <form action="busca2.php">
+        <div class="row">
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <input type="text" name="pesquisa" class="form-control" placeholder="Nome do serviço">
+            </div>
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-b">PROCURAR</button>
+          </div>
+        </div>
+      </form>
     </div>
     <div class="container container-form">
-          <table id="example" class="display" style="width:100%">
-            <thead>
+      <table id="example" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>SERVIÇO</th>
+            <th>CREDENCIADO</th>
+            <th>CONTATO</th>
+            <th class="text-center">PREÇO CENTROCARD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          if (count($busca) > 0) :
+            foreach ($busca as $busca) :
+          ?>
               <tr>
-                <th>SERVIÇO</th>
-                <th>CREDENCIADO</th>
-                <th>CONTATO</th>
-                <th class="text-center">PREÇO CENTROCARD</th>
+                <td><?php echo $busca['name']; ?></td>
+                <td><?php echo $busca['partner']; ?></td>
+                <td>
+                  <?php
+                  if ($busca['contact'] != "") {
+                    echo $busca['contact'];
+                  }
+                  if ($busca['contact2'] != "") {
+                    echo $busca['contact2'];
+                  }
+                  ?>
+                </td>
+                <td>
+                  <div class="text-search-prices">
+                    <?php if ($busca['private_status'] == 1) { ?>
+                      <p class="de-price">De <?php echo $busca['private']; ?> por:</p>
+                    <?php } ?>
+                    <p class="por-price"> <?php echo $busca['centrocard']; ?></p>
+                  </div>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-            <?php
-        if (count($busca) > 0) :
-          foreach ($busca as $busca) :
-        ?>
-                              <tr>
-                    <td><?php echo $busca['name']; ?></td>
-                    <td><?php echo $busca['name']; ?></td>
-                    <td>
-                    <?php echo $busca['name']; ?>
-                    </td>
-                    <td>
-                    <?php echo $busca['name']; ?>
-                    </td>
-                  </tr>
-        <?php endforeach;
-        endif; ?>
+          <?php endforeach;
+          endif; ?>
 
-            </tbody>
-          </table>
-        </div>
+        </tbody>
+      </table>
+    </div>
   </section><!-- End Contact Section -->
   </main><!-- End #main -->
 
