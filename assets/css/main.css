@@ -3925,3 +3925,7 @@ section {
   transition: 0.6s;
   width: 100%;
 }
+
+.text-link {
+  margin: 0%;
+}

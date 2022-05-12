@@ -34,7 +34,14 @@ if (isset($_POST['btnsave'])) {
   $slug = $_POST['slug'];
   $title_desc = $_POST['title_desc'];
   $title_box = $_POST['title_box'];
+  $title2_box = $_POST['title2_box'];
   $contact_box = $_POST['contact_box'];
+
+  $text_link = $_POST['text_link'];
+  $text2_link = $_POST['text2_link'];
+  $link = $_POST['link'];
+  $link2 = $_POST['link2'];
+  $text_extra = $_POST['text_extra'];
 
   $imgFile = $_FILES['user_image']['name'];
   $tmp_dir = $_FILES['user_image']['tmp_name'];
@@ -132,6 +139,13 @@ if (isset($_POST['btnsave'])) {
     plan_2=:uplan_2,
     slug=:uslug,
     title_box=:utitle_box,
+    title2_box=:utitle2_box,
+  	title_desc=:utitle_desc,
+    text_link=:utext_link,
+    text2_link=:utext2_link,
+    link=:ulink,
+    link2=:ulink2,
+    text_extra=:utext_extra,
     contact_box=:ucontact_box
     WHERE id=:uid');
 
@@ -150,6 +164,13 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uplan_2', $plan_2);
     $stmt->bindParam(':uslug', $slug);
     $stmt->bindParam(':utitle_box', $title_box);
+    $stmt->bindParam(':utitle2_box', $title2_box);
+    $stmt->bindParam(':utitle_desc', $title_desc);
+    $stmt->bindParam(':utext_link', $text_link);
+    $stmt->bindParam(':utext2_link', $text2_link);
+    $stmt->bindParam(':ulink', $link);
+    $stmt->bindParam(':ulink2', $link2);
+    $stmt->bindParam(':utext_extra', $text_extra);
     $stmt->bindParam(':ucontact_box', $contact_box);
     $stmt->bindParam(':uid', $id);
 
@@ -255,6 +276,36 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Titulo do benefício</label>
                       </div>
                     </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $text_link; ?>" name="text_link" placeholder="Link do Benefício">
+                        <label for="">Texto do link 1</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $link; ?>" name="link" placeholder="Link do Benefício">
+                        <label for="">Link do benefício</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $text2_link; ?>" name="text2_link" placeholder="Link do Benefício">
+                        <label for="">Texto do link 2</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $link2; ?>" name="link2" placeholder="Link do Benefício">
+                        <label for="">Link 2 do benefício</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $text_extra; ?>" name="text_extra" placeholder="Link do Benefício">
+                        <label for="">Texto complementar do link</label>
+                      </div>
+                    </div>
                   </div>
                   <h5 class="card-title">Serviços</h5>
                   <div class="row">
@@ -305,7 +356,13 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                      <input type="text" class="form-control" value="<?php echo $contact_box; ?>" name="contact_box" placeholder="Contato do Box">
+                        <input type="text" class="form-control" value="<?php echo $title2_box; ?>" name="title2_box" placeholder="Texto do Box">
+                        <label for="">Texto do box</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $contact_box; ?>" name="contact_box" placeholder="Contato do Box">
                         <label for="">Contato do box</label>
                       </div>
                     </div>
@@ -317,7 +374,7 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
                         <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Gold">
-                        <option value="<?php echo $plan_1; ?>">
+                          <option value="<?php echo $plan_1; ?>">
                             <?php
                             if ($plan_1 == 'gold') {
                               echo "Disponível";
@@ -335,7 +392,7 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
-                        <option value="<?php echo $plan_2; ?>">
+                          <option value="<?php echo $plan_2; ?>">
                             <?php
                             if ($plan_2 == 'essencial') {
                               echo "Disponível";

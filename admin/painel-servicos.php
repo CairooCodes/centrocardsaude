@@ -92,7 +92,7 @@ if (isset($_GET['delete_id'])) {
                                 <th>SERVIÇO</th>
                                 <th>ESPECIALIDADE</th>
                                 <th>PARCEIRO</th>
-                                <th>ENDEREÇO E CONTATO</th>
+                                <th>CONTATO</th>
                                 <th>PARTICULAR</th>
                                 <th>CENTROCARD</th>
                                 <th>OPÇÕES</th>
@@ -111,11 +111,14 @@ if (isset($_GET['delete_id'])) {
                                         <td><?php echo $specialty; ?></td>
                                         <td><?php echo $partner; ?></td>
                                         <td>
-                                            <a href="#parceiro-<?php echo $partner; ?>" id="popup" class="jsModalTrigger">
-                                                <button class="btn-saiba-mais btn" type="button" id="popup" class="jsModalTrigger">
-                                                    Saiba Mais
-                                                </button>
-                                            </a>
+                                            <?php
+                                            if ($contact != "") {
+                                                echo $contact;
+                                            }
+                                            if ($contact2 != "") {
+                                                echo $contact2;
+                                            }
+                                            ?>
                                         </td>
                                         <td><?php echo $private; ?></td>
                                         <td><?php echo $centrocard; ?></td>

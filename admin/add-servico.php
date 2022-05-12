@@ -150,7 +150,7 @@ if (isset($_POST['btnsave'])) {
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                               extract($row);
                           ?>
-                              <option value="<?php echo $whats; ?>"><?php echo $name; ?> - Whats: <?php echo $whats; ?> </option>
+                              <option value="<?php echo $tel; ?>"><?php echo $name; ?> - Whats: <?php echo $tel; ?> </option>
                           <?php
                             }
                           }
