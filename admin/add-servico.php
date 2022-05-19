@@ -209,7 +209,7 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating mb-3">
                         <select name="type" class="form-select" id="floatingSelect" aria-label="Parceiro">
                           <?php
-                          $stmt = $DB_con->prepare('SELECT * FROM categorys ORDER BY id ASC');
+                          $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1' ORDER BY id ASC");
                           $stmt->execute();
                           if ($stmt->rowCount() > 0) {
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

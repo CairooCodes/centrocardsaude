@@ -70,7 +70,7 @@ if (isset($_GET['delete_id'])) {
                     </ol>
                 </nav>
                 <div>
-                    <a href="#">
+                    <a href="excel-consultas.php">
                         <button class="btn" type="button">
                             <i class="fas fa-file-excel"></i> Baixar
                         </button>

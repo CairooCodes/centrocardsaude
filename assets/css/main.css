@@ -818,6 +818,7 @@ section {
 }
 
 .box-benefift {
+  z-index:1;
   width: 30%;
   background-color: #01aca3;
   color: white;

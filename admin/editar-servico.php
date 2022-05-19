@@ -138,7 +138,7 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
                         <select name="specialty" class="form-select" id="floatingSelect" aria-label="Especialidade">
-                          <option value="<?php echo $specialty; ?>"><?php echo $specialty; ?> ( SELECIONADO ) </option> 
+                          <option value="<?php echo $specialty; ?>"><?php echo $specialty; ?> ( SELECIONADO ) </option>
                           <?php
                           $stmt = $DB_con->prepare("SELECT * FROM categorys where type='2'");
                           $stmt->execute();
@@ -158,7 +158,7 @@ if (isset($_POST['btnsave'])) {
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
                         <select name="partner" class="form-select" id="floatingSelect" aria-label="Parceiro">
-                          <option value="<?php echo $partner; ?>"><?php echo $partner; ?></option>
+                          <option value="<?php echo $partner; ?>"><?php echo $partner; ?> (SELECIONADO)</option>
                           <?php
                           $stmt = $DB_con->prepare('SELECT * FROM partners ORDER BY id ASC');
                           $stmt->execute();
@@ -207,11 +207,12 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <select name="type" class="form-select" id="floatingSelect" aria-label="Parceiro">
-                          <option value="<?php echo $type; ?>"><?php echo $type; ?></option>
+                        <select name="type" class="form-select" id="floatingSelect" aria-label="Tipo do">
                           <?php
-                          $stmt = $DB_con->prepare('SELECT * FROM categorys ORDER BY id ASC');
+                          $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1' ORDER BY id ASC");
                           $stmt->execute();
+                          ?>
+                          <?php
                           if ($stmt->rowCount() > 0) {
                             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                               extract($row);

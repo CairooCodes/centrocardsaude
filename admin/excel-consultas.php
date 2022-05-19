@@ -7,30 +7,29 @@ $arqexcel = "<meta charset='UTF-8'>";
 $arqexcel .= "<table border='1'>";
 $arqexcel .= "<thead>
     <tr>
-      <th>NOME DO SERVIÇO</th>
       <th>ESPECIALIDADE</th>
+      <th>MÉDICO</th>
       <th>PARCEIRO</th>
       <th>CONTATO</th>
       <th>VALOR PARTICULAR</th>
       <th>EXIBIR VALOR PARTICULAR</th>
       <th>VALOR CENTROCARD</th>
-      <th>TIPO</th>
     </tr>
   </thead>
   <tbody>";
-$stmt = $DB_con->prepare("SELECT * FROM services ORDER BY id DESC");
+$stmt = $DB_con->prepare("SELECT * FROM queries ORDER BY id DESC");
 $stmt->execute();
 if ($stmt->rowCount() > 0) {
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     extract($row);
 
     $arqexcel .= "<tr>
-      <td>$name</td>
+      <td>$specialty</td>
       <td>";
-    if ($specialty == null or '') {
+    if ($doctor == null or '') {
       $arqexcel .= "NÃO INFORMADO";
     } else {
-      $arqexcel .= $specialty;
+      $arqexcel .= $doctor;
     }
     $arqexcel .= "</td>";
     $arqexcel .= "<td>";
@@ -71,13 +70,6 @@ if ($stmt->rowCount() > 0) {
       $arqexcel .= $centrocard;
     }
     $arqexcel .= "</td>";
-    $arqexcel .= "<td>";
-    if ($type == null or '') {
-      $arqexcel .= "NÃO INFORMADO";
-    } else {
-      $arqexcel .= $type;
-    }
-    $arqexcel .= "</td>";
     $arqexcel .= "</tr>";
   }
 }
@@ -85,6 +77,6 @@ $arqexcel .= "</tbody>
   </table>";
 
 header("Content-Type: application/xls");
-header("Content-Disposition:attachment; filename = relatorio-servicos-site.xls");
+header("Content-Disposition:attachment; filename = relatorio-consultas-site.xls");
 
 echo $arqexcel;
