@@ -159,17 +159,17 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 <h2>Benefícios</h2>
               </div>
               <?php if (($post == 'Essencial') or  ($post == 'Gold')) { ?>
-                <div class="text-center p-4">
+                <!-- <div class="text-center p-4">
                   <h5 class="lead">
                     Pronto Atendimento em Clínica Médica 24 horas
                   </h5>
                   <div class="text-center mt-auto">
                     <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Acesse aqui a telemedicina</a>
                   </div>
-                </div>
+                </div> -->
               <?php } ?>
               <?php if ($post == 'Platinum') { ?>
-                <div class="text-center p-4">
+                <!-- <div class="text-center p-4">
                   <h5 class="lead">
                     Atendimento em Clínica Médica e Pediatria
                   </h5>
@@ -179,7 +179,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   <div class="text-center mt-auto">
                     <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Agendamento de especialidades médicas </a>
                   </div>
-                </div>
+                </div> -->
               <?php } ?>
               <div class="row gy-5 services-container">
 
@@ -208,7 +208,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -240,7 +240,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
@@ -272,7 +272,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                             </a>
                             <p><?php echo $description; ?></p>
                             <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="btn-benefit">Saiba Mais <i class="bi bi-arrow-right"></i></a>
+                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                             </div>
                           </div>
                         </div>
