@@ -22,8 +22,8 @@
         <!-- <li><a class="nav-link scrollto" href="<?php echo $URI->base('home#recent-blog-posts') ?>">Blog</a></li> -->
         <li class="dropdown"><a href="#"><span>Rede de Desconto</span> <i class="bi bi-chevron-down"></i></i></a>
           <ul>
-            <li><a class="nav-link scrollto" href="<?php echo $URI->base('buscar') ?>">Busca de Rede <i class="bi bi-search"></i></a></li>
-            <li><a href="<?php echo $URI->base('quero-ser-um-parceiro') ?>">Seja nosso credenciado</a></li>
+            <li><a class="nav-link scrollto" href="<?php echo $URI->base('busca-de-servicos') ?>">REDE MÉDICA <i class="bi bi-search"></i></a></li>
+            <li><a href="<?php echo $URI->base('#') ?>">FARMÁCIAS</a></li>
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('beneficio/telemedicina') ?>">Telemedicina</a></li>

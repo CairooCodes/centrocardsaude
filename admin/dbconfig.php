@@ -1,8 +1,8 @@
 <?php 
 	$DB_HOST = 'localhost';
 	$DB_USER = 'root';
-	$DB_PASS = '';
-	$DB_NAME = 'centrocard';
+	$DB_PASS = 'root';
+	$DB_NAME = 'cent2492_centrocard';
 	
 	try{
 		$DB_con = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}",$DB_USER,$DB_PASS);

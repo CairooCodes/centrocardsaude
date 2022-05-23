@@ -6,6 +6,8 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteRule ^home$ index.php [QSA,L,NC]
 RewriteRule ^buscar$ buscar.php [QSA,L,NC]
 RewriteRule ^afiliado$ afiliado.php [QSA,L,NC]
+RewriteRule ^busca-de-servicos$ busca-de-servicos.php [QSA,L,NC]
+RewriteRule ^busca-de-especialidades-medicas$ busca-de-especialidades-medicas.php [QSA,L,NC]
 RewriteRule ^cadastro-afiliado$ cadastro-afiliado.php [QSA,L,NC]
 RewriteRule ^credenciamento$ credenciamento.php [QSA,L,NC]
 RewriteRule ^quero-ser-um-parceiro$ quero-ser-um-parceiro.php [QSA,L,NC]

@@ -58,21 +58,34 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <!-- ======= Contact Section ======= -->
   <section id="redes" class="redes">
     <div class="container">
-
       <div class="section-header">
-        <h2>Busque em nossa rede de médicos</h2>
-        <div class="d-grid gap-2 d-md-block">
-          <a href="busca-servicos-rede-centrocard">
-            <button class="btn" type="button">BUSCA REDE CENTROCARD</button>
-          </a>
-          <a href="busca-medica-rede-centrocard">
-            <button class="btn btn-outline-light" type="button">BUSCA REDE MÉDICA</button>
-          </a>
+        <h3 class="text-white pb-3">Consulte aqui nossa rede de atendimento e o preço com desconto</h3>
+        <hr class="text-white">
+        <div class="row">
+          <div class="col-md-8">
+            <h3 class="text-white pb-3">REDE CENTROCARD</h3>
+            <div class="d-grid gap-2 d-md-block">
+              <a href="busca-de-servicos">
+                <button class="btn text-light" type="button">BUSCA DE SERVIÇOS</button>
+              </a>
+              <a href="busca-de-especialidades-medicas">
+                <button class="btn btn-outline-light" type="button">BUSCA DE ESPECIALIDADES MÉDICAS</button>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <h3 class="text-white pb-3">REDE NACIONAL</h3>
+            <div class="d-grid gap-2 d-md-block">
+              <a href="#">
+                <button class="btn btn-outline-light" type="button">CONTA SAÚDE</button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row justify-content-center pb-4">
         <div class="col-md-6">
-          <form action="busca-medica-rede-centrocard.php">
+          <form action="busca-de-especialidades-medicas.php">
             <div class="d-flex">
               <div class="col-md-6">
                 <select class="form-select text-uppercase" name="pesquisa">
@@ -100,7 +113,10 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </div>
-    </div>
+    <div class="container">
+      <?php if ($pesquisa != '') { ?>
+        <h4 class="text-white">Resultado da sua busca: <?php echo $pesquisa; ?></h4>
+      <?php } ?>
     </div>
     <div class="container container-form">
       <table id="example" class="display" style="width:100%">
