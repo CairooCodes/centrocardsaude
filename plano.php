@@ -71,15 +71,17 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn2">Compre agora</a>
-                    </div>
                   </ul>
 
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                    <a href="<?php if (isset($dv)) {
+                                echo $link;
+                              } else {
+                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
+                              }
+                              ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
-
+                  <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO ESSENCIAL_PF.pdf') ?>" target="_blank">CONTRATO PLANO ESSENCIAL</a>
                 </div>
               </div><!-- End Pricing Item -->
             <?php
@@ -107,14 +109,16 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
-                    <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn2">Compre agora</a>
-                    </div>
                   </ul>
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                    <a href="<?php if (isset($dv)) {
+                                echo $link;
+                              } else {
+                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
+                              }
+                              ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
-
+                  <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO PLATINUM_PF.pdf') ?>" target="_blank">CONTRATO PLANO PLATINUM</a>
                 </div>
               </div><!-- End Pricing Item -->
             <?php
@@ -138,15 +142,17 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
                     <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <div class="text-center mt-auto">
-                      <a href="#" class="buy-btn2">Compre agora</a>
-                    </div>
                   </ul>
 
                   <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('plano/' . slugify($name)); ?>" class="buy-btn">COMPRE AGORA</a>
+                    <a href="<?php if (isset($dv)) {
+                                echo $link;
+                              } else {
+                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
+                              }
+                              ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
-
+                  <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO GOLD_PF.pdf') ?>" target="_blank">CONTRATO PLANO GOLD</a>
                 </div>
               </div><!-- End Pricing Item -->
             <?php

@@ -77,7 +77,7 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <div class="col-md-4">
             <h3 class="text-white pb-3">REDE NACIONAL</h3>
             <div class="d-grid gap-2 d-md-block">
-              <a href="#">
+              <a href="https://centrocardsaude.com.br/beneficio/conta-saude">
                 <button class="btn btn-outline-light" type="button">CONTA SAÚDE</button>
               </a>
             </div>

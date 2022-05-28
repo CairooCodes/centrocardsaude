@@ -1812,45 +1812,7 @@ section {
   box-shadow: 0px 0 25px rgba(var(--color-black-rgb), 0.1);
 }
 
-@media (min-width: 1500px) {
-  .services .details {
-    height: 250px;
-  }
 
-  .services .details2 {
-    height: 300px;
-  }
-}
-
-@media (min-width: 1201px) and (max-width: 1500px) {
-  .services .details {
-    height: 300px;
-  }
-
-  .services .details2 {
-    height: 350px;
-  }
-}
-
-@media (min-width: 1000px) and (max-width: 1200px) {
-  .services .details {
-    height: 250px;
-  }
-
-  .services .details2 {
-    height: 250px;
-  }
-}
-
-@media (min-width: 767px) and (max-width: 999px) {
-  .services .details {
-    height: 350px;
-  }
-
-  .services .details2 {
-    height: 350px;
-  }
-}
 
 .rede-item .details {
   padding: 30px 30px;
