@@ -358,7 +358,7 @@ if (isset($_POST['btnsave'])) {
                                 echo "Desativado";
                               } ?> (selecionado)
                             </option>
-                            <option value="1">Ativodo</option>
+                            <option value="1">Ativado</option>
                             <option value="2">Desativado</option>
                           </select>
                         </div>

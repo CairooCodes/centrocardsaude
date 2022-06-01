@@ -4,6 +4,12 @@ require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
 
+if (isset($_GET['dv'])) { //existe source?
+  $dv = $_GET['dv'];
+  $url_parts = explode("/", $dv);
+  $url_dv = $url_parts[count($url_parts) - 2];
+}
+
 $url = explode("/", $_SERVER['REQUEST_URI']);
 $idPost = $url[3];
 
@@ -74,11 +80,23 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   </ul>
 
                   <div class="text-center mt-auto">
-                    <a href="<?php if (isset($dv)) {
+                    <a href="<?php
+                              if ($dv != '') {
+                                if (isset($dv)) {
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where login='$url_dv'");
+                                  $stmt->execute();
+                                  if ($stmt->rowCount() > 0) {
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                      extract($row);
+                                      $link;
+                                    }
+                                  }
+                                }
                                 echo $link;
                               } else {
-                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
+                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
                               }
+
                               ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
                   <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO ESSENCIAL_PF.pdf') ?>" target="_blank">CONTRATO PLANO ESSENCIAL</a>
@@ -111,11 +129,23 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
                   </ul>
                   <div class="text-center mt-auto">
-                    <a href="<?php if (isset($dv)) {
+                    <a href="<?php
+                              if ($dv != '') {
+                                if (isset($dv)) {
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where login='$url_dv'");
+                                  $stmt->execute();
+                                  if ($stmt->rowCount() > 0) {
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                      extract($row);
+                                      $link;
+                                    }
+                                  }
+                                }
                                 echo $link;
                               } else {
-                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
+                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
                               }
+
                               ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
                   <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO PLATINUM_PF.pdf') ?>" target="_blank">CONTRATO PLANO PLATINUM</a>
@@ -145,11 +175,23 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   </ul>
 
                   <div class="text-center mt-auto">
-                    <a href="<?php if (isset($dv)) {
+                    <a href="<?php
+                              if ($dv != '') {
+                                if (isset($dv)) {
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where login='$url_dv'");
+                                  $stmt->execute();
+                                  if ($stmt->rowCount() > 0) {
+                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                      extract($row);
+                                      $link;
+                                    }
+                                  }
+                                }
                                 echo $link;
                               } else {
-                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=4&cv=3&gr=1&op=2";
+                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
                               }
+
                               ?>" class="buy-btn">COMPRE AGORA</a>
                   </div>
                   <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO GOLD_PF.pdf') ?>" target="_blank">CONTRATO PLANO GOLD</a>
