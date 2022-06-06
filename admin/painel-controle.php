@@ -50,7 +50,7 @@ endif;
       <h1>Painel Administrativo</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="painel-controle.php">Home</a></li>
           <li class="breadcrumb-item active">Painel Administrativo</li>
         </ol>
       </nav>

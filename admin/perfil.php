@@ -19,6 +19,15 @@ if (isset($_GET['edit_id']) && !empty($_GET['edit_id'])) {
   header("Location: painel-perfil.php");
 }
 
+if (isset($_GET['delete_img'])) {
+  $id = $_GET['delete_img'];
+  $stmt_delete = $DB_con->prepare('UPDATE users SET img = "" WHERE id =:uid');
+  $stmt_delete->bindParam(':uid', $_GET['delete_img']);
+  $stmt_delete->execute();
+
+  header("Location: perfil.php?edit_id=$id");
+}
+
 if (isset($_POST['btnsave'])) {
   $name = $_POST['name'];
   $login = $_POST['login'];
@@ -260,6 +269,10 @@ if (isset($_POST['btnsave'])) {
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Imagem do perfil</label>
                       <div class="col-md-8 col-lg-9">
                         <img src="./uploads/usuarios/<?php echo $img; ?>" onerror="this.src='./assets/img/semperfil.png'" alt="Profile">
+                        <br>
+                        <a href="?delete_img=<?php echo $id; ?>">
+                          <button type="button" class="mt-2 btn btn-danger">Excluir</button>
+                        </a>
                         <div class="pt-2">
                           <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
                           <!-- <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>

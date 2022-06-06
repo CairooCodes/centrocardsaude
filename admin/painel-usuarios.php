@@ -18,7 +18,7 @@ if (isset($_GET['delete_id'])) {
   header("Location: painel-usuarios.php");
 }
 
-if ($_SESSION['type'] != 1) {
+if (($_SESSION['type'] == 1) and ($_SESSION['type'] == 6)){
   echo ("
     <script type= 'text/javascript'>alert('Acesso Restrito!');</script>
     <script>window.location = 'painel-controle.php';</script>");
@@ -109,9 +109,13 @@ if ($_SESSION['type'] != 1) {
                     <a href="perfil.php?edit_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-success">Editar</button>
                     </a>
+                    <?php
+                    if ($_SESSION['type'] == 1){
+                    ?>
                     <a href="?delete_id=<?php echo $row['id']; ?>">
                       <button type="button" class="btn btn-danger">Excluir</button>
                     </a>
+                    <?php } ?>
                   </div>
                 </div>
               </div>
