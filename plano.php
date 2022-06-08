@@ -83,7 +83,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <a href="<?php
                               if ($dv != '') {
                                 if (isset($dv)) {
-                                  $stmt = $DB_con->prepare("SELECT * FROM users where login='$url_dv'");
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$url_dv'");
                                   $stmt->execute();
                                   if ($stmt->rowCount() > 0) {
                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -132,7 +132,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <a href="<?php
                               if ($dv != '') {
                                 if (isset($dv)) {
-                                  $stmt = $DB_con->prepare("SELECT * FROM users where login='$url_dv'");
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$url_dv'");
                                   $stmt->execute();
                                   if ($stmt->rowCount() > 0) {
                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -178,7 +178,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     <a href="<?php
                               if ($dv != '') {
                                 if (isset($dv)) {
-                                  $stmt = $DB_con->prepare("SELECT * FROM users where login='$url_dv'");
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$url_dv'");
                                   $stmt->execute();
                                   if ($stmt->rowCount() > 0) {
                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

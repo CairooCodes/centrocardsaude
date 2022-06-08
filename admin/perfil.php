@@ -237,6 +237,14 @@ if (isset($_POST['btnsave'])) {
                         echo "Cliente";
                       } ?>
                     </div>
+                    <div class="row pt-4">
+                      <div class="col-lg-3 col-md-4 label ">Link</div>
+                      <div class="col-lg-9 col-md-8"><?php if ($link != null) {
+                                                        echo "https://centrocardsaude.com.br/home.php?dv=$id";
+                                                      } else {
+                                                        echo "Não cadastrado";
+                                                      } ?></div>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Endereço</div>
@@ -333,7 +341,7 @@ if (isset($_POST['btnsave'])) {
                       </div>
                     </div>
                     <?php
-                    if ($_SESSION['type'] == 1) {
+                    if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 6)) {
                     ?>
                       <div class="row mb-3">
                         <label for="Tipo de Usuário" class="col-md-4 col-lg-3 col-form-label">Tipo</label>
@@ -377,11 +385,11 @@ if (isset($_POST['btnsave'])) {
                         </div>
                       </div>
                       <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Link</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="link" type="text" class="form-control" id="link" value="<?php echo $link; ?>">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Link</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="link" type="text" class="form-control" id="link" value="<?php echo $link; ?>">
+                        </div>
                       </div>
-                    </div>
                     <?php } ?>
                     <div class="text-center">
                       <button type="submit" name="btnsave" class="btn btn-primary">Salvar</button>

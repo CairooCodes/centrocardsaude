@@ -36,7 +36,24 @@
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
 
-    <a class="btn-getstarted scrollto" href="<?php echo $URI->base('home#pricing') ?>">COMPRE AGORA</a>
+    <a class="btn-getstarted scrollto" href="<?php
+                                if ($dv != '') {
+                                  if (isset($dv)) {
+                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
+                                    $stmt->execute();
+                                    if ($stmt->rowCount() > 0) {
+                                      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                        extract($row);
+                                        $link;
+                                      }
+                                    }
+                                  }
+                                  echo $link;
+                                } else {
+                                  echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
+                                }
+
+                                ?>">COMPRE AGORA</a>
 
   </div>
 </header><!-- End Header -->

@@ -48,7 +48,7 @@
         </li>
       <?php } ?>
       <?php
-      if ($_SESSION['type'] == 1) {
+      if (($_SESSION['type'] == 1) or ($_SESSION['type'] == 6)) {
       ?>
         <li class="nav-item">
           <a class="nav-link collapsed" href="painel-banners.php">

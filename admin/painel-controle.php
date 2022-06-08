@@ -170,7 +170,7 @@ endif;
               </div>
               <p class="lead text-center">Link de divulgação</p>
               <div class="d-flex pb-3">
-                <input class="btn form-control" disabled value="https://centrocardsaude.com.br/home.php?dv=<?php echo $_SESSION['login']; ?>" id="myInput">
+                <input class="btn form-control" disabled value="https://centrocardsaude.com.br/home.php?dv=<?php echo $_SESSION['id']; ?>" id="myInput">
                 <button class="btn btn-primary" onclick="myFunction()">Copiar Link</button>
               </div>
             <?php

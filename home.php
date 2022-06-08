@@ -150,7 +150,7 @@ $dv = $_GET['dv'];
                       <a href="<?php
                                 if ($dv != '') {
                                   if (isset($dv)) {
-                                    $stmt = $DB_con->prepare("SELECT * FROM users where login='$dv'");
+                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
                                     $stmt->execute();
                                     if ($stmt->rowCount() > 0) {
                                       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -163,7 +163,6 @@ $dv = $_GET['dv'];
                                 } else {
                                   echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
                                 }
-
                                 ?>" class="buy-btn">Compre agora</a>
                     </div>
                   </ul>
@@ -216,7 +215,7 @@ $dv = $_GET['dv'];
                       <a href="<?php
                                 if ($dv != '') {
                                   if (isset($dv)) {
-                                    $stmt = $DB_con->prepare("SELECT * FROM users where login='$dv'");
+                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
                                     $stmt->execute();
                                     if ($stmt->rowCount() > 0) {
                                       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -276,7 +275,7 @@ $dv = $_GET['dv'];
                       <a href="<?php
                                 if ($dv != '') {
                                   if (isset($dv)) {
-                                    $stmt = $DB_con->prepare("SELECT * FROM users where login='$dv'");
+                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
                                     $stmt->execute();
                                     if ($stmt->rowCount() > 0) {
                                       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
