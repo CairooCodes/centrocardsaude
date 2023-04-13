@@ -234,7 +234,7 @@ if (isset($_POST['btnsave'])) {
                           <option value="essencial">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
                         </select>
-                        <label for="floatingSelect">Plano Gold</label>
+                        <label for="floatingSelect">Fácil</label>
                       </div>
                     </div>
                     <div class="col-md-6">

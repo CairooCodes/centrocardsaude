@@ -127,7 +127,7 @@ $dv = $_GET['dv'];
         <div class="row gy-4">
 
           <?php
-          $stmt = $DB_con->prepare("SELECT * FROM plans where name='essencial'");
+          $stmt = $DB_con->prepare("SELECT * FROM plans where id='6'");
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -139,13 +139,42 @@ $dv = $_GET['dv'];
 
                   <div class="pricing-header">
                     <h3><?php echo $name; ?></h3>
-                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                    <h4><sup></sup><?php echo $price; ?><span></span></h4>
                   </div>
                   <ul>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
+                    <?php if ($t1 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t2 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t3 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t4 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t5 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t6 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t7 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t9 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t10 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t11 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t12 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                    <?php  } ?>
                     <div class="text-center mt-auto">
                       <a href="<?php
                                 if ($dv != '') {
@@ -185,7 +214,7 @@ $dv = $_GET['dv'];
           }
           ?>
           <?php
-          $stmt = $DB_con->prepare("SELECT * FROM plans where name='gold'");
+          $stmt = $DB_con->prepare("SELECT * FROM plans where id='7'");
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -201,16 +230,39 @@ $dv = $_GET['dv'];
                   </div>
 
                   <ul>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
+                    <?php if ($t1 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t2 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t3 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t4 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t5 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t6 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t7 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t9 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t10 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t11 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t12 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                    <?php  } ?>
                     <div class="text-center mt-auto">
                       <a href="<?php
                                 if ($dv != '') {
@@ -243,7 +295,7 @@ $dv = $_GET['dv'];
           }
           ?>
           <?php
-          $stmt = $DB_con->prepare("SELECT * FROM plans where name='platinum'");
+          $stmt = $DB_con->prepare("SELECT * FROM plans where id='8'");
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -259,18 +311,39 @@ $dv = $_GET['dv'];
                   </div>
 
                   <ul>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t8; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
-                    <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                    <?php if ($t1 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t2 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t3 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t4 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t5 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t6 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t7 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t9 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t10 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t11 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                    <?php  } ?>
+                    <?php if ($t12 != '') { ?>
+                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                    <?php  } ?>
                     <div class="text-center mt-auto">
                       <a href="<?php
                                 if ($dv != '') {

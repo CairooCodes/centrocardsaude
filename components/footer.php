@@ -28,7 +28,7 @@
           <div class="col-lg-5 col-md-6 footer-links">
             <h4>Planos</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/essencial') ?>">Plano Essencial</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/facil') ?>">Plano Fácil</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/gold') ?>">Plano Gold</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/platinum') ?>">Plano Platinum</a></li>
             </ul>

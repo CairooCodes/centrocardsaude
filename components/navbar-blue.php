@@ -12,7 +12,7 @@
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('home') ?>">Home</a></li>
         <li class="dropdown"><a href="#"><span>Planos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
-            <li><a href="<?php echo $URI->base('plano/essencial') ?>">Plano Essencial</a></li>
+            <li><a href="<?php echo $URI->base('plano/facil') ?>">Plano Fácil</a></li>
             <li><a href="<?php echo $URI->base('plano/gold') ?>">Plano Gold</a></li>
             <li><a href="<?php echo $URI->base('plano/platinum') ?>">Plano Platinum</a></li>
           </ul>

@@ -62,7 +62,7 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <div class="section-header">
         <h3 class="text-white pb-3">Consulte aqui nossa rede de atendimento e o preço com desconto</h3>
         <hr class="text-white">
-        <div class="row">
+        <div class="row justify-content-center">
           <div class="col-md-8">
             <h3 class="text-white pb-3">REDE CENTROCARD</h3>
             <div class="d-grid gap-2 d-md-block">
@@ -74,14 +74,7 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </a>
             </div>
           </div>
-          <div class="col-md-4">
-            <h3 class="text-white pb-3">REDE NACIONAL</h3>
-            <div class="d-grid gap-2 d-md-block">
-              <a href="https://centrocardsaude.com.br/beneficio/conta-saude">
-                <button class="btn btn-outline-light" type="button">CONTA SAÚDE</button>
-              </a>
-            </div>
-          </div>
+         
         </div>
       </div>
       <div class="row justify-content-center pb-4">

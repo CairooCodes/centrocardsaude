@@ -177,7 +177,7 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 mb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $whats; ?>" name="centrocard" placeholder="Preço Particular">
+                        <input type="text" class="form-control" value="<?php echo $centrocard; ?>" name="centrocard" placeholder="Preço Particular">
                         <label for="">Preço CENTROCARD</label>
                       </div>
                     </div>
