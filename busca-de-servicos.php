@@ -5,17 +5,34 @@ require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
 
-// palavra digitada na busca 
-$pesquisa = isset($_GET['pesquisa']) ? $_GET['pesquisa'] : '';
-$sql = "SELECT * FROM services WHERE name LIKE :pesquisa OR type LIKE :pesquisa";
+$type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_STRING);
+$plan = filter_input(INPUT_POST, 'plan', FILTER_SANITIZE_STRING);
 
-// cria o Prepared Statement e o executa
+// Constrói a consulta SQL com base nos valores selecionados
+$sql = "SELECT * FROM services WHERE 1=1";
+
+if ($type) {
+  $sql .= " AND type = :type";
+}
+
+if ($plan) {
+  $sql .= " AND plan = :plan";
+}
+
+// Prepara a consulta SQL
 $stmt = $DB_con->prepare($sql);
-$stmt->bindValue(':pesquisa', '%' . $pesquisa . '%');
-$stmt->execute();
 
-// cria um array com os resultados
-$busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($type) {
+  $stmt->bindParam(':type', $type);
+}
+
+if ($plan) {
+  $stmt->bindParam(':plan', $plan);
+}
+
+// Executa a consulta SQL
+$stmt->execute();
+$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -60,29 +77,21 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="container">
 
       <div class="section-header">
-        <h3 class="text-white pb-3">Consulte aqui nossa rede de atendimento e o preço com desconto</h3>
-        <hr class="text-white">
         <div class="row justify-content-center">
           <div class="col-md-8">
-            <h3 class="text-white pb-3">REDE CENTROCARD</h3>
-            <div class="d-grid gap-2 d-md-block">
-              <a href="busca-de-servicos">
-                <button class="btn btn-outline-light" type="button">BUSCA DE SERVIÇOS</button>
-              </a>
-              <a href="busca-de-especialidades-medicas">
-                <button class="btn text-light" type="button">BUSCA DE ESPECIALIDADES MÉDICAS</button>
-              </a>
-            </div>
+            <h3 class="text-white pb-3">CENTROCARD SAÚDE</h3>
           </div>
-         
         </div>
+        <hr class="text-white">
+        <h3 class="text-white pb-3">Consulte aqui nossa rede de atendimento e o preço com desconto</h3>
       </div>
       <div class="row justify-content-center pb-4">
-        <div class="col-md-6">
-          <form action="busca-de-servicos.php">
+        <div class="col-md-8">
+          <form method="post" action="busca-de-servicos.php">
             <div class="d-flex">
-              <div class="col-md-6">
-                <select class="form-select" name="pesquisa">
+              <div class="d-md-flex">
+                <select class="form-select" name="type">
+                  <option value="">Escolha um tipo</option>
                   <?php
                   $stmt = $DB_con->prepare("SELECT * FROM categorys where type='1' and status='1'");
                   $stmt->execute();
@@ -96,11 +105,17 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   }
                   ?>
                 </select>
+                <select class="form-select" name="plan">
+                  <option value="">Escolha um plano</option>
+                  <option value="1">FÁCIL</option>
+                  <option value="2">GOLD</option>
+                  <option value="">PLATINUM</option>
+                  <option value="4">FÁCIL e GOLD</option>
+                </select>
               </div>
-              <div class="col-md-4">
-                <div class="d-grid gap-2">
-                  <button type="submit" class="btn btn-primary">PROCURAR</button>
-                </div>
+              <div class="d-md-flex">
+                <button type="submit" class="btn btn-primary">PROCURAR <i class="bi bi-search"></i></button>
+                <button type="submit" onclick="window.location.href='busca-de-servicos.php'" class="btn text-white">LIMPAR BUSCA <i class="bi bi-x-lg"></i></button>
               </div>
             </div>
           </form>
@@ -109,6 +124,7 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     <div class="container">
       <?php if ($pesquisa != '') { ?>
+        <button type="submit" class="btn btn-primary">PROCURAR</button>
         <h4 class="text-white">Resultado da sua busca: <?php echo $pesquisa; ?></h4>
       <?php } ?>
     </div>
@@ -124,33 +140,32 @@ $busca = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </thead>
         <tbody>
           <?php
-          if (count($busca) > 0) :
-            foreach ($busca as $busca) :
+          foreach ($resultado as $linha) {
           ?>
-              <tr>
-                <td><?php echo $busca['name']; ?></td>
-                <td><?php echo $busca['partner']; ?></td>
-                <td>
-                  <?php
-                  if ($busca['contact'] != "") {
-                    echo $busca['contact'];
-                  }
-                  if ($busca['contact2'] != "") {
-                    echo $busca['contact2'];
-                  }
-                  ?>
-                </td>
-                <td>
-                  <div class="text-search-prices">
-                    <?php if ($busca['private_status'] == 1) { ?>
-                      <p class="de-price">De <?php echo $busca['private']; ?> por:</p>
-                    <?php } ?>
-                    <p class="por-price"> <?php echo $busca['centrocard']; ?></p>
-                  </div>
-                </td>
-              </tr>
-          <?php endforeach;
-          endif; ?>
+            <tr>
+              <td><?php echo $linha['name']; ?></td>
+              <td><?php echo $linha['partner']; ?></td>
+              <td>
+                <?php
+                if ($linha['contact'] != "") {
+                  echo $linha['contact'];
+                }
+                if ($linha['contact2'] != "") {
+                  echo $linha['contact2'];
+                }
+                ?>
+              </td>
+              <td>
+                <div class="text-search-prices">
+                  <?php if ($linha['private_status'] == 1) { ?>
+                    <p class="de-price">De <?php echo $linha['private']; ?> por:</p>
+                  <?php } ?>
+                  <p class="por-price"> <?php echo $linha['centrocard']; ?></p>
+                </div>
+              </td>
+            </tr>
+          <?php }
+          ?>
 
         </tbody>
       </table>

@@ -46,7 +46,7 @@ if (isset($_POST['btnsave'])) {
     // rename uploading image
     $benefit2 = preg_replace("/\s+/", "", $benefit);
     $benefit3 = substr($benefit2, 0, -1);
-    
+
     $userpic  = $benefit3 . "beneficio1" . "." . $imgExt;
     $userpic2  = $benefit3 . "beneficio2" . "." . $imgExt2;
     $userpic3  = $benefit3 . "beneficio3" . "." . $imgExt2;
@@ -60,21 +60,21 @@ if (isset($_POST['btnsave'])) {
       }
     }
     if (in_array($imgExt2, $valid_extensions)) {
-        // Check file size '5MB'
-        if ($imgSize2 < 5000000) {
-          move_uploaded_file($tmp_dir2, $upload_dir . $userpic2);
-        } else {
-          $errMSG = "Imagem muito grande.";
-        }
+      // Check file size '5MB'
+      if ($imgSize2 < 5000000) {
+        move_uploaded_file($tmp_dir2, $upload_dir . $userpic2);
+      } else {
+        $errMSG = "Imagem muito grande.";
       }
-      if (in_array($imgExt3, $valid_extensions)) {
-        // Check file size '5MB'
-        if ($imgSize3 < 5000000) {
-          move_uploaded_file($tmp_dir3, $upload_dir . $userpic3);
-        } else {
-          $errMSG = "Imagem muito grande.";
-        }
+    }
+    if (in_array($imgExt3, $valid_extensions)) {
+      // Check file size '5MB'
+      if ($imgSize3 < 5000000) {
+        move_uploaded_file($tmp_dir3, $upload_dir . $userpic3);
+      } else {
+        $errMSG = "Imagem muito grande.";
       }
+    }
   }
   if (!isset($errMSG)) {
     $stmt = $DB_con->prepare('INSERT INTO benefits (benefit,description,title_s1,service_1,title_s2,service_2,title_s3,service_3,img_1,img_2,img_3,plan_1,plan_2,slug) VALUES(:ubenefit,:udescription,:utitle_s1,:uservice_1,:utitle_s2,:uservice_2,:utitle_s3,:uservice_3,:upic,:upic2,:upic3,:uplan_1,:uplan_2,:uslug)');
@@ -229,7 +229,7 @@ if (isset($_POST['btnsave'])) {
                   <h5 class="card-title">Planos</h5>
                   <div class="row">
                     <div class="col-md-6 pb-3">
-                    <div class="form-floating mb-3">
+                      <div class="form-floating mb-3">
                         <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
                           <option value="essencial">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
@@ -238,19 +238,18 @@ if (isset($_POST['btnsave'])) {
                       </div>
                     </div>
                     <div class="col-md-6">
-                    <div class="form-floating mb-3">
-                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Gold">
+                      <div class="form-floating mb-3">
+                        <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Gold">
                           <option value="gold">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
                         </select>
                         <label for="floatingSelect">Plano Gold</label>
                       </div>
                     </div>
-                   
                   </div>
                   <h5 class="card-title">Imagens</h5>
                   <div class="row">
-                  <h5 class="card-title text-center">Capa</h5>
+                    <h5 class="card-title text-center">Capa</h5>
                     <div class="file-loading">
                       <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
                     </div>

@@ -373,20 +373,20 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
-                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Gold">
+                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Fácil">
                           <option value="<?php echo $plan_1; ?>">
                             <?php
-                            if ($plan_1 == 'gold') {
+                            if ($plan_1 == 'essencial') {
                               echo "Disponível";
                             }
-                            if ($plan_1 != 'gold') {
+                            if ($plan_1 != 'essencial') {
                               echo "Indisponível";
                             } ?> (selecionado)
                           </option>
                           <option value="essencial">DISPONÍVEL</option>
                           <option value="">INDISPONÍVEL</option>
                         </select>
-                        <label for="floatingSelect">Plano Gold</label>
+                        <label for="floatingSelect">Plano Fácil</label>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -394,10 +394,10 @@ if (isset($_POST['btnsave'])) {
                         <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
                           <option value="<?php echo $plan_2; ?>">
                             <?php
-                            if ($plan_2 == 'essencial') {
+                            if ($plan_2 == 'gold') {
                               echo "Disponível";
                             }
-                            if ($plan_2 != 'essencial') {
+                            if ($plan_2 != 'gold') {
                               echo "Indisponível";
                             } ?> (selecionado)
                           </option>

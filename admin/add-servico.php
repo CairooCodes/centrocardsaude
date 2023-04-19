@@ -19,13 +19,13 @@ if (isset($_POST['btnsave'])) {
   $private_status = $_POST['private_status'];
   $contact = $_POST['contact'];
   $contact2 = $_POST['contact2'];
-
+  $plan = $_POST['plan'];
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,specialty,private,centrocard,type,private_status,contact,contact2) VALUES(:uname,:upartner,:uspecialty,:uprivate,:ucentrocard,:utype,:uprivate_status,:ucontact,:ucontact2)');
+    $stmt = $DB_con->prepare('INSERT INTO services (name,partner,specialty,private,centrocard,type,private_status,contact,contact2,plan) VALUES(:uname,:upartner,:uspecialty,:uprivate,:ucentrocard,:utype,:uprivate_status,:ucontact,:ucontact2,:uplan)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':upartner', $partner);
     $stmt->bindParam(':uspecialty', $specialty);
@@ -34,6 +34,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uprivate_status', $private_status);
     $stmt->bindParam(':ucontact', $contact);
     $stmt->bindParam(':ucontact2', $contact2);
+    $stmt->bindParam(':uplan', $plan);
     $stmt->bindParam(':utype', $type);
 
     if ($stmt->execute()) {
@@ -222,6 +223,19 @@ if (isset($_POST['btnsave'])) {
                           ?>
                         </select>
                         <label for="floatingSelect">Tipo</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select name="plan" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
+                          <option value="">Escolha um plano</option>
+                          <option value="1">FÁCIL</option>
+                          <option value="2">GOLD</option>
+                          <option value="">PLATINUM</option>
+                          <option value="4">FÁCIL e GOLD</option>
+                          <option value="5">GOLD e PLATINUM</option>
+                        </select>
+                        <label for="floatingSelect">Plano</label>
                       </div>
                     </div>
                   </div>

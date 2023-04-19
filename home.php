@@ -392,7 +392,7 @@ $dv = $_GET['dv'];
             <ul id="services-flters">
               <li data-filter="*" class="filter-active">PLATINUM</li>
               <li data-filter=".filter-gold">GOLD</li>
-              <li data-filter=".filter-essencial">ESSENCIAL</li>
+              <li data-filter=".filter-essencial">FÁCIL</li>
             </ul>
           </div>
         </div>

@@ -27,6 +27,7 @@ if (isset($_POST['btnsave'])) {
   $centrocard = $_POST['centrocard'];
   $private_status = $_POST['private_status'];
   $type = $_POST['type'];
+  $plan = $_POST['plan'];
 
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
@@ -40,7 +41,8 @@ if (isset($_POST['btnsave'])) {
     private=:uprivate,
     private_status=:uprivate_status,
     centrocard=:ucentrocard,
-    type=:utype
+    type=:utype,
+    plan=:uplan
     WHERE id=:uid');
     $stmt->bindParam(':uspecialty', $specialty);
     $stmt->bindParam(':uname', $name);
@@ -49,6 +51,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uprivate_status', $private_status);
     $stmt->bindParam(':ucentrocard', $centrocard);
     $stmt->bindParam(':utype', $type);
+    $stmt->bindParam(':uplan', $plan);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -224,6 +227,35 @@ if (isset($_POST['btnsave'])) {
                           ?>
                         </select>
                         <label for="floatingSelect">Tipo</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating mb-3">
+                        <select name="plan" class="form-select" id="floatingSelect" aria-label="Especialidade">
+                          <option value="<?php echo $plan; ?>">
+                            <?php
+                            if ($plan == 1) {
+                              echo "FÁCIL";
+                            };
+                            if ($plan == 2) {
+                              echo "GOLD";
+                            };
+                            if ($plan == '') {
+                              echo "PLATINUM";
+                            };
+                            if ($plan == 4) {
+                              echo "FÁCIL e GOLD";
+                            };
+                            if ($plan == 5) {
+                              echo "GOLD e PLATINUM";
+                            };
+                            ?> ( SELECIONADO ) </option>
+                          <option value="1">FÁCIL</option>
+                          <option value="2">GOLD</option>
+                          <option value="">PLATINUM</option>
+                          <option value="4">FÁCIL e GOLD</option>
+                          <option value="5">GOLD e PLATINUM</option>
+                        </select>
                       </div>
                     </div>
                   </div>
