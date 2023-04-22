@@ -41,6 +41,8 @@ if (isset($_POST['btnsave'])) {
   $t13 = $_POST['t13'];
   $t14 = $_POST['t14'];
   $t15 = $_POST['t15'];
+  $active = $_POST['active'];
+  $btn_home_text = $_POST['btn_home_text'];
 
 
   if (!isset($errMSG)) {
@@ -64,7 +66,9 @@ if (isset($_POST['btnsave'])) {
     t12=:ut12,
     t13=:ut13,
     t14=:ut14,
-    t15=:ut15
+    t15=:ut15,
+    active=:uactive,
+    btn_home_text=:ubtn_home_text
     WHERE id=:uid');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':uprice', $price);
@@ -86,6 +90,8 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':ut13', $t13);
     $stmt->bindParam(':ut14', $t14);
     $stmt->bindParam(':ut15', $t15);
+    $stmt->bindParam(':uactive', $active);
+    $stmt->bindParam(':ubtn_home_text', $btn_home_text);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -193,6 +199,30 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Url de pagamento</label>
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select name="active" class="form-select" id="floatingSelect" aria-label="Active">
+                          <option value="<?php echo $active; ?>">
+                            <?php
+                            if ($active == 1) {
+                              echo "ATIVADO";
+                            };
+                            if ($active == 2) {
+                              echo "DESATIVADO";
+                            };
+                            ?> ( SELECIONADO ) </option>
+                          <option value="1">ATIVADO</option>
+                          <option value="2">DESATIVADO</option>
+                        </select>
+                        <label for="floatingSelect">Status</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $btn_home_text; ?>" name="btn_home_text" placeholder="Texto do botão ">
+                        <label for="">Texto Botão da Home</label>
+                      </div>
+                    </div>
                   </div>
                   <h5 class="card-title">Destaques</h5>
                   <div class="row">
@@ -270,14 +300,31 @@ if (isset($_POST['btnsave'])) {
                         <label for="">Destaque 12</label>
                       </div>
                     </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t13; ?>" name="t13" placeholder="Destaque 13">
+                        <label for="">Destaque 13</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t14; ?>" name="t14" placeholder="Destaque 14">
+                        <label for="">Destaque 14</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t15; ?>" name="t15" placeholder="Destaque 15">
+                        <label for="">Destaque 15</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
             </div>
             <div class="text-center pt-2 mb-4">
               <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
             </div>
-            </form><!-- Vertical Form -->
-
+            </form>
           </div>
         </div>
       </div>

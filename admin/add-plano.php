@@ -14,105 +14,54 @@ if (isset($_POST['btnsave'])) {
   $price = $_POST['price'];
   $price2 = $_POST['price2'];
   $description = $_POST['description'];
-  // $b1 = $_POST['b1'];
-  // $b2 = $_POST['b2'];
-  // $b3 = $_POST['b3'];
-  // $b4 = $_POST['b4'];
-  // $b5 = $_POST['b5'];
-
-  // $imgFile = $_FILES['user_image']['name'];
-  // $tmp_dir = $_FILES['user_image']['tmp_name'];
-  // $imgSize = $_FILES['user_image']['size'];
-
-  // $imgFile2 = $_FILES['user_image2']['name'];
-  // $tmp_dir2 = $_FILES['user_image2']['tmp_name'];
-  // $imgSize2 = $_FILES['user_image2']['size'];
-
-  // $imgFile3 = $_FILES['user_image3']['name'];
-  // $tmp_dir3 = $_FILES['user_image3']['tmp_name'];
-  // $imgSize3 = $_FILES['user_image3']['size'];
-
-  // $imgFile4 = $_FILES['user_image4']['name'];
-  // $tmp_dir4 = $_FILES['user_image4']['tmp_name'];
-  // $imgSize4 = $_FILES['user_image4']['size'];
-
-  // $imgFile5 = $_FILES['user_image5']['name'];
-  // $tmp_dir5 = $_FILES['user_image5']['tmp_name'];
-  // $imgSize5 = $_FILES['user_image5']['size'];
+  $link = $_POST['link'];
+  $t1 = $_POST['t1'];
+  $t2 = $_POST['t2'];
+  $t3 = $_POST['t3'];
+  $t4 = $_POST['t4'];
+  $t5 = $_POST['t5'];
+  $t6 = $_POST['t6'];
+  $t7 = $_POST['t7'];
+  $t8 = $_POST['t8'];
+  $t9 = $_POST['t9'];
+  $t10 = $_POST['t10'];
+  $t11 = $_POST['t11'];
+  $t12 = $_POST['t12'];
+  $t13 = $_POST['t13'];
+  $t14 = $_POST['t14'];
+  $t15 = $_POST['t15'];
+  $active = $_POST['active'];
+  $btn_home_text = $_POST['btn_home_text'];
 
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
   }
 
-  // if (empty($link)) {
-  //   $errMSG = "Por favor Insira o link do banner";
-  // }
-  // else {
-  //   $upload_dir = 'uploads/planos/'; // upload directory
-  //   $imgExt =  strtolower(pathinfo($imgFile, PATHINFO_EXTENSION));
-  //   $imgExt2 =  strtolower(pathinfo($imgFile2, PATHINFO_EXTENSION));
-  //   $imgExt3 =  strtolower(pathinfo($imgFile3, PATHINFO_EXTENSION));
-  //   $imgExt4 =  strtolower(pathinfo($imgFile4, PATHINFO_EXTENSION));
-  //   $imgExt5 =  strtolower(pathinfo($imgFile5, PATHINFO_EXTENSION));
-
-  //   $valid_extensions = array('jpeg', 'jpg', 'png'); // valid extensions
-  //   // rename uploading image
-  //   $name2 = preg_replace("/\s+/", "", $name);
-  //   $name3 = substr($name2, 0, -1);
-  //   $userpic  = $name3 . "icon1" . "." . $imgExt;
-  //   $userpic2 = $name3 . "icon2" . "." . $imgExt2;
-  //   $userpic3 = $name3 . "icon3" . "." . $imgExt3;
-  //   $userpic4 = $name4 . "icon4" . "." . $imgExt4;
-  //   $userpic5 = $name5 . "icon5" . "." . $imgExt5;
-
-  //   // allow valid image file formats
-  //   if (in_array($imgExt, $valid_extensions)) {
-  //     // Check file size '5MB'
-  //     if ($imgSize < 5000000) {
-  //       move_uploaded_file($tmp_dir, $upload_dir . $userpic);
-  //     } else {
-  //       $errMSG = "Imagem muito grande.";
-  //     }
-  //   }
-  //   if (in_array($imgExt2, $valid_extensions)) {
-  //     // Check file size '5MB'
-  //     if ($imgSize2 < 5000000) {
-  //       move_uploaded_file($tmp_dir2, $upload_dir . $userpic2);
-  //     } else {
-  //       $errMSG = "Imagem 2 muito grande.";
-  //     }
-  //   }
-  //   if (in_array($imgExt3, $valid_extensions)) {
-  //     // Check file size '5MB'
-  //     if ($imgSize3 < 5000000) {
-  //       move_uploaded_file($tmp_dir3, $upload_dir . $userpic3);
-  //     } else {
-  //       $errMSG = "Imagem 3 muito grande.";
-  //     }
-  //   }
-  //   if (in_array($imgExt4, $valid_extensions)) {
-  //     // Check file size '5MB'
-  //     if ($imgSize4 < 5000000) {
-  //       move_uploaded_file($tmp_dir4, $upload_dir . $userpic4);
-  //     } else {
-  //       $errMSG = "Imagem 4 muito grande.";
-  //     }
-  //   }
-  //   if (in_array($imgExt5, $valid_extensions)) {
-  //     // Check file size '5MB'
-  //     if ($imgSize5 < 5000000) {
-  //       move_uploaded_file($tmp_dir5, $upload_dir . $userpic5);
-  //     } else {
-  //       $errMSG = "Imagem 5 muito grande.";
-  //     }
-  //   }
-  // }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,price2,description)');
+    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,price2,description,link,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,active,btn_home_text) VALUES(:uname,:uprice,:uprice2,:udescription,:ulink,:ut1,:ut2,:ut3,:ut4,:ut5,:ut6,:ut7,:ut8,:ut9,:ut10,:ut11,:ut12,:ut13,:ut14,:ut15,:uactive,:ubtn_home_text)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':uprice', $price);
     $stmt->bindParam(':uprice2', $price2);
     $stmt->bindParam(':udescription', $description);
+    $stmt->bindParam(':ulink', $link);
+    $stmt->bindParam(':ut1', $t1);
+    $stmt->bindParam(':ut2', $t2);
+    $stmt->bindParam(':ut3', $t3);
+    $stmt->bindParam(':ut4', $t4);
+    $stmt->bindParam(':ut5', $t5);
+    $stmt->bindParam(':ut6', $t6);
+    $stmt->bindParam(':ut7', $t7);
+    $stmt->bindParam(':ut8', $t8);
+    $stmt->bindParam(':ut9', $t9);
+    $stmt->bindParam(':ut10', $t10);
+    $stmt->bindParam(':ut11', $t11);
+    $stmt->bindParam(':ut12', $t12);
+    $stmt->bindParam(':ut13', $t13);
+    $stmt->bindParam(':ut14', $t14);
+    $stmt->bindParam(':ut15', $t15);
+    $stmt->bindParam(':uactive', $active);
+    $stmt->bindParam(':ubtn_home_text', $btn_home_text);
+
 
     if ($stmt->execute()) {
       echo ("<script>window.location = 'painel-planos.php';</script>");
@@ -132,27 +81,28 @@ if (isset($_POST['btnsave'])) {
   <title>Adicionar Plano / Painel Administrativo</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
   <!-- Favicons -->
-  <link href="../assets/img/logo-mit.png" rel="icon">
-  <link href="../assets/img/logo-mit.png" rel="apple-touch-icon">
+  <link href="../assets/img/icon-semfundo.png" rel="icon">
+  <link href="../assets/img/icon-semfundo.png" rel="apple-touch-icon">
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.2/css/fileinput.min.css" integrity="sha512-optaW0zX5RBCFqhNsmzGuHHsD/tdnCcWl8B0OToMY01JVeEcphylF9gCCxpi4BQh0LY47BkJLyNC1J7M5MJMQg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -188,46 +138,153 @@ if (isset($_POST['btnsave'])) {
               }
               ?>
               <!-- Vertical Form -->
-              <form method="POST" class="row">
-                <div class="col-md-4">
-                  <h5 class="card-title">Informações do Banner</h5>
+              <form method="POST" enctype="multipart/form-data" class="row">
+                <div class="col-md-12">
+                  <h5 class="card-title">Informações</h5>
                   <div class="row">
-                    <div class="col-md-12 pb-3">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome do Plano">
-                        <label for="floatingEmail">Nome do Plano</label>
+                        <input type="text" class="form-control" value="<?php echo $name; ?>" name="name" placeholder="Nome Completo">
+                        <label for="">Nome</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $price; ?>" name="price" placeholder="Preço de venda">
+                        <label for="">Preço de venda</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $price2; ?>" name="price2" placeholder="Preço de venda">
+                        <label for="">Preço de compra</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $url; ?>" name="url" placeholder="Url de pagamento">
+                        <label for="">Url de pagamento</label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $price2; ?>" name="price2" placeholder="Preço do Plano">
-                        <label for="floatingPassword">Preço do Plano</label>
+                      <div class="form-floating mb-3">
+                        <select name="active" class="form-select" id="floatingSelect" aria-label="Status">
+                          <option value="1">ATIVO</option>
+                          <option value="2">DESATIVADO</option>
+                        </select>
+                        <label for="floatingSelect">Status</label>
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <input type="text" class="form-control" value="<?php echo $price; ?>" name="price" placeholder="Preço do Plano">
-                        <label for="floatingPassword">Preço de Venda</label>
+                        <input type="text" class="form-control" value="<?php echo $btn_home_text; ?>" name="btn_home_text" placeholder="Texto do botão ">
+                        <label for="">Texto Botão da Home</label>
                       </div>
                     </div>
-                    <div class="col-12 pt-3">
+                  </div>
+                  <h5 class="card-title">Destaques</h5>
+                  <div class="row">
+                    <div class="col-md-6 pb-3">
                       <div class="form-floating">
-                        <textarea class="form-control" placeholder="Descrição do plano" value="<?php echo $description; ?>" name="description" style="height: 100px;"><?php echo $description; ?></textarea>
-                        <label for="floatingTextarea">Descrição</label>
+                        <input type="text" class="form-control" value="<?php echo $t1; ?>" name="t1" placeholder="Destaque 1">
+                        <label for="">Destaque 1</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t2; ?>" name="t2" placeholder="Destaque 2">
+                        <label for="">Destaque 2</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t3; ?>" name="t3" placeholder="Destaque 3">
+                        <label for="">Destaque 3</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t4; ?>" name="t4" placeholder="t4">
+                        <label for="">Destaque 4</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t5; ?>" name="t5" placeholder="Destaque 5">
+                        <label for="">Destaque 5</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t6; ?>" name="t6" placeholder="Destaque 6">
+                        <label for="">Destaque 6</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" value="<?php echo $t7; ?>" name="t7" placeholder="Destaque 7">
+                          <label for="">Destaque 7</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t8; ?>" name="t8" placeholder="Destaque 8">
+                        <label for="">Destaque 8</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t9; ?>" name="t9" placeholder="Destaque 9">
+                        <label for="">Destaque 9</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t10; ?>" name="t10" placeholder="Destaque 10">
+                        <label for="">Destaque 10</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t11; ?>" name="t11" placeholder="Destaque 11">
+                        <label for="">Destaque 11</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t12; ?>" name="t12" placeholder="Destaque 12">
+                        <label for="">Destaque 12</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t13; ?>" name="t13" placeholder="Destaque 12">
+                        <label for="">Destaque 13</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t14; ?>" name="t14" placeholder="Destaque 12">
+                        <label for="">Destaque 14</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $t15; ?>" name="t15" placeholder="Destaque 12">
+                        <label for="">Destaque 15</label>
                       </div>
                     </div>
                   </div>
                 </div>
             </div>
+            <div class="text-center pt-2 mb-4">
+              <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
+            </div>
+            </form>
           </div>
-          <div class="text-center">
-            <button type="submit" name="btnsave" class="btn btn-primary">Adicionar</button>
-            <button type="reset" class="btn btn-secondary">Resetar</button>
-          </div>
-          </form><!-- Vertical Form -->
-
         </div>
-      </div>
       </div>
     </section>
 

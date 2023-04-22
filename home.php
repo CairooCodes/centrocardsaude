@@ -125,177 +125,8 @@ $dv = $_GET['dv'];
         </div>
 
         <div class="row gy-4">
-
           <?php
-          $stmt = $DB_con->prepare("SELECT * FROM plans where id='6'");
-          $stmt->execute();
-          if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              extract($row);
-              $name2 = $name;
-          ?>
-              <div class="col-lg-4">
-                <div class="pricing-item">
-
-                  <div class="pricing-header">
-                    <h3><?php echo $name; ?></h3>
-                    <h4><sup></sup><?php echo $price; ?><span></span></h4>
-                  </div>
-                  <ul>
-                    <?php if ($t1 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t2 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t3 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t4 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t5 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t6 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t7 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t9 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t10 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t11 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t12 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
-                    <?php  } ?>
-                    <div class="text-center mt-auto">
-                      <a href="<?php
-                                if ($dv != '') {
-                                  if (isset($dv)) {
-                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
-                                    $stmt->execute();
-                                    if ($stmt->rowCount() > 0) {
-                                      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                        extract($row);
-                                        $link;
-                                      }
-                                    }
-                                  }
-                                  echo $link;
-                                } else {
-                                  echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
-                                }
-                                ?>" class="buy-btn">Compre agora</a>
-                    </div>
-                  </ul>
-                  <div class="text-center mt-auto">
-                    <a href="<?php
-                              if ($dv != '') {
-                                if (isset($dv)) {
-                                  echo $URI->base("plano.php?dv=$dv/" . slugify($name2));
-                                } else {
-                                  echo "teste";
-                                }
-                              }
-                              ?>" class="buy-btn2">Saiba Mais</a>
-                  </div>
-
-                </div>
-              </div><!-- End Pricing Item -->
-          <?php
-            }
-          }
-          ?>
-          <?php
-          $stmt = $DB_con->prepare("SELECT * FROM plans where id='7'");
-          $stmt->execute();
-          if ($stmt->rowCount() > 0) {
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-              extract($row);
-              $name2 = $name;
-          ?>
-              <div class="col-lg-4">
-                <div class="pricing-item">
-
-                  <div class="pricing-header">
-                    <h3><?php echo $name2; ?></h3>
-                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
-                  </div>
-
-                  <ul>
-                    <?php if ($t1 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t2 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t3 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t4 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t5 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t6 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t7 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t9 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t10 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t11 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t12 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
-                    <?php  } ?>
-                    <div class="text-center mt-auto">
-                      <a href="<?php
-                                if ($dv != '') {
-                                  if (isset($dv)) {
-                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
-                                    $stmt->execute();
-                                    if ($stmt->rowCount() > 0) {
-                                      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                        extract($row);
-                                        $link;
-                                      }
-                                    }
-                                  }
-                                  echo $link;
-                                } else {
-                                  echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
-                                }
-
-                                ?>" class="buy-btn">Compre agora</a>
-                    </div>
-                  </ul>
-                  <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('plano/' . slugify($name2)); ?>" class="buy-btn2">Saiba Mais</a>
-                  </div>
-
-                </div>
-              </div><!-- End Pricing Item -->
-          <?php
-            }
-          }
-          ?>
-          <?php
-          $stmt = $DB_con->prepare("SELECT * FROM plans where id='8'");
+          $stmt = $DB_con->prepare("SELECT * FROM plans where active='1'");
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -306,10 +137,13 @@ $dv = $_GET['dv'];
                 <div class="pricing-item featured">
 
                   <div class="pricing-header">
-                    <h3><?php echo $name2; ?></h3>
-                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                    <h3>Plano <?php echo $name2; ?></h3>
+                    <?php if ($price != '') { ?>
+                      <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
+                    <?php  } else { ?>
+                      <h4>Grátis</h4>
+                    <?php  } ?>
                   </div>
-
                   <ul>
                     <?php if ($t1 != '') { ?>
                       <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
@@ -362,7 +196,7 @@ $dv = $_GET['dv'];
                                   echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
                                 }
 
-                                ?>" class="buy-btn">Compre agora</a>
+                                ?>" class="buy-btn"><?php echo $btn_home_text ?></a>
                     </div>
                   </ul>
                   <div class="text-center mt-auto">

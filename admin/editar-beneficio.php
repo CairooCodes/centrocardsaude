@@ -373,20 +373,24 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
-                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Fácil">
+                        <select name="plan_1" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 1">
                           <option value="<?php echo $plan_1; ?>">
-                            <?php
-                            if ($plan_1 == 'essencial') {
-                              echo "Disponível";
-                            }
-                            if ($plan_1 != 'essencial') {
-                              echo "Indisponível";
-                            } ?> (selecionado)
+                          <?php echo $plan_1; ?> (selecionado)
                           </option>
-                          <option value="essencial">DISPONÍVEL</option>
-                          <option value="">INDISPONÍVEL</option>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM plans");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
                         </select>
-                        <label for="floatingSelect">Plano Fácil</label>
+                        <label for="floatingSelect">Plano 1</label>
                       </div>
                     </div>
                     <div class="col-md-6">

@@ -15,7 +15,7 @@ if (isset($_GET['delete_id'])) {
   $stmt_delete->bindParam(':uid', $_GET['delete_id']);
   $stmt_delete->execute();
 
-  header("Location: painel-plans.php");
+  header("Location: painel-planos.php");
 }
 
 ?>
@@ -106,10 +106,12 @@ if (isset($_GET['delete_id'])) {
                   if ($_SESSION['type'] == 1) {
                   ?>
                     <div class="d-flex justify-content-between">
-                       <a href="editar-plano.php?edit_id=<?php echo $row['id']; ?>">
+                      <a href="editar-plano.php?edit_id=<?php echo $row['id']; ?>">
                         <button type="button" class="btn btn-success">Editar</button>
                       </a>
-                      <button type="button" class="btn btn-danger">Excluir</button>
+                      <a href="?delete_id=<?php echo $row['id']; ?>">
+                        <button type="button" class="btn btn-danger">Excluir</button>
+                      </a>
                     </div>
                   <?php } ?>
                   <div class="pb-3 mt-2">
@@ -123,11 +125,7 @@ if (isset($_GET['delete_id'])) {
           }
         } else {
           ?>
-          <div class="bg-yellow-500 px-4 py-4 rounded">
-            <div>
-              <p class="text-blueGray-600 font-bold">Sem plano cadastrado ...</p>
-            </div>
-          </div>
+          <p class="text-default">Sem plano cadastrado ...</p>
         <?php
         }
         ?>

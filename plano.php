@@ -64,125 +64,56 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
       <section class="pricing container-fluid" style="padding-top:150px;">
         <div class="row justify-content-center">
           <div class="col-lg-3">
-            <?php if ($id == '6') { ?>
-              <div>
-                <div class="pricing-item">
+            <div>
+              <div class="pricing-item">
 
-                  <div class="pricing-header">
-                    <h3><?php echo $name; ?></h3>
-                    <h4><sup></sup><?php echo $price; ?><span></span></h4>
-                  </div>
-                  <ul>
-                    <?php if ($t1 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t2 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t3 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t4 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t5 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t6 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t7 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t9 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t10 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t11 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t12 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
-                    <?php  } ?>
-                  </ul>
-
-                  <div class="text-center mt-auto">
-                    <a href="<?php
-                              if ($dv != '') {
-                                if (isset($dv)) {
-                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$url_dv'");
-                                  $stmt->execute();
-                                  if ($stmt->rowCount() > 0) {
-                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                      extract($row);
-                                      $link;
-                                    }
-                                  }
-                                }
-                                echo $link;
-                              } else {
-                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
-                              }
-
-                              ?>" class="buy-btn">COMPRE AGORA</a>
-                  </div>
-                  <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO ESSENCIAL_PF.pdf') ?>" target="_blank">CONTRATO PLANO FÁCIL</a>
-                </div>
-              </div><!-- End Pricing Item -->
-            <?php
-            }
-            ?>
-            <?php if ($id == '8') { ?>
-              <div>
-                <div class="pricing-item featured">
-
-                  <div class="pricing-header">
-                    <h3><?php echo $name; ?></h3>
+                <div class="pricing-header">
+                  <h3>Plano <?php echo $name; ?></h3>
+                  <?php if ($price != '') { ?>
                     <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
-                  </div>
-
-                  <ul>
-                    <?php if ($t1 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t2 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t3 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t4 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t5 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t6 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t7 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t9 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t10 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t11 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t12 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
-                    <?php  } ?>
-                  </ul>
+                  <?php  } else { ?>
+                    <h4>Grátis</h4>
+                  <?php  } ?>
+                </div>
+                <ul>
+                  <?php if ($t1 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t2 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t3 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t4 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t5 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t6 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t7 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t9 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t10 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t11 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
+                  <?php  } ?>
+                  <?php if ($t12 != '') { ?>
+                    <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
+                  <?php  } ?>
                   <div class="text-center mt-auto">
                     <a href="<?php
                               if ($dv != '') {
                                 if (isset($dv)) {
-                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$url_dv'");
+                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
                                   $stmt->execute();
                                   if ($stmt->rowCount() > 0) {
                                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -196,213 +127,50 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
                               }
 
-                              ?>" class="buy-btn">COMPRE AGORA</a>
+                              ?>" class="buy-btn"><?php echo $btn_home_text ?></a>
                   </div>
-                  <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO PLATINUM_PF.pdf') ?>" target="_blank">CONTRATO PLANO PLATINUM</a>
-                </div>
-              </div><!-- End Pricing Item -->
-            <?php
-            }
-            ?>
-            <?php if ($id == '7') { ?>
-              <div>
-                <div class="pricing-item">
-                  <div class="pricing-header">
-                    <h3><?php echo $name; ?></h3>
-                    <h4><sup>R$</sup><?php echo $price; ?><span> / mês</span></h4>
-                  </div>
-                  <ul>
-                    <?php if ($t1 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t1; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t2 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t2; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t3 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t3; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t4 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t4; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t5 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t5; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t6 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t6; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t7 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t7; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t9 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t9; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t10 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t10; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t11 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t11; ?></span></li>
-                    <?php  } ?>
-                    <?php if ($t12 != '') { ?>
-                      <li><i class="bi bi-dot"></i> <span><?php echo $t12; ?></span></li>
-                    <?php  } ?>
-                  </ul>
-
-                  <div class="text-center mt-auto">
-                    <a href="<?php
-                              if ($dv != '') {
-                                if (isset($dv)) {
-                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$url_dv'");
-                                  $stmt->execute();
-                                  if ($stmt->rowCount() > 0) {
-                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                      extract($row);
-                                      $link;
-                                    }
-                                  }
-                                }
-                                echo $link;
-                              } else {
-                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
-                              }
-
-                              ?>" class="buy-btn">COMPRE AGORA</a>
-                  </div>
-                  <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO GOLD_PF.pdf') ?>" target="_blank">CONTRATO PLANO GOLD</a>
-                </div>
-              </div><!-- End Pricing Item -->
-            <?php
-            }
-            ?>
+                </ul>
+                <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO ESSENCIAL_PF.pdf') ?>" target="_blank">CONTRATO PLANO FÁCIL</a>
+              </div>
+            </div><!-- End Pricing Item -->
           </div>
           <div class="col-lg-9">
             <div id="services" class="services">
               <div class="section-header pt-4" style="padding-bottom:0%">
                 <h2>Benefícios</h2>
               </div>
-              <?php if (($post == 'Essencial') or  ($post == 'Gold')) { ?>
-                <!-- <div class="text-center p-4">
-                  <h5 class="lead">
-                    Pronto Atendimento em Clínica Médica 24 horas
-                  </h5>
-                  <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Acesse aqui a telemedicina</a>
-                  </div>
-                </div> -->
-              <?php } ?>
-              <?php if ($post == 'Platinum') { ?>
-                <!-- <div class="text-center p-4">
-                  <h5 class="lead">
-                    Atendimento em Clínica Médica e Pediatria
-                  </h5>
-                  <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Acesse aqui a telemedicina</a>
-                  </div>
-                  <div class="text-center mt-auto">
-                    <a href="<?php echo $URI->base('/admin/login.php') ?>" class="buy-btn2">Agendamento de especialidades médicas </a>
-                  </div>
-                </div> -->
-              <?php } ?>
               <div class="row gy-5 services-container">
-
                 <?php
-
-                if ($id == '8') {
-                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits");
-                  $stmt->execute();
-                  if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                      extract($row);
+                $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits where plan_1='$post' or plan_2='$post'");
+                $stmt->execute();
+                if ($stmt->rowCount() > 0) {
+                  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
                 ?>
-                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
-                        <div class="service-item">
-                          <div class="row justify-content-center">
-                            <div class="img-services col-md-11">
-                              <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
-                            </div>
-                          </div>
-                          <div class="details position-relative">
-                            <div class="icon">
-                              <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
-                            </div>
-                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
-                              <h3><?php echo $benefit; ?></h3>
-                            </a>
-                            <p><?php echo $description; ?></p>
-                            <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
-                            </div>
+                    <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                      <div class="service-item">
+                        <div class="row justify-content-center">
+                          <div class="img-services col-md-11">
+                            <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
                           </div>
                         </div>
-                      </div><!-- End Service Item -->
-                    <?php
-                    }
-                  }
-                }
-                if ($id == '7') {
-                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits where plan_1 = 'gold' or plan_1= 'essencial'");
-                  $stmt->execute();
-                  if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                      extract($row);
-                    ?>
-                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
-                        <div class="service-item">
-                          <div class="row justify-content-center">
-                            <div class="img-services col-md-11">
-                              <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
-                            </div>
+                        <div class="details position-relative">
+                          <div class="icon">
+                            <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
                           </div>
-                          <div class="details position-relative">
-                            <div class="icon">
-                              <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
-                            </div>
-                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
-                              <h3><?php echo $benefit; ?></h3>
-                            </a>
-                            <p><?php echo $description; ?></p>
-                            <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
-                            </div>
+                          <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
+                            <h3><?php echo $benefit; ?></h3>
+                          </a>
+                          <p><?php echo $description; ?></p>
+                          <div class="text-center mt-auto">
+                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
                           </div>
                         </div>
-                      </div><!-- End Service Item -->
-                    <?php
-                    }
-                  }
-                }
-                if ($id == '6') {
-                  $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits where plan_1 = 'essencial'");
-                  $stmt->execute();
-                  if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                      extract($row);
-                    ?>
-                      <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
-                        <div class="service-item">
-                          <div class="row justify-content-center">
-                            <div class="img-services col-md-11">
-                              <img data-src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_2'] . '') ?>" class="img-fluid lazy">
-                            </div>
-                          </div>
-                          <div class="details position-relative">
-                            <div class="icon">
-                              <img class="img-fluid" src="<?php echo $URI->base('/admin/uploads/beneficios/' . $row['img_1'] . '') ?>">
-                            </div>
-                            <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="stretched-link">
-                              <h3><?php echo $benefit; ?></h3>
-                            </a>
-                            <p><?php echo $description; ?></p>
-                            <div class="text-center mt-auto">
-                              <a href="<?php echo $URI->base('beneficio/' . slugify($slug)); ?>" class="fw-bolder">Saiba Mais <i class="bi bi-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div><!-- End Service Item -->
+                      </div>
+                    </div><!-- End Service Item -->
                 <?php
-                    }
                   }
                 }
-
                 ?>
               </div>
             </div>
