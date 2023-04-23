@@ -12,9 +12,18 @@
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('home') ?>">Home</a></li>
         <li class="dropdown"><a href="#"><span>Planos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
-            <li><a href="<?php echo $URI->base('plano/facil') ?>">Plano Fácil</a></li>
-            <li><a href="<?php echo $URI->base('plano/gold') ?>">Plano Gold</a></li>
-            <li><a href="<?php echo $URI->base('plano/platinum') ?>">Plano Platinum</a></li>
+            <?php
+            $stmt = $DB_con->prepare("SELECT * FROM plans");
+            $stmt->execute();
+            if ($stmt->rowCount() > 0) {
+              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                extract($row);
+            ?>
+                <li><a href="<?php echo $URI->base('plano/' . slugify($name)) ?>">Plano <?php echo $name ?></a></li>
+            <?php
+              }
+            }
+            ?>
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('home#services') ?>">Benefícios</a></li>
@@ -37,23 +46,23 @@
     </nav><!-- .navbar -->
 
     <a class="btn-getstarted scrollto" href="<?php
-                                if ($dv != '') {
-                                  if (isset($dv)) {
-                                    $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
-                                    $stmt->execute();
-                                    if ($stmt->rowCount() > 0) {
-                                      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                        extract($row);
-                                        $link;
-                                      }
-                                    }
-                                  }
-                                  echo $link;
-                                } else {
-                                  echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
-                                }
+                                              if ($dv != '') {
+                                                if (isset($dv)) {
+                                                  $stmt = $DB_con->prepare("SELECT * FROM users where id='$dv'");
+                                                  $stmt->execute();
+                                                  if ($stmt->rowCount() > 0) {
+                                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                                      extract($row);
+                                                      $link;
+                                                    }
+                                                  }
+                                                }
+                                                echo $link;
+                                              } else {
+                                                echo "https://mobi4tech.com.br/seg4tech/centrocard/centrocardloja/index.php?dia=30&cv=3&gr=1&op=2";
+                                              }
 
-                                ?>">COMPRE AGORA</a>
+                                              ?>">COMPRE AGORA</a>
 
   </div>
 </header><!-- End Header -->

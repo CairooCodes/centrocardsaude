@@ -20,6 +20,7 @@ if (isset($_POST['btnsave'])) {
   $service_3 = $_POST['service_3'];
   $plan_1 = $_POST['plan_1'];
   $plan_2 = $_POST['plan_2'];
+  $plan_2 = $_POST['plan_3'];
   $slug = $_POST['slug'];
 
   $imgFile = $_FILES['user_image']['name'];
@@ -77,7 +78,7 @@ if (isset($_POST['btnsave'])) {
     }
   }
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO benefits (benefit,description,title_s1,service_1,title_s2,service_2,title_s3,service_3,img_1,img_2,img_3,plan_1,plan_2,slug) VALUES(:ubenefit,:udescription,:utitle_s1,:uservice_1,:utitle_s2,:uservice_2,:utitle_s3,:uservice_3,:upic,:upic2,:upic3,:uplan_1,:uplan_2,:uslug)');
+    $stmt = $DB_con->prepare('INSERT INTO benefits (benefit,description,title_s1,service_1,title_s2,service_2,title_s3,service_3,img_1,img_2,img_3,plan_1,plan_2,slug,plan_3) VALUES(:ubenefit,:udescription,:utitle_s1,:uservice_1,:utitle_s2,:uservice_2,:utitle_s3,:uservice_3,:upic,:upic2,:upic3,:uplan_1,:uplan_2,:uslug,u:plan_3)');
 
     $stmt->bindParam(':ubenefit', $benefit);
     $stmt->bindParam(':udescription', $description);
@@ -92,6 +93,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':upic3', $userpic3);
     $stmt->bindParam(':uplan_1', $plan_1);
     $stmt->bindParam(':uplan_2', $plan_2);
+    $stmt->bindParam(':uplan_3', $plan_3);
     $stmt->bindParam(':uslug', $slug);
 
     if ($stmt->execute()) {
@@ -230,20 +232,62 @@ if (isset($_POST['btnsave'])) {
                   <div class="row">
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
-                        <select name="plan_1" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
-                          <option value="essencial">DISPONÍVEL</option>
-                          <option value="">INDISPONÍVEL</option>
+                        <select name="plan_1" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 1">
+                          <option value="">Escolha um plano 1</option>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM plans");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
                         </select>
-                        <label for="floatingSelect">Fácil</label>
+                        <label for="floatingSelect">Plano 1</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Gold">
-                          <option value="gold">DISPONÍVEL</option>
-                          <option value="">INDISPONÍVEL</option>
+                        <select name="plan_2" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 2">
+                          <option value="">Escolha um plano 2</option>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM plans");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
                         </select>
-                        <label for="floatingSelect">Plano Gold</label>
+                        <label for="floatingSelect">Plano 2</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select name="plan_3" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 3">
+                          <option value="">Escolha um plano 3</option>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM plans");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
+                        </select>
+                        <label for="floatingSelect">Plano 3</label>
                       </div>
                     </div>
                   </div>

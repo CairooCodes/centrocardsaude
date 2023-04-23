@@ -27,7 +27,9 @@ if (isset($_POST['btnsave'])) {
   $centrocard = $_POST['centrocard'];
   $private_status = $_POST['private_status'];
   $type = $_POST['type'];
-  $plan = $_POST['plan'];
+  $plan_1 = $_POST['plan_1'];
+  $plan_2 = $_POST['plan_2'];
+  $plan_3 = $_POST['plan_3'];
 
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
@@ -42,7 +44,9 @@ if (isset($_POST['btnsave'])) {
     private_status=:uprivate_status,
     centrocard=:ucentrocard,
     type=:utype,
-    plan=:uplan
+    plan_1=:uplan_1,
+    plan_2=:uplan_2,
+    plan_3=:uplan_3
     WHERE id=:uid');
     $stmt->bindParam(':uspecialty', $specialty);
     $stmt->bindParam(':uname', $name);
@@ -51,7 +55,9 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':uprivate_status', $private_status);
     $stmt->bindParam(':ucentrocard', $centrocard);
     $stmt->bindParam(':utype', $type);
-    $stmt->bindParam(':uplan', $plan);
+    $stmt->bindParam(':uplan_1', $plan_1);
+    $stmt->bindParam(':uplan_2', $plan_2);
+    $stmt->bindParam(':uplan_3', $plan_3);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -114,7 +120,7 @@ if (isset($_POST['btnsave'])) {
     </div><!-- End Page Title -->
     <section class="section">
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">
@@ -231,31 +237,84 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6 pb-3">
                       <div class="form-floating mb-3">
-                        <select name="plan" class="form-select" id="floatingSelect" aria-label="Especialidade">
-                          <option value="<?php echo $plan; ?>">
-                            <?php
-                            if ($plan == 1) {
-                              echo "FÁCIL";
-                            };
-                            if ($plan == 2) {
-                              echo "GOLD";
-                            };
-                            if ($plan == '') {
-                              echo "PLATINUM";
-                            };
-                            if ($plan == 4) {
-                              echo "FÁCIL e GOLD";
-                            };
-                            if ($plan == 5) {
-                              echo "GOLD e PLATINUM";
-                            };
-                            ?> ( SELECIONADO ) </option>
-                          <option value="1">FÁCIL</option>
-                          <option value="2">GOLD</option>
-                          <option value="">PLATINUM</option>
-                          <option value="4">FÁCIL e GOLD</option>
-                          <option value="5">GOLD e PLATINUM</option>
+                        <select name="plan_1" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 1">
+                          <option value="<?php echo $plan_1; ?>">
+                            <?php if ($plan_1 != '') {
+                              echo $plan_1 . " (SELECIONADO)";
+                            } else {
+                              echo "Escolha um plano";
+                            } ?>
+                          </option>
+                          <?php
+                          $stmt = $DB_con->prepare("SELECT * FROM plans");
+                          $stmt->execute();
+                          if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              extract($row);
+                          ?>
+                              <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                          <?php
+                            }
+                          }
+                          ?>
                         </select>
+                        <label for="floatingSelect">Plano 1</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <div class="form-floating mb-3">
+                          <select name="plan_2" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 2">
+                            <option value="<?php echo $plan_2; ?>">
+                              <?php if ($plan_2 != '') {
+                                echo $plan_2 . " (SELECIONADO)";
+                              } else {
+                                echo "Escolha um plano";
+                              } ?>
+                            </option>
+                            <?php
+                            $stmt = $DB_con->prepare("SELECT * FROM plans");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                extract($row);
+                            ?>
+                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                            <?php
+                              }
+                            }
+                            ?>
+                          </select>
+                          <label for="floatingSelect">Plano 2</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <div class="form-floating mb-3">
+                          <select name="plan_3" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 3">
+                            <option value="<?php echo $plan_3; ?>">
+                              <?php if ($plan_3 != '') {
+                                echo $plan_3 . " (SELECIONADO)";
+                              } else {
+                                echo "Escolha um plano";
+                              } ?>
+                            </option>
+                            <?php
+                            $stmt = $DB_con->prepare("SELECT * FROM plans");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                extract($row);
+                            ?>
+                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                            <?php
+                              }
+                            }
+                            ?>
+                          </select>
+                          <label for="floatingSelect">Plano 3</label>
+                        </div>
                       </div>
                     </div>
                   </div>

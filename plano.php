@@ -141,13 +141,13 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               </div>
               <div class="row gy-5 services-container">
                 <?php
-                $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits where plan_1='$post' or plan_2='$post'");
+                $stmt = $DB_con->prepare("SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug,plan_3 FROM benefits where plan_1='$post' or plan_2='$post' or plan_3='$post'");
                 $stmt->execute();
                 if ($stmt->rowCount() > 0) {
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     extract($row);
                 ?>
-                    <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+                    <div class="col-xl-4 col-md-6 services-item">
                       <div class="service-item">
                         <div class="row justify-content-center">
                           <div class="img-services col-md-11">

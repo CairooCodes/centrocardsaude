@@ -91,24 +91,17 @@ $dv = $_GET['dv'];
   </section><!-- End Hero Section -->
 
   <main id="main">
-
-
-    <!-- ======= Call To Action Section ======= -->
     <section id="cta" class="cta">
       <div class="container content-cta">
-
         <div class="row g-5">
-
           <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first">
             <h3>Solução inteligente em saúde e benefícios</h3>
             <p>Nossos planos oferecem uma solução completa em saúde, benefícios e proteção, oferecendo médico online 24 horas, rede de descontos em saúde, desconto farmácia, seguros e vários outros benefícios para você, sua família ou sua empresa.</p>
             <a class="cta-btn align-self-start" href="#">Conheça agora</a>
           </div>
-
           <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
 
             <img data-src="assets/img/cards.png" alt="" class="img-fluid lazy">
-
           </div>
 
         </div>
@@ -134,7 +127,10 @@ $dv = $_GET['dv'];
               $name2 = $name;
           ?>
               <div class="col-lg-4">
-                <div class="pricing-item featured">
+              <div class="pricing-item <?php if ($name == "Platinum") {
+                                            echo "featured";
+                                          } ?>">
+
 
                   <div class="pricing-header">
                     <h3>Plano <?php echo $name2; ?></h3>
@@ -224,22 +220,32 @@ $dv = $_GET['dv'];
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="services-flters">
-              <li data-filter="*" class="filter-active">PLATINUM</li>
-              <li data-filter=".filter-gold">GOLD</li>
-              <li data-filter=".filter-essencial">FÁCIL</li>
+              <li data-filter="*" class="filter-active">TODOS</li>
+              <?php
+              $stmt = $DB_con->prepare("SELECT * FROM plans");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <li data-filter="<?php echo '.filter-' . $name . ''; ?>"><?php echo $name; ?></li>
+              <?php
+                }
+              }
+              ?>
             </ul>
           </div>
         </div>
         <div class="row gy-5 services-container mt-2">
           <?php
-          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2,img_2,slug FROM benefits ORDER BY id ASC');
+          $stmt = $DB_con->prepare('SELECT id, benefit,description,img_1,plan_1,plan_2,plan_3,img_2,slug FROM benefits ORDER BY id ASC');
           $stmt->execute();
           if ($stmt->rowCount() > 0) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
               extract($row);
           ?>
 
-              <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?>">
+              <div class="col-xl-4 col-md-6 services-item filter-<?php echo $plan_1; ?> filter-<?php echo $plan_2; ?> filter-<?php echo $plan_3; ?>">
                 <div class="service-item">
                   <div class="row justify-content-center">
                     <div class="img-services col-md-11">

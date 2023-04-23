@@ -16,7 +16,7 @@ if ($type) {
 }
 
 if ($plan) {
-  $sql .= " AND plan = :plan";
+  $sql .= " AND plan_1 = :plan or plan_2 = :plan or plan_3 = :plan";
 }
 
 // Prepara a consulta SQL
@@ -106,11 +106,18 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   ?>
                 </select>
                 <select class="form-select" name="plan">
-                  <option value="">Escolha um plano</option>
-                  <option value="1">FÁCIL</option>
-                  <option value="2">GOLD</option>
-                  <option value="">PLATINUM</option>
-                  <option value="4">FÁCIL e GOLD</option>
+                  <?php
+                  $stmt = $DB_con->prepare("SELECT * FROM plans");
+                  $stmt->execute();
+                  if ($stmt->rowCount() > 0) {
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                      extract($row);
+                  ?>
+                      <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                  <?php
+                    }
+                  }
+                  ?>
                 </select>
               </div>
               <div class="d-md-flex">

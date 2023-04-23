@@ -31,6 +31,7 @@ if (isset($_POST['btnsave'])) {
   $service_3 = $_POST['service_3'];
   $plan_1 = $_POST['plan_1'];
   $plan_2 = $_POST['plan_2'];
+  $plan_3 = $_POST['plan_3'];
   $slug = $_POST['slug'];
   $title_desc = $_POST['title_desc'];
   $title_box = $_POST['title_box'];
@@ -137,6 +138,7 @@ if (isset($_POST['btnsave'])) {
     img_3=:upic3,
     plan_1=:uplan_1,
     plan_2=:uplan_2,
+    plan_3=:uplan_3,
     slug=:uslug,
     title_box=:utitle_box,
     title2_box=:utitle2_box,
@@ -162,6 +164,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':upic3', $userpic3);
     $stmt->bindParam(':uplan_1', $plan_1);
     $stmt->bindParam(':uplan_2', $plan_2);
+    $stmt->bindParam(':uplan_3', $plan_3);
     $stmt->bindParam(':uslug', $slug);
     $stmt->bindParam(':utitle_box', $title_box);
     $stmt->bindParam(':utitle2_box', $title2_box);
@@ -375,7 +378,11 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating mb-3">
                         <select name="plan_1" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 1">
                           <option value="<?php echo $plan_1; ?>">
-                          <?php echo $plan_1; ?> (selecionado)
+                            <?php if ($plan_1 != '') {
+                              echo $plan_1 . " (SELECIONADO)";
+                            } else {
+                              echo "Escolha um plano";
+                            } ?>
                           </option>
                           <?php
                           $stmt = $DB_con->prepare("SELECT * FROM plans");
@@ -395,64 +402,100 @@ if (isset($_POST['btnsave'])) {
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <select name="plan_2" class="form-select" id="floatingSelect" aria-label="Plano Essencial">
-                          <option value="<?php echo $plan_2; ?>">
+                        <div class="form-floating mb-3">
+                          <select name="plan_2" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 2">
+                            <option value="<?php echo $plan_2; ?>">
+                              <?php if ($plan_2 != '') {
+                                echo $plan_2 . " (SELECIONADO)";
+                              } else {
+                                echo "Escolha um plano";
+                              } ?>
+                            </option>
                             <?php
-                            if ($plan_2 == 'gold') {
-                              echo "Disponível";
+                            $stmt = $DB_con->prepare("SELECT * FROM plans");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                extract($row);
+                            ?>
+                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                            <?php
+                              }
                             }
-                            if ($plan_2 != 'gold') {
-                              echo "Indisponível";
-                            } ?> (selecionado)
-                          </option>
-                          <option value="gold">DISPONÍVEL</option>
-                          <option value="">INDISPONÍVEL</option>
-                        </select>
-                        <label for="floatingSelect">Plano Gold</label>
+                            ?>
+                          </select>
+                          <label for="floatingSelect">Plano 2</label>
+                        </div>
                       </div>
                     </div>
-
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <div class="form-floating mb-3">
+                          <select name="plan_3" class="form-select text-uppercase" id="floatingSelect" aria-label="Plano 3">
+                            <option value="<?php echo $plan_3; ?>">
+                              <?php if ($plan_3 != '') {
+                                echo $plan_3 . " (SELECIONADO)";
+                              } else {
+                                echo "Escolha um plano";
+                              } ?>
+                            </option>
+                            <?php
+                            $stmt = $DB_con->prepare("SELECT * FROM plans");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                              while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                extract($row);
+                            ?>
+                                <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
+                            <?php
+                              }
+                            }
+                            ?>
+                          </select>
+                          <label for="floatingSelect">Plano 3</label>
+                        </div>
+                      </div>
+                    </div>
+                    <h5 class="card-title">Imagens</h5>
+                    <div class="row">
+                      <h5 class="card-title text-center">Capa</h5>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <img src="./uploads/beneficios/<?php echo $img_2; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="file-loading">
+                            <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image2" accept="image/*">
+                          </div>
+                        </div>
+                      </div>
+                      <h5 class="card-title text-center">Banner</h5>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <img src="./uploads/beneficios/<?php echo $img_3; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="file-loading">
+                            <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
+                          </div>
+                        </div>
+                      </div>
+                      <h5 class="card-title text-center">Ícone</h5>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <img src="./uploads/beneficios/<?php echo $img_1; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-8">
+                          <div class="file-loading">
+                            <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h5 class="card-title">Imagens</h5>
-                  <div class="row">
-                    <h5 class="card-title text-center">Capa</h5>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img src="./uploads/beneficios/<?php echo $img_2; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="file-loading">
-                          <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image2" accept="image/*">
-                        </div>
-                      </div>
-                    </div>
-                    <h5 class="card-title text-center">Banner</h5>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img src="./uploads/beneficios/<?php echo $img_3; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="file-loading">
-                          <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image3" accept="image/*">
-                        </div>
-                      </div>
-                    </div>
-                    <h5 class="card-title text-center">Ícone</h5>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <img src="./uploads/beneficios/<?php echo $img_1; ?>" onerror="this.src='./assets/img/semperfil.png'" class="img-fluid rounded">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="file-loading">
-                          <input id="curriculo" class="file" data-theme="fas" type="file" name="user_image" accept="image/*">
-                        </div>
-                      </div>
-                    </div>
+                  <div class="text-center pt-2">
+                    <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
                   </div>
-                </div>
-                <div class="text-center pt-2">
-                  <button type="submit" name="btnsave" class="btn btn-primary">Editar</button>
-                </div>
               </form><!-- Vertical Form -->
 
             </div>

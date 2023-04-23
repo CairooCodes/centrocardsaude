@@ -8,7 +8,7 @@
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
               <a href="<?php echo $URI->base('home') ?>" class="logo me-md-auto">
-              
+
                 <center><img class="lazy" data-src="<?php echo $URI->base('/assets/img/logo.jpg') ?>" alt="" width="200px"></center>
               </a>
             </div>
@@ -28,9 +28,19 @@
           <div class="col-lg-5 col-md-6 footer-links">
             <h4>Planos</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/facil') ?>">Plano Fácil</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/gold') ?>">Plano Gold</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/platinum') ?>">Plano Platinum</a></li>
+              <?php
+              $stmt = $DB_con->prepare("SELECT * FROM plans");
+              $stmt->execute();
+              if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                  extract($row);
+              ?>
+                  <li><i class="bx bx-chevron-right"></i> <a href="<?php echo $URI->base('plano/' . slugify($name)) ?>">Plano <?php echo $name ?></a></li>
+              <?php
+                }
+              }
+              ?>
+
             </ul>
           </div>
         </div>
