@@ -106,6 +106,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   ?>
                 </select>
                 <select class="form-select" name="plan">
+                <option value="">Escolha um plano</option>
                   <?php
                   $stmt = $DB_con->prepare("SELECT * FROM plans");
                   $stmt->execute();
