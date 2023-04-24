@@ -43,7 +43,7 @@ if (isset($_POST['btnsave'])) {
   $t15 = $_POST['t15'];
   $active = $_POST['active'];
   $btn_home_text = $_POST['btn_home_text'];
-
+  $contrato = $_POST['contrato'];
 
   if (!isset($errMSG)) {
     $stmt = $DB_con->prepare('UPDATE plans SET 
@@ -68,7 +68,8 @@ if (isset($_POST['btnsave'])) {
     t14=:ut14,
     t15=:ut15,
     active=:uactive,
-    btn_home_text=:ubtn_home_text
+    btn_home_text=:ubtn_home_text,
+    contrato=:ucontrato
     WHERE id=:uid');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':uprice', $price);
@@ -92,6 +93,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':ut15', $t15);
     $stmt->bindParam(':uactive', $active);
     $stmt->bindParam(':ubtn_home_text', $btn_home_text);
+    $stmt->bindParam(':ucontrato', $contrato);
     $stmt->bindParam(':uid', $id);
 
     if ($stmt->execute()) {
@@ -221,6 +223,12 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $btn_home_text; ?>" name="btn_home_text" placeholder="Texto do botão ">
                         <label for="">Texto Botão da Home</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $contrato; ?>" name="contrato" placeholder="Link de contrato">
+                        <label for="">Link de Contrato</label>
                       </div>
                     </div>
                   </div>

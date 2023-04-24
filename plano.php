@@ -130,7 +130,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                               ?>" class="buy-btn"><?php echo $btn_home_text ?></a>
                   </div>
                 </ul>
-                <a class="text-center pt-2" href="<?php echo $URI->base('/docs/CONTRATO_CENTROCARD_PLANO ESSENCIAL_PF.pdf') ?>" target="_blank">CONTRATO PLANO FÁCIL</a>
+                <a class="text-center pt-2 text-uppercase" href="<?php echo $contrato ?>" target="_blank">CONTRATO PLANO <?php echo $name ?></a>
               </div>
             </div><!-- End Pricing Item -->
           </div>

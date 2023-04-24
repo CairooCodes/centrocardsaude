@@ -32,13 +32,13 @@ if (isset($_POST['btnsave'])) {
   $t15 = $_POST['t15'];
   $active = $_POST['active'];
   $btn_home_text = $_POST['btn_home_text'];
-
+  $contrato = $_POST['contrato'];
   if (empty($name)) {
     $errMSG = "Por favor, insira o nome";
   }
 
   if (!isset($errMSG)) {
-    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,price2,description,link,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,active,btn_home_text) VALUES(:uname,:uprice,:uprice2,:udescription,:ulink,:ut1,:ut2,:ut3,:ut4,:ut5,:ut6,:ut7,:ut8,:ut9,:ut10,:ut11,:ut12,:ut13,:ut14,:ut15,:uactive,:ubtn_home_text)');
+    $stmt = $DB_con->prepare('INSERT INTO plans (name,price,price2,description,link,t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11,t12,t13,t14,t15,active,btn_home_text,contrato) VALUES(:uname,:uprice,:uprice2,:udescription,:ulink,:ut1,:ut2,:ut3,:ut4,:ut5,:ut6,:ut7,:ut8,:ut9,:ut10,:ut11,:ut12,:ut13,:ut14,:ut15,:uactive,:ubtn_home_text,:ucontrato)');
     $stmt->bindParam(':uname', $name);
     $stmt->bindParam(':uprice', $price);
     $stmt->bindParam(':uprice2', $price2);
@@ -60,6 +60,7 @@ if (isset($_POST['btnsave'])) {
     $stmt->bindParam(':ut14', $t14);
     $stmt->bindParam(':ut15', $t15);
     $stmt->bindParam(':uactive', $active);
+    $stmt->bindParam(':ucontrato', $contrato);
     $stmt->bindParam(':ubtn_home_text', $btn_home_text);
 
 
@@ -179,6 +180,12 @@ if (isset($_POST['btnsave'])) {
                       <div class="form-floating">
                         <input type="text" class="form-control" value="<?php echo $btn_home_text; ?>" name="btn_home_text" placeholder="Texto do botão ">
                         <label for="">Texto Botão da Home</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" value="<?php echo $contrato; ?>" name="contrato" placeholder="Link de contrato">
+                        <label for="">Link de contrato</label>
                       </div>
                     </div>
                   </div>
