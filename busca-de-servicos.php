@@ -5,31 +5,31 @@ require "classes/Helper.php";
 require "classes/Url.class.php";
 $URI = new URI();
 
-$type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_STRING);
-$plan = filter_input(INPUT_POST, 'plan', FILTER_SANITIZE_STRING);
-
-// Constrói a consulta SQL com base nos valores selecionados
-$sql = "SELECT * FROM services WHERE 1=1";
+$preco_escolhido = $_POST['preco_escolhido'];
+$type = $_POST['type'];
+// Consulta SQL para selecionar apenas o preço escolhido
+$sql = "
+    SELECT *,
+        CASE 
+            WHEN :preco_escolhido = 1 THEN plan_1 
+            WHEN :preco_escolhido = 2 THEN plan_2 
+            WHEN :preco_escolhido = 3 THEN plan_3 
+            ELSE NULL 
+        END AS preco_escolhido 
+    FROM services WHERE 1=1
+";
 
 if ($type) {
   $sql .= " AND type = :type";
 }
 
-if ($plan) {
-  $sql .= " AND plan_1 = :plan or plan_2 = :plan or plan_3 = :plan";
-}
-
-// Prepara a consulta SQL
+echo $sql;
+// Preparação e execução da consulta
 $stmt = $DB_con->prepare($sql);
 
-if ($type) {
-  $stmt->bindParam(':type', $type);
-}
-
-if ($plan) {
-  $stmt->bindParam(':plan', $plan);
-}
-
+$stmt->bindValue(':preco_escolhido', $preco_escolhido);
+$stmt->bindValue(':type', $type);
+$stmt->execute();
 // Executa a consulta SQL
 $stmt->execute();
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -105,20 +105,10 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   }
                   ?>
                 </select>
-                <select class="form-select" name="plan">
-                <option value="">Escolha um plano</option>
-                  <?php
-                  $stmt = $DB_con->prepare("SELECT * FROM plans");
-                  $stmt->execute();
-                  if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                      extract($row);
-                  ?>
-                      <option value="<?php echo $name; ?>"><?php echo $name; ?></option>
-                  <?php
-                    }
-                  }
-                  ?>
+                <select name="preco_escolhido" id="preco_escolhido">
+                  <option value="1">Preço 1</option>
+                  <option value="2">Preço 2</option>
+                  <option value="3">Preço 3</option>
                 </select>
               </div>
               <div class="d-md-flex">
@@ -165,10 +155,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </td>
               <td>
                 <div class="text-search-prices">
-                  <?php if ($linha['private_status'] == 1) { ?>
-                    <p class="de-price">De <?php echo $linha['private']; ?> por:</p>
-                  <?php } ?>
-                  <p class="por-price"> <?php echo $linha['centrocard']; ?></p>
+                  <p class="por-price"> <?php echo $linha['preco_escolhido']; ?>
                 </div>
               </td>
             </tr>
