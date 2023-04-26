@@ -7,6 +7,10 @@ $URI = new URI();
 
 $preco_escolhido = $_POST['preco_escolhido'];
 $type = $_POST['type'];
+
+
+
+$type_select = $_POST['type'];
 // Consulta SQL para selecionar apenas o preço escolhido
 $sql = "
     SELECT *,
@@ -23,7 +27,6 @@ if ($type) {
   $sql .= " AND type = :type";
 }
 
-echo $sql;
 // Preparação e execução da consulta
 $stmt = $DB_con->prepare($sql);
 
@@ -71,7 +74,58 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+  <style>
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9999;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    #preloader:before {
+      content: "";
+      position: fixed;
+      top: calc(50% - 30px);
+      left: calc(50% - 30px);
+      border: 6px solid #01aca3;
+      border-top: 6px solid #f2f2f2;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: animate-preloader 1.5s linear infinite;
+      animation: animate-preloader 1.5s linear infinite;
+    }
+
+    @-webkit-keyframes animate-preloader {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes animate-preloader {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+  </style>
   <?php include "components/navbar-blue.php"; ?>
+
   <!-- ======= Contact Section ======= -->
   <section id="redes" class="redes">
     <div class="container">
@@ -105,10 +159,11 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   }
                   ?>
                 </select>
-                <select name="preco_escolhido" id="preco_escolhido">
-                  <option value="1">Preço 1</option>
-                  <option value="2">Preço 2</option>
-                  <option value="3">Preço 3</option>
+                <select class="form-select" name="preco_escolhido" id="preco_escolhido">
+                  <option value="">Escolha um plano</option>
+                  <option value="1">Plano Fácil</option>
+                  <option value="2">Plano Essencial</option>
+                  <option value="3">Plano Platinum</option>
                 </select>
               </div>
               <div class="d-md-flex">
@@ -121,9 +176,23 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
     <div class="container">
-      <?php if ($pesquisa != '') { ?>
-        <button type="submit" class="btn btn-primary">PROCURAR</button>
-        <h4 class="text-white">Resultado da sua busca: <?php echo $pesquisa; ?></h4>
+      <?php if ($type_select != '') { ?>
+        <h4 class="text-white">Resultado da sua busca: <?php echo $type_select; ?></h4>
+      <?php } ?>
+      <?php if ($preco_escolhido != '') { ?>
+        <h4 class="text-white">Preços do plano escolhido:
+          <?php
+          if ($preco_escolhido == 1) {
+            echo "Fácil";
+          }  
+          if ($preco_escolhido == 2) {
+            echo "Essencial";
+          }  
+          if ($preco_escolhido == 3) {
+            echo "Platinum";
+          }  
+          ?>
+        </h4>
       <?php } ?>
     </div>
     <div class="container container-form">
@@ -133,7 +202,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>SERVIÇO</th>
             <th>CREDENCIADO</th>
             <th>CONTATO</th>
-            <th class="text-center">PREÇO CENTROCARD</th>
+            <th class="text-center">PREÇO</th>
           </tr>
         </thead>
         <tbody>
@@ -165,6 +234,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
       </table>
     </div>
+    <div id="preloader"></div>
   </section><!-- End Contact Section -->
   </main><!-- End #main -->
 

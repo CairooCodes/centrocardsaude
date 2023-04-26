@@ -38,7 +38,7 @@
         <li><a class="nav-link scrollto" href="<?php echo $URI->base('beneficio/telemedicina') ?>">Telemedicina</a></li>
         <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-box-arrow-in-right"></i></a>
           <ul>
-            <li><a href="https://appmobi.azurewebsites.net/mobi4tech/centrocard/cliente/web/Login.aspx">ÁREA DO CLIENTE</a></li>
+            <li><a href="https://apprs.azurewebsites.net/mobi4tech/centrocard/cliente/web/Login.aspx">ÁREA DO CLIENTE</a></li>
           </ul>
         </li>
       </ul>
