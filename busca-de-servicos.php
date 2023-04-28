@@ -14,7 +14,7 @@ $type_select = $_POST['type'];
 
 
 if ($preco_escolhido) {
-  $compare_preco .= "centrocard as compare_preco,";
+  $compare_preco .= "private as compare_preco,";
 }
 // Consulta SQL para selecionar apenas o preço escolhido
 $sql = "
@@ -33,7 +33,7 @@ if ($type) {
 }
 
 if ($preco_escolhido) {
-  $sql .= " AND plan_1 is not null";
+  $sql .= " AND plan_1 != '' AND plan_1 is not null";
 }
 
 // Preparação e execução da consulta
@@ -211,10 +211,20 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>SERVIÇO</th>
             <th>CREDENCIADO</th>
             <th>CONTATO</th>
-            <th class="text-center">PREÇO
+            <th class="text-center text-uppercase">PREÇO
               <?php
               if ($preco_escolhido != '') {
-              ?>FÁCIL
+              ?><?php
+                if ($preco_escolhido == 1) {
+                  echo "Fácil";
+                }
+                if ($preco_escolhido == 2) {
+                  echo "Essencial";
+                }
+                if ($preco_escolhido == 3) {
+                  echo "Platinum";
+                }
+                ?>
             <?php } else {
                 echo "CENTROCARD";
               } ?>
@@ -222,7 +232,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php
             if ($preco_escolhido != '') {
             ?>
-              <th class="text-center">PREÇO CENTROCARD
+              <th class="text-center">PREÇO PARTICULAR
               <?php } ?>
               </th>
           </tr>
