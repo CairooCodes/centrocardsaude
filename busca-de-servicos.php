@@ -18,13 +18,17 @@ $sql = "
             WHEN :preco_escolhido = 1 THEN plan_1 
             WHEN :preco_escolhido = 2 THEN plan_2 
             WHEN :preco_escolhido = 3 THEN plan_3 
-            ELSE NULL 
+            ELSE centrocard 
         END AS preco_escolhido 
     FROM services WHERE 1=1
 ";
 
 if ($type) {
   $sql .= " AND type = :type";
+}
+
+if ($preco_escolhido) {
+  $sql .= " AND plan_1 is not null";
 }
 
 // Preparação e execução da consulta
@@ -184,13 +188,13 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
           <?php
           if ($preco_escolhido == 1) {
             echo "Fácil";
-          }  
+          }
           if ($preco_escolhido == 2) {
             echo "Essencial";
-          }  
+          }
           if ($preco_escolhido == 3) {
             echo "Platinum";
-          }  
+          }
           ?>
         </h4>
       <?php } ?>
@@ -202,7 +206,7 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>SERVIÇO</th>
             <th>CREDENCIADO</th>
             <th>CONTATO</th>
-            <th class="text-center">PREÇO</th>
+            <th class="text-center">PREÇO CENTROCARD</th>
           </tr>
         </thead>
         <tbody>
@@ -224,7 +228,10 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
               </td>
               <td>
                 <div class="text-search-prices">
-                  <p class="por-price"> <?php echo $linha['preco_escolhido']; ?>
+                  <?php if ($linha['private_status'] == 1) { ?>
+                    <p class="de-price">De <?php echo $linha['private']; ?> por:</p>
+                  <?php } ?>
+                  <p class="por-price"> <?php echo $linha['preco_escolhido']; ?></p>
                 </div>
               </td>
             </tr>
