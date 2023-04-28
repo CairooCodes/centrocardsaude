@@ -11,9 +11,14 @@ $type = $_POST['type'];
 
 
 $type_select = $_POST['type'];
+
+
+if ($preco_escolhido) {
+  $compare_preco .= "centrocard as compare_preco,";
+}
 // Consulta SQL para selecionar apenas o preço escolhido
 $sql = "
-    SELECT *,
+    SELECT *, $compare_preco
         CASE 
             WHEN :preco_escolhido = 1 THEN plan_1 
             WHEN :preco_escolhido = 2 THEN plan_2 
@@ -206,7 +211,20 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <th>SERVIÇO</th>
             <th>CREDENCIADO</th>
             <th>CONTATO</th>
-            <th class="text-center">PREÇO CENTROCARD</th>
+            <th class="text-center">PREÇO
+              <?php
+              if ($preco_escolhido != '') {
+              ?>FÁCIL
+            <?php } else {
+                echo "CENTROCARD";
+              } ?>
+            </th>
+            <?php
+            if ($preco_escolhido != '') {
+            ?>
+              <th class="text-center">PREÇO CENTROCARD
+              <?php } ?>
+              </th>
           </tr>
         </thead>
         <tbody>
@@ -234,6 +252,14 @@ $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   <p class="por-price"> <?php echo $linha['preco_escolhido']; ?></p>
                 </div>
               </td>
+              <?php
+              if ($linha['compare_preco'] != "") {
+              ?>
+                <td>
+                  <p class="por-price text-center"> <?php echo $linha['compare_preco']; ?></p>
+                </td>
+              <?php }
+              ?>
             </tr>
           <?php }
           ?>
